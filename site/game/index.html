@@ -80,11 +80,18 @@
 </head>
 <body>
   <div id="game"></div>
-  <!-- Subtle, always-present (not a Phaser game object, so it survives every scene restart and
-       game-over without extra code) — matters most when this build is embedded on a portal like
-       itch.io, where a player has no other way back to the actual site to leave feedback.
-       target="_blank" is required there: the game runs inside the portal's own iframe, so a
-       same-tab link would try to navigate that iframe instead of opening our site. -->
-  <a id="feedback-link" href="https://johanlijffijt.dev/feedback/" target="_blank" rel="noopener">💬 Feedback</a>
+  <!-- Only shown on our own domain (johanlijffijt.dev/staging.johanlijffijt.dev) — several portals
+       this build also ships to (Kongregate's own submission guidelines explicitly list "links
+       taking players outside of Kongregate" as a common rejection reason; other portals are
+       stricter about this than they first appear) reject or penalize outbound links inside an
+       embedded game. Fail-safe default is hidden (the `hidden` attribute below); the inline
+       script only removes it when the hostname is provably ours, so a script failure just means
+       the link stays hidden — never accidentally shown somewhere it could get the listing pulled. -->
+  <a id="feedback-link" href="https://johanlijffijt.dev/feedback/" target="_blank" rel="noopener" hidden>💬 Feedback</a>
+  <script>
+    if (/(^|\.)johanlijffijt\.dev$/.test(location.hostname)) {
+      document.getElementById('feedback-link').hidden = false;
+    }
+  </script>
 </body>
 </html>
