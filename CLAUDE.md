@@ -79,6 +79,34 @@ indie game developer en lead designer**:
      seconden snappen wat je moet doen), directe dopamine (beloning voor risico), en een visueel
      aantrekkelijke presentatie die converteert naar clicks.
 
+## 📱💻 VERPLICHTE PRE-FLIGHT CHECKLIST (Desktop & Mobiel)
+
+**Vastgelegd 12 september 2026 — bindend.** Nooit een taak als gereed of klaar voor test melden
+zonder eerst expliciet onderstaande checks te verifiëren in code-inspectie en tests, vóór elke
+deploy naar staging:
+
+1. **Besturing & Bewegingsvrijheid:**
+   - Desktop: werkt 2D-beweging (X én Y-as) soepel via WASD én pijltjestoetsen? Zijn diagonale
+     snelheden genormaliseerd?
+   - Mobiel: volgt de pointer/touch zowel X als Y zonder haperingen en zonder dat het scherm
+     ongewenst meescrolt?
+2. **Menu- & UI-Navigatie (geen muis-blokkades):**
+   - Desktop: zijn pauze- en level-up-menu's 100% te bedienen met het toetsenbord (pijltjes/WASD
+     om te bladeren, Spatie/Enter om te kiezen, 1/2/3 als directe sneltoets)?
+   - Mobiel: zijn knoppen en upgrade-kaarten groot genoeg voor touch-targets (minimaal 44×44px
+     hitbox) en direct aantikbaar?
+   - Focus & Escape: voorkom dat 'Escape' of 'P' botst met een al geopend keuzemenu.
+3. **Collision & Game-Over-integriteit:**
+   - Is de collider tussen speler en obstakels actief (geen onbedoelde 'god mode')?
+   - Treedt Game Over betrouwbaar op zodra een meteoor het schip raakt?
+4. **Drops, Magneet & Scoring Loop:**
+   - Hebben vernietigde meteoren een werkende overlap-listener met de speler voor Space Dust?
+   - Werkt de magnetische aantrekking op zowel desktop als touch soepel richting het schip?
+   - Schrijft de scoreteller punten bij bij destructie (+10 / +25)?
+5. **UI-Layout & Tekst-Overlap:**
+   - Bounding boxes controleren: overlappen herstartinstructies en statistieken elkaar nooit op
+     smalle schermen (mobiel portrait) én brede desktop-resoluties?
+
 ---
 
 Persoonlijke hub-/portfoliopagina van Johan, domein `johanlijffijt.dev` (Namecheap, geregistreerd

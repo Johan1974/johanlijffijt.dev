@@ -157,6 +157,22 @@ CLAUDE.md/ROADMAP.md) — actie boven passiviteit, een dopamine-loop via progres
 - [ ] **Opnieuw testen op staging** — met name: pakt het schip stof nu wél op, voelt de magneet
       sterk genoeg aan, is het Game Over-scherm leesbaar, klopt de meteoor-score.
 
+## God Mode + level-up-menu onklikbaar op desktop — zelfde oorzaak (12 september 2026)
+
+- [x] **Root cause gevonden:** level-up-menu zat in een Phaser `Container` — bekende hit-testing-
+      valkuil voor interactieve children. Kaarten zichtbaar maar onklikbaar op desktop → speler
+      kon een level-up nooit wegklikken → `physics.pause()` bleef voor altijd staan → oogde als
+      "God Mode". Eén oorzaak, twee gemelde bugs.
+- [x] Kaarten losgetrokken van de Container, nu absolute scene-objecten.
+- [x] Volledige toetsenbordnavigatie voor het menu: pijltjes/W-S bladeren (gele highlight-rand),
+      Spatie/Enter bevestigt, 1/2/3 direct — muis blijft ook werken.
+- [x] `update()` bevriest scheepsbeweging nu ook tijdens het level-up-menu (ontbrak eerder).
+- [x] **Pre-Flight Checklist** vastgelegd in CLAUDE.md en er direct langsgelegd — bevinding:
+      mute-/pauzeknop hadden een tikbare zone van ~24px (ruim onder de 44×44px-eis), gefixt met
+      losse hit-zones.
+- [ ] **Nog niet live getest** — met name of het bladeren door kaarten en de vergrote tikzones
+      goed aanvoelen op een echt scherm.
+
 ## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
 
 Technische fundering staat al live (`sitemap.xml`, `robots.txt`, JSON-LD) — onderstaande stappen
