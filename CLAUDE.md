@@ -121,14 +121,17 @@ Let's Encrypt-certificaat, geverifieerd via curl).
 
 ## Sessie-start-instructie (bindend)
 
-Bij het starten van een nieuwe sessie op dit project: lees eerst `ROADMAP.md`, `TODO.md` én
-`FEEDBACK.md` volledig door voor de laatste stand van zaken, vóórdat je verder werkt, voorstellen
-doet of code aanpast. Vastgelegd op verzoek van Johan (12 september 2026, `FEEDBACK.md` toegevoegd
-later dezelfde dag) zodat elke sessie aansluit op waar de vorige is gebleven, in plaats van blind
-op deze CLAUDE.md alleen te vertrouwen — dit bestand beschrijft bewuste keuzes en architectuur,
-`ROADMAP.md`/`TODO.md` de actuele status en openstaande taken, `FEEDBACK.md` wat spelers zelf
-aandragen. Check bij `FEEDBACK.md` specifiek of er nieuwe, nog onbeoordeelde inzendingen zijn
-(zie dat bestand § Hoe nieuwe inzendingen ophalen) die in de dagelijkse optimalisatielus
+Bij het starten van een nieuwe sessie op dit project: lees eerst `ROADMAP.md`, `TODO.md`,
+`FEEDBACK.md` én `REGISTRATIONS.md` volledig door voor de laatste stand van zaken, vóórdat je
+verder werkt, voorstellen doet of code aanpast. Vastgelegd op verzoek van Johan (12 september
+2026, `FEEDBACK.md` en `REGISTRATIONS.md` toegevoegd later dezelfde dag) zodat elke sessie
+aansluit op waar de vorige is gebleven, in plaats van blind op deze CLAUDE.md alleen te
+vertrouwen — dit bestand beschrijft bewuste keuzes en architectuur, `ROADMAP.md`/`TODO.md` de
+actuele status en openstaande taken, `FEEDBACK.md` wat spelers zelf aandragen,
+`REGISTRATIONS.md` op welke externe sites/diensten al een account bestaat (nooit gokken of iets
+al geregistreerd is). Check bij `FEEDBACK.md` specifiek of er nieuwe, nog onbeoordeelde
+inzendingen zijn (zie dat bestand § Hoe nieuwe inzendingen ophalen) die in de dagelijkse
+optimalisatielus
 meegenomen moeten worden.
 
 Kijk bij die sessie-start én bij de dagelijkse review (zie § Rol hieronder) ook expliciet naar
