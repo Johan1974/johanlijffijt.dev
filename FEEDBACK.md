@@ -12,7 +12,10 @@ uit `api/data/feedback.ndjson` toont.
 
 ## Ruwe Feedback / Inzendingen
 
-*Nog geen inzendingen sinds de overstap naar het eigen backend (12 september 2026).*
+### 2026-09-12 — Suggestie (uit de app, via `/feedback/`)
+> Nieuw game idee
+
+(e-mail opgegeven: johan@gmail.com)
 
 <!-- Formaat voor een nieuwe inzending:
 ### YYYY-MM-DD — Categorie (Bug / Suggestie / Compliment / Anders)
@@ -25,7 +28,12 @@ uit `api/data/feedback.ndjson` toont.
 
 ## Claude's Beoordeling & Haalbaarheid
 
-*Nog niets te beoordelen — volgt zodra er inzendingen binnenkomen.*
+### Bij "Nieuw game idee" (2026-09-12)
+**Beoordeling:** Niet te beoordelen zoals ingediend.
+**Waarom:** het bericht bevat alleen de titel/aanleiding, geen omschrijving van wát het idee
+inhoudt — geen genre, mechaniek of vergelijkbaar spel genoemd. Kan dus nog niet ingeschat worden
+als quick win/grote feature/niet-passend. Actie: navragen wat het idee precies is (e-mail is
+opgegeven) vóórdat dit een taak in `TODO.md` wordt.
 
 <!-- Formaat voor een beoordeling, direct onder de bijbehorende inzending hierboven:
 **Beoordeling:** Quick win / Grote feature / Niet passend bij arcade-scope
