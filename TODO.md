@@ -30,9 +30,9 @@ apps/CLAUDE.md-index). Geen naamsbotsing gevonden (check zoals bij Streakly→Tu
       + `og:image`/`twitter:image` op zowel de homepage als de game-pagina zelf — twee losstaande,
       langlopende TODO's in één keer opgelost.
 - [x] Secundaire "Also on itch.io ↗"-link toegevoegd op de arcade-kaart (opent in nieuw tabblad).
-- [ ] **Wacht op "GO voor productie"** voor deze naamswissel + og:image-toevoeging — staat nu
-      alleen op staging (`staging.johanlijffijt.dev/game/` toont al "Meteor Survivor", productie
-      nog "Meteor Dodge").
+- [x] "GO voor productie" ontvangen en uitgevoerd — live op `johanlijffijt.dev/game/`, hash
+      geverifieerd gelijk aan staging (`index-C8WDfOPW.js`), homepage-og:image/itch.io-link ook
+      bevestigd op productie.
 - [ ] `meteor-survivor-portal.zip` (bijgewerkt met de nieuwe naam) nog niet opnieuw geüpload naar
       de al-live itch.io-pagina — huidige itch.io-build is de allereerste upload van vóór deze
       naamswissel-broncodewijziging (werkt nog prima, mist alleen de meta-tekst-updates).

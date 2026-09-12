@@ -3,27 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-  <title>Meteor Dodge — Free Browser Arcade Game</title>
-  <meta name="description" content="Free browser arcade game — drag to dodge falling meteors, collect coins, and chase a high score. No download, play instantly in any browser." />
+  <title>Meteor Survivor — Free Browser Arcade Roguelite</title>
+  <meta name="description" content="Free browser arcade roguelite — dodge and blast meteors with auto-fire lasers, collect Space Dust, and level up mid-run. No download, play instantly in any browser." />
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://johanlijffijt.dev/game/">
-  <meta property="og:title" content="Meteor Dodge — Free Browser Arcade Game">
-  <meta property="og:description" content="Drag to dodge falling meteors, grab stars, and chase a high score. Free, no download, play instantly in your browser.">
-  <!-- og:image intentionally omitted until there's a real screenshot/thumbnail asset — a missing
-       image falls back gracefully on social previews, a broken/placeholder one doesn't. Add once
-       available: <meta property="og:image" content="https://johanlijffijt.dev/game/og-image.png"> -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Meteor Dodge — Free Browser Arcade Game">
-  <meta name="twitter:description" content="Drag to dodge falling meteors, grab stars, and chase a high score. Free, no download, play instantly in your browser.">
+  <meta property="og:title" content="Meteor Survivor — Free Browser Arcade Roguelite">
+  <meta property="og:description" content="Dodge and blast meteors with auto-fire lasers, collect Space Dust, and level up mid-run. Free, no download, play instantly in your browser.">
+  <!-- Real in-game screenshot, captured via Playwright (see ~/projects/apps/meteor-dodge/CLAUDE.md
+       § Geautomatiseerde E2E-verificatie for the tooling) rather than a mockup — lives on the hub
+       project since that's what actually serves /images/, not this game's own build output. -->
+  <meta property="og:image" content="https://johanlijffijt.dev/images/meteor-survivor-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Meteor Survivor — Free Browser Arcade Roguelite">
+  <meta name="twitter:description" content="Dodge and blast meteors with auto-fire lasers, collect Space Dust, and level up mid-run. Free, no download, play instantly in your browser.">
+  <meta name="twitter:image" content="https://johanlijffijt.dev/images/meteor-survivor-cover.png">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "VideoGame",
-    "name": "Meteor Dodge",
-    "description": "Free browser arcade game — drag to dodge falling meteors, collect coins, and chase a high score. No download, play instantly in any browser.",
-    "genre": "Arcade",
+    "name": "Meteor Survivor",
+    "description": "Free browser arcade roguelite — dodge and blast meteors with auto-fire lasers, collect Space Dust, and level up mid-run. No download, play instantly in any browser.",
+    "genre": ["Roguelite", "Arcade", "Survival"],
     "gamePlatform": "WebBrowser",
     "playMode": "SinglePlayer",
     "applicationCategory": "Game",
