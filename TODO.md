@@ -62,8 +62,22 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       dus zelfde bank-tilt-gevoel), Space om te starten/herstarten, en `addCapture` zodat Space/
       pijltjestoetsen niet meer de pagina laten scrollen. Gedeployed naar
       `staging.johanlijffijt.dev` (nog niet naar productie).
-- [ ] Bevestigen op staging dat de besturing goed aanvoelt (versnelling niet te traag/snel) vóórdat
-      dit naar `deploy:prod` gaat.
+- [x] Bevestigd door Johan op staging: pijltjestoetsen-besturing voelt goed aan.
+- [ ] **Wacht nog op expliciete "GO voor productie"** (Gouden Regel, zie boven in CLAUDE.md/
+      ROADMAP.md) vóór `npm run deploy:prod` — besturing is akkoord, maar er is nog geen expliciet
+      go-commando gegeven.
+
+## Idee voor latere iteratie: schietwerk (genoemd door Johan, 12 september 2026)
+
+Losse suggestie tijdens het staging-testen, **bewust nog niet oppakken** — puur geparkeerd zodat
+het niet vergeten wordt:
+
+- [ ] Overwegen: een schietmechaniek naast het ontwijken (bv. beperkte munitie/cooldown, meteoren
+      kapotschieten voor bonus-punten i.p.v. alleen ontwijken). Verandert de kern-loop van puur
+      dodge naar dodge+shoot — een groter ontwerpgesprek waard (hoe verhoudt dit zich tot de
+      bestaande wave-pacing en Space Dust-progressie) vóór het een concrete hypothese wordt in de
+      Dagelijkse Game Optimization Loop. Blijft singleplayer, dus geen conflict met ROADMAP.md
+      § Scope.
 
 ## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
 
