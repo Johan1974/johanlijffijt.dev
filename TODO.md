@@ -54,6 +54,11 @@ voor bereik/naamsbekendheid. Eén voor één afwerken, niet alles tegelijk. Onde
 technische eisen per portal staat in CLAUDE.md-geschiedenis van dit gesprek — samengevat hieronder
 per portal met de concrete eerstvolgende actie.
 
+- [ ] **itch.io-build achterloopt op productie/CrazyGames** — mist het nieuwe on-screen titel-logo
+      ("METEOR SURVIVOR", toegevoegd 12 september 2026 voor CrazyGames' naam-matching-eis). Bewust
+      geen aparte her-upload hiervoor (Johan: "komt later wel als er echte updates plaatsvinden") —
+      meenemen bij de eerstvolgende inhoudelijke gameplay-update, niet als losse actie.
+
 **CrazyGames — laagste drempel, eerst oppakken:**
 - [x] 3 cover-afbeeldingen gemaakt in de exacte vereiste verhoudingen (`site/images/
       meteor-survivor-cover-landscape.png` 1920×1080, `-portrait.png` 800×1200, `-square.png`
