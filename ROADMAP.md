@@ -131,6 +131,23 @@ initialisatie op de eerste tap.
   en de onderbouwing per keuze (alle drie iteraties) staan in
   `~/projects/apps/meteor-dodge/CLAUDE.md`.
 
+**Iteratie 4 (12 september 2026) — na Johans staging-review van iteratie 1-3:**
+
+- Twee bugfixes uit de staging-review: het "Best:"-label linksboven bleek niet realtime mee te
+  lopen tijdens het spelen (alleen op het Game Over-scherm zelf klopte het al) — nu bijgewerkt
+  zodra `score > bestScore`, met een aparte `sessionStartBest`-snapshot om "is dit een nieuw
+  record" te blijven kunnen bepalen. Retry-tekst kreeg het exacte gevraagde format
+  ("TAP TO RETRY / PRESS SPACE").
+- *Hypothese (Top-5-benchmarkpsychologie):* near-miss-beloningen tunen naar kleinere, frequentere
+  bonussen (20px marge, +5 i.p.v. +10) houden het spannend zonder de score-economie te
+  ontwrichten; een oplopende toonhoogte bij snel-achter-elkaar sterren rapen (combo-pitch) geeft
+  auditieve feedback voor een "streak", een bekende retentie-truc uit ritme-/combo-games.
+- *Concrete code-aanpassing (afgerond, staging):* near-miss-marge/beloning/tekst aangepast (het
+  mechanisme zelf bestond al sinds iteratie 3 — hier bewust hergebruikt en getuned, niet
+  gedupliceerd); `SoundManager.playCoin(combo)` transponeert de coin-chime per combo-stap
+  (max 8) omhoog, combo reset na 2s zonder pickup. **Nog niet naar productie** — staat op
+  `staging.johanlijffijt.dev`, wacht op test + expliciete "GO".
+
 ## Scope: singleplayer-only tot bewezen inkomsten (vastgelegd 12 september 2026)
 
 Expliciete scope-beslissing van Johan, om afleiding en over-engineering te voorkomen zolang er nog

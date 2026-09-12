@@ -63,20 +63,32 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       pijltjestoetsen niet meer de pagina laten scrollen. Gedeployed naar
       `staging.johanlijffijt.dev` (nog niet naar productie).
 - [x] Bevestigd door Johan op staging: pijltjestoetsen-besturing voelt goed aan.
-- [ ] **Wacht nog op expliciete "GO voor productie"** (Gouden Regel, zie boven in CLAUDE.md/
-      ROADMAP.md) vóór `npm run deploy:prod` — besturing is akkoord, maar er is nog geen expliciet
-      go-commando gegeven.
+- [x] **"GO voor productie" ontvangen en uitgevoerd** — `npm run deploy:prod` gedraaid, live op
+      `johanlijffijt.dev/game/`, asset-hash geverifieerd gelijk aan de goedgekeurde staging-build.
 
-## Polijstpuntjes uit staging-review (12 september 2026)
+## Polijstpuntjes uit staging-review (12 september 2026) — inmiddels ook live in productie
 
-- [x] **Best-score linksboven bleef oud staan bij een nieuwe highscore** — `bestText` (linksboven)
-      wordt normaal elke frame bijgewerkt in `update()`, maar die lus stopt zodra `isGameOver`
-      waar wordt, vóórdat `this.bestScore` zelf is opgehoogd. Gefixt: `onGameOver()` zet nu ook
-      `bestText` direct bij, naast de al-bestaande "New Best!"-tekst op het Game Over-scherm zelf.
-- [x] **Start-/retry-tekst hield geen rekening met toetsenbord** — "Tap to launch"/"TAP TO RETRY"
-      werd nu "Tap or press Space to launch"/"TAP OR PRESS SPACE TO RETRY", zodat het ook voor
-      desktop-spelers klopt sinds de pijltjestoetsen-fix.
-- Gedeployed naar staging, **nog niet naar productie** (geen expliciete "GO" ontvangen).
+- [x] **Best-score linksboven bleef oud staan bij een nieuwe highscore** — eerste fix (bijwerken
+      in `onGameOver()`) loste alleen het Game Over-scherm zelf op, niet het label tijdens het
+      spelen. Zie Iteratie 4 hieronder voor de daadwerkelijk-realtime-fix.
+- [x] **Start-/retry-tekst hield geen rekening met toetsenbord** — eerst "Tap or press Space to
+      launch"/"TAP OR PRESS SPACE TO RETRY", op Johans verzoek de retry-tekst daarna nog verkort
+      naar het exacte gevraagde format "TAP TO RETRY / PRESS SPACE" (zie Iteratie 4).
+- Beide gedeployed naar productie via de goedgekeurde staging-build.
+
+## Iteratie 4: realtime best-score, near-miss-tuning, combo-pitch (12 september 2026)
+
+- [x] **Best-score écht realtime tijdens het spelen** (i.p.v. alleen op het Game Over-scherm) —
+      `update()` zet `bestScore` nu live gelijk aan `score` zodra die erover gaat; een aparte
+      `sessionStartBest`-snapshot (vastgelegd bij `startGame()`) bepaalt nog steeds correct of een
+      run een nieuw record was.
+- [x] Near-miss-parameters getuned (bestond al sinds iteratie 3): marge 22→20px, beloning
+      +10→+5, tekst "+10 Close!" → "+5 Close Call!".
+- [x] Retry-tekst → "TAP TO RETRY / PRESS SPACE" (exact gevraagd format).
+- [x] Combo-pitch: sterren binnen 2s na elkaar rapen laat de coin-chime per stap een halve noot
+      stijgen (max 8 stappen), reset na een langere pauze.
+- [ ] **Uitsluitend naar staging gedeployed** (`https://staging.johanlijffijt.dev/game/`) — wacht
+      op Johans test + expliciete "GO voor productie" vóór dit naar `deploy:prod` gaat.
 
 ## Idee voor latere iteratie: schietwerk (genoemd door Johan, 12 september 2026)
 
