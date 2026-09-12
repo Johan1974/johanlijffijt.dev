@@ -41,8 +41,11 @@ apps/CLAUDE.md-index). Geen naamsbotsing gevonden (check zoals bij Streakly→Tu
       VPS maakten alle Phaser-tekst onzichtbaar in headless Chromium, nu opgelost).
 - [ ] Deze 3 nieuwe screenshots nog handmatig uploaden naar itch.io's screenshot-galerij
       (account-specifiek, Johans actie).
-- [ ] v1.0-devlogpost op itch.io: titel/type/attachment staan klaar (Major Update or Launch,
-      `meteor-survivor-portal.zip` aangehecht) — content-tekst en tags nog invullen/publiceren.
+- [x] v1.0-devlogpost gepubliceerd op itch.io (Major Update or Launch, `meteor-survivor-portal.zip`
+      aangehecht, tags Arcade/Phaser/Pixel Art/Roguelite/Space): https://johan1974.itch.io/
+      meteor-survivor-rogue-space/devlog/1661590/meteor-survivor-rogue-space-v10-free-browser-arcade-roguelite-is-live
+      — titel/openingszin herschreven volgens de nieuwe SEO-kernregel (kernwoorden vooraan +
+      expliciete link naar `johanlijffijt.dev/game/`), live-geverifieerd via WebFetch.
 
 ## Dagelijkse Game Optimization Loop (vastgelegd 12 september 2026, zie ROADMAP.md)
 
