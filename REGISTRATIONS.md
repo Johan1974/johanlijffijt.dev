@@ -11,7 +11,7 @@ registratie bijkomt of een status verandert (pending → voltooid).
 | Let's Encrypt / Certbot | — (geen account, automatisch per domein) | ✅ Actief | SSL voor `johanlijffijt.dev` + `staging.johanlijffijt.dev` | 7 & 12 sept 2026 |
 | Google Search Console | — | ⏳ Nog niet geregistreerd | Sitemap indienen, indexering monitoren voor SEO | — |
 | Bing Webmaster Tools | — | ⏳ Nog niet geregistreerd | Zelfde als GSC, Bing's eigen index | — |
-| itch.io | `Johan1974` (via GitHub-OAuth) | ✅ Actief (Creator Dashboard bevestigd) | Meteor Dodge als browsergame publiceren — project nog aanmaken | 12 sept 2026 |
+| itch.io | `Johan1974` (via GitHub-OAuth) | ✅ Live | Meteor Dodge gepubliceerd als **"Meteor Survivor: Rogue Space"** — https://johan1974.itch.io/meteor-survivor-rogue-space (200, getitled bevestigd) | 12 sept 2026 |
 
 **Legenda:** ✅ actief/voltooid — 🔄 bezig — ⏳ nog te doen — ❌ afgesloten/niet meer gebruikt.
 

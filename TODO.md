@@ -15,8 +15,27 @@ laatst-goedgekeurde staging-build (`index-C8WDfOPW.js`). `npm run zip` opnieuw g
 actuele `meteor-dodge-portal.zip` (matcht dezelfde build, geverifieerd: index.html op de root,
 relatieve paden intact).
 
-- [ ] Meteor Dodge daadwerkelijk uploaden naar itch.io — de zip staat nu klaar, uploaden zelf nog
-      niet gedaan (account-actie, zie meteor-dodge's CLAUDE.md § Upload naar itch.io).
+- [x] Meteor Dodge geüpload naar itch.io — live als **"Meteor Survivor: Rogue Space"**:
+      https://johan1974.itch.io/meteor-survivor-rogue-space (200, title bevestigd).
+
+## Naamswissel Meteor Dodge → Meteor Survivor (12 september 2026)
+
+De itch.io-publicatie maakte de naam "Meteor Survivor" feitelijk al definitief — overal
+doorgevoerd (package.json, index.html-meta's/JSON-LD, homepage-arcade-kaart/hero-CTA,
+apps/CLAUDE.md-index). Geen naamsbotsing gevonden (check zoals bij Streakly→Tumble). Mapnaam
+`apps/meteor-dodge/` blijft bewust ongewijzigd (intern pad, nooit publiek).
+
+- [x] Naam overal doorgevoerd, naar staging gedeployed, alle 7 E2E-tests groen.
+- [x] Echte in-game screenshot gemaakt (via Playwright) en gebruikt als arcade-kaart-thumbnail
+      + `og:image`/`twitter:image` op zowel de homepage als de game-pagina zelf — twee losstaande,
+      langlopende TODO's in één keer opgelost.
+- [x] Secundaire "Also on itch.io ↗"-link toegevoegd op de arcade-kaart (opent in nieuw tabblad).
+- [ ] **Wacht op "GO voor productie"** voor deze naamswissel + og:image-toevoeging — staat nu
+      alleen op staging (`staging.johanlijffijt.dev/game/` toont al "Meteor Survivor", productie
+      nog "Meteor Dodge").
+- [ ] `meteor-survivor-portal.zip` (bijgewerkt met de nieuwe naam) nog niet opnieuw geüpload naar
+      de al-live itch.io-pagina — huidige itch.io-build is de allereerste upload van vóór deze
+      naamswissel-broncodewijziging (werkt nog prima, mist alleen de meta-tekst-updates).
 
 ## Dagelijkse Game Optimization Loop (vastgelegd 12 september 2026, zie ROADMAP.md)
 

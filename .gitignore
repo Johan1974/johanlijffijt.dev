@@ -2,3 +2,7 @@
 # project, not a canonical deployed record like site/game/ (production) is. Fast-iterating
 # test target, not worth versioning every staging deploy.
 site-game-staging/
+
+# Editor-local, auto-generated when a multi-root workspace is opened (e.g. this project +
+# ~/projects/apps side by side) — not part of the deployable codebase.
+*.code-workspace

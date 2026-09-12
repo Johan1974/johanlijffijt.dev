@@ -439,11 +439,21 @@ server-side alternatief zonder de gedeelde root op te splitsen (grotere ingreep 
 
 - Geen store-link naar Tumble op de pagina — Tumble staat sinds de pivot van 12 september 2026 op
   on hold, dus dit is niet langer een actieve prioriteit.
-- Geen echte screenshot/thumbnail voor Meteor Dodge's arcade-kaart — momenteel een emoji (☄️) op
-  een gradient-achtergrond i.p.v. een echte in-game screenshot.
-- Geen `og:image`/`twitter:image` op de hub-pagina — nog geen screenshot/logo-asset.
-- Eerste commit + push naar `github.com/Johan1974/johanlijffijt.dev` nog niet gedaan (zie
-  hierboven, § Eerste browsergame).
+- Meteor Survivor is op productie nog gedeployed onder de oude naam "Meteor Dodge" — hernoeming
+  (12 september 2026) staat wel op staging, wacht op "GO voor productie" (zie TODO.md).
+
+## Opgelost (naast de § Opgelost hieronder)
+
+- **Echte screenshot/thumbnail voor de arcade-kaart** (12 september 2026) — een echte in-game
+  screenshot (`site/images/meteor-survivor-cover.png`), gemaakt via de Playwright-tooling van
+  meteor-dodge (headless Chromium, scene handmatig gevuld met meteoren/sterren/schip voor een
+  levendig frame, `page.screenshot({ clip: ... })` voor een landscape-crop die de aanbevolen
+  itch.io-cover-verhouding (630×500, 1,26:1) benadert). Vervangt de ☄️-emoji-placeholder op de
+  arcade-kaart.
+- **`og:image`/`twitter:image` op de hub-pagina** (zelfde dag, zelfde afbeelding) — `twitter:card`
+  ook opgewaardeerd van `summary` naar `summary_large_image`, want die afbeelding verdient nu een
+  prominentere preview.
+- Eerste commit + push naar `github.com/Johan1974/johanlijffijt.dev` — gedaan (12 september 2026).
 
 ## Opgelost
 
