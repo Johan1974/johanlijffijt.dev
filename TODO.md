@@ -67,6 +67,17 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       ROADMAP.md) vóór `npm run deploy:prod` — besturing is akkoord, maar er is nog geen expliciet
       go-commando gegeven.
 
+## Polijstpuntjes uit staging-review (12 september 2026)
+
+- [x] **Best-score linksboven bleef oud staan bij een nieuwe highscore** — `bestText` (linksboven)
+      wordt normaal elke frame bijgewerkt in `update()`, maar die lus stopt zodra `isGameOver`
+      waar wordt, vóórdat `this.bestScore` zelf is opgehoogd. Gefixt: `onGameOver()` zet nu ook
+      `bestText` direct bij, naast de al-bestaande "New Best!"-tekst op het Game Over-scherm zelf.
+- [x] **Start-/retry-tekst hield geen rekening met toetsenbord** — "Tap to launch"/"TAP TO RETRY"
+      werd nu "Tap or press Space to launch"/"TAP OR PRESS SPACE TO RETRY", zodat het ook voor
+      desktop-spelers klopt sinds de pijltjestoetsen-fix.
+- Gedeployed naar staging, **nog niet naar productie** (geen expliciete "GO" ontvangen).
+
 ## Idee voor latere iteratie: schietwerk (genoemd door Johan, 12 september 2026)
 
 Losse suggestie tijdens het staging-testen, **bewust nog niet oppakken** — puur geparkeerd zodat
