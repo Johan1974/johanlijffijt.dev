@@ -33,15 +33,16 @@ apps/CLAUDE.md-index). Geen naamsbotsing gevonden (check zoals bij Streakly→Tu
 - [x] "GO voor productie" ontvangen en uitgevoerd — live op `johanlijffijt.dev/game/`, hash
       geverifieerd gelijk aan staging (`index-C8WDfOPW.js`), homepage-og:image/itch.io-link ook
       bevestigd op productie.
-- [ ] `meteor-survivor-portal.zip` (bijgewerkt met de nieuwe naam) nog niet opnieuw geüpload naar
-      de al-live itch.io-pagina — huidige itch.io-build is de allereerste upload van vóór deze
-      naamswissel-broncodewijziging (werkt nog prima, mist alleen de meta-tekst-updates).
+- [x] `meteor-survivor-portal.zip` (bijgewerkt met de nieuwe naam) opnieuw geüpload naar itch.io —
+      vervangt de allereerste upload van vóór de naamswissel.
 - [x] 3 extra promo-screenshots gemaakt (`site/images/meteor-survivor-action-1.png`, `-action-2.png`,
       `-upgrade-menu.png`) voor itch.io's screenshot-galerij — zie CLAUDE.md § Extra
       itch.io-promo-screenshots (bevat ook een losstaande bugfix: ontbrekende systeemfonts op de
       VPS maakten alle Phaser-tekst onzichtbaar in headless Chromium, nu opgelost).
-- [ ] Deze 3 nieuwe screenshots nog handmatig uploaden naar itch.io (account-specifiek, Johans
-      actie — zie de al-openstaande zip-heruploadtaak hierboven, kan in dezelfde sessie).
+- [ ] Deze 3 nieuwe screenshots nog handmatig uploaden naar itch.io's screenshot-galerij
+      (account-specifiek, Johans actie).
+- [ ] v1.0-devlogpost op itch.io: titel/type/attachment staan klaar (Major Update or Launch,
+      `meteor-survivor-portal.zip` aangehecht) — content-tekst en tags nog invullen/publiceren.
 
 ## Dagelijkse Game Optimization Loop (vastgelegd 12 september 2026, zie ROADMAP.md)
 
