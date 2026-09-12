@@ -55,10 +55,12 @@ technische eisen per portal staat in CLAUDE.md-geschiedenis van dit gesprek — 
 per portal met de concrete eerstvolgende actie.
 
 **CrazyGames — laagste drempel, eerst oppakken:**
-- [ ] 3 cover-afbeeldingen maken in de exacte vereiste verhoudingen (landscape 1920×1080, portrait
-      800×1200, square 800×800) — geen randen, geen "New"/"Play now"-tekst, geen logo's, niet
-      wazig/opgerekt. Vereist echte "key art" (bredere compositie), geen crop van bestaande
-      480×800-screenshots — die zijn te klein/verkeerde ratio.
+- [x] 3 cover-afbeeldingen gemaakt in de exacte vereiste verhoudingen (`site/images/
+      meteor-survivor-cover-landscape.png` 1920×1080, `-portrait.png` 800×1200, `-square.png`
+      800×800) — echte key-art via een nieuwe standalone Phaser-scene in het meteor-dodge-project
+      (`cover-art.html`/`src/cover-art.js`, zie dat project's CLAUDE.md) die het schip/meteoren/
+      sterrenhemel opnieuw op native resolutie tekent i.p.v. een bestaand screenshot uit te
+      rekken — scherp, geen randen, alleen de titel als tekst.
 - [ ] Submissie-tekst opstellen (titel, korte beschrijving, genre, inputmethodes) — met SEO-kernregel
       in gedachten (zie CLAUDE.md).
 - [ ] Developer-account aanmaken op `developer.crazygames.com` (Johan, account-actie: e-mail,
