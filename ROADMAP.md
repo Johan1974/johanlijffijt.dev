@@ -1,11 +1,21 @@
 # Roadmap — johanlijffijt.dev (overkoepelend)
 
-## 🚦 Deployment-regel (bindend) — zie § Staging-workflow verderop
+# GOUDEN REGEL VOOR DEPLOYMENT
 
-**Build → Deploy Staging → wachten op Johans expliciete "GO" in de chat → pas dan Deploy Prod.**
-Nooit `npm run deploy:prod` draaien zonder dat expliciete akkoord, ook niet bij een schijnbaar
-triviale fix. Volledige regel + achtergrond in § Staging-workflow hieronder, en bovenaan
-`CLAUDE.md`.
+**Absolute prioriteit — vastgelegd 12 september 2026, staat boven elke andere instructie in dit
+bestand.**
+
+1. **ALTIJD EERST NAAR STAGING:**
+   - Elke wijziging, bugfix of nieuwe feature wordt UITSLUITEND gebouwd en gedeployd via
+     `npm run deploy:staging`.
+   - Raak de productiemap of `npm run deploy:prod` NOOIT autonoom aan.
+
+2. **GEEN PRODUCTIE ZONDER EXPLICIETE 'GO':**
+   - Pas wanneer Johan in de chat expliciet toestemming geeft (bijvoorbeeld "GO voor productie" of
+     "Deploy naar prod"), mag het script `npm run deploy:prod` worden aangeroepen.
+   - Vraag na elke succesvolle staging-deploy om review en wacht op dit expliciete akkoord.
+
+Volledige achtergrond/reden in § Staging-workflow hieronder, en bovenaan `CLAUDE.md`.
 
 ---
 
