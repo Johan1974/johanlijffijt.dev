@@ -66,12 +66,24 @@ per portal met de concrete eerstvolgende actie.
       (`cover-art.html`/`src/cover-art.js`, zie dat project's CLAUDE.md) die het schip/meteoren/
       sterrenhemel opnieuw op native resolutie tekent i.p.v. een bestaand screenshot uit te
       rekken — scherp, geen randen, alleen de titel als tekst.
-- [ ] Submissie-tekst opstellen (titel, korte beschrijving, genre, inputmethodes) — met SEO-kernregel
-      in gedachten (zie CLAUDE.md).
-- [ ] Developer-account aanmaken op `developer.crazygames.com` (Johan, account-actie: e-mail,
-      displaynaam, betaalgegevens).
-- [ ] Game indienen via "Submit a game" → **Basic Launch** (geen SDK nodig, alleen bestandsgrootte-
-      en basale kwaliteitscheck — onze build van 1,5MB zit ruim onder de 50MB-limiet).
+- [x] Submissie-tekst opgesteld (titel, description, controls) — SEO-kernregel toegepast, zie de
+      geplakte teksten in het gespreksverloop.
+- [x] Developer-account aangemaakt op `developer.crazygames.com` met `play@johanlijffijt.dev`.
+- [x] Titel "METEOR SURVIVOR" toegevoegd op het startscherm in de game zelf (zie hoofdstuk hierboven,
+      "GO voor productie" al ontvangen en uitgevoerd) — nodig omdat CrazyGames' naam-veld moet
+      matchen met zichtbare tekst in de game, wat er nog nergens stond.
+- [x] **2 verplichte preview-video's gebouwd** (landscape 1920×1080, portrait 1080×1620, ~17s, geen
+      geluid, beginnend met de statische cover) — pas ontdekt op het Details-scherm, niet vooraf
+      bekend. Nieuwe pipeline in het meteor-dodge-project (`scripts/build-preview-videos.sh`, zie
+      dat project's CLAUDE.md § Preview-video's voor CrazyGames): echte gameplay opgenomen via
+      Playwright, gecomposit op een thema-achtergrond (i.p.v. zwarte letterbox-balken) met een
+      losstaande statische ffmpeg-build (geen root/apt nodig). Output:
+      `site/images/meteor-survivor-preview-landscape.mp4` / `-portrait.mp4`.
+- [ ] Deze 2 video's + de eerdere 3 cover-afbeeldingen daadwerkelijk uploaden in het "Details"-
+      submissieformulier (Johans handmatige actie — bestanden staan op de VPS in
+      `site/images/`, moeten via VS Code's bestandenverkenner eerst lokaal gedownload worden
+      voordat ze in de browser geüpload kunnen worden).
+- [ ] Submissie afronden en indienen via "Submit a game" → **Basic Launch**.
 - [ ] Reactie afwachten (meestal 1-2 dagen) en eventuele fixes doorvoeren.
 - [ ] **Pas ná een positieve Basic Launch-periode:** overwegen of volledige SDK-integratie
       (`gameplayStart()`/`gameplayStop()`-events, Full Launch, monetisatie) de moeite waard is.
