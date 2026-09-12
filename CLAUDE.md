@@ -442,6 +442,26 @@ server-side alternatief zonder de gedeelde root op te splitsen (grotere ingreep 
 - Meteor Survivor is op productie nog gedeployed onder de oude naam "Meteor Dodge" — hernoeming
   (12 september 2026) staat wel op staging, wacht op "GO voor productie" (zie TODO.md).
 
+## Extra itch.io-promo-screenshots (12 september 2026)
+
+Op verzoek van Johan: 3 extra screenshots toegevoegd naast de bestaande cover-afbeelding, bedoeld
+voor handmatige upload naar itch.io's screenshot-galerij (niet gebruikt op deze site zelf) —
+`site/images/meteor-survivor-action-1.png`, `-action-2.png` (drukke gameplay: meteoren, lasers,
+HUD met score/level) en `-upgrade-menu.png` (het level-up-keuzemenu). Gegenereerd met een nieuw
+script in het meteor-dodge-project (`scripts/capture-screenshots.mjs`, zie dat project's
+CLAUDE.md) via dezelfde Playwright/`window.__game`-aanpak als de bestaande E2E-tests.
+
+**Onderweg een echte bug gevonden, niet alleen een screenshot-klusje:** de eerste poging leverde
+screenshots op met volledig lege HUD/upgrade-kaarten — geen scoretekst, geen kaarttitels, niets.
+Bleek geen screenshot-timingprobleem maar een structurele blinde vlek: deze VPS heeft **geen
+systeemfonts** geïnstalleerd, dus elk Phaser Text-object rendert onzichtbaar in headless Chromium
+(canvas `measureText()` geeft stil 0×0 terug zonder font om mee te meten). De bestaande 7 E2E-tests
+zagen dit nooit, want die lezen scene-state via `page.evaluate()`, niet gerenderde pixels — en de
+eerdere cover-screenshot ontsnapte hier toevallig aan doordat die crop bewust onder de HUD begon.
+Root-cause gefixt in het meteor-dodge-project (fontconfig + DejaVu-fonts zonder root geïnstalleerd,
+zie dat project's CLAUDE.md) — relevant voor élke toekomstige screenshot/E2E-test die tekst op het
+canvas verwacht, niet alleen deze drie afbeeldingen.
+
 ## Opgelost (naast de § Opgelost hieronder)
 
 - **Echte screenshot/thumbnail voor de arcade-kaart** (12 september 2026) — een echte in-game
