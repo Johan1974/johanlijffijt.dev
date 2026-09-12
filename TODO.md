@@ -145,6 +145,18 @@ CLAUDE.md/ROADMAP.md) — actie boven passiviteit, een dopamine-loop via progres
 - [ ] Naam "Meteor Survivor" (genoemd door Johan) nog niet doorgevoerd in code/meta's — bewust,
       eerst bevestigen dat de transformatie aanslaat.
 
+## Drie staging-blokkades uit de eerste Meteor Survivor-test (12 september 2026)
+
+- [x] **Space Dust-pickup gefixt** — bleek een Arcade-overlap-tunneling-probleem bij snel
+      magneet-bewegende kleine objecten, opgelost via een handmatige afstandscheck i.p.v. te
+      vertrouwen op `physics.add.overlap`. Magneet ook sterker gezet.
+- [x] **Score voor meteoor-destructie:** klein +10, groot +25, met zwevende tekst, telt direct op.
+- [x] **Game Over-overlap opgelost:** meer verticale ruimte + een halfdoorzichtige achtergrondbox
+      achter de statistieken.
+- [x] Losse polish: "LVL n"-label op de EXP-balk, puls-glow op Space Dust-deeltjes.
+- [ ] **Opnieuw testen op staging** — met name: pakt het schip stof nu wél op, voelt de magneet
+      sterk genoeg aan, is het Game Over-scherm leesbaar, klopt de meteoor-score.
+
 ## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
 
 Technische fundering staat al live (`sitemap.xml`, `robots.txt`, JSON-LD) — onderstaande stappen
