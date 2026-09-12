@@ -21,6 +21,7 @@ huidige account staan, niet met terugwerkende kracht wijzigen.
 | CrazyGames | `play@johanlijffijt.dev` | 🔄 Ingediend, AWAITING REVIEW | Meteor Survivor Basic Launch-submissie, Category "Shooting" | 12 sept 2026 |
 | Newgrounds | `play@johanlijffijt.dev` (username `MeteorSurvivor`) | 🔄 Ingediend, Under Judgment | https://www.newgrounds.com/portal/view/project/8098322 — communitystemsysteem, geen reviewteam | 13 sept 2026 |
 | Kongregate | `play@johanlijffijt.dev` (username `JohanLijffijt`) | ⏳ Developer Application ingediend, wacht op goedkeuring | Nog geen game geüpload — Kongregate keurt eerst de developer zelf goed vóór upload mogelijk is | 13 sept 2026 |
+| GameJolt | `play@johanlijffijt.dev` (username `JohanLijffijt`) | ✅ Live, gepubliceerd | Meteor Survivor v1.0.0, direct live zonder review — geen "Become a Creator"-status nodig | 13 sept 2026 |
 
 *Welk account GSC/Bing precies gebruiken is niet expliciet bevestigd (van vóór de
 `play@johanlijffijt.dev`-instructie hierboven) — bij twijfel navragen, niet aannemen.

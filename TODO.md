@@ -104,7 +104,10 @@ per portal met de concrete eerstvolgende actie.
       eerst handmatige goedkeuring door Kongregate's team voordat de game zelf geüpload kan worden.
 - [ ] Wachten op goedkeuring van de Developer Application, dan pas verder met de game-upload
       (build, screenshots, description, controls — zelfde patroon als de andere portals).
-- [ ] GameJolt — account aanmaken + build indienen.
+- [x] GameJolt — account aangemaakt (`play@johanlijffijt.dev`) en gepubliceerd, direct live (geen
+      review/goedkeuring nodig). Let op: hun "Become a Creator"-programma (1.000 volgers-eis) is
+      een apart, optioneel monetisatietraject — niet nodig om gewoon een gratis game te uploaden,
+      dat gaat via de aparte "Add a Game"-pagina op je eigen profiel.
 - [ ] Armor Games — account aanmaken + build indienen.
 - [ ] Y8 — account aanmaken + build indienen.
 
