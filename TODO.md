@@ -39,8 +39,8 @@ apps/CLAUDE.md-index). Geen naamsbotsing gevonden (check zoals bij Streakly→Tu
       `-upgrade-menu.png`) voor itch.io's screenshot-galerij — zie CLAUDE.md § Extra
       itch.io-promo-screenshots (bevat ook een losstaande bugfix: ontbrekende systeemfonts op de
       VPS maakten alle Phaser-tekst onzichtbaar in headless Chromium, nu opgelost).
-- [ ] Deze 3 nieuwe screenshots nog handmatig uploaden naar itch.io's screenshot-galerij
-      (account-specifiek, Johans actie).
+- [x] Deze 3 nieuwe screenshots geüpload naar itch.io's screenshot-galerij — geverifieerd via
+      WebFetch, galerij toont nu 4 afbeeldingen (cover + de 3 nieuwe).
 - [x] v1.0-devlogpost gepubliceerd op itch.io (Major Update or Launch, `meteor-survivor-portal.zip`
       aangehecht, tags Arcade/Phaser/Pixel Art/Roguelite/Space): https://johan1974.itch.io/
       meteor-survivor-rogue-space/devlog/1661590/meteor-survivor-rogue-space-v10-free-browser-arcade-roguelite-is-live
