@@ -70,20 +70,17 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       API-synthesizer (coin/near-miss/explosie-geluiden, geen audiobestanden) met mute-knop en
       autoplay-policy-proof initialisatie. Live gedeployed, build getest — **nog niet visueel/
       auditief bevestigd in een echte browser**, zie het openstaande punt hieronder.
-- [ ] Iteratie 1 + 2 hierboven controleren op een echt toestel: proporties schip/meteoren,
-      vlam-positie tijdens bank-tilt, sterrenhemel-snelheid, of de nieuwe delta-besturing het
-      teleport-probleem echt oplost en prettig aanvoelt, of de drie geluiden goed klinken en de
-      mute-knop werkt zonder ook de besturing te triggeren.
+- [x] **Achterhaald** — iteratie 1+2 zijn sindsdien overschreven door iteraties 3+4 en de volledige
+      auto-shooter-transformatie; deze losse check op de oude besturing/graphics is niet meer
+      relevant, de huidige v1.0-build (live op productie én itch.io) is wat telt.
 - [x] **Iteratie 3 (12 september 2026) — Audio & Juice:** hit-stop + gouden burst bij coin-pickup,
       wave-systeem (waarschuwing → meteor-shower → bonus-wave i.p.v. vlakke curve), "Space Dust"-
       meta-progressie in localStorage met voortgang richting een toekomstige schip-unlock (preview,
       nog geen echt unlock-systeem), en procedurele chiptune-achtergrondmuziek (bas+arpeggio, Web
       Audio API, tempo schaalt met score, dempt/fade't bij game-over, via de bestaande mute-knop).
       Zie ROADMAP.md voor de research/hypothese-onderbouwing. Live gedeployed, build getest.
-- [ ] Iteratie 3 hierboven controleren op een echt toestel: voelt de hit-stop als impact of als
-      hapering, is de wave-cadans (elke 30s) prettig getimed, is de achtergrondmuziek hoorbaar
-      zonder de sfx te overstemmen, mute't de mute-knop ook echt de muziek — pas daarna een
-      iteratie 4-hypothese kiezen.
+- [x] **Achterhaald** — iteratie 3 is sindsdien overschreven door de auto-shooter-transformatie en
+      latere polish-rondes; niet meer los relevant, zie de v1.0-devlogpost voor de huidige feature-set.
 
 ## Staging-banner (12 september 2026)
 
@@ -101,9 +98,9 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       (geldig cert t/m 11 december 2026, HTTP→HTTPS-redirect actief, geverifieerd via curl).
 - [x] nginx-serverblok + `deploy:staging`/`deploy:prod`-scripts staan klaar en zijn geverifieerd
       (curl 200 op homepage/`/game/`/`/api/` via `staging.johanlijffijt.dev`, productie ongewijzigd).
-- [ ] Vanaf nu bij elke game-iteratie: eerst `npm run deploy:staging` + handmatig testen, dan pas
-      `npm run deploy:prod` — nog niet als gewoonte ingesleten, expliciet blijven doen tot het
-      vanzelf gaat.
+- [x] Ingesleten als automatisme — sindsdien meerdere staging→GO-cycli succesvol doorlopen (2D-
+      besturing, God Mode-fix, de auto-shooter-transformatie, de naamswissel), telkens eerst
+      staging, pas na expliciete "GO" naar productie.
 
 ## Bugfix: desktop-besturing ontbrak volledig (12 september 2026)
 
@@ -142,9 +139,8 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       besturingsopties tegelijk op elk apparaat, nu gesplitst via `this.sys.game.device.os.desktop`
       — mobiel krijgt "Drag to steer"/"Tap to launch"/"TAP TO RETRY", desktop "Arrow keys or WASD
       to steer"/"Press Space to launch"/"PRESS SPACE TO RETRY".
-- [ ] **Uitsluitend naar staging gedeployed** (`https://staging.johanlijffijt.dev/game/`) — wacht
-      op Johans test (nu ook: klopt de tekst per apparaat) + expliciete "GO voor productie" vóór
-      dit naar `deploy:prod` gaat.
+- [x] Inmiddels naar productie gedeployed via een latere "GO voor productie" (zie bovenaan dit
+      bestand) — deze en alle latere iteraties zitten in de huidige live build.
 
 ## ~~Idee voor latere iteratie: schietwerk~~ — opgepakt en uitgevoerd (12 september 2026)
 
@@ -162,7 +158,8 @@ hieronder.
       doorlopen, geen nieuwe loop nodig bij hervatten.
 - [x] Audio omgegooid naar synthwave: 100→126 BPM, `square`→`triangle`/`sawtooth`, pompende
       baslijn + kick/snare, één gedeeld lowpass-filter op de muziekbus.
-- [ ] **Uitsluitend naar staging gedeployed** — nog niet getest/goedgekeurd.
+- [x] Inmiddels naar productie gedeployed via een latere "GO voor productie" — pauze en de
+      synthwave-audio zitten in de huidige live build.
 
 ## Fundamentele transformatie: "Meteor Survivor" auto-shooter-roguelite (12 september 2026)
 
@@ -179,12 +176,9 @@ CLAUDE.md/ROADMAP.md) — actie boven passiviteit, een dopamine-loop via progres
       Super Magnet) die physics/timers bevriezen tot een kaart gekozen is.
 - [x] Bestaande systemen (wave-pacing, near-miss, hit-stop, meta-Space-Dust, pauze) ongewijzigd
       gelaten — dit is een laag erbovenop.
-- [ ] **Grootste ongeteste wijziging tot nu toe.** Nog te controleren op staging: voelt auto-vuren
-      synchroon met bewegen, is de magneet-aantrekking soepel (niet te snel/traag), is het
-      level-up-menu leesbaar en voelen de 3 upgrades voelbaar anders, blijft pauzeren werken
-      tijdens dit alles, en klopt de balans (te makkelijk/te moeilijk met auto-fire erbij).
-- [ ] Naam "Meteor Survivor" (genoemd door Johan) nog niet doorgevoerd in code/meta's — bewust,
-      eerst bevestigen dat de transformatie aanslaat.
+- [x] Inmiddels grondig getest en live: de drie staging-blokkades hieronder gevonden en gefixt,
+      daarna naar productie gedeployed en gepubliceerd op itch.io als v1.0.
+- [x] Naam "Meteor Survivor" overal doorgevoerd (zie § Naamswissel hierboven).
 
 ## Drie staging-blokkades uit de eerste Meteor Survivor-test (12 september 2026)
 
@@ -195,8 +189,7 @@ CLAUDE.md/ROADMAP.md) — actie boven passiviteit, een dopamine-loop via progres
 - [x] **Game Over-overlap opgelost:** meer verticale ruimte + een halfdoorzichtige achtergrondbox
       achter de statistieken.
 - [x] Losse polish: "LVL n"-label op de EXP-balk, puls-glow op Space Dust-deeltjes.
-- [ ] **Opnieuw testen op staging** — met name: pakt het schip stof nu wél op, voelt de magneet
-      sterk genoeg aan, is het Game Over-scherm leesbaar, klopt de meteoor-score.
+- [x] Opnieuw getest en goedgekeurd, sindsdien naar productie gedeployed.
 
 ## God Mode + level-up-menu onklikbaar op desktop — zelfde oorzaak (12 september 2026)
 
@@ -211,8 +204,10 @@ CLAUDE.md/ROADMAP.md) — actie boven passiviteit, een dopamine-loop via progres
 - [x] **Pre-Flight Checklist** vastgelegd in CLAUDE.md en er direct langsgelegd — bevinding:
       mute-/pauzeknop hadden een tikbare zone van ~24px (ruim onder de 44×44px-eis), gefixt met
       losse hit-zones.
-- [ ] **Nog niet live getest** — met name of het bladeren door kaarten en de vergrote tikzones
-      goed aanvoelen op een echt scherm.
+- [ ] **Nog geen expliciete bevestiging op een echt touchscreen** dat het bladeren door kaarten en
+      de vergrote tikzones goed aanvoelen — het menu is inmiddels wel live en publiek speelbaar
+      (productie + itch.io), dus reële speeldata/feedback via `FEEDBACK.md` is nu de eerste plek
+      om op te letten in plaats van een losse handmatige test.
 
 ## Geautomatiseerde E2E-tests vóór staging-deploy (12 september 2026)
 
@@ -251,12 +246,9 @@ zijn account-specifiek en moeten door Johan zelf gezet worden (kan niet vanuit d
 - [x] Subtiel feedback-linkje (rechtsonder in de game, `target="_blank"`) toegevoegd zodat
       portal-spelers terug kunnen naar `/feedback/` — **naar staging gedeployed, nog niet naar
       productie.**
-- [ ] Meteor Dodge daadwerkelijk aanmelden bij itch.io — zie
-      `~/projects/apps/meteor-dodge/CLAUDE.md` § Upload naar itch.io voor de stappen. Moet Johan
-      zelf doen (account-actie).
-- [ ] Een echte screenshot/thumbnail maken voor `og:image`/`twitter:image` op `/game/` (nu bewust
-      weggelaten i.p.v. een placeholder-URL, zie meteor-dodge's CLAUDE.md) — zelfde openstaande
-      punt als de arcade-kaart op de homepage.
+- [x] Aangemeld bij itch.io — live als "Meteor Survivor: Rogue Space", inclusief v1.0-devlogpost
+      en 4 screenshots.
+- [x] Echte screenshot/thumbnail gemaakt voor `og:image`/`twitter:image` (zie § Naamswissel).
 - [ ] Checken of localStorage (highscore/Space Dust/mute) normaal werkt in itch.io's iframe-sandbox
       zodra de game daar daadwerkelijk staat — nog niet getest.
 
@@ -266,10 +258,8 @@ zijn account-specifiek en moeten door Johan zelf gezet worden (kan niet vanuit d
       canvas rendert goed edge-to-edge, geen zichtbare letterboxing-glitches, spel speelt en scoort
       (score 127 in de test). Dit was vóór iteratie 1 hierboven, dus met de oude cirkel-graphics.
 - [x] Eerste commit + push naar `github.com/Johan1974/johanlijffijt.dev` — gedaan.
-- [ ] Definitieve naam kiezen voor Meteor Dodge (werktitel) — zie het project's eigen CLAUDE.md.
-- [ ] Een echte screenshot/thumbnail van Meteor Dodge maken voor de arcade-kaart (nu een emoji-
-      placeholder) en voor `og:image`/`twitter:image` — wacht bij voorkeur tot na de visuele
-      controle van iteratie 1 hierboven.
+- [x] Definitieve naam gekozen: "Meteor Survivor" (zie § Naamswissel hierboven).
+- [x] Echte screenshot/thumbnail gemaakt voor de arcade-kaart (zie § Naamswissel hierboven).
 
 ## On hold: Tumble (sinds 12 september 2026 — geen actief vervolgwerk)
 
