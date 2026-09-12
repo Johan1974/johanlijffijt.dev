@@ -146,6 +146,22 @@ game-juice dat is voor gameplay (zie de Core Regel Publiekstrekker hierboven).
 
 ---
 
+# 📧 GOUDEN REGEL: Uitsluitend `play@johanlijffijt.dev` voor Registraties
+
+**Absolute prioriteit — vastgelegd 12 september 2026, staat op hetzelfde niveau als de Gouden
+Regel voor Deployment bovenaan dit bestand.**
+
+Voor **élke nieuwe accountregistratie** die voor dit project/deze game wordt aangemaakt — game-
+portals (CrazyGames, Poki, Newgrounds, Kongregate, GameJolt, Armor Games, Y8) of andere externe
+diensten — wordt **uitsluitend** `play@johanlijffijt.dev` gebruikt, **nooit** Johans persoonlijke
+e-mailadres. Geen uitzonderingen, tenzij Johan in de chat expliciet iets anders aangeeft.
+
+Bestaande registraties van vóór dit besluit (GitHub `Johan1974`, itch.io via GitHub-OAuth) blijven
+ongewijzigd op hun huidige account — dit is geen migratie-opdracht, alleen een regel voor
+toekomstige, nieuwe registraties. Zie `REGISTRATIONS.md` voor de actuele stand per platform.
+
+---
+
 Persoonlijke hub-/portfoliopagina van Johan, domein `johanlijffijt.dev` (Namecheap, geregistreerd
 7 september 2026). Doel: een lichte "proeftuin" die naar zijn projecten linkt en later kan
 uitbreiden met eigen pagina's — geen mobiele app zelf. Sinds de pivot van 12 september 2026 (zie
