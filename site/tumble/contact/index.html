@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23d1590f'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Tumble — Contact</title>
+<meta name="description" content="Get in touch about Tumble.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #fafaf8;
+    --ink: #1a1a1a;
+    --ink-dim: #63625c;
+    --accent: #d1590f;
+    --line: #e8e5df;
+    --card-bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15141a;
+      --ink: #f2f0eb;
+      --ink-dim: #a9a69e;
+      --accent: #ff9752;
+      --line: #332f3c;
+      --card-bg: #242230;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+    margin: 0 0 0.4rem;
+  }
+  .intro {
+    color: var(--ink-dim);
+    margin: 0 0 2.2rem;
+    font-size: 1rem;
+  }
+  label.field-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 1.4rem;
+  }
+  textarea, input[type="email"] {
+    width: 100%;
+    border: 1px solid var(--line);
+    background: var(--card-bg);
+    color: var(--ink);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+  }
+  textarea {
+    min-height: 8rem;
+    resize: vertical;
+  }
+  .hint {
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+    margin-top: 0.4rem;
+  }
+  button[type="submit"] {
+    width: 100%;
+    border: none;
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+  button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+  #status {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  #status.error {
+    color: #c0392b;
+  }
+  #thanks {
+    text-align: center;
+    padding: 3rem 0;
+  }
+  #thanks h1 {
+    margin-bottom: 0.6rem;
+  }
+  [hidden] {
+    display: none !important;
+  }
+</style>
+</head>
+<body>
+<main>
+  <div id="form-wrap">
+    <h1>Get in touch</h1>
+    <p class="intro">Questions, bugs, privacy requests — send a message and we'll get back to you.</p>
+
+    <form id="contact-form">
+      <fieldset>
+        <label class="field-label" for="message">Message</label>
+        <textarea id="message" name="message" placeholder="What's up?" required></textarea>
+      </fieldset>
+
+      <fieldset>
+        <label class="field-label" for="email">Your email (optional, so we can reply)</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+      </fieldset>
+
+      <button type="submit" id="submit-btn">Send</button>
+      <p id="status" role="status"></p>
+    </form>
+  </div>
+
+  <div id="thanks" hidden>
+    <h1>Thanks! 🙏</h1>
+    <p class="intro">Your message has been sent.</p>
+  </div>
+</main>
+
+<script>
+  const SUPABASE_URL = 'https://johanlijffijt.dev/supabase';
+  const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzg4NjUwNTE1LCJleHAiOjE5NDYzMzA1MTV9.3XlYAzs0hWK8gBlHRlVTQWv2IZWH4dPhKyJDJtZvkF8';
+
+  const form = document.getElementById('contact-form');
+  const statusEl = document.getElementById('status');
+  const submitBtn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    statusEl.className = '';
+
+    const body = {
+      message: document.getElementById('message').value.trim(),
+      email: document.getElementById('email').value.trim() || null,
+    };
+
+    if (!body.message) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/contact_messages', {
+        method: 'POST',
+        headers: {
+          apikey: ANON_KEY,
+          Authorization: 'Bearer ' + ANON_KEY,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) throw new Error('Send failed (' + res.status + ')');
+
+      document.getElementById('form-wrap').hidden = true;
+      document.getElementById('thanks').hidden = false;
+    } catch (err) {
+      statusEl.textContent = 'Something went wrong — please try again.';
+      statusEl.className = 'error';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+    }
+  });
+</script>
+</body>
+</html>
