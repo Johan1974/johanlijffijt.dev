@@ -162,6 +162,12 @@ sprake is van betaalde marketing of een bewezen inkomstenstroom.
 - **Externe distributie:** publiceren op gameportals (itch.io, CrazyGames, Poki) als aanvullend
   organisch kanaal naast directe zoekverkeer — zelfde "geen betaalde marketing"-instinct
   (organische portal-plaatsing, geen advertentiebudget om op die portals te promoten).
+- **Export-profiel voor portals (afgerond, 12 september 2026):** Meteor Dodge heeft nu
+  `npm run build:portal` — een relatieve-paden-build (`base: './'`) naast de absolute-paden-build
+  die de eigen site nodig heeft, geverifieerd geschikt voor itch.io/CrazyGames' zip-upload. Zie
+  `~/projects/apps/meteor-dodge/CLAUDE.md` § SEO-metadata + itch.io-exportprofiel voor de details
+  (incl. een bewuste afwijking van de oorspronkelijke `inLanguage`-vraag — de game is
+  Engelstalig, geen Nederlandse localisatie aanwezig).
 
 ## Bewuste keuzes die voor de hele roadmap gelden
 
