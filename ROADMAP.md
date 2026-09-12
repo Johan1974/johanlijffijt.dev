@@ -273,6 +273,15 @@ Dit vervangt niet de behoefte aan een echte fysieke-toestel-test (zie de opensta
 `TODO.md` bij eerdere iteraties) — staging is een verplichte tussenstap tussen "lokaal gebouwd" en
 "productie", niet een vervanging van "met eigen ogen/oren bevestigd".
 
+**Vóór stap 1 zit nu ook een geautomatiseerde poort (12 september 2026):** Meteor Dodge draait een
+Playwright-E2E-suite automatisch vóór elke `npm run deploy:staging` (via npm's `predeploy:staging`-
+hook) — een falende test **blokkeert de deploy daadwerkelijk**, niet alleen als afspraak op papier
+(getest: een assertie bewust laten falen, bevestigd dat de deploy zelf dan nooit start). Vangt
+regressies af zoals de ontbrekende Y-as-besturing en de God Mode-bug uit eerdere iteraties, vóórdat
+Johan ze zelf op staging hoeft te ontdekken. Volledige technische details (inclusief hoe headless
+Chromium zonder root aan het draaien is gekregen) in
+`~/projects/apps/meteor-dodge/CLAUDE.md` § Geautomatiseerde E2E-verificatie.
+
 ## Bewuste keuzes die voor de hele roadmap gelden
 
 - **Geen betaalde marketing/advertenties** — groei loopt via organisch delen en community-posts.

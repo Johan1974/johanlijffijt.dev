@@ -394,6 +394,10 @@ dit is opgezet. Nieuw server-block in `nginx/johanlijffijt.dev.conf`:
   via curl (200 op homepage/`/game/`, 301-redirect vanaf `http://`).
 - **Workflow vanaf nu:** game-iteraties (en andere wijzigingen) eerst deployen naar en testen op
   `staging.johanlijffijt.dev`, pas daarna naar productie — zie `ROADMAP.md` § Staging-workflow.
+- **Sinds 12 september 2026 zit hier ook een geautomatiseerde poort vóór:** Meteor Dodge draait
+  Playwright-E2E-tests automatisch vóór elke `deploy:staging` (npm `predeploy:staging`-hook) —
+  een falende test blokkeert de deploy zelf, geverifieerd door dat daadwerkelijk uit te proberen.
+  Details in `~/projects/apps/meteor-dodge/CLAUDE.md` § Geautomatiseerde E2E-verificatie.
 
 **Afwijking van het oorspronkelijke verzoek:** Johan vroeg om `/var/www/...`-paden voor zowel
 staging als productie — die bestaan niet in dit project (de site draait vanaf

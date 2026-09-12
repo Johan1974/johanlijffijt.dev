@@ -173,6 +173,21 @@ CLAUDE.md/ROADMAP.md) — actie boven passiviteit, een dopamine-loop via progres
 - [ ] **Nog niet live getest** — met name of het bladeren door kaarten en de vergrote tikzones
       goed aanvoelen op een echt scherm.
 
+## Geautomatiseerde E2E-tests vóór staging-deploy (12 september 2026)
+
+- [x] Playwright geïnstalleerd + 7 tests geschreven (besturing X/Y, collision→game-over,
+      score/EXP bij meteoor-destructie, level-up-menu opent én sluit, Game-Over-tekst-overlap).
+- [x] **Chromium's ontbrekende systeembibliotheken opgelost zonder root** — `apt-get download` +
+      `dpkg-deb -x` naar een projectlokale map, geen `sudo` nodig. Zie
+      `~/projects/apps/meteor-dodge/scripts/install-playwright-libs.sh`.
+- [x] `predeploy:staging`-hook toegevoegd — `npm run deploy:staging` draait nu altijd eerst de
+      volledige testsuite, en **stopt écht** bij een falende test (bevestigd door een assertie
+      bewust te breken en te zien dat de deploy nooit start).
+- [x] Eén flaky test gevonden én gefixt tijdens het bouwen (before/na-score gemeten in twee losse
+      round-trips ipv één atomaire `evaluate()`-call, liep uit de pas met de passieve
+      overlevingsscore die ondertussen doortikte).
+- Alle 7 tests groen, laatste deploy naar staging is er doorheen gekomen.
+
 ## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
 
 Technische fundering staat al live (`sitemap.xml`, `robots.txt`, JSON-LD) — onderstaande stappen
