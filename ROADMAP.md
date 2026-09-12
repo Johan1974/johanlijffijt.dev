@@ -19,6 +19,30 @@ Volledige achtergrond/reden in § Staging-workflow hieronder, en bovenaan `CLAUD
 
 ---
 
+# 🚨 CORE REGEL: Publiekstrekker & Retentie Eerst (Veel Publiek = Doel)
+
+**Absolute prioriteit — vastgelegd 12 september 2026, staat op hetzelfde niveau als de Gouden
+Regel hierboven. Volledige tekst + toepassing in `CLAUDE.md`.**
+
+1. **Primair Doel:** elke feature/aanpassing/iteratie dient maximaal publiek trekken,
+   spelersretentie maximaliseren en verslavende gameplay bouwen — zonder spelers geen bereik en
+   geen inkomsten.
+2. **Proactieve Spelers-Check:** een voorstel dat het spel té passief/saai/repetitief/niche maakt
+   → Claude trekt direct aan de rem en doet concrete tegenvoorstellen op basis van beproefde
+   mechanismen uit virale hits op itch.io/CrazyGames/Poki.
+3. **Pijlers:** Spectakel & Juice (schermeffecten, directe feedback, ontploffingen, combo-audio) ·
+   Actie boven Passiviteit (terugslaan/schieten + upgrades, niet puur vluchten) · Dopamine-loop
+   (duidelijke progressie die motiveert tot "nog één potje").
+
+## 🔍 Benchmarking & Inspiratiebron: Portals
+
+Itch.io (tags `#arcade`/`#survival`/`#bullet-hell`/`#roguelite`), Poki en CrazyGames zijn de
+actieve maatstaf — bij elke nieuwe mechanic kijken naar wat *Vampire Survivors*, *Brotato*,
+*Void Scrappers*, *SNKRX* succesvol maakt (feedback/risico-beloning/tempo-oplossingen, juice- en
+audio-cues) en die bewezen patronen proactief voorstellen i.p.v. het wiel opnieuw uitvinden.
+
+---
+
 Het grote plaatje voor de hub-site én de apps die eraan linken. Voor dagelijkse actiepunten, zie
 `TODO.md` in deze map. Voor de gedetailleerde technische ontwikkelgeschiedenis van een specifieke
 app, zie de `ROADMAP.md` in de map van die app zelf (bv. `~/projects/apps/tumble/ROADMAP.md`) —

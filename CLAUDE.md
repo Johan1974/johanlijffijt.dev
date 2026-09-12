@@ -19,6 +19,47 @@ Zie `ROADMAP.md` § Staging-workflow voor de achtergrond/reden.
 
 ---
 
+# 🚨 CORE REGEL: Publiekstrekker & Retentie Eerst (Veel Publiek = Doel)
+
+**Absolute prioriteit — vastgelegd 12 september 2026, staat op hetzelfde niveau als de Gouden
+Regel hierboven.**
+
+1. **Primair Doel:** Elke feature, aanpassing en iteratie heeft als hoofddoel: **maximaal publiek
+   trekken, spelersretentie maximaliseren en verslavende gameplay bouwen**. Zonder spelers geen
+   bereik en geen inkomsten.
+2. **Proactieve Spelers-Check:**
+   - Als een voorgestelde wijziging, idee of bugfix het spel té passief, saai, repetitief of niche
+     maakt, MOET Claude direct aan de rem trekken.
+   - Claude doet in dat geval direct concrete, proactieve tegenvoorstellen (gebaseerd op beproefde
+     mechanismen uit virale hits op portals zoals itch.io, CrazyGames en Poki) om de game visueel
+     spectaculairder, actiever en aantrekkelijker te maken voor de massa.
+3. **Pijlers voor Elke Feature:**
+   - **Spectakel & Juice:** Schermeffecten, directe feedback, ontploffingen, combo-audio.
+   - **Actie boven Passiviteit:** Actief kunnen terugslaan/schieten en upgrades verzamelen in
+     plaats van puur eindeloos vluchten.
+   - **Dopamine-loop:** Duidelijke progressie (buit opzuigen, level-ups, builds) die motiveert tot
+     "nog één potje".
+
+**Toepassing op de lopende transformatie (12 september 2026):** de overstap van Meteor Dodge (pure
+ontwijker) naar "Meteor Survivor" (auto-shooter roguelite, zie ROADMAP.md) is precies wat deze
+regel voorschrijft — actief terugschieten i.p.v. passief ontwijken, een level-up-keuzemenu als
+dopamine-loop, en meer spektakel (destructie, screenshake, deeltjes) bij elke meteoor-kill. Deze
+regel is dus niet losstaand vastgelegd, maar bevestigt en onderbouwt een transformatie die al in
+uitvoering was.
+
+## 🔍 Benchmarking & Inspiratiebron: Portals (itch.io e.a.)
+
+- **De Maatstaf:** Gebruik platformen zoals **itch.io** (tags `#arcade`, `#survival`,
+  `#bullet-hell`, `#roguelite`), **Poki** en **CrazyGames** als actieve inspiratiebron en benchmark.
+- **Trend-toetsing:** Kijk bij elke mechanic naar wat top-titels binnen deze genres (zoals
+  *Vampire Survivors*, *Brotato*, *Void Scrappers*, *SNKRX*) succesvol maakt:
+  * Hoe lossen zij feedback, risico/beloning, en tempo op?
+  * Welke visuele beloningen ('juice') en audio-cues gebruiken zij?
+- **Proactieve inbreng:** Stel bij nieuwe mechanics direct bewezen patronen uit deze titels voor
+  in plaats van het wiel opnieuw uit te vinden.
+
+---
+
 Persoonlijke hub-/portfoliopagina van Johan, domein `johanlijffijt.dev` (Namecheap, geregistreerd
 7 september 2026). Doel: een lichte "proeftuin" die naar zijn projecten linkt en later kan
 uitbreiden met eigen pagina's — geen mobiele app zelf. Sinds de pivot van 12 september 2026 (zie
