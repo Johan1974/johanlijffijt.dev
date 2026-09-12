@@ -82,6 +82,10 @@ per portal met de concrete eerstvolgende actie.
 - [x] Deze 2 video's + de eerdere 3 cover-afbeeldingen geüpload in het "Details"-submissieformulier.
 - [x] **Submissie ingediend** (12 september 2026) — Category "Shooting", status **AWAITING REVIEW**.
       Build ID `965a9500-f3be-476b-a8da-89460ce2cfd8`.
+- [ ] **Let op:** deze build dateert van vóór de feedback-link-hostname-fix (13 september, zie
+      hieronder) — Kongregate's eigen richtlijnen noemen externe links expliciet als
+      afwijzingsreden, en CrazyGames zou dit ook kunnen afkeuren. Overweeg een "Submit new version"
+      met de bijgewerkte `meteor-survivor-portal.zip` als de huidige nog niet is goedgekeurd.
 - [ ] Reactie afwachten (meestal 1-2 dagen) en eventuele fixes doorvoeren.
 - [ ] **Pas ná een positieve Basic Launch-periode:** overwegen of volledige SDK-integratie
       (`gameplayStart()`/`gameplayStop()`-events, Full Launch, monetisatie) de moeite waard is.
@@ -89,7 +93,14 @@ per portal met de concrete eerstvolgende actie.
 **Self-serve, geen herontwerp nodig (huidige portrait-build werkt zoals-die-is, zelfde als itch.io):**
 - [x] Newgrounds — account aangemaakt (`play@johanlijffijt.dev`, username `MeteorSurvivor`) en
       build ingediend: https://www.newgrounds.com/portal/view/project/8098322 — status "Under
-      Judgment" (Newgrounds' communitystemsysteem, geen reviewteam zoals CrazyGames).
+      Judgment" (Newgrounds' communitystemsysteem, geen reviewteam zoals CrazyGames). Zelfde
+      kanttekening als bij CrazyGames: dateert van vóór de feedback-link-fix, minder kritisch hier
+      (geen bekende Newgrounds-regel tegen externe links) maar wel goed om ooit bij te werken.
+- [x] **Feedback-link verborgen op externe portals** (13 september 2026) — was altijd zichtbaar,
+      ook in portal-embeds; Kongregate's richtlijnen noemen "links taking players outside of
+      Kongregate" expliciet als afwijzingsreden. Nu hostname-gated (alleen zichtbaar op
+      `johanlijffijt.dev`/`staging.johanlijffijt.dev`, fail-safe verborgen overal elders) — zie
+      meteor-dodge's `index.html`. Naar productie gedeployed, portal-zip opnieuw gebouwd.
 - [ ] Kongregate — account aanmaken + build indienen.
 - [ ] GameJolt — account aanmaken + build indienen.
 - [ ] Armor Games — account aanmaken + build indienen.
