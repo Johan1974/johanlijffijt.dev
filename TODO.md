@@ -87,7 +87,9 @@ per portal met de concrete eerstvolgende actie.
       (`gameplayStart()`/`gameplayStop()`-events, Full Launch, monetisatie) de moeite waard is.
 
 **Self-serve, geen herontwerp nodig (huidige portrait-build werkt zoals-die-is, zelfde als itch.io):**
-- [ ] Newgrounds — account aanmaken + build indienen.
+- [x] Newgrounds — account aangemaakt (`play@johanlijffijt.dev`, username `MeteorSurvivor`) en
+      build ingediend: https://www.newgrounds.com/portal/view/project/8098322 — status "Under
+      Judgment" (Newgrounds' communitystemsysteem, geen reviewteam zoals CrazyGames).
 - [ ] Kongregate — account aanmaken + build indienen.
 - [ ] GameJolt — account aanmaken + build indienen.
 - [ ] Armor Games — account aanmaken + build indienen.
