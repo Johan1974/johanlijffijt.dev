@@ -172,6 +172,25 @@ initialisatie op de eerste tap.
   (max 8) omhoog, combo reset na 2s zonder pickup. **Nog niet naar productie** — staat op
   `staging.johanlijffijt.dev`, wacht op test + expliciete "GO".
 
+**Pauzefunctie + synthwave-audio-herwerking (12 september 2026, zelfde dag):** 'P'/Escape/knopje
+pauzeren nu het spel (physics/timers/flame-flicker bevroren, muziek gedempt via een lowpass-sweep
+i.p.v. gestopt). Audio omgegooid van "schelle jaren 80 piepjes" naar een warmere synthwave-richting:
+100→126 BPM, `square`-golven vervangen door `triangle`/`sawtooth`, een pompende baslijn +
+kick/snare-ritmesectie, één gedeeld lowpass-filter op de muziekbus. Zie
+`~/projects/apps/meteor-dodge/CLAUDE.md` voor de volledige technische onderbouwing (incl. een
+Phaser-brontekst-check die voorkwam dat `tweens.pauseAll()` de pauze-hint-tekst zelf ook zou
+bevriezen). **Staging only.**
+
+**Fundamentele transformatie: Meteor Dodge → "Meteor Survivor" (12 september 2026, zelfde dag) —**
+zie de nieuwe CORE REGEL hierboven ("Publiekstrekker & Retentie Eerst"): van pure ontwijker naar
+auto-shooter roguelite. Auto-vurende lasers vernietigen meteoren (klein = 1 hit, nieuwe grote
+variant = 3 hits), destructie levert Space-Dust-drops op die een magneet naar het schip trekt, en
+een EXP-balk triggert een level-up-keuzemenu (Twin Laser / Overdrive / Super Magnet) dat de
+gameplay-intensiteit per run laat opbouwen. Bestaande systemen (wave-pacing, near-miss, hit-stop,
+meta-progressie, pauze) blijven intact, dit is een laag erbovenop, geen vervanging. Volledige
+technische details in `~/projects/apps/meteor-dodge/CLAUDE.md` § Fundamentele transformatie.
+**Grootste ongeteste wijziging tot nu toe — staging only, wacht op uitgebreide test + "GO".**
+
 ## Scope: singleplayer-only tot bewezen inkomsten (vastgelegd 12 september 2026)
 
 Expliciete scope-beslissing van Johan, om afleiding en over-engineering te voorkomen zolang er nog

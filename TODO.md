@@ -105,17 +105,45 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       op Johans test (nu ook: klopt de tekst per apparaat) + expliciete "GO voor productie" vóór
       dit naar `deploy:prod` gaat.
 
-## Idee voor latere iteratie: schietwerk (genoemd door Johan, 12 september 2026)
+## ~~Idee voor latere iteratie: schietwerk~~ — opgepakt en uitgevoerd (12 september 2026)
 
-Losse suggestie tijdens het staging-testen, **bewust nog niet oppakken** — puur geparkeerd zodat
-het niet vergeten wordt:
+Het geparkeerde "schietwerk"-idee hierboven is dezelfde dag nog opgepakt, en flink groter geworden
+dan het oorspronkelijke "meteoren kapotschieten voor bonus-punten" — zie de transformatie-sectie
+hieronder.
 
-- [ ] Overwegen: een schietmechaniek naast het ontwijken (bv. beperkte munitie/cooldown, meteoren
-      kapotschieten voor bonus-punten i.p.v. alleen ontwijken). Verandert de kern-loop van puur
-      dodge naar dodge+shoot — een groter ontwerpgesprek waard (hoe verhoudt dit zich tot de
-      bestaande wave-pacing en Space Dust-progressie) vóór het een concrete hypothese wordt in de
-      Dagelijkse Game Optimization Loop. Blijft singleplayer, dus geen conflict met ROADMAP.md
-      § Scope.
+## Pauze (P/Escape/knop) + synthwave-audio-herwerking (12 september 2026)
+
+- [x] Pauzetoetsen 'P'/'Escape' + een ⏸-knopje rechtsboven (links van mute) — bevriest physics,
+      alle spawn-timers (`this.time.paused`), en specifiek de flame-flicker-tween (niet
+      `tweens.pauseAll()` — bleek een manager-brede vlag te zijn, geverifieerd in de Phaser-
+      broncode, die ook een NIEUWE tween voor de eigen "resume"-hint zou bevriezen).
+- [x] Muziek gedempt (lowpass-sweep) i.p.v. gestopt tijdens pauze — loop blijft op de achtergrond
+      doorlopen, geen nieuwe loop nodig bij hervatten.
+- [x] Audio omgegooid naar synthwave: 100→126 BPM, `square`→`triangle`/`sawtooth`, pompende
+      baslijn + kick/snare, één gedeeld lowpass-filter op de muziekbus.
+- [ ] **Uitsluitend naar staging gedeployed** — nog niet getest/goedgekeurd.
+
+## Fundamentele transformatie: "Meteor Survivor" auto-shooter-roguelite (12 september 2026)
+
+Direct voortvloeiend uit de nieuwe CORE REGEL (Publiekstrekker & Retentie Eerst, zie boven in
+CLAUDE.md/ROADMAP.md) — actie boven passiviteit, een dopamine-loop via progressie/upgrades:
+
+- [x] Auto-vurende lasers (elke 350ms, opvoerbaar via de Overdrive-upgrade).
+- [x] Meteoren met HP: klein = 1 hit (bestond al), nieuwe grote variant = 3 hits (25% spawnkans).
+- [x] Destructie: knisperend geluid, lichte screenshake, rotsachtige particle-burst, 1-3 Space
+      Dust-drops.
+- [x] Magneet (start 80px radius, opvoerbaar via Super Magnet-upgrade) trekt Space Dust én sterren
+      soepel naar het schip, elke frame herberekend zodat het pad meebuigt.
+- [x] EXP-balk bovenaan het scherm, level-up-keuzemenu met 3 upgrades (Twin Laser / Overdrive /
+      Super Magnet) die physics/timers bevriezen tot een kaart gekozen is.
+- [x] Bestaande systemen (wave-pacing, near-miss, hit-stop, meta-Space-Dust, pauze) ongewijzigd
+      gelaten — dit is een laag erbovenop.
+- [ ] **Grootste ongeteste wijziging tot nu toe.** Nog te controleren op staging: voelt auto-vuren
+      synchroon met bewegen, is de magneet-aantrekking soepel (niet te snel/traag), is het
+      level-up-menu leesbaar en voelen de 3 upgrades voelbaar anders, blijft pauzeren werken
+      tijdens dit alles, en klopt de balans (te makkelijk/te moeilijk met auto-fire erbij).
+- [ ] Naam "Meteor Survivor" (genoemd door Johan) nog niet doorgevoerd in code/meta's — bewust,
+      eerst bevestigen dat de transformatie aanslaat.
 
 ## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
 
