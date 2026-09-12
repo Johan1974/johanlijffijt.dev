@@ -18,7 +18,7 @@ huidige account staan, niet met terugwerkende kracht wijzigen.
 | Google Search Console | `play@johanlijffijt.dev`* | ✅ Geverifieerd | Sitemap ingediend, indexering monitoren voor SEO | 12 sept 2026 |
 | Bing Webmaster Tools | `play@johanlijffijt.dev`* | ✅ Geverifieerd | Via "importeer vanuit Google Search Console" — property + sitemap in één keer meegenomen | 12 sept 2026 |
 | itch.io | `Johan1974` (via GitHub-OAuth) | ✅ Live | Meteor Dodge gepubliceerd als **"Meteor Survivor: Rogue Space"** — https://johan1974.itch.io/meteor-survivor-rogue-space (200, getitled bevestigd) | 12 sept 2026 |
-| CrazyGames | `play@johanlijffijt.dev` | 🔄 Account aangemaakt, game nog niet ingediend | Basic Launch-submissie van Meteor Survivor voorbereiden (zie TODO.md § Multi-portal distributie) | 12 sept 2026 |
+| CrazyGames | `play@johanlijffijt.dev` | 🔄 Ingediend, AWAITING REVIEW | Meteor Survivor Basic Launch-submissie, Category "Shooting" | 12 sept 2026 |
 
 *Welk account GSC/Bing precies gebruiken is niet expliciet bevestigd (van vóór de
 `play@johanlijffijt.dev`-instructie hierboven) — bij twijfel navragen, niet aannemen.

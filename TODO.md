@@ -79,11 +79,9 @@ per portal met de concrete eerstvolgende actie.
       Playwright, gecomposit op een thema-achtergrond (i.p.v. zwarte letterbox-balken) met een
       losstaande statische ffmpeg-build (geen root/apt nodig). Output:
       `site/images/meteor-survivor-preview-landscape.mp4` / `-portrait.mp4`.
-- [ ] Deze 2 video's + de eerdere 3 cover-afbeeldingen daadwerkelijk uploaden in het "Details"-
-      submissieformulier (Johans handmatige actie — bestanden staan op de VPS in
-      `site/images/`, moeten via VS Code's bestandenverkenner eerst lokaal gedownload worden
-      voordat ze in de browser geüpload kunnen worden).
-- [ ] Submissie afronden en indienen via "Submit a game" → **Basic Launch**.
+- [x] Deze 2 video's + de eerdere 3 cover-afbeeldingen geüpload in het "Details"-submissieformulier.
+- [x] **Submissie ingediend** (12 september 2026) — Category "Shooting", status **AWAITING REVIEW**.
+      Build ID `965a9500-f3be-476b-a8da-89460ce2cfd8`.
 - [ ] Reactie afwachten (meestal 1-2 dagen) en eventuele fixes doorvoeren.
 - [ ] **Pas ná een positieve Basic Launch-periode:** overwegen of volledige SDK-integratie
       (`gameplayStart()`/`gameplayStop()`-events, Full Launch, monetisatie) de moeite waard is.
