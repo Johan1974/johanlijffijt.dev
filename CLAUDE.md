@@ -185,6 +185,44 @@ toekomstige Tumble-specifieke inquiries.
 geen nieuwe migratie nodig heeft), toegepast via `docker exec supabase-db psql` en geverifieerd
 met een test-insert (daarna opgeruimd uit de tabel).
 
+## Eigen backend: loskoppelen van Tumble's Supabase (12 september 2026)
+
+Op verzoek van Johan ("zet alles onder johanlijffijt.dev") — de arcade-hub's feedback/click-
+tracking leunden nog op Tumble's self-hosted Supabase-instance, die inmiddels gestopt is (Tumble
+staat on hold, alle containers van die stack zijn verwijderd om VPS-ruimte vrij te maken voor de
+focus op games). Een nieuwe, losstaande, minimale backend toegevoegd in `api/`:
+
+- **`api/server.js`** — geen framework, geen database-engine: puur Node's ingebouwde `http`-module,
+  schrijft naar append-only NDJSON-bestanden (`api/data/feedback.ndjson`,
+  `api/data/link_clicks.ndjson`). Twee endpoints: `POST /feedback` (message, optioneel email),
+  `POST /track` (target, willekeurige string — geen CHECK-constraint-gedoe meer zoals bij
+  Supabase's RLS-policies, want dit is nu eigen simpele code).
+  Ruim voldoende voor het verkeer dat dit ooit gaat krijgen; een echte database zou hier premature
+  infrastructuur zijn.
+- **Draait als Docker-container** (`api/Dockerfile` + `api/docker-compose.yml`), op verzoek van
+  Johan ("maak daar waar mogelijk gebruik van containers") i.p.v. een los Node-proces — dit
+  weerspreekt niet de "Geen Docker"-keuze hierboven, want die ging specifiek over het **serveren
+  van de statische site zelf** (nginx vs. een Caddy-container die botste op poort 80/443); een
+  losstaande backend-container op een intern poortje heeft dat conflict niet. `restart:
+  unless-stopped` lost reboot-overleving op zonder dat daar extra sudo voor nodig is (je account zit
+  al in de `docker`-groep) — een systemd-unit zou wél root vereisen, wat verder gaat dan de
+  passwordless-sudo-scope hierboven.
+  **Let op:** de container draait as root (default `node:24-alpine`-gedrag, geen `USER` gezet), dus
+  bestanden in `api/data/` zijn root-owned op de host — aanpassen/inspecteren vanaf de host kan
+  niet direct (`Permission denied`), wel via `docker exec johanlijffijt-dev-api sh -c "..."`.
+- **nginx:** nieuwe `location /api/` proxyt naar `127.0.0.1:8787` (zelfde patroon als de bestaande
+  `/supabase/`-proxy, alleen zonder de `proxy_http_version 1.1`/`Connection`-headers — die waren
+  specifiek nodig omdat Envoy anders `426 Upgrade Required` teruggaf, deze simpele Node-server heeft
+  dat euvel niet). De oude `/supabase/`-proxy blijft staan (geeft nu 502, want de backend erachter
+  is gestopt) — bewust niet verwijderd, kost niets in stilstand en scheelt herbedraden als Tumble
+  ooit weer wordt opgepakt.
+- **Client-side aangepast:** `site/index.html` (click-tracking) en `site/feedback/index.html`
+  wijzen nu naar `/api/track`/`/api/feedback` i.p.v. de Supabase REST-URL's — de `ANON_KEY`-constante
+  is overal verwijderd, niet meer nodig zonder Supabase ertussen.
+  `site/tumble/feedback/` en `site/tumble/contact/` zijn **niet** aangepast — die blijven (nu
+  niet-werkende) Tumble-specifieke pagina's, consistent met "Tumble blijft bereikbaar maar niet
+  actief onderhouden".
+
 ## Nog open
 
 - Geen store-link naar Tumble op de pagina — Tumble staat sinds de pivot van 12 september 2026 op

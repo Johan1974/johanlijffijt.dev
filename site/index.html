@@ -314,19 +314,13 @@
   </footer>
 
   <script>
-    const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzg4NjUwNTE1LCJleHAiOjE5NDYzMzA1MTV9.3XlYAzs0hWK8gBlHRlVTQWv2IZWH4dPhKyJDJtZvkF8';
-
     document.querySelectorAll('a[data-track]').forEach((a) => {
       a.addEventListener('click', () => {
         try {
-          fetch('https://johanlijffijt.dev/supabase/rest/v1/link_clicks', {
+          fetch('/api/track', {
             method: 'POST',
             keepalive: true,
-            headers: {
-              apikey: ANON_KEY,
-              Authorization: 'Bearer ' + ANON_KEY,
-              'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ target: a.dataset.track }),
           });
         } catch (e) {}

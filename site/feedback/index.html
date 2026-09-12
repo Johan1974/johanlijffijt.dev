@@ -145,9 +145,6 @@
 </main>
 
 <script>
-  const SUPABASE_URL = 'https://johanlijffijt.dev/supabase';
-  const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzg4NjUwNTE1LCJleHAiOjE5NDYzMzA1MTV9.3XlYAzs0hWK8gBlHRlVTQWv2IZWH4dPhKyJDJtZvkF8';
-
   const form = document.getElementById('feedback-form');
   const statusEl = document.getElementById('status');
   const submitBtn = document.getElementById('submit-btn');
@@ -168,13 +165,9 @@
     submitBtn.textContent = 'Sending...';
 
     try {
-      const res = await fetch(SUPABASE_URL + '/rest/v1/contact_messages', {
+      const res = await fetch('/api/feedback', {
         method: 'POST',
-        headers: {
-          apikey: ANON_KEY,
-          Authorization: 'Bearer ' + ANON_KEY,
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
 

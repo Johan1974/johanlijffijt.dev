@@ -45,9 +45,10 @@ validatie-volgorde. Concreet:
    een "Indie Game Arcade & Hub" met een speelbare-nu-hero, een kaartengrid en een generieke
    feedbackpagina (`site/feedback/`) — zie `CLAUDE.md` § Homepage herschreven tot arcade-hub voor
    de details.
-5. **Volgende games / eventuele monetisatie** — *bewust nog niet gepland,* pas na signaal dat de
-   eerste game aanslaat — zelfde "geen investering vóór validatie"-instinct als bij Tumble, nu
-   toegepast op games i.p.v. op utility-apps.
+5. **Portfolio uitbouwen richting eerste inkomsten** — *bewust singleplayer-only, zie § Scope
+   hieronder.* Doel: een strakke portfolio singleplayer-arcadegames, organisch verkeer opbouwen, en
+   de allereerste inkomsten via advertenties/gameportals — zelfde "geen investering vóór
+   validatie"-instinct als bij Tumble, nu toegepast op games i.p.v. op utility-apps.
 
 ## Dagelijkse Game Optimization Loop (vastgelegd 12 september 2026)
 
@@ -84,6 +85,36 @@ de vinger landt. Daarnaast een procedurele geluids-synthesizer via de Web Audio 
 (coin/near-miss/explosie-geluiden, geen audiobestanden) met een mute-knop en autoplay-policy-proof
 initialisatie op de eerste tap. Volledige technische details en de onderbouwing per keuze (voor
 beide iteraties) staan in `~/projects/apps/meteor-dodge/CLAUDE.md`.
+
+## Scope: singleplayer-only tot bewezen inkomsten (vastgelegd 12 september 2026)
+
+Expliciete scope-beslissing van Johan, om afleiding en over-engineering te voorkomen zolang er nog
+geen bewezen spelersbasis of inkomsten zijn:
+
+- **Geen multiplayer, geen backend-networking** (WebSockets/Socket.io of vergelijkbaar) voorlopig.
+  De focus ligt 100% op snelle, laagdrempelige HTML5/Phaser **singleplayer**-arcadegames die direct
+  starten — geen wachttijd, geen lege lobby's, geen matchmaking om over na te denken.
+- **Eerste doel:** een strakke portfolio van dit soort games, organisch verkeer opbouwen (zie
+  Dagelijkse Game Optimization Loop hierboven) en de allereerste inkomsten genereren via
+  advertenties/gameportals (Poki/CrazyGames-achtige distributie) — dit is **monetisatie van de
+  games zelf**, geen tegenspraak met de "geen betaalde marketing"-regel hieronder (dat gaat over
+  geld uitgeven om verkeer te *kopen*, niet over geld *verdienen* via ad-supported portals).
+- **Iedere game in deze portfolio blijft singleplayer** totdat er een bewezen spelersbasis én een
+  stabiele inkomstenstroom is — zie § Toekomstvisie / Post-Revenue hieronder voor waar multiplayer
+  dan wél weer op tafel komt. Actieve taken in `TODO.md` blijven daarom gericht op het
+  perfectioneren van core loop, juice, audio en retentie van de huidige singleplayer-titels
+  (te beginnen met Meteor Dodge) — geen multiplayer-concepten oppakken als "leuk zijstapje".
+
+## Toekomstvisie / Post-Revenue
+
+**Bewust hier geparkeerd, niet nu oppakken** — het idee blijft bewaard zodat het niet steeds
+opnieuw ter sprake hoeft te komen, maar het is nadrukkelijk geen actieve taak:
+
+- **Multiplayer** (realtime, WebSockets/Socket.io of vergelijkbaar) is een mogelijke latere fase,
+  pas te overwegen zodra er een bewezen spelersbasis is én een stabiele inkomstenstroom uit de
+  singleplayer-portfolio (zie § Scope hierboven). Geen concrete plannen, geen architectuur-
+  voorbereiding vooruit bouwen — dat zou precies de over-engineering zijn die deze scope-
+  beslissing wil voorkomen.
 
 ## Bewuste keuzes die voor de hele roadmap gelden
 

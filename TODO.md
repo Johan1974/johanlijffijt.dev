@@ -8,6 +8,11 @@ wat gedaan is, voeg toe wat nieuw opduikt — geen archief.
 
 ## Dagelijkse Game Optimization Loop (vastgelegd 12 september 2026, zie ROADMAP.md)
 
+**Scope-grens (zie ROADMAP.md § Scope: singleplayer-only tot bewezen inkomsten):** alle taken
+hieronder blijven gericht op core loop, juice, audio en retentie van singleplayer-titels. Geen
+multiplayer/backend-networking (WebSockets/Socket.io) oppakken — dat staat bewust geparkeerd in
+ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersbasis + inkomsten.
+
 - [ ] **Terugkerend, geen eenmalig vinkje:** elke sessie een optimalisatieronde op Meteor Dodge (of
       een volgende game) volgens ROADMAP.md § Dagelijkse Game Optimization Loop — research
       (Poki/CrazyGames/itch.io) → psychologisch inzicht (near-miss, micro-feedback, dopamine-
@@ -35,9 +40,7 @@ wat gedaan is, voeg toe wat nieuw opduikt — geen archief.
 - [x] Meteor Dodge getest op een fysiek mobiel toestel (screenshot van Johan, 12 september 2026) —
       canvas rendert goed edge-to-edge, geen zichtbare letterboxing-glitches, spel speelt en scoort
       (score 127 in de test). Dit was vóór iteratie 1 hierboven, dus met de oude cirkel-graphics.
-- [ ] Eerste commit + push naar `github.com/Johan1974/johanlijffijt.dev` (repo lokaal
-      geïnitialiseerd en gekoppeld op 12 september, nog niet gepusht — bevat nu ook de nieuwe
-      arcade-homepage).
+- [x] Eerste commit + push naar `github.com/Johan1974/johanlijffijt.dev` — gedaan.
 - [ ] Definitieve naam kiezen voor Meteor Dodge (werktitel) — zie het project's eigen CLAUDE.md.
 - [ ] Een echte screenshot/thumbnail van Meteor Dodge maken voor de arcade-kaart (nu een emoji-
       placeholder) en voor `og:image`/`twitter:image` — wacht bij voorkeur tot na de visuele
