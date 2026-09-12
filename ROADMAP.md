@@ -172,7 +172,7 @@ sprake is van betaalde marketing of een bewezen inkomstenstroom.
 ## Staging-workflow (vastgelegd 12 september 2026)
 
 Vanaf nu: **iteraties en optimalisatierondes worden eerst gedeployed en getest op
-`https://staging.johanlijffijt.dev` (nog `http://` tot certbot gedraaid is, zie CLAUDE.md § Staging-
+`https://staging.johanlijffijt.dev` (HTTPS actief sinds 12 september 2026, zie CLAUDE.md § Staging-
 omgeving) vóórdat ze naar productie gaan.** Concreet:
 
 1. Bouwen/testen met `npm run deploy:staging` (in het game-project) i.p.v. direct `deploy:prod`.

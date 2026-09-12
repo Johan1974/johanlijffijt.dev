@@ -277,10 +277,12 @@ dit is opgezet. Nieuw server-block in `nginx/johanlijffijt.dev.conf`:
   homepage/feedback-pagina die aanroept; test-inzendingen vanaf staging komen dus in dezelfde
   `api/data/*.ndjson` terecht als productie. Geen aparte staging-database — bewust, voor een
   project van deze schaal met één tester is dat premature infrastructuur.
-- **Nog géén HTTPS.** Certbot beheert SSL-certificaten en dat vereist root — buiten de
-  passwordless-sudo-scope hierboven (`nginx -t`/`systemctl reload nginx` alleen). Johan moet zelf
-  eenmalig draaien: `sudo certbot --nginx -d staging.johanlijffijt.dev` — certbot voegt daarna zelf
-  de 443/ssl-blokken toe, exact hetzelfde patroon als bij `johanlijffijt.dev` zelf.
+- **HTTPS actief** (12 september 2026, zelfde dag) — Johan heeft zelf
+  `sudo certbot --nginx -d staging.johanlijffijt.dev` gedraaid (root nodig, buiten de
+  passwordless-sudo-scope hierboven). Certbot heeft `nginx/johanlijffijt.dev.conf` zelf aangevuld
+  met een 443/ssl-blok + een HTTP→HTTPS-redirect-blok voor `staging.johanlijffijt.dev`, exact
+  hetzelfde patroon als bij `johanlijffijt.dev` zelf — geldig cert t/m 11 december 2026, geverifieerd
+  via curl (200 op homepage/`/game/`, 301-redirect vanaf `http://`).
 - **Workflow vanaf nu:** game-iteraties (en andere wijzigingen) eerst deployen naar en testen op
   `staging.johanlijffijt.dev`, pas daarna naar productie — zie `ROADMAP.md` § Staging-workflow.
 

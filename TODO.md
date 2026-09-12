@@ -46,9 +46,8 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
 
 ## Staging (vastgelegd 12 september 2026, zie ROADMAP.md § Staging-workflow)
 
-- [ ] **Eenmalig, moet Johan zelf draaien (root nodig):**
-      `sudo certbot --nginx -d staging.johanlijffijt.dev` — staging draait nu alleen op
-      `http://`, certbot voegt zelf de HTTPS-blokken toe (zelfde patroon als `johanlijffijt.dev`).
+- [x] `sudo certbot --nginx -d staging.johanlijffijt.dev` — gedraaid door Johan, HTTPS werkt
+      (geldig cert t/m 11 december 2026, HTTP→HTTPS-redirect actief, geverifieerd via curl).
 - [x] nginx-serverblok + `deploy:staging`/`deploy:prod`-scripts staan klaar en zijn geverifieerd
       (curl 200 op homepage/`/game/`/`/api/` via `staging.johanlijffijt.dev`, productie ongewijzigd).
 - [ ] Vanaf nu bij elke game-iteratie: eerst `npm run deploy:staging` + handmatig testen, dan pas
