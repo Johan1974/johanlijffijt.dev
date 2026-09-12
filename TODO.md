@@ -35,6 +35,23 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       mute-knop werkt zonder ook de besturing te triggeren — pas daarna een iteratie 3-hypothese
       kiezen.
 
+## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
+
+Technische fundering staat al live (`sitemap.xml`, `robots.txt`, JSON-LD) — onderstaande stappen
+zijn account-specifiek en moeten door Johan zelf gezet worden (kan niet vanuit deze sessie):
+
+- [ ] Property aanmaken in **Google Search Console** voor `johanlijffijt.dev` → de verificatiecode
+      die je krijgt invullen in `site/index.html`'s `google-site-verification`-meta-tag (nu een
+      placeholder) → live zetten → in Search Console op "verifiëren" klikken.
+- [ ] `https://johanlijffijt.dev/sitemap.xml` indienen in Search Console (Sitemaps-sectie).
+- [ ] Zelfde traject voor **Bing Webmaster Tools**: property aanmaken, `msvalidate.01`-meta-tag
+      invullen (nu een placeholder), sitemap indienen. Bing biedt vaak een "importeer vanuit Google
+      Search Console"-snelkoppeling, kan schelen.
+- [ ] Na verificatie: een paar dagen wachten en dan de eerste indexerings-/zoektermdata bekijken —
+      pas daarna zinvol om op keywords te gaan optimaliseren (zie ROADMAP.md, niet vooraf gissen).
+- [ ] Meteor Dodge aanmelden bij itch.io/CrazyGames/Poki als extra organisch kanaal (zie ROADMAP.md
+      § Externe distributie) — nog niet gedaan, geen blocker voor de rest van deze lijst.
+
 ## Overig, sinds de pivot van 12 september 2026 (zie hub-`ROADMAP.md` § Pivot)
 
 - [x] Meteor Dodge getest op een fysiek mobiel toestel (screenshot van Johan, 12 september 2026) —

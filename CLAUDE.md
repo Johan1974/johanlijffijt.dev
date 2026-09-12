@@ -19,6 +19,13 @@ waar de vorige is gebleven, in plaats van blind op deze CLAUDE.md alleen te vert
 bestand beschrijft bewuste keuzes en architectuur, `ROADMAP.md`/`TODO.md` de actuele status en
 openstaande taken.
 
+Kijk bij die sessie-start én bij de dagelijkse review (zie § Rol hieronder) ook expliciet naar
+**organische vindbaarheid en SEO-metadata** — niet alleen gameplay/juice. Concreet: klopt
+`sitemap.xml` nog met de live pagina's, zijn titel/description/JSON-LD actueel als er een pagina
+bijkomt of wijzigt, staat er geen dode/verouderde structured data. Vastgelegd op verzoek van Johan
+(12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie) — SEO is hiermee een
+terugkerend aandachtspunt, geen eenmalige toevoeging.
+
 ## Rol: Game Researcher & Optimization Lead
 
 Sinds de pivot naar games (12 september 2026, zie `ROADMAP.md` § Pivot) heeft de AI-assistent op
@@ -222,6 +229,29 @@ focus op games). Een nieuwe, losstaande, minimale backend toegevoegd in `api/`:
   `site/tumble/feedback/` en `site/tumble/contact/` zijn **niet** aangepast — die blijven (nu
   niet-werkende) Tumble-specifieke pagina's, consistent met "Tumble blijft bereikbaar maar niet
   actief onderhouden".
+
+## Technische SEO-fundering (12 september 2026)
+
+Op verzoek van Johan, onderdeel van de nieuwe "Daily SEO & Traffic Loop" (zie ROADMAP.md):
+
+- **`site/robots.txt`** + **`site/sitemap.xml`** — handgeschreven statisch bestand (geen generator),
+  past bij de "geen build-pipeline"-keuze hierboven. Bevat bewust alleen de actief onderhouden
+  arcade-pagina's (`/`, `/game/`, `/feedback/`) — niet de Tumble-pagina's, die horen niet bij de
+  huidige SEO-strategie (games) en hun formulieren werken toch niet meer (zie § Eigen backend).
+  **Onderhoudspunt:** dit bestand moet handmatig bijgewerkt worden zodra er een nieuwe game/pagina
+  bijkomt — geen automatische sync met `site/`'s mapstructuur, bewust simpel gehouden voor 3 URL's.
+- **JSON-LD (`schema.org/VideoGame`)** op zowel de homepage (`site/index.html`) als op Meteor
+  Dodge's eigen pagina — in de **bron** van meteor-dodge (`~/projects/apps/meteor-dodge/index.html`)
+  toegevoegd, niet alleen in de gedeployde `site/game/index.html`, anders verdwijnt het bij de
+  volgende `npm run deploy`. Velden: `genre: "Arcade"`, `gamePlatform: "WebBrowser"`,
+  `playMode: "SinglePlayer"` (consistent met de singleplayer-only-scope-beslissing), `author`
+  (Johan Lijffijt). Geen `image`-veld — geen echte screenshot om naar te verwijzen (zie eerdere
+  "geen verzonnen assets"-afspraak bij de arcade-kaarten).
+- **Verificatie-placeholders** voor Google Search Console (`google-site-verification`) en Bing
+  Webmaster Tools (`msvalidate.01`) als lege `<meta>`-tags in `site/index.html` — een placeholder-
+  waarde heeft geen effect (geen echte code = geen verificatie), dus dit is veilig om alvast klaar
+  te zetten. **Echte codes moeten nog ingevuld worden** door Johan zelf na registratie van de
+  property in beide tools (account-specifiek, kan niet vanuit deze sessie) — zie `TODO.md`.
 
 ## Nog open
 

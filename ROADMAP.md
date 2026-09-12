@@ -116,6 +116,27 @@ opnieuw ter sprake hoeft te komen, maar het is nadrukkelijk geen actieve taak:
   voorbereiding vooruit bouwen — dat zou precies de over-engineering zijn die deze scope-
   beslissing wil voorkomen.
 
+## Organische Groei & SEO Strategie (vastgelegd 12 september 2026)
+
+Naast de Dagelijkse Game Optimization Loop (gameplay/juice) nu ook een structurele **Daily SEO &
+Traffic Loop** — vindbaarheid is net zo'n doorlopend aandachtspunt als retentie, geen eenmalige
+toevoeging. Sluit aan bij § Scope hieronder: organisch verkeer is de eerste groeimotor, vóór er
+sprake is van betaalde marketing of een bewezen inkomstenstroom.
+
+- **Technische fundering (afgerond, 12 september 2026):** `sitemap.xml` + `robots.txt`, JSON-LD
+  (`schema.org/VideoGame`) op de homepage en op Meteor Dodge's eigen pagina, verificatie-
+  placeholders voor Google Search Console/Bing Webmaster Tools. Zie `CLAUDE.md` § Technische
+  SEO-fundering voor de details.
+- **Monitoring:** zodra Google Search Console gekoppeld is (zie `TODO.md`) — impressies/clicks per
+  zoekterm volgen, indexeringsfouten signaleren, `sitemap.xml` opnieuw indienen na elke nieuwe
+  pagina/game.
+- **Keyword-targeting:** rondom webgame-gerelateerde zoektermen (bv. "free browser games", "html5
+  arcade games", "play online no download", en later game-specifieke termen zoals "meteor dodge
+  game") — copy/meta's hierop laten aansluiten zodra er zoekdata binnenkomt, niet vooraf gissen.
+- **Externe distributie:** publiceren op gameportals (itch.io, CrazyGames, Poki) als aanvullend
+  organisch kanaal naast directe zoekverkeer — zelfde "geen betaalde marketing"-instinct
+  (organische portal-plaatsing, geen advertentiebudget om op die portals te promoten).
+
 ## Bewuste keuzes die voor de hele roadmap gelden
 
 - **Geen betaalde marketing/advertenties** — groei loopt via organisch delen en community-posts.
