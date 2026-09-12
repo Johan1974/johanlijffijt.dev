@@ -99,7 +99,11 @@ per portal met de concrete eerstvolgende actie.
       Kongregate" expliciet als afwijzingsreden. Nu hostname-gated (alleen zichtbaar op
       `johanlijffijt.dev`/`staging.johanlijffijt.dev`, fail-safe verborgen overal elders) — zie
       meteor-dodge's `index.html`. Naar productie gedeployed, portal-zip opnieuw gebouwd.
-- [ ] Kongregate — account aanmaken + build indienen.
+- [x] Kongregate — account aangemaakt (`play@johanlijffijt.dev`) en Developer Application (Step 1
+      van hun publishing-proces) ingediend. **Geen self-serve zoals itch.io/Newgrounds** — vereist
+      eerst handmatige goedkeuring door Kongregate's team voordat de game zelf geüpload kan worden.
+- [ ] Wachten op goedkeuring van de Developer Application, dan pas verder met de game-upload
+      (build, screenshots, description, controls — zelfde patroon als de andere portals).
 - [ ] GameJolt — account aanmaken + build indienen.
 - [ ] Armor Games — account aanmaken + build indienen.
 - [ ] Y8 — account aanmaken + build indienen.
