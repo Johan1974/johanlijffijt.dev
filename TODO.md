@@ -87,8 +87,13 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
 - [x] Retry-tekst → "TAP TO RETRY / PRESS SPACE" (exact gevraagd format).
 - [x] Combo-pitch: sterren binnen 2s na elkaar rapen laat de coin-chime per stap een halve noot
       stijgen (max 8 stappen), reset na een langere pauze.
+- [x] **Device-specifieke instructie-/retry-tekst** (gemeld tijdens staging-testen): toonde alle
+      besturingsopties tegelijk op elk apparaat, nu gesplitst via `this.sys.game.device.os.desktop`
+      — mobiel krijgt "Drag to steer"/"Tap to launch"/"TAP TO RETRY", desktop "Arrow keys or WASD
+      to steer"/"Press Space to launch"/"PRESS SPACE TO RETRY".
 - [ ] **Uitsluitend naar staging gedeployed** (`https://staging.johanlijffijt.dev/game/`) — wacht
-      op Johans test + expliciete "GO voor productie" vóór dit naar `deploy:prod` gaat.
+      op Johans test (nu ook: klopt de tekst per apparaat) + expliciete "GO voor productie" vóór
+      dit naar `deploy:prod` gaat.
 
 ## Idee voor latere iteratie: schietwerk (genoemd door Johan, 12 september 2026)
 
