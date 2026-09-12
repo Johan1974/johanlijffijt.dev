@@ -82,10 +82,8 @@ per portal met de concrete eerstvolgende actie.
 - [x] Deze 2 video's + de eerdere 3 cover-afbeeldingen geüpload in het "Details"-submissieformulier.
 - [x] **Submissie ingediend** (12 september 2026) — Category "Shooting", status **AWAITING REVIEW**.
       Build ID `965a9500-f3be-476b-a8da-89460ce2cfd8`.
-- [ ] **Let op:** deze build dateert van vóór de feedback-link-hostname-fix (13 september, zie
-      hieronder) — Kongregate's eigen richtlijnen noemen externe links expliciet als
-      afwijzingsreden, en CrazyGames zou dit ook kunnen afkeuren. Overweeg een "Submit new version"
-      met de bijgewerkte `meteor-survivor-portal.zip` als de huidige nog niet is goedgekeurd.
+- [x] **Bijgewerkte versie ingediend** (13 september 2026) via "Submit new version" — bevat de
+      feedback-link-hostname-fix, met update-note voor CrazyGames' team.
 - [ ] Reactie afwachten (meestal 1-2 dagen) en eventuele fixes doorvoeren.
 - [ ] **Pas ná een positieve Basic Launch-periode:** overwegen of volledige SDK-integratie
       (`gameplayStart()`/`gameplayStop()`-events, Full Launch, monetisatie) de moeite waard is.
