@@ -1,5 +1,14 @@
 # Roadmap — johanlijffijt.dev (overkoepelend)
 
+## 🚦 Deployment-regel (bindend) — zie § Staging-workflow verderop
+
+**Build → Deploy Staging → wachten op Johans expliciete "GO" in de chat → pas dan Deploy Prod.**
+Nooit `npm run deploy:prod` draaien zonder dat expliciete akkoord, ook niet bij een schijnbaar
+triviale fix. Volledige regel + achtergrond in § Staging-workflow hieronder, en bovenaan
+`CLAUDE.md`.
+
+---
+
 Het grote plaatje voor de hub-site én de apps die eraan linken. Voor dagelijkse actiepunten, zie
 `TODO.md` in deze map. Voor de gedetailleerde technische ontwikkelgeschiedenis van een specifieke
 app, zie de `ROADMAP.md` in de map van die app zelf (bv. `~/projects/apps/tumble/ROADMAP.md`) —
@@ -169,19 +178,21 @@ sprake is van betaalde marketing of een bewezen inkomstenstroom.
   (incl. een bewuste afwijking van de oorspronkelijke `inLanguage`-vraag — de game is
   Engelstalig, geen Nederlandse localisatie aanwezig).
 
-## Staging-workflow (vastgelegd 12 september 2026)
+## Staging-workflow (vastgelegd 12 september 2026, verscherpt tot bindende regel dezelfde dag)
 
-Vanaf nu: **iteraties en optimalisatierondes worden eerst gedeployed en getest op
-`https://staging.johanlijffijt.dev` (HTTPS actief sinds 12 september 2026, zie CLAUDE.md § Staging-
-omgeving) vóórdat ze naar productie gaan.** Concreet:
+**Strikte deployment-regel, zonder uitzondering** (zie ook de banner bovenaan `CLAUDE.md`):
 
-1. Bouwen/testen met `npm run deploy:staging` (in het game-project) i.p.v. direct `deploy:prod`.
-2. Handmatig checken op `staging.johanlijffijt.dev` — visueel, besturing, geluid, timing.
-3. Pas na een geslaagde staging-check: `npm run deploy:prod` om het ook op `johanlijffijt.dev` te
-   zetten.
+1. **Build → Deploy Staging.** Elke code-wijziging, bugfix of nieuwe feature gaat via
+   `npm run deploy:staging` (in het game-project, bv. `~/projects/apps/meteor-dodge/`).
+   `npm run deploy:prod`/`npm run deploy` blijven onaangeraakt tijdens ontwikkelen/testen.
+2. **Wachten op expliciete "GO".** Pas nadat Johan zelf op `https://staging.johanlijffijt.dev/`
+   heeft getest én in de chat expliciet akkoord geeft ("GO voor productie" of gelijkwaardig), mag
+   `npm run deploy:prod` uitgevoerd worden — nooit op eigen inschatting dat het "wel goed genoeg
+   zal zijn".
+3. **Pas dan Deploy Prod.**
 
 Dit vervangt niet de behoefte aan een echte fysieke-toestel-test (zie de openstaande punten in
-`TODO.md` bij eerdere iteraties) — staging is een extra stap tussen "lokaal gebouwd" en
+`TODO.md` bij eerdere iteraties) — staging is een verplichte tussenstap tussen "lokaal gebouwd" en
 "productie", niet een vervanging van "met eigen ogen/oren bevestigd".
 
 ## Bewuste keuzes die voor de hele roadmap gelden

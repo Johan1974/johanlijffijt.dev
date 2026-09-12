@@ -1,5 +1,24 @@
 # CLAUDE.md — johanlijffijt.dev
 
+## 🚦 Deployment-regel (bindend, vastgelegd 12 september 2026)
+
+**Elke code-wijziging, bugfix of nieuwe feature gaat via deze vaste volgorde, zonder uitzondering:**
+
+1. **Build → Deploy Staging.** Altijd `npm run deploy:staging` (in het betreffende game-project,
+   bv. `~/projects/apps/meteor-dodge/`). `npm run deploy:prod`/`npm run deploy` **niet aanraken**
+   tijdens de ontwikkel-/testfase, onder geen enkel beding.
+2. **Wachten op expliciete "GO".** Pas nadat Johan zelf op `https://staging.johanlijffijt.dev/`
+   heeft getest én in de chat expliciet akkoord geeft (bv. "GO voor productie"), mag `npm run
+   deploy:prod` uitgevoerd worden. Geen eigen inschatting dat iets "vast wel goed genoeg is" —
+   altijd op het expliciete akkoord wachten.
+3. **Documentatie volgt dezelfde regel niet-blind:** commits/pushes naar git en het bijwerken van
+   `ROADMAP.md`/`TODO.md`/`CLAUDE.md` zelf vallen hier niet onder (dat is geen productie-deploy) —
+   deze regel gaat specifiek over `site/game/` (of toekomstige andere games) live zetten.
+
+Zie `ROADMAP.md` § Staging-workflow voor de achtergrond/reden.
+
+---
+
 Persoonlijke hub-/portfoliopagina van Johan, domein `johanlijffijt.dev` (Namecheap, geregistreerd
 7 september 2026). Doel: een lichte "proeftuin" die naar zijn projecten linkt en later kan
 uitbreiden met eigen pagina's — geen mobiele app zelf. Sinds de pivot van 12 september 2026 (zie
