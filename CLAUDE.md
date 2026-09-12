@@ -12,12 +12,15 @@ Let's Encrypt-certificaat, geverifieerd via curl).
 
 ## Sessie-start-instructie (bindend)
 
-Bij het starten van een nieuwe sessie op dit project: lees eerst `ROADMAP.md` en `TODO.md`
-volledig door voor de laatste stand van zaken, vóórdat je verder werkt, voorstellen doet of
-code aanpast. Vastgelegd op verzoek van Johan (12 september 2026) zodat elke sessie aansluit op
-waar de vorige is gebleven, in plaats van blind op deze CLAUDE.md alleen te vertrouwen — dit
-bestand beschrijft bewuste keuzes en architectuur, `ROADMAP.md`/`TODO.md` de actuele status en
-openstaande taken.
+Bij het starten van een nieuwe sessie op dit project: lees eerst `ROADMAP.md`, `TODO.md` én
+`FEEDBACK.md` volledig door voor de laatste stand van zaken, vóórdat je verder werkt, voorstellen
+doet of code aanpast. Vastgelegd op verzoek van Johan (12 september 2026, `FEEDBACK.md` toegevoegd
+later dezelfde dag) zodat elke sessie aansluit op waar de vorige is gebleven, in plaats van blind
+op deze CLAUDE.md alleen te vertrouwen — dit bestand beschrijft bewuste keuzes en architectuur,
+`ROADMAP.md`/`TODO.md` de actuele status en openstaande taken, `FEEDBACK.md` wat spelers zelf
+aandragen. Check bij `FEEDBACK.md` specifiek of er nieuwe, nog onbeoordeelde inzendingen zijn
+(zie dat bestand § Hoe nieuwe inzendingen ophalen) die in de dagelijkse optimalisatielus
+meegenomen moeten worden.
 
 Kijk bij die sessie-start én bij de dagelijkse review (zie § Rol hieronder) ook expliciet naar
 **organische vindbaarheid en SEO-metadata** — niet alleen gameplay/juice. Concreet: klopt
@@ -214,9 +217,12 @@ focus op games). Een nieuwe, losstaande, minimale backend toegevoegd in `api/`:
   unless-stopped` lost reboot-overleving op zonder dat daar extra sudo voor nodig is (je account zit
   al in de `docker`-groep) — een systemd-unit zou wél root vereisen, wat verder gaat dan de
   passwordless-sudo-scope hierboven.
-  **Let op:** de container draait as root (default `node:24-alpine`-gedrag, geen `USER` gezet), dus
-  bestanden in `api/data/` zijn root-owned op de host — aanpassen/inspecteren vanaf de host kan
-  niet direct (`Permission denied`), wel via `docker exec johanlijffijt-dev-api sh -c "..."`.
+  **Update 12 september 2026 (zelfde dag):** dit root-owned-bestanden-probleem bleek de eigenlijke
+  reden dat Johan ingezonden feedback nergens lokaal terugzag — niet leesbaar zonder
+  `sudo`/`docker exec`. Opgelost via `user: "1001:1001"` (Johans host-UID:GID) in
+  `api/docker-compose.yml` — `api/data/*.ndjson` is sindsdien gewoon leesbaar als `johan`, geen
+  root-gedoe meer. Bij een eventuele nieuwe VPS/gebruiker moet dit UID:GID-paar wel kloppen (`id
+  <gebruiker>` om te checken), anders faalt de container-write weer stil.
 - **nginx:** nieuwe `location /api/` proxyt naar `127.0.0.1:8787` (zelfde patroon als de bestaande
   `/supabase/`-proxy, alleen zonder de `proxy_http_version 1.1`/`Connection`-headers — die waren
   specifiek nodig omdat Envoy anders `426 Upgrade Required` teruggaf, deze simpele Node-server heeft
