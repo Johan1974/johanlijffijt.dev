@@ -8,6 +8,12 @@ eerst gelogd en beoordeeld, en pas als het een concrete taak wordt, verhuist het
 Bijwerken: zie § Hoe nieuwe inzendingen ophalen onderaan voor het commando dat nieuwe berichten
 uit `api/data/feedback.ndjson` toont.
 
+**Instructie (vastgelegd 12 september 2026, na een gemiste inzending):** als Johan vraagt om "de
+feedback te verwerken" (of vergelijkbaar), controleer dan altijd eerst `api/data/feedback.ndjson`
+zelf — dit bestand kan achterlopen, want het is geen live-sync maar een handmatig getriageerd
+overzicht. Reden: op 12 september 2026 stond een inzending al in `feedback.ndjson` maar nog niet
+hier, waardoor Johan dacht dat de inzending niet was aangekomen.
+
 ---
 
 ## Ruwe Feedback / Inzendingen
