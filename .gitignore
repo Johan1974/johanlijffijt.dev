@@ -1,0 +1,4 @@
+# Staging build output — regenerated on demand via `npm run deploy:staging` in the game
+# project, not a canonical deployed record like site/game/ (production) is. Fast-iterating
+# test target, not worth versioning every staging deploy.
+site-game-staging/

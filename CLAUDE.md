@@ -259,6 +259,36 @@ Op verzoek van Johan, onderdeel van de nieuwe "Daily SEO & Traffic Loop" (zie RO
   te zetten. **Echte codes moeten nog ingevuld worden** door Johan zelf na registratie van de
   property in beide tools (account-specifiek, kan niet vanuit deze sessie) — zie `TODO.md`.
 
+## Staging-omgeving (12 september 2026)
+
+DNS-record voor `staging.johanlijffijt.dev` → `51.68.189.167` stond al live (door Johan gezet) toen
+dit is opgezet. Nieuw server-block in `nginx/johanlijffijt.dev.conf`:
+
+- **Deelt de `root`** met productie (zelfde `site/`-map) — homepage, `/feedback/`, `robots.txt`,
+  `sitemap.xml` etc. zijn dus altijd identiek tussen staging en productie, geen aparte kopie om uit
+  sync te raken.
+- **`location /game/` wijst via `alias`** naar een aparte map
+  (`~/projects/johanlijffijt-dev/site-game-staging/`, gevuld door meteor-dodge's
+  `npm run deploy:staging`) — dat is het enige stuk dat daadwerkelijk verschilt tussen staging en
+  productie, en precies het stuk dat je hier wil testen vóór het naar productie (`site/game/`) gaat.
+  Bewust **geen** lang-cachebare `Cache-Control`-headers op staging-assets (wel op productie) —
+  bij snel itereren wil je dat elke deploy meteen zichtbaar is.
+- **`/api/` proxy ook op staging** (zelfde backend, `127.0.0.1:8787`) — nodig omdat de gedeelde
+  homepage/feedback-pagina die aanroept; test-inzendingen vanaf staging komen dus in dezelfde
+  `api/data/*.ndjson` terecht als productie. Geen aparte staging-database — bewust, voor een
+  project van deze schaal met één tester is dat premature infrastructuur.
+- **Nog géén HTTPS.** Certbot beheert SSL-certificaten en dat vereist root — buiten de
+  passwordless-sudo-scope hierboven (`nginx -t`/`systemctl reload nginx` alleen). Johan moet zelf
+  eenmalig draaien: `sudo certbot --nginx -d staging.johanlijffijt.dev` — certbot voegt daarna zelf
+  de 443/ssl-blokken toe, exact hetzelfde patroon als bij `johanlijffijt.dev` zelf.
+- **Workflow vanaf nu:** game-iteraties (en andere wijzigingen) eerst deployen naar en testen op
+  `staging.johanlijffijt.dev`, pas daarna naar productie — zie `ROADMAP.md` § Staging-workflow.
+
+**Afwijking van het oorspronkelijke verzoek:** Johan vroeg om `/var/www/...`-paden voor zowel
+staging als productie — die bestaan niet in dit project (de site draait vanaf
+`~/projects/johanlijffijt-dev/site`, zie boven). Productiepad bewust ongewijzigd gelaten i.p.v.
+blind een niet-bestaand pad te gebruiken en zo de live site te breken.
+
 ## Nog open
 
 - Geen store-link naar Tumble op de pagina — Tumble staat sinds de pivot van 12 september 2026 op

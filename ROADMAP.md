@@ -169,6 +169,21 @@ sprake is van betaalde marketing of een bewezen inkomstenstroom.
   (incl. een bewuste afwijking van de oorspronkelijke `inLanguage`-vraag — de game is
   Engelstalig, geen Nederlandse localisatie aanwezig).
 
+## Staging-workflow (vastgelegd 12 september 2026)
+
+Vanaf nu: **iteraties en optimalisatierondes worden eerst gedeployed en getest op
+`https://staging.johanlijffijt.dev` (nog `http://` tot certbot gedraaid is, zie CLAUDE.md § Staging-
+omgeving) vóórdat ze naar productie gaan.** Concreet:
+
+1. Bouwen/testen met `npm run deploy:staging` (in het game-project) i.p.v. direct `deploy:prod`.
+2. Handmatig checken op `staging.johanlijffijt.dev` — visueel, besturing, geluid, timing.
+3. Pas na een geslaagde staging-check: `npm run deploy:prod` om het ook op `johanlijffijt.dev` te
+   zetten.
+
+Dit vervangt niet de behoefte aan een echte fysieke-toestel-test (zie de openstaande punten in
+`TODO.md` bij eerdere iteraties) — staging is een extra stap tussen "lokaal gebouwd" en
+"productie", niet een vervanging van "met eigen ogen/oren bevestigd".
+
 ## Bewuste keuzes die voor de hele roadmap gelden
 
 - **Geen betaalde marketing/advertenties** — groei loopt via organisch delen en community-posts.

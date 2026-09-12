@@ -44,6 +44,17 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       zonder de sfx te overstemmen, mute't de mute-knop ook echt de muziek — pas daarna een
       iteratie 4-hypothese kiezen.
 
+## Staging (vastgelegd 12 september 2026, zie ROADMAP.md § Staging-workflow)
+
+- [ ] **Eenmalig, moet Johan zelf draaien (root nodig):**
+      `sudo certbot --nginx -d staging.johanlijffijt.dev` — staging draait nu alleen op
+      `http://`, certbot voegt zelf de HTTPS-blokken toe (zelfde patroon als `johanlijffijt.dev`).
+- [x] nginx-serverblok + `deploy:staging`/`deploy:prod`-scripts staan klaar en zijn geverifieerd
+      (curl 200 op homepage/`/game/`/`/api/` via `staging.johanlijffijt.dev`, productie ongewijzigd).
+- [ ] Vanaf nu bij elke game-iteratie: eerst `npm run deploy:staging` + handmatig testen, dan pas
+      `npm run deploy:prod` — nog niet als gewoonte ingesleten, expliciet blijven doen tot het
+      vanzelf gaat.
+
 ## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
 
 Technische fundering staat al live (`sitemap.xml`, `robots.txt`, JSON-LD) — onderstaande stappen
