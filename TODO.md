@@ -234,10 +234,9 @@ CLAUDE.md/ROADMAP.md) — actie boven passiviteit, een dopamine-loop via progres
 Technische fundering staat al live (`sitemap.xml`, `robots.txt`, JSON-LD) — onderstaande stappen
 zijn account-specifiek en moeten door Johan zelf gezet worden (kan niet vanuit deze sessie):
 
-- [ ] Property aanmaken in **Google Search Console** voor `johanlijffijt.dev` → de verificatiecode
-      die je krijgt invullen in `site/index.html`'s `google-site-verification`-meta-tag (nu een
-      placeholder) → live zetten → in Search Console op "verifiëren" klikken.
-- [ ] `https://johanlijffijt.dev/sitemap.xml` indienen in Search Console (Sitemaps-sectie).
+- [x] **Google Search Console** geverifieerd (12 september 2026, Html-tag-methode) — echte code
+      staat in `site/index.html`'s `google-site-verification`-meta-tag, sitemap
+      (`https://johanlijffijt.dev/sitemap.xml`) ingediend.
 - [ ] Zelfde traject voor **Bing Webmaster Tools**: property aanmaken, `msvalidate.01`-meta-tag
       invullen (nu een placeholder), sitemap indienen. Bing biedt vaak een "importeer vanuit Google
       Search Console"-snelkoppeling, kan schelen.
