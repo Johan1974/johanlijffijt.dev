@@ -54,6 +54,17 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       `npm run deploy:prod` — nog niet als gewoonte ingesleten, expliciet blijven doen tot het
       vanzelf gaat.
 
+## Bugfix: desktop-besturing ontbrak volledig (12 september 2026)
+
+- [x] Gemeld door Johan: pijltjestoetsen deden niets bij testen in een desktop-browser — er was
+      helemaal geen keyboard-input gebouwd, alleen touch/muis-drag. Toegevoegd: pijltjestoetsen +
+      WASD voor horizontale beweging (met acceleratie/deceleratie, zelfde `moveShipTo()` als touch
+      dus zelfde bank-tilt-gevoel), Space om te starten/herstarten, en `addCapture` zodat Space/
+      pijltjestoetsen niet meer de pagina laten scrollen. Gedeployed naar
+      `staging.johanlijffijt.dev` (nog niet naar productie).
+- [ ] Bevestigen op staging dat de besturing goed aanvoelt (versnelling niet te traag/snel) vóórdat
+      dit naar `deploy:prod` gaat.
+
 ## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
 
 Technische fundering staat al live (`sitemap.xml`, `robots.txt`, JSON-LD) — onderstaande stappen

@@ -35,11 +35,9 @@ hier, waardoor Johan dacht dat de inzending niet was aangekomen.
 ## Claude's Beoordeling & Haalbaarheid
 
 ### Bij "Nieuw game idee" (2026-09-12)
-**Beoordeling:** Niet te beoordelen zoals ingediend.
-**Waarom:** het bericht bevat alleen de titel/aanleiding, geen omschrijving van wát het idee
-inhoudt — geen genre, mechaniek of vergelijkbaar spel genoemd. Kan dus nog niet ingeschat worden
-als quick win/grote feature/niet-passend. Actie: navragen wat het idee precies is (e-mail is
-opgegeven) vóórdat dit een taak in `TODO.md` wordt.
+**Beoordeling:** Niet passend — geen echte inzending.
+**Waarom:** door Johan zelf bevestigd (12 september 2026) als test-tekst om te checken of de
+feedback-pipeline werkte, geen daadwerkelijk game-idee. Geen verdere actie nodig.
 
 <!-- Formaat voor een beoordeling, direct onder de bijbehorende inzending hierboven:
 **Beoordeling:** Quick win / Grote feature / Niet passend bij arcade-scope
