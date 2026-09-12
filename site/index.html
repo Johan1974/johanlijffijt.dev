@@ -265,9 +265,34 @@
   footer a {
     font-weight: 600;
   }
+  #staging-banner {
+    background: #f5a623;
+    color: #1a1300;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  #staging-banner a {
+    color: #1a1300;
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
+  <!-- Site root is shared between johanlijffijt.dev and staging.johanlijffijt.dev (only /game/
+       differs) — a static banner would show on both. Hidden by default, JS only un-hides it when
+       the hostname actually contains "staging", so it fails safe (never shows on production even
+       if this check somehow doesn't run). -->
+  <div id="staging-banner" hidden>
+    ⚠️ STAGING OMGEVING — dit is een testversie. Productie draait op
+    <a href="https://johanlijffijt.dev">johanlijffijt.dev</a>
+  </div>
+  <script>
+    if (window.location.hostname.includes('staging')) {
+      document.getElementById('staging-banner').hidden = false;
+    }
+  </script>
   <header class="hero">
     <div class="wrap">
       <p class="eyebrow">🕹️ Free · No installs · Play instantly</p>

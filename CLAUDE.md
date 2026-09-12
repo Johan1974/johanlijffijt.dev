@@ -310,6 +310,34 @@ staging als productie — die bestaan niet in dit project (de site draait vanaf
 `~/projects/johanlijffijt-dev/site`, zie boven). Productiepad bewust ongewijzigd gelaten i.p.v.
 blind een niet-bestaand pad te gebruiken en zo de live site te breken.
 
+## Staging-banner (12 september 2026)
+
+Op verzoek van Johan: een amber waarschuwingsbalk bovenaan de homepage en `/feedback/` die
+duidelijk maakt dat je op staging zit. **Uitdaging:** deze pagina's zijn letterlijk hetzelfde
+bestand op beide domeinen (gedeelde `root` in nginx, zie § Staging-omgeving) — een statische
+banner zou dus op productie net zo goed verschijnen. Opgelost met client-side hostname-detectie
+(`window.location.hostname.includes('staging')`), precies zoals Johan voorstelde — er was geen
+server-side alternatief zonder de gedeelde root op te splitsen (grotere ingreep dan dit rechtvaardigt).
+
+- **Fail-safe default:** het element heeft `hidden` in de HTML zelf; JS haalt dat er alleen af als
+  de hostname-check slaagt. Als het script om wat voor reden dan ook niet draait, blijft de banner
+  verborgen — het kan dus nooit per ongeluk op productie verschijnen, hooguit onterecht wegblijven
+  op staging (veel onschuldiger falen).
+- **Geen `position: fixed`** — bewuste keuze (Johan gevraagd, "los bovenaan" gekozen boven "fixed
+  tijdens scrollen"): een banner in de normale document-flow, vóór de hero, kan nooit content
+  overlappen. Fixed zou top-padding op de rest van de pagina hebben gevergd om hetzelfde te
+  garanderen — meer complexiteit voor een subtiel voordeel op een korte pagina.
+- **Niet op `/game/`** — bewust (Johan gevraagd): de canvas is fullscreen met eigen HUD
+  (score linksboven, exact waar een banner zou komen) — een banner toevoegen zonder de layout te
+  raken is een aparte, zorgvuldigere klus dan deze simpele statische pagina's. Dus: als je puur via
+  `/game/` op staging test, is er (nog) geen visuele waarschuwing dat het staging is.
+- **Duplicatie tussen `site/index.html` en `site/feedback/index.html`** is bewust, geen
+  copy-paste-vergissing — dit project heeft geen templating/include-systeem (zie "Statisch, geen
+  framework"-keuze bovenaan dit bestand), dus elke pagina is zelfstandig.
+- **Geen aparte deploy-stap nodig:** deze bestanden staan al direct live zodra ze opgeslagen worden
+  (zie § Deployment hierboven) — anders dan de game, die wél door `deploy:staging`/`deploy:prod`
+  gaat.
+
 ## Nog open
 
 - Geen store-link naar Tumble op de pagina — Tumble staat sinds de pivot van 12 september 2026 op

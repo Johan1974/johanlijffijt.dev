@@ -113,9 +113,32 @@
   [hidden] {
     display: none !important;
   }
+  #staging-banner {
+    background: #f5a623;
+    color: #1a1300;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  #staging-banner a {
+    color: #1a1300;
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
+<!-- Site root is shared between johanlijffijt.dev and staging.johanlijffijt.dev — hidden by
+     default, JS only un-hides it when the hostname actually contains "staging" (fails safe). -->
+<div id="staging-banner" hidden>
+  ⚠️ STAGING OMGEVING — dit is een testversie. Productie draait op
+  <a href="https://johanlijffijt.dev">johanlijffijt.dev</a>
+</div>
+<script>
+  if (window.location.hostname.includes('staging')) {
+    document.getElementById('staging-banner').hidden = false;
+  }
+</script>
 <main>
   <a class="back" href="/">← Back to the arcade</a>
   <div id="form-wrap">

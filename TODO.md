@@ -44,6 +44,16 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
       zonder de sfx te overstemmen, mute't de mute-knop ook echt de muziek — pas daarna een
       iteratie 4-hypothese kiezen.
 
+## Staging-banner (12 september 2026)
+
+- [x] Amber waarschuwingsbalk toegevoegd op homepage + `/feedback/`, alleen zichtbaar via
+      client-side hostname-check (`hostname.includes('staging')`) — al live op beide domeinen
+      (geen build/deploy-stap nodig voor deze statische bestanden), zie CLAUDE.md § Staging-banner.
+- [ ] **Bevestigen in een echte browser:** zichtbaar op `staging.johanlijffijt.dev`, onzichtbaar op
+      `johanlijffijt.dev` — curl kan het client-side aan/uit-gedrag niet tonen.
+- [ ] Bewust nog niet op `/game/` (canvas-HUD-overlap-risico) — apart oppakken als daar behoefte
+      aan is.
+
 ## Staging (vastgelegd 12 september 2026, zie ROADMAP.md § Staging-workflow)
 
 - [x] `sudo certbot --nginx -d staging.johanlijffijt.dev` — gedraaid door Johan, HTTPS werkt
