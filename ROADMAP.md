@@ -204,6 +204,14 @@ sprake is van betaalde marketing of een bewezen inkomstenstroom.
   `~/projects/apps/meteor-dodge/CLAUDE.md` § SEO-metadata + itch.io-exportprofiel voor de details
   (incl. een bewuste afwijking van de oorspronkelijke `inLanguage`-vraag — de game is
   Engelstalig, geen Nederlandse localisatie aanwezig).
+- **Portal-export volledig geautomatiseerd (12 september 2026, zelfde dag):** `npm run zip` bouwt
+  én pakt in tot een kant-en-klare `meteor-dodge-portal.zip` — de eerdere blokkade (geen `zip`-CLI
+  op de VPS, geen sudo om die te installeren) omzeild via Python's ingebouwde `zipfile`-module
+  i.p.v. een handmatige stap te blijven documenteren. Daarnaast een subtiel feedback-linkje
+  rechtsonder in de game zelf (`target="_blank"`, nodig omdat de game op een portal in diens eigen
+  iframe draait) — zodat portal-spelers een weg terug naar `johanlijffijt.dev/feedback/` hebben.
+  Volledige upload-instructies voor itch.io in `~/projects/apps/meteor-dodge/CLAUDE.md`
+  § Upload naar itch.io. **Uitsluitend naar staging gedeployed**, wacht op test + "GO".
 
 ## Staging-workflow (vastgelegd 12 september 2026, verscherpt tot bindende regel dezelfde dag)
 

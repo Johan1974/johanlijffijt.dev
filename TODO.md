@@ -131,12 +131,16 @@ zijn account-specifiek en moeten door Johan zelf gezet worden (kan niet vanuit d
       Search Console"-snelkoppeling, kan schelen.
 - [ ] Na verificatie: een paar dagen wachten en dan de eerste indexerings-/zoektermdata bekijken —
       pas daarna zinvol om op keywords te gaan optimaliseren (zie ROADMAP.md, niet vooraf gissen).
-- [ ] Meteor Dodge aanmelden bij itch.io/CrazyGames/Poki als extra organisch kanaal (zie ROADMAP.md
-      § Externe distributie) — export-profiel staat nu klaar (`npm run build:portal`), aanmelden
-      zelf nog niet gedaan.
-- [ ] **Eenmalig:** `sudo apt install zip` op de VPS (kan niet vanuit deze sessie — buiten de
-      passwordless-sudo-scope), daarna `cd ~/projects/apps/meteor-dodge && npm run build:portal &&
-      cd dist-portal && zip -r ../meteor-dodge-portal.zip .` om de daadwerkelijke upload-zip te maken.
+- [x] **`npm run zip` gebouwd** — geen `sudo apt install zip` meer nodig, gebruikt Python's
+      ingebouwde `zipfile`-module (al op de VPS). Getest: zip-inhoud geïnspecteerd (index.html op
+      de root, geen submap) én standalone geserveerd met `python3 -m http.server` om te bevestigen
+      dat het ook echt los van onze eigen nginx werkt.
+- [x] Subtiel feedback-linkje (rechtsonder in de game, `target="_blank"`) toegevoegd zodat
+      portal-spelers terug kunnen naar `/feedback/` — **naar staging gedeployed, nog niet naar
+      productie.**
+- [ ] Meteor Dodge daadwerkelijk aanmelden bij itch.io — zie
+      `~/projects/apps/meteor-dodge/CLAUDE.md` § Upload naar itch.io voor de stappen. Moet Johan
+      zelf doen (account-actie).
 - [ ] Een echte screenshot/thumbnail maken voor `og:image`/`twitter:image` op `/game/` (nu bewust
       weggelaten i.p.v. een placeholder-URL, zie meteor-dodge's CLAUDE.md) — zelfde openstaande
       punt als de arcade-kaart op de homepage.
