@@ -32,8 +32,17 @@ ROADMAP.md § Toekomstvisie / Post-Revenue, pas relevant na een bewezen spelersb
 - [ ] Iteratie 1 + 2 hierboven controleren op een echt toestel: proporties schip/meteoren,
       vlam-positie tijdens bank-tilt, sterrenhemel-snelheid, of de nieuwe delta-besturing het
       teleport-probleem echt oplost en prettig aanvoelt, of de drie geluiden goed klinken en de
-      mute-knop werkt zonder ook de besturing te triggeren — pas daarna een iteratie 3-hypothese
-      kiezen.
+      mute-knop werkt zonder ook de besturing te triggeren.
+- [x] **Iteratie 3 (12 september 2026) — Audio & Juice:** hit-stop + gouden burst bij coin-pickup,
+      wave-systeem (waarschuwing → meteor-shower → bonus-wave i.p.v. vlakke curve), "Space Dust"-
+      meta-progressie in localStorage met voortgang richting een toekomstige schip-unlock (preview,
+      nog geen echt unlock-systeem), en procedurele chiptune-achtergrondmuziek (bas+arpeggio, Web
+      Audio API, tempo schaalt met score, dempt/fade't bij game-over, via de bestaande mute-knop).
+      Zie ROADMAP.md voor de research/hypothese-onderbouwing. Live gedeployed, build getest.
+- [ ] Iteratie 3 hierboven controleren op een echt toestel: voelt de hit-stop als impact of als
+      hapering, is de wave-cadans (elke 30s) prettig getimed, is de achtergrondmuziek hoorbaar
+      zonder de sfx te overstemmen, mute't de mute-knop ook echt de muziek — pas daarna een
+      iteratie 4-hypothese kiezen.
 
 ## Daily SEO & Traffic Loop (vastgelegd 12 september 2026, zie ROADMAP.md § Organische Groei & SEO Strategie)
 

@@ -83,8 +83,34 @@ relatieve delta-drag (pointerdown ankert vinger-positie tegen huidige scheepspos
 past alleen het verschil toe) — het schip staat nu stil zodra er niet wordt gesleept, ongeacht waar
 de vinger landt. Daarnaast een procedurele geluids-synthesizer via de Web Audio API toegevoegd
 (coin/near-miss/explosie-geluiden, geen audiobestanden) met een mute-knop en autoplay-policy-proof
-initialisatie op de eerste tap. Volledige technische details en de onderbouwing per keuze (voor
-beide iteraties) staan in `~/projects/apps/meteor-dodge/CLAUDE.md`.
+initialisatie op de eerste tap.
+
+**Iteratie 3 (12 september 2026) — Benchmark → Psychologisch inzicht → Hypothese:**
+
+- *Benchmark:* Vampire Survivors-achtige micro-loops (elke pickup krijgt overdreven feedback:
+  flash/geluid/korte tijdsvertraging), bullet-hells/wave-shooters (spanning/ontspanning wisselen
+  elkaar af i.p.v. vlakke moeilijkheidscurve), en games met persistent currency (een mislukte run
+  voelt minder verlies-vol als er toch iets blijvends is opgebouwd).
+- *Psychologisch inzicht:* een korte "hit-stop" (freeze-frame) laat een routine-actie zwaar/
+  impactvol aanvoelen zonder dure animatie; een waarschuwing vóór een piekmoment triggert
+  anticipatie; zichtbare voortgang richting een concrete unlock (i.p.v. alleen een vergankelijke
+  score) verhoogt de motivatie om na een game-over toch nog een run te starten.
+- *Hypothese:* een korte hit-stop + felle burst bij het pakken van een ster, een terugkerende
+  "meteor-shower"-golf (waarschuwing → piek → rustigere bonus-wave) i.p.v. een vlakke curve, een
+  persistente "Space Dust"-teller met voortgang richting een toekomstige schip-unlock, én
+  achtergrondmuziek voor de flow-state, zouden samen meer "kick" en meer reden-om-opnieuw-te-
+  spelen moeten geven.
+- *Concrete code-aanpassing (afgerond, live):* hit-stop (40ms physics-pause) + gouden particle-
+  burst + score-tekst-"pop" bij coin-pickup; wave-systeem (elke 30s een waarschuwing, dichte
+  meteor-burst, dan een coin-gevulde bonus-wave, dan terug naar normaal — de vlakke moeilijkheids-
+  ramp pauzeert tijdens een wave-event i.p.v. te stapelen); "Space Dust" in localStorage (elke
+  ster telt mee, blijft over runs heen bestaan) met voortgang op het Game Over-scherm richting een
+  toekomstige schip-kleur-unlock (bewust een preview, geen echt functionerend unlock-systeem —
+  dat is een grotere feature voor een latere iteratie); procedurele chiptune-achtergrondmuziek
+  (bas + arpeggio via Web Audio API, geen audiobestand), tempo loopt licht op met de score, wordt
+  gedempt/uitgefaded bij game-over, gaat door de bestaande mute-knop. Volledige technische details
+  en de onderbouwing per keuze (alle drie iteraties) staan in
+  `~/projects/apps/meteor-dodge/CLAUDE.md`.
 
 ## Scope: singleplayer-only tot bewezen inkomsten (vastgelegd 12 september 2026)
 
