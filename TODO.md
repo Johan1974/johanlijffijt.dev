@@ -6,6 +6,18 @@ de gefaseerde langetermijnplanning en het besluiten-log van de app zelf, zie
 `~/projects/apps/tumble/ROADMAP.md`. Dit bestand is een **levende lijst**: vink af en verwijder
 wat gedaan is, voeg toe wat nieuw opduikt — geen archief.
 
+## "GO voor productie" ontvangen en uitgevoerd (12 september 2026)
+
+Alles wat hieronder in eerdere secties nog als "staging only, wacht op GO" stond gemarkeerd (2D-
+keyboard-besturing, de God Mode/level-up-menu-fix, 44×44-tikzones, de Playwright-E2E-gate) staat
+nu **live op productie** — `npm run deploy:prod` gedraaid, hash geverifieerd gelijk aan de
+laatst-goedgekeurde staging-build (`index-C8WDfOPW.js`). `npm run zip` opnieuw gedraaid voor een
+actuele `meteor-dodge-portal.zip` (matcht dezelfde build, geverifieerd: index.html op de root,
+relatieve paden intact).
+
+- [ ] Meteor Dodge daadwerkelijk uploaden naar itch.io — de zip staat nu klaar, uploaden zelf nog
+      niet gedaan (account-actie, zie meteor-dodge's CLAUDE.md § Upload naar itch.io).
+
 ## Dagelijkse Game Optimization Loop (vastgelegd 12 september 2026, zie ROADMAP.md)
 
 **Scope-grens (zie ROADMAP.md § Scope: singleplayer-only tot bewezen inkomsten):** alle taken

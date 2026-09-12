@@ -57,10 +57,32 @@
     canvas {
       touch-action: none;
     }
+    #feedback-link {
+      position: fixed;
+      right: 8px;
+      bottom: 8px;
+      z-index: 100;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 4px 9px;
+      border-radius: 8px;
+    }
+    #feedback-link:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
   </style>
-  <script type="module" crossorigin src="/game/assets/index-1VNz4BK3.js"></script>
+  <script type="module" crossorigin src="/game/assets/index-C8WDfOPW.js"></script>
 </head>
 <body>
   <div id="game"></div>
+  <!-- Subtle, always-present (not a Phaser game object, so it survives every scene restart and
+       game-over without extra code) — matters most when this build is embedded on a portal like
+       itch.io, where a player has no other way back to the actual site to leave feedback.
+       target="_blank" is required there: the game runs inside the portal's own iframe, so a
+       same-tab link would try to navigate that iframe instead of opening our site. -->
+  <a id="feedback-link" href="https://johanlijffijt.dev/feedback/" target="_blank" rel="noopener">💬 Feedback</a>
 </body>
 </html>
