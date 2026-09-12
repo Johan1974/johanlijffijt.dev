@@ -237,11 +237,13 @@ zijn account-specifiek en moeten door Johan zelf gezet worden (kan niet vanuit d
 - [x] **Google Search Console** geverifieerd (12 september 2026, Html-tag-methode) — echte code
       staat in `site/index.html`'s `google-site-verification`-meta-tag, sitemap
       (`https://johanlijffijt.dev/sitemap.xml`) ingediend.
-- [ ] Zelfde traject voor **Bing Webmaster Tools**: property aanmaken, `msvalidate.01`-meta-tag
-      invullen (nu een placeholder), sitemap indienen. Bing biedt vaak een "importeer vanuit Google
-      Search Console"-snelkoppeling, kan schelen.
-- [ ] Na verificatie: een paar dagen wachten en dan de eerste indexerings-/zoektermdata bekijken —
-      pas daarna zinvol om op keywords te gaan optimaliseren (zie ROADMAP.md, niet vooraf gissen).
+- [x] **Bing Webmaster Tools** geverifieerd (12 september 2026) — via de "importeer vanuit Google
+      Search Console"-snelkoppeling, die de property én de sitemap in één keer meenam (geen
+      `msvalidate.01`-meta-tag nodig geweest, dus de placeholder in `site/index.html` blijft
+      bewust ongebruikt staan). Sitemap-status stond op "Processing" direct na import.
+- [ ] Een paar dagen wachten en dan de eerste indexerings-/zoektermdata bekijken in zowel Google
+      Search Console als Bing Webmaster Tools — pas daarna zinvol om op keywords te optimaliseren
+      (zie ROADMAP.md, niet vooraf gissen).
 - [x] **`npm run zip` gebouwd** — geen `sudo apt install zip` meer nodig, gebruikt Python's
       ingebouwde `zipfile`-module (al op de VPS). Getest: zip-inhoud geïnspecteerd (index.html op
       de root, geen submap) én standalone geserveerd met `python3 -m http.server` om te bevestigen
