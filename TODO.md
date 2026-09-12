@@ -47,6 +47,41 @@ apps/CLAUDE.md-index). Geen naamsbotsing gevonden (check zoals bij Streakly→Tu
       — titel/openingszin herschreven volgens de nieuwe SEO-kernregel (kernwoorden vooraan +
       expliciete link naar `johanlijffijt.dev/game/`), live-geverifieerd via WebFetch.
 
+## Multi-portal distributie: zoveel mogelijk aanwezig voor naamsbekendheid (12 september 2026)
+
+Op verzoek van Johan: Meteor Survivor niet alleen op itch.io + eigen site, maar breed uitzetten
+voor bereik/naamsbekendheid. Eén voor één afwerken, niet alles tegelijk. Onderzoek naar de
+technische eisen per portal staat in CLAUDE.md-geschiedenis van dit gesprek — samengevat hieronder
+per portal met de concrete eerstvolgende actie.
+
+**CrazyGames — laagste drempel, eerst oppakken:**
+- [ ] 3 cover-afbeeldingen maken in de exacte vereiste verhoudingen (landscape 1920×1080, portrait
+      800×1200, square 800×800) — geen randen, geen "New"/"Play now"-tekst, geen logo's, niet
+      wazig/opgerekt. Vereist echte "key art" (bredere compositie), geen crop van bestaande
+      480×800-screenshots — die zijn te klein/verkeerde ratio.
+- [ ] Submissie-tekst opstellen (titel, korte beschrijving, genre, inputmethodes) — met SEO-kernregel
+      in gedachten (zie CLAUDE.md).
+- [ ] Developer-account aanmaken op `developer.crazygames.com` (Johan, account-actie: e-mail,
+      displaynaam, betaalgegevens).
+- [ ] Game indienen via "Submit a game" → **Basic Launch** (geen SDK nodig, alleen bestandsgrootte-
+      en basale kwaliteitscheck — onze build van 1,5MB zit ruim onder de 50MB-limiet).
+- [ ] Reactie afwachten (meestal 1-2 dagen) en eventuele fixes doorvoeren.
+- [ ] **Pas ná een positieve Basic Launch-periode:** overwegen of volledige SDK-integratie
+      (`gameplayStart()`/`gameplayStop()`-events, Full Launch, monetisatie) de moeite waard is.
+
+**Self-serve, geen herontwerp nodig (huidige portrait-build werkt zoals-die-is, zelfde als itch.io):**
+- [ ] Newgrounds — account aanmaken + build indienen.
+- [ ] Kongregate — account aanmaken + build indienen.
+- [ ] GameJolt — account aanmaken + build indienen.
+- [ ] Armor Games — account aanmaken + build indienen.
+- [ ] Y8 — account aanmaken + build indienen.
+
+**Poki — bewust apart gehouden, geen quick win:**
+- [ ] **Geparkeerd totdat expliciet besloten wordt** of een landscape-herontwerp (16:9, i.p.v. de
+      huidige 480×800 portrait) de investering waard is — Poki's eis is een structurele
+      layout-wijziging (HUD, spawnlogica, bewegingsgrenzen), geen submissie-detail. Plus volledige
+      verplichte SDK-integratie (geen losse Basic-Launch-achtige tussenstap zoals bij CrazyGames).
+
 ## Dagelijkse Game Optimization Loop (vastgelegd 12 september 2026, zie ROADMAP.md)
 
 **Scope-grens (zie ROADMAP.md § Scope: singleplayer-only tot bewezen inkomsten):** alle taken
