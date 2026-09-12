@@ -109,6 +109,43 @@ deploy naar staging:
 
 ---
 
+# 🔎 CORE REGEL: SEO-Eerst voor Alle Tekst (Organisch Verkeer, Geen Betaald Verkeer)
+
+**Absolute prioriteit — vastgelegd 12 september 2026, staat op hetzelfde niveau als de Gouden
+Regel en de Core Regel Publiekstrekker & Retentie hierboven.**
+
+**Aanleiding:** ontdekt bij het schrijven van de v1.0-itch.io-devlogpost voor Meteor Survivor —
+de tekst was geschreven voor engagement (pakkende hook, emoji's) maar bevatte geen kernwoorden
+vooraan in titel/openingszin en geen expliciete link terug naar de speelpagina. Johan wil groeien
+via **organisch verkeer** (zoekmachines, itch.io-discovery, natuurlijke deel-/linkgroei) en
+expliciet **niet betalen voor verkeer** (geen ads) — dus mag tekstkwaliteit-voor-SEO nooit een
+losse suggestie achteraf zijn, maar moet vanaf de eerste versie meegenomen worden, net zoals
+game-juice dat is voor gameplay (zie de Core Regel Publiekstrekker hierboven).
+
+1. **Reikwijdte:** geldt voor **elke tekst die voor dit project geschreven wordt** — site-copy
+   (`site/index.html` e.a., zie ook § Technische SEO-fundering verderop), meta-descriptions,
+   JSON-LD, alt-teksten, én content die namens dit project op externe platformen gepubliceerd
+   wordt (itch.io-devlogposts, itch.io-projectbeschrijving/-tags, social captions). Niet alleen
+   de hub-site zelf.
+2. **Verplichte controlepunten, vóór elke tekst als "klaar" wordt opgeleverd:**
+   - **Kernwoorden vooraan:** titel én openingszin bevatten de relevante zoektermen (game-naam,
+     genre, "free"/"browser game"/"play now" waar toepasselijk) — dat is vaak exact wat een
+     zoekmachine of social-preview als snippet toont, dus een puur sfeervolle opener zonder
+     kernwoorden verliest die kans.
+   - **Expliciete link terug naar de speelbare pagina** in de tekst zelf, niet alleen impliciet
+     via een platformkoppeling (bijv. itch.io's automatische projectlink).
+   - **Beschrijvende alt-teksten** op elke content-afbeelding (geen lege/decoratieve alt).
+   - **Logische kopstructuur** (H1/H2 niet overslaan of willekeurig kiezen).
+   - **Natuurlijke kernwoorddichtheid** — geen keyword-stuffing; de tekst moet zichzelf nog
+     steeds verkopen aan een mens (zelfde eis als de Core Regel Publiekstrekker), SEO is een
+     randvoorwaarde, geen vervanging voor goede copy.
+3. **Geen betaald verkeer:** advertentiebudget/betaalde promotie is expliciet geen onderdeel van
+   de groeistrategie van dit project — elke aanbeveling voor verkeer/zichtbaarheid moet een
+   organische route zijn (SEO, platform-discovery, community, mond-tot-mondreclame), nooit een
+   voorstel om te betalen voor bereik.
+
+---
+
 Persoonlijke hub-/portfoliopagina van Johan, domein `johanlijffijt.dev` (Namecheap, geregistreerd
 7 september 2026). Doel: een lichte "proeftuin" die naar zijn projecten linkt en later kan
 uitbreiden met eigen pagina's — geen mobiele app zelf. Sinds de pivot van 12 september 2026 (zie
