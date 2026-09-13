@@ -441,16 +441,16 @@ zijn account-specifiek en moeten door Johan zelf gezet worden (kan niet vanuit d
 - [ ] Een paar dagen wachten en dan de eerste indexerings-/zoektermdata bekijken in zowel Google
       Search Console als Bing Webmaster Tools — pas daarna zinvol om op keywords te optimaliseren
       (zie ROADMAP.md, niet vooraf gissen).
-- [ ] **Google Analytics (GA4) koppelen** (genoemd door Johan 13 september 2026,
-      `analytics.google.com/.../a196072208p504208659/...`) — dit is een ander soort meting dan
-      Search Console: Search Console laat zien hoe Google de site *ziet/indexeert* (zoektermen,
-      indexeringsstatus), GA4 laat zien wat echte bezoekers *doen* (sessies, welke game gespeeld
-      wordt, hoe lang, waar ze afhaken) — beide nodig, niet een vervanging van elkaar. Nog niet
-      geïmplementeerd: het GA4-`gtag.js`-snippet moet in `site/index.html` (en mogelijk
-      `site/feedback/index.html`) komen, met dezelfde staging-eerst-discipline (test-events op
-      staging herkenbaar houden vóórdat productie meetelt). Nog te bepalen: of dit ook in de games
-      zelf (Meteor Survivor/Neon Drift) moet, voor per-game engagement-events, of alleen op de
-      hub-pagina.
+- [x] **Google Analytics (GA4) geïmplementeerd op staging (13 september 2026)** — Measurement ID
+      `G-TLWY630Z6D`, hostname-hard-filter (alleen exact `johanlijffijt.dev`, staging/localhost
+      uitgesloten, geen aparte staging-property — Johans expliciete keuze). `game_start`/
+      `game_over`/`click_itch`-events staan in beide games (Meteor Survivor + Neon Drift) via een
+      gedeelde `trackEvent()`-wrapper. Zie hub-`CLAUDE.md` § Google Analytics (GA4) voor de volle
+      details.
+- [ ] **GA4 naar productie zetten** — wacht op expliciete "GO voor productie": alleen
+      `site/index.html` (de productie-homepage) mist nog de snippet, per de Gouden Regel bewust
+      niet vooruit aangepast. `site/feedback/index.html` en beide games staan al klaar (deels ook
+      al live op staging/gedeeld bestand, zie CLAUDE.md voor de nuance per bestand).
 - [x] **`npm run zip` gebouwd** — geen `sudo apt install zip` meer nodig, gebruikt Python's
       ingebouwde `zipfile`-module (al op de VPS). Getest: zip-inhoud geïnspecteerd (index.html op
       de root, geen submap) én standalone geserveerd met `python3 -m http.server` om te bevestigen

@@ -550,6 +550,43 @@ Op verzoek van Johan, onderdeel van de nieuwe "Daily SEO & Traffic Loop" (zie RO
   te zetten. **Echte codes moeten nog ingevuld worden** door Johan zelf na registratie van de
   property in beide tools (account-specifiek, kan niet vanuit deze sessie) — zie `TODO.md`.
 
+## Google Analytics (GA4) (13 september 2026)
+
+Op verzoek van Johan, aanvullend op Search Console (die laat zien hoe Google de site *indexeert*;
+GA4 laat zien wat echte bezoekers *doen*). Measurement ID: `G-TLWY630Z6D`.
+
+- **Hard hostname-filter tegen datavervuiling:** het `gtag.js`-snippet staat op alle pagina's
+  (staging + productie + beide games), maar de `gtag('config', ...)`-call — de regel die
+  daadwerkelijk data naar GA4 stuurt — vuurt uitsluitend als
+  `window.location.hostname === 'johanlijffijt.dev'` **exact** klopt. Dat is een allowlist, geen
+  blocklist: `localhost`, elk lokaal IP, én `staging.johanlijffijt.dev` worden er automatisch door
+  uitgesloten, zonder ze stuk voor stuk te hoeven opsommen. **Bewuste keuze (Johan, 13 september
+  2026):** géén aparte GA4-property/tag voor staging — staging-verkeer wordt volledig genegeerd in
+  plaats van apart gerapporteerd, voor de schoonste mogelijke productiedata.
+- **Waar het `<head>`-snippet staat:** `site/feedback/index.html`, `site-staging/index.html`
+  (staging-only kopie van de homepage, zie § Staging-omgeving), en in de **bron** van beide games
+  (`~/projects/apps/meteor-dodge/index.html`, `~/projects/apps/neon-drift/index.html` — niet
+  alleen de gedeployde kopie, anders verdwijnt het bij de volgende deploy, zelfde les als bij de
+  JSON-LD hierboven). **`site/index.html` (de productie-homepage) is bewust nog niet aangepast** —
+  dat vereist eerst een expliciete "GO voor productie" per de Gouden Regel bovenaan dit bestand;
+  tot die tijd toont Google's eigen tag-verificatietool terecht "niet gevonden op
+  johanlijffijt.dev", want de tag staat simpelweg nog niet op de live productiepagina.
+- **Game-events, via een gedeelde `trackEvent()`-wrapper** (`src/analytics.js` in beide
+  game-projecten, identiek patroon: no-op als `window.gtag` niet bestaat, gooit nooit een fout die
+  gameplay zou kunnen breken):
+  * `game_start` — bij het starten van een run, met `game_title`.
+  * `game_over` — bij botsing/verlies, met `score`, `survival_time`; Meteor Survivor voegt ook
+    `level` toe (`this.currentLevel`), Neon Drift heeft geen levelsysteem dus laat dat veld weg
+    in plaats van een nepwaarde te versturen.
+  * `click_itch` — op de "Also on itch.io"-link op de (staging-)homepage, in hetzelfde
+    click-handler-blok als de bestaande `/api/track`-call.
+- **`site/feedback/index.html` heeft geen staging-gate** (anders dan de homepage en de games) —
+  het is, net als vóór deze wijziging al het geval was, één gedeeld bestand tussen staging en
+  productie (zie § Staging-omgeving), dus deze pagina rapporteert al aan GA4 zodra hij op
+  productie bezocht wordt. Dat is bestaand, gedocumenteerd gedrag voor dit specifieke bestand
+  (§ Deployment hierboven: "direct live, geen kopieerstap nodig"), geen nieuwe uitzondering die
+  voor deze taak is geïntroduceerd.
+
 ## Staging-omgeving (12 september 2026)
 
 DNS-record voor `staging.johanlijffijt.dev` → `51.68.189.167` stond al live (door Johan gezet) toen

@@ -306,6 +306,12 @@ sprake is van betaalde marketing of een bewezen inkomstenstroom.
   (`schema.org/VideoGame`) op de homepage en op Meteor Dodge's eigen pagina, verificatie-
   placeholders voor Google Search Console/Bing Webmaster Tools. Zie `CLAUDE.md` § Technische
   SEO-fundering voor de details.
+- **Google Analytics (GA4) geïntegreerd (13 september 2026)** — een ander soort meting dan Search
+  Console: Search Console laat zien hoe Google de site *indexeert* (zoektermen, indexeringsstatus),
+  GA4 laat zien wat echte bezoekers *doen* (sessies, welke game gespeeld wordt, `game_start`/
+  `game_over`/`click_itch`-events). Measurement ID `G-TLWY630Z6D`, uitsluitend voor productie —
+  zie `CLAUDE.md` § Google Analytics (GA4) voor het hostname-hard-filter en de bewuste keuze om
+  staging/localhost volledig buiten GA4 te houden (geen aparte staging-property).
 - **Monitoring:** zodra Google Search Console gekoppeld is (zie `TODO.md`) — impressies/clicks per
   zoekterm volgen, indexeringsfouten signaleren, `sitemap.xml` opnieuw indienen na elke nieuwe
   pagina/game.
