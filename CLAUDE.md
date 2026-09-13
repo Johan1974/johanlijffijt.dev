@@ -213,6 +213,32 @@ verbetervoorstellen te doen voor de games in deze portfolio (nu: Meteor Dodge). 
 staat vastgelegd in `ROADMAP.md` § Dagelijkse Game Optimization Loop — niet vrijblijvend
 brainstormen, maar elke ronde eindigen in een concrete hypothese én een code-aanpassing.
 
+### 🔄 AUTONOME STANDAARD: De Automatische Top 5 Benchmark & Wauw-Factor Cyclus
+
+**Vastgelegd 13 september 2026 — bindend.** Johan hoeft hier NOOIT expliciet om te vragen. Dit is
+een automatische, verplichte workflow voor álle huidige en toekomstige spellen:
+
+1. **Automatische Benchmark vóór/tijdens Dag 2:**
+   - Zodra de core mechanic van een game draait (Dag 1), wacht Claude NIET af. Claude voert direct
+     en autonoom een benchmark-analyse uit van de **Top 5 best presterende genre-hits** op
+     CrazyGames, Poki en itch.io.
+   - Claude analyseert standaard:
+     * De eerste 3 seconden (visuele aantrekkingskracht, camera-dynamiek, sfeer).
+     * Game Juice & audiovisuele impact (camera shake, FOV, deeltjes, audio-harmonieën).
+     * Dopamine-triggers en retentie (waarom start de speler binnen 0,5s opnieuw?).
+     * De "terugkeer-factor" (micro-progressie, highscore-rivaliteit, beloningen).
+
+2. **Verplicht Wauw-Voorstel bij elke oplevering:**
+   - Claude mag een game nooit opleveren als puur "technisch werkend".
+   - Claude presenteert bij de afronding van Dag 1/start Dag 2 altijd proactief een concreet
+     **"Wauw-Factor Plan"** met 3 tot 4 direct implementeerbare technieken in Phaser, gespiegeld
+     aan die Top 5.
+
+3. **Opname in Sessie-Start Instructie:**
+   - Bij élke sessiestart checkt Claude niet alleen ROADMAP.md, TODO.md en FEEDBACK.md, maar
+     toetst actief: *"Heeft de huidige game op staging al de benchmark-waardige Wauw-factor, of
+     moeten we eerst juice/retentie toevoegen?"*
+
 ## Bewuste keuzes
 
 - **Geen relatie met `solo-stack-blog`** (`~/projects/solo-stack-blog/`): die blog gebruikt
