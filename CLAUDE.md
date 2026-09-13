@@ -239,6 +239,25 @@ een automatische, verplichte workflow voor álle huidige en toekomstige spellen:
      toetst actief: *"Heeft de huidige game op staging al de benchmark-waardige Wauw-factor, of
      moeten we eerst juice/retentie toevoegen?"*
 
+### 💰 VERPLICHTE COMPONENT: Commerciële & Monetisatie Benchmark
+
+**Vastgelegd 13 september 2026 — bindend, onderdeel van de Top 5 Benchmark & Wauw-Factor Cyclus
+hierboven.** Bij elke Top 5-analyse onderzoekt Claude verplicht:
+
+1. **Ad-Placement & Rewarded Loops:**
+   - Hoe zetten de toptitels 'rewarded video ads' in zonder de speelvreugde te verstoren (bijv.
+     revive-opties, 2x currency multipliers, gratis rolls)?
+   - Wat is het exacte trigger-moment waarop een speler het meest geneigd is een video te
+     bekijken?
+2. **Meta-Economie & Progressie:**
+   - Hoe voorkomen deze spellen dat een speler te snel 'uitgespeeld' is en geen advertenties meer
+     wil kijken?
+   - Welke currency-sinks en upgradesystemen zorgen voor dagelijkse herhaalsessies?
+3. **Concreet Monetisatie-Plan voor Onze Game:**
+   - Claude levert naast visuele 'juice' altijd minimaal 2 direct integreerbare rewarded-ad
+     haakjes (geschikt voor de CrazyGames SDK en mobiele AdMob) en een exponentieel
+     upgradesysteem.
+
 ## Bewuste keuzes
 
 - **Geen relatie met `solo-stack-blog`** (`~/projects/solo-stack-blog/`): die blog gebruikt
