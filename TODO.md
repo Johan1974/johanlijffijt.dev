@@ -92,22 +92,37 @@ Uitgevoerd conform de nieuwe bindende standaard in CLAUDE.md § Automatische Top
 Wauw-Factor Cyclus. Benchmark: Drift Boss, Tunnel Rush, Retro Highway, Subway Surfers, Super
 Hexagon/Geometry Dash — zie CLAUDE.md voor de volledige analyse + bronnen.
 
-- [ ] **1. Pseudo-diepte-illusie** (verdwijnpunt-simulatie voor obstakels, camera-tilt bij
-      lane-wissel) — in uitvoering.
-- [ ] **2. Snelheids-stapeling** (zij-streak-particles, snelheid-geschaalde camera-shake-pulsen,
-      zoom-punch elke 100m).
-- [ ] **3. Fever/Overdrive-modus bij max-combo** (kleur-overlay, opgevoerde motor-oscillator,
-      sparkburst op het passeermoment i.p.v. tekst).
-- [ ] **4. Drift-screech + rijkere motor-audio** (noise-burst-screech bij lane-wissel, tweede
-      ontstemde oscillator die infadet met snelheid).
+- [x] **1. Pseudo-diepte-illusie** (verdwijnpunt-simulatie voor obstakels, camera-tilt bij
+      lane-wissel) — gebouwd, getest, live op staging.
+- [x] **2. Snelheids-stapeling** (zij-streak-particles, snelheid-geschaalde camera-shake-pulsen,
+      zoom-punch elke 100m) — gebouwd, getest, live op staging.
+- [x] **3. Fever/Overdrive-modus bij max-combo** (kleur-overlay, opgevoerde motor-oscillator,
+      sparkburst op het passeermoment i.p.v. tekst) — gebouwd, getest, live op staging.
+- [x] **4. Drift-screech + rijkere motor-audio** (noise-burst-screech bij lane-wissel, tweede
+      ontstemde oscillator die infadet met snelheid) — gebouwd, getest, live op staging.
+- [x] **Visuele correctie bovenop het plan** (Johan: "ziet er nog steeds saai uit"): synthwave-
+      horizon met gloeiende retro-zon (canvas-gradient) + scrollend neon-grid verving de vlakke
+      achtergrond; speler-auto kreeg een gloeiend koplamplicht + exhaust-deeltjesspoor.
+- [x] **Pauzescherm herontworpen** (Johan: "nooit een tekstblok midden op de weg") — dimoverlay +
+      icoon + minimale hint onderin, i.p.v. een tekstblok gecentreerd op het wegdek.
 
-**Commerciële benchmark (zie CLAUDE.md § Commerciële & Monetisatie Benchmark), ontwerp klaar,
-nog niet gebouwd** — rewarded ads hebben pas functie zodra CrazyGames SDK/AdMob daadwerkelijk
-geïntegreerd is (Full-Launch-stap, nog niet aan de orde):
-- [ ] Revive-op-crash (watch ad, behoud combo/afstand) — trigger direct op het CRASH-scherm.
-- [ ] 2x coins/score-aanbod ná afloop van de run.
+13/13 E2E-tests, gedeployed en visueel geverifieerd op `staging.johanlijffijt.dev/games/
+neon-drift/` (13 september 2026) — zie `~/projects/apps/neon-drift/CLAUDE.md` § Dag 2, deel 4.
+
+**Commerciële benchmark (zie CLAUDE.md § Commerciële & Monetisatie Benchmark):**
+- [x] **"Skip voor regulier, bekijk voor 2x"-flow gebouwd (13 september 2026)** — twee expliciete
+      Game Over-knoppen ("CLAIM & RESTART" / "2X BONUS 🎬 WATCH AD"), mock-first via
+      `RewardAdManager` (simuleert de advertentie met een 2s-timer in test-/staging-modus) zodat
+      flow + score-verdubbel-animatie nu al end-to-end Playwright-getest zijn. **Nog niet
+      aangesloten op een echte advertentie** — dat gebeurt pas zodra CrazyGames SDK/AdMob
+      daadwerkelijk geïntegreerd is (Full-Launch-stap).
+- [ ] Revive-op-crash (watch ad, behoud combo/afstand) — trigger direct op het CRASH-scherm. Nog
+      niet gebouwd; wacht op echte SDK-integratie (revive vereist een levende, niet-herstarte
+      scene-state, complexer dan de score-verdubbeling die al staat).
 - [ ] Meta-sink: "Neon Cores"-currency (verdiend per run) → exponentieel "Engine Level"-
-      upgradesysteem (startcombo/topsnelheid), maakt spelers ontvankelijker voor de 2x-ad.
+      upgradesysteem (startcombo/topsnelheid), maakt spelers ontvankelijker voor de 2x-ad. Nog
+      niet gebouwd — apart scope-stuk (persistente opslag/progressie), niet meegenomen in deze
+      ronde.
 
 ## Fase 4 — Native Mobile Export (Capacitor): backlog, niet nu oppakken
 
@@ -426,6 +441,16 @@ zijn account-specifiek en moeten door Johan zelf gezet worden (kan niet vanuit d
 - [ ] Een paar dagen wachten en dan de eerste indexerings-/zoektermdata bekijken in zowel Google
       Search Console als Bing Webmaster Tools — pas daarna zinvol om op keywords te optimaliseren
       (zie ROADMAP.md, niet vooraf gissen).
+- [ ] **Google Analytics (GA4) koppelen** (genoemd door Johan 13 september 2026,
+      `analytics.google.com/.../a196072208p504208659/...`) — dit is een ander soort meting dan
+      Search Console: Search Console laat zien hoe Google de site *ziet/indexeert* (zoektermen,
+      indexeringsstatus), GA4 laat zien wat echte bezoekers *doen* (sessies, welke game gespeeld
+      wordt, hoe lang, waar ze afhaken) — beide nodig, niet een vervanging van elkaar. Nog niet
+      geïmplementeerd: het GA4-`gtag.js`-snippet moet in `site/index.html` (en mogelijk
+      `site/feedback/index.html`) komen, met dezelfde staging-eerst-discipline (test-events op
+      staging herkenbaar houden vóórdat productie meetelt). Nog te bepalen: of dit ook in de games
+      zelf (Meteor Survivor/Neon Drift) moet, voor per-game engagement-events, of alleen op de
+      hub-pagina.
 - [x] **`npm run zip` gebouwd** — geen `sudo apt install zip` meer nodig, gebruikt Python's
       ingebouwde `zipfile`-module (al op de VPS). Getest: zip-inhoud geïnspecteerd (index.html op
       de root, geen submap) én standalone geserveerd met `python3 -m http.server` om te bevestigen

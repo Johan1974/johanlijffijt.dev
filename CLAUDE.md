@@ -154,6 +154,24 @@ game-juice dat is voor gameplay (zie de Core Regel Publiekstrekker hierboven).
 
 ---
 
+# 🌐 GOUDEN REGEL: Taalscheiding — In-Game Engels, Communicatie Nederlands
+
+**Absolute prioriteit — vastgelegd 13 september 2026, staat op hetzelfde niveau als de andere
+Gouden Regels.**
+
+1. **In-Game (UI, HUD, teksten, knoppen, audio-cues-labels):** 100% Engels, zonder uitzondering.
+   Onze games mikken op een internationaal publiek op portals (CrazyGames, itch.io, Newgrounds,
+   Kongregate, GameJolt) — termen blijven dus altijd Engels: "PAUSED", "DISTANCE", "COMBO",
+   "RESUME", "RETRY", "CLAIM & RESTART", etc.
+2. **Communicatie & documentatie:** Claude communiceert en rapporteert altijd in het Nederlands
+   met Johan — chatberichten, commit-toelichtingen aan Johan, en de documentatiebestanden van dit
+   project (`CLAUDE.md`, `ROADMAP.md`, `TODO.md` e.d.) blijven Nederlands. Code zelf (variabele-/
+   functienamen, code-comments) blijft Engels, zoals gebruikelijk in software — dit is een regel
+   over de taal van communicatie/documentatie, niet over codeerconventies.
+3. **Geen verwarring tussen de twee:** een klacht over een in-game tekst (bijv. een onduidelijke
+   pop-up) gaat over de **uitstraling/leesbaarheid**, niet over de taal — vertaal zulke feedback
+   nooit naar "zet het in het Nederlands", vertaal het naar een concrete UX/leesbaarheidsfix.
+
 # 📧 GOUDEN REGEL: Uitsluitend `play@johanlijffijt.dev` voor Registraties
 
 **Absolute prioriteit — vastgelegd 12 september 2026, staat op hetzelfde niveau als de Gouden
@@ -291,6 +309,27 @@ AdMob, web banners) moet voldoen aan de volgende regels:
 **Toepassing:** geldt voor Meteor Survivor, Neon Drift en alle toekomstige titels in deze
 portfolio — elk toekomstig ad-integratieplan (SDK-configuratie, ad-unit-instellingen,
 cooldown-logica in code) wordt tegen deze vier regels getoetst vóórdat het als af geldt.
+
+### Standaard Game Over-flow: "Skip voor regulier, bekijk voor 2x"
+
+**Vastgelegd 13 september 2026 — bindend, onderdeel van de Respectvolle Ad-Pacing-standaard
+hierboven.** Het Game Over-scherm van elke titel in deze portfolio biedt de speler altijd twee
+gelijkwaardig zichtbare, expliciete keuzes — nooit een verborgen/impliciete standaardactie die de
+2x-optie overschaduwt:
+
+1. **Knop 1 (gratis/snel):** toont de regulier behaalde punten en herstart direct, zonder
+   advertentie — ook bereikbaar via een sneltoets (bijv. Spatie) voor spelers die snel door willen.
+2. **Knop 2 (opt-in beloning):** start een rewarded video **uitsluitend op expliciete klik van de
+   speler**, nooit automatisch. Zodra de advertentie is afgerond, animeert de score zichtbaar naar
+   het dubbele bedrag vóórdat de run wordt afgesloten.
+3. **Mock-first bouwen:** elke titel implementeert dit via een `RewardAdManager`-achtige wrapper
+   die in test-/staging-modus de advertentie simuleert met een korte timer (geen wachten op een
+   echte SDK-goedkeuring om de flow, animatie en Playwright-tests te kunnen bouwen). Een echte
+   SDK-integratie (CrazyGames rewarded ads / mobiele AdMob) vervangt later alleen de
+   binnenkant van die ene methode, nooit de aanroepende code.
+- **Eerste implementatie:** Neon Drift (13 september 2026), zie dat project's `CLAUDE.md` § Game
+  Over-beloningsflow. Meteor Survivor volgt zodra de CrazyGames SDK-integratie daadwerkelijk
+  wordt opgepakt (zie § Commercieel tussendoel & catalogusstrategie).
 
 ## Bewuste keuzes
 

@@ -256,6 +256,11 @@ scaffold en `TODO.md` voor de dag-1/dag-2-taken.
   hergebruikt wordt.
 - **Workflow:** zelfde Gouden Regel als altijd — eerst `staging.johanlijffijt.dev`, pas na
   expliciete "GO" naar productie.
+- **Ethische monetisatie ("skip voor regulier, bekijk voor 2x"):** eerste implementatie van de
+  bindende Game Over-beloningsflow uit `CLAUDE.md` § Respectvolle Ad-Pacing & GEEN Playable Ads —
+  twee expliciete knoppen (gratis directe herstart, of een opt-in rewarded video die de score
+  verdubbelt), mock-first via `RewardAdManager` zodat de flow nu al end-to-end getest is, vooruit-
+  lopend op echte CrazyGames-SDK/AdMob-integratie.
 
 ## Toekomstvisie / Post-Revenue
 
