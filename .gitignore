@@ -4,6 +4,7 @@
 site-game-staging/
 site-neon-drift-staging/
 site-gravity-flip-staging/
+site-marble-jam-staging/
 temp/
 
 # Editor-local, auto-generated when a multi-root workspace is opened (e.g. this project +
