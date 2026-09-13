@@ -258,6 +258,40 @@ hierboven.** Bij elke Top 5-analyse onderzoekt Claude verplicht:
      haakjes (geschikt voor de CrazyGames SDK en mobiele AdMob) en een exponentieel
      upgradesysteem.
 
+### 🛡️ VERPLICHTE STANDAARD: Respectvolle Ad-Pacing & GEEN Playable Ads
+
+**Vastgelegd 13 september 2026 — bindend, niet-onderhandelbaar.** Johan wil onder géén beding dat
+advertenties de gameplay vergallen door minutenlange interactieve nep-demo's (Playable Ads) of
+agressieve onderbrekingen. Elke vorm van monetisatie binnen onze spellen (CrazyGames SDK, mobiele
+AdMob, web banners) moet voldoen aan de volgende regels:
+
+1. **GEEN Playable Ads (Harde eis):**
+   - Interactieve / speelbare demo-advertenties worden in alle dashboards en ad-configuraties
+     permanent uitgeschakeld.
+   - Uitsluitend standaard korte video's of statische banners zijn toegestaan. Geen
+     mini-games-in-games, geen frustrerende aftellende 'nep-kruisjes'.
+
+2. **Geen Ad-Onderbrekingen tijdens Gameplay:**
+   - Nooit advertenties tonen tijdens actieve gameplay.
+   - Vertoningen vinden uitsluitend plaats op natuurlijke rustpunten: tussen level-overgangen of
+     na een afgeronde run (Game Over-scherm).
+
+3. **Strikte Ad-Cooldown (Pacing-beveiliging):**
+   - Bouw in de ad-management code een timer/cooldown in: toon NOOIT een automatische
+     tussen-advertentie (midroll) als er minder dan 3 tot 4 minuten sinds de vorige advertentie is
+     verstreken. Als een speler snel afgaat, herstart het spel direct zonder onderbreking.
+
+4. **Lengtebeperking & Vrijwillige Rewarded Ads:**
+   - Automatische interstitials duren maximaal 5 tot 15 seconden (met directe skip-mogelijkheid
+     na 5 seconden).
+   - De primaire verdienmotor moet liggen bij 100% vrijwillige Rewarded Video Ads (maximaal
+     20–30 seconden, alleen getriggerd als de speler zelf expliciet op een beloningsknop klikt
+     voor bijvoorbeeld een revive of multiplier).
+
+**Toepassing:** geldt voor Meteor Survivor, Neon Drift en alle toekomstige titels in deze
+portfolio — elk toekomstig ad-integratieplan (SDK-configuratie, ad-unit-instellingen,
+cooldown-logica in code) wordt tegen deze vier regels getoetst vóórdat het als af geldt.
+
 ## Bewuste keuzes
 
 - **Geen relatie met `solo-stack-blog`** (`~/projects/solo-stack-blog/`): die blog gebruikt
