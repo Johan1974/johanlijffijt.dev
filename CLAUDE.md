@@ -820,3 +820,24 @@ canvas verwacht, niet alleen deze drie afbeeldingen.
 - `lazykeeper.com.conf` stond nog als orphaned bestand in `/etc/nginx/sites-available/` terwijl
   het project zelf al verwijderd was — bleek al eerder losgekoppeld uit `sites-enabled/` (niet
   actief geserveerd). Bestand verwijderd op 2026-09-08.
+
+---
+### 📉 TOKEN & CONTEXT DISCIPLINE (Verplicht Protocol)
+
+1. **Subagent Verbod / Minimalisatie:**
+   - Spawn NOOIT autonoom zware subagents voor taken die lineair in de hoofdthread uitgevoerd kunnen worden.
+   - Voer bewerkingen, builds en analyses direct zelf uit om parallelle prompt-explosies te voorkomen.
+
+2. **Gericht Lezen (Geen hele mappen dumpen):**
+   - Lees NOOIT complete codebases of grote mappen tegelijk in context (`read_multiple_files` vermijden tenzij strikt noodzakelijk).
+   - Gebruik gerichte scans (grep, sed, line-ranges) om uitsluitend de relevante regels te inspecteren.
+   - Lees bij builds alleen de foutregels van de output, dump niet honderden regels terminal-logs in de context.
+
+3. **Compacte Communicatie:**
+   - Geef korte, technische en feitelijke samenvattingen van wijzigingen. Vermijd breedsprakige herhalingen van wat al bekend is.
+   - Toon in diffs alleen de aangepaste regels met minimale contextregels eromheen.
+
+4. **Proactieve Context Hygiëne:**
+   - Zodra een logische deeltaak (bijv. een feature of bugfix) is afgerond en gecommit, adviseer je de gebruiker om `/compact` of `/clear` uit te voeren.
+   - Vertrouw voor de projectstaat op `CLAUDE.md`, `ROADMAP.md` en `TODO.md`; bewaar geen overbodige chathistorie in het werkgeheugen.
+---
