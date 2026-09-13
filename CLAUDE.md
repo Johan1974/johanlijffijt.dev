@@ -437,9 +437,14 @@ Op verzoek van Johan, onderdeel van de nieuwe "Daily SEO & Traffic Loop" (zie RO
 DNS-record voor `staging.johanlijffijt.dev` → `51.68.189.167` stond al live (door Johan gezet) toen
 dit is opgezet. Nieuw server-block in `nginx/johanlijffijt.dev.conf`:
 
-- **Deelt de `root`** met productie (zelfde `site/`-map) — homepage, `/feedback/`, `robots.txt`,
-  `sitemap.xml` etc. zijn dus altijd identiek tussen staging en productie, geen aparte kopie om uit
-  sync te raken.
+- **Deelt de `root`** met productie (zelfde `site/`-map) voor `/feedback/`, `robots.txt`,
+  `sitemap.xml`, `images/` etc. — geen aparte kopie om uit sync te raken.
+  **Uitzondering sinds 13 september 2026: de homepage zelf niet meer.** Op Johans expliciete
+  verzoek ("staging en productie moeten gescheiden zijn"), na een incident waarbij een
+  staging-only arcade-kaart via de gedeelde `site/index.html` ook op productie verscheen, heeft
+  staging nu een eigen `site-staging/index.html` — zie § Homepage volledig gescheiden verderop
+  voor de nginx-details (en een non-triviale valkuil onderweg: `alias`/`root` direct op een
+  exacte `location = /` bleken onbetrouwbaar, opgelost met `try_files` + een named location).
 - **`location /game/` wijst via `alias`** naar een aparte map
   (`~/projects/johanlijffijt-dev/site-game-staging/`, gevuld door meteor-dodge's
   `npm run deploy:staging`) — dat is het enige stuk dat daadwerkelijk verschilt tussen staging en
@@ -495,6 +500,46 @@ server-side alternatief zonder de gedeelde root op te splitsen (grotere ingreep 
 - **Geen aparte deploy-stap nodig:** deze bestanden staan al direct live zodra ze opgeslagen worden
   (zie § Deployment hierboven) — anders dan de game, die wél door `deploy:staging`/`deploy:prod`
   gaat.
+
+**Update 13 september 2026 — homepage niet meer met deze techniek, zie hieronder.** De
+hostname-detectie-aanpak hierboven blijft ongewijzigd van kracht voor `site/feedback/index.html`
+(die pagina bleef gedeeld), maar is voor de homepage zelf vervangen door een echte bestand-
+scheiding — zie § Homepage volledig gescheiden van productie.
+
+## Homepage volledig gescheiden van productie (13 september 2026)
+
+**Aanleiding:** tijdens het klaarzetten van Neon Drift (Game 2) op staging vroeg Johan om een
+arcade-kaart ervoor op de homepage. Eerste implementatie hergebruikte de bestaande hostname-
+detectie-techniek van de staging-banner (kaart `hidden` by default, JS toont 'm alleen op
+staging) — maar Johan wilde dit expliciet niet: **"staging en productie moeten gescheiden zijn"**,
+met als reden dat hij op staging vrij moet kunnen experimenteren zonder ooit het risico te lopen
+dat iets per ongeluk op productie (voor het publiek) terechtkomt, ook niet via een client-side
+toggle die in theorie feilloos hoort te zijn.
+
+**Oplossing:** `site/index.html` (productie) en het nieuwe `site-staging/index.html` (staging) zijn
+nu **volledig losse bestanden**, geen gedeelde brontekst meer voor de homepage specifiek. Alleen
+`/feedback/`, `robots.txt`, `sitemap.xml`, `images/` etc. blijven gedeeld via de root — bewust
+beperkt tot de homepage, niet de hele site opnieuw opgezet, want de aanleiding (per ongeluk iets
+op productie) was specifiek een homepage-arcade-kaart-probleem.
+
+- **`site-staging/index.html`** bevat de staging-banner en de Neon Drift-kaart **onvoorwaardelijk**
+  (geen `hidden`/JS-toggle meer nodig, dit bestand wordt toch nooit op productie geserveerd) plus
+  `<meta name="robots" content="noindex, nofollow">` (nieuw — voorkomt dat Google deze pagina als
+  duplicate content van de productie-homepage indexeert, iets wat met de oude gedeelde-homepage-
+  aanpak sowieso al een sluimerend risico was, nooit eerder expliciet afgedekt).
+- **nginx-configuratie was de eigenlijke uitdaging, niet de HTML-scheiding zelf.** Een `location
+  = /` met daarin direct `alias .../site-staging/index.html;` gaf een **500 Internal Server
+  Error**; de voor de hand liggende "fix" (`root .../site-staging;` in diezelfde exacte-match-
+  location) compileerde wél, maar **serveerde stilzwijgend gewoon de oude productie-homepage**
+  terug (geen foutmelding, dus makkelijk te missen zonder herhaaldelijk met curl te verifiëren op
+  meerdere momenten na een reload) — een bekende nginx-valkuil rond hoe `root`/`alias` en de
+  `index`-directive samen resolven specifiek bij een exacte match op de kale `/`-URI.
+  **Werkende oplossing:** `location = / { try_files /nonexistent-marker @staging_home; }` met een
+  named location `@staging_home` die `root` (niet `alias`, dat mag niet in een named location) +
+  een expliciet volledig `try_files`-pad gebruikt. Herhaaldelijk geverifieerd met curl (meerdere
+  keren na elke wijziging, niet één keer aangenomen) vóórdat dit als opgelost werd gerapporteerd.
+- **Productie is tijdens dit hele traject geen moment stukgegaan** — elke `sudo nginx -t` liep vóór
+  elke `systemctl reload`, en het productie-serverblok is letterlijk geen letter aangeraakt.
 
 ## Nog open
 
