@@ -27,19 +27,34 @@ Zie ROADMAP.md § Directe actie: Game 2 — Neon Drift. Project: `~/projects/app
 - [x] **Naar staging gedeployed** (13 september 2026) — `https://staging.johanlijffijt.dev/games/
       neon-drift/`, nieuwe "/games/&lt;slug&gt;/"-nginx-conventie (i.p.v. Meteor Survivor's oudere
       "/game/"). Geen productie-tegenhanger, per de Gouden Regel.
-- [ ] **Nog geen juice/audio/balans/packaging** — dat is bewust Dag 2, niet vermengen met de
-      kern-mechaniek-validatie van Dag 1. Wacht op Johans beoordeling van het prototype.
+- [x] Johan bevestigde op staging dat de kernmechaniek goed voelt ("het werkt ik kan heen en weer
+      slalommen") — groen licht om door te bouwen.
 
-## Game 2 — Neon Drift: Dag 2 (Juice, Audio, Balans & Packaging) (nog niet gestart)
+## Game 2 — Neon Drift: Dag 2, deel 1 (evolutie naar "traffic racer") (13 september 2026)
 
-- [ ] Procedurele Web Audio-synthesizer (zelfde aanpak als `SoundManager.js`) — geluid bij
-      lane-wissel, botsing, milestone-scores.
-- [ ] Game juice: screenshake/particle-burst bij botsing, snelheidslijnen/parallax-achtergrond,
-      combo- of streak-beloning voor near-misses.
-- [ ] Balans: hoe snel loopt de moeilijkheidsgraad op, voelt het eerlijk aan bij een botsing.
-      E2E-tests (Playwright) zoals bij Meteor Survivor, vóór de eerste staging-deploy.
-- [ ] Portal-packaging: `npm run build:portal`/`npm run zip`-equivalent, zelfde patroon als
-      Meteor Survivor.
+Grotere scope dan oorspronkelijk gepland — Johan vroeg expliciet om door te bouwen "tot een echt
+racespel", zie ROADMAP.md/CLAUDE.md voor de volledige onderbouwing (traffic-racer-genre, zelfde
+bewezen 3-lane-mechaniek als basis).
+
+- [x] Visuele reskin: top-down auto's (speler + 3 rivalenkleuren) i.p.v. blokken, scrollende
+      neon-rijstrepen/wegrand voor snelheidsgevoel.
+- [x] Near-miss-beloning (+5, "Close Call!"-popup + geluid) voor een rivaal die in de aangrenzende
+      lane passeert.
+- [x] Procedurele Web Audio-synthesizer (`src/audio/SoundManager.js`) — motor-hum die met de
+      snelheid meepitcht, lane-wissel-whoosh, near-miss-chime, crash-geluid. Mute-knop met
+      44×44-tikzone.
+- [x] Crash-juice: screenshake + spark-particle-burst.
+- [x] Score omgedoopt tot "Distance: Xm".
+- [x] **E2E-tests (7/7)** + `predeploy:staging`-gate geverifieerd (bewust een assertie laten
+      falen → bevestigd dat de deploy dan niet doorgaat). Onderweg een echte testsuite-bug
+      gevonden en gefixt (viewport/canvas-coördinaten-mismatch, zie
+      `~/projects/apps/neon-drift/CLAUDE.md` voor de volledige analyse).
+- [x] Naar staging gedeployed en geverifieerd: `staging.johanlijffijt.dev/games/neon-drift/`.
+- [ ] **Balans-tuning nog niet bewust gedaan** — spawn-interval/snelheidscurve zijn nog de
+      Dag 1-waardes, niet getest op "voelt het eerlijk aan bij een botsing".
+- [ ] Portal-packaging (`npm run zip`) bestaat maar is nog niet uitgeprobeerd/geverifieerd.
+- [ ] Wacht op Johans beoordeling van deze racespel-versie op staging, dan pas balans-tuning of
+      "GO voor productie" overwegen.
 
 ## Fase 4 — Native Mobile Export (Capacitor): backlog, niet nu oppakken
 
