@@ -15,6 +15,14 @@ bestand.**
      "Deploy naar prod"), mag het script `npm run deploy:prod` worden aangeroepen.
    - Vraag na elke succesvolle staging-deploy om review en wacht op dit expliciete akkoord.
 
+3. **SITEMAP MEE BIJWERKEN BIJ ELKE NIEUWE PRODUCTIE-PAGINA/GAME (vastgelegd 13 september 2026):**
+   - Zodra een nieuwe pagina of game voor het eerst naar **productie** gaat (niet bij staging-only
+     deploys), hoort het toevoegen van die URL aan `site/sitemap.xml` (+ `lastmod` bijwerken bij
+     wijzigingen aan bestaande URL's) bij dezelfde deploy-stap, niet een los, makkelijk-te-vergeten
+     taakje achteraf. Zie § Technische SEO-fundering verderop voor de bestaande structuur.
+   - Bij een nieuwe indexeerbare URL: ook heroverwegen of die opnieuw ingediend moet worden in
+     Google Search Console/Bing Webmaster Tools (zie `REGISTRATIONS.md` voor de huidige status).
+
 Zie `ROADMAP.md` § Staging-workflow voor de achtergrond/reden.
 
 ---

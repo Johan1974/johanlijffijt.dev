@@ -16,14 +16,19 @@ totdat spelersdata/portal-reviews binnenkomen.
 
 Zie ROADMAP.md § Directe actie: Game 2 — Neon Drift. Project: `~/projects/apps/neon-drift/`.
 
-- [ ] Scaffold opzetten (Vite + Phaser, zelfde structuur als meteor-dodge).
-- [ ] Kernmechaniek speelbaar: 3-lane-dodge, one-touch/snappy sturen (tap-zones mobiel,
-      pijltjestoetsen desktop), oplopende snelheid, score = overleefde afstand/gepasseerde
-      obstakels, game-over bij botsing.
-- [ ] Procedureel gegenereerde placeholder-graphics (zelfde Phaser Graphics-aanpak als Meteor
+- [x] Scaffold opgezet (Vite + Phaser, zelfde structuur als meteor-dodge).
+- [x] Kernmechaniek speelbaar en functioneel getest (niet alleen "lijkt te werken"): 3-lane-dodge,
+      one-touch/snappy sturen (tap-zones mobiel, pijltjestoetsen desktop), oplopende snelheid,
+      score = overleefde tijd, game-over bij een échte physics-botsing, herstart-flow. Onderweg een
+      echte bug gevonden (`JustDown()`-polling miste snelle toetsaanslagen) en gefixt met keydown-
+      event-listeners — zie `~/projects/apps/neon-drift/CLAUDE.md`.
+- [x] Procedureel gegenereerde placeholder-graphics (zelfde Phaser Graphics-aanpak als Meteor
       Survivor) — geen externe assets.
+- [x] **Naar staging gedeployed** (13 september 2026) — `https://staging.johanlijffijt.dev/games/
+      neon-drift/`, nieuwe "/games/&lt;slug&gt;/"-nginx-conventie (i.p.v. Meteor Survivor's oudere
+      "/game/"). Geen productie-tegenhanger, per de Gouden Regel.
 - [ ] **Nog geen juice/audio/balans/packaging** — dat is bewust Dag 2, niet vermengen met de
-      kern-mechaniek-validatie van Dag 1.
+      kern-mechaniek-validatie van Dag 1. Wacht op Johans beoordeling van het prototype.
 
 ## Game 2 — Neon Drift: Dag 2 (Juice, Audio, Balans & Packaging) (nog niet gestart)
 
