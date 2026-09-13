@@ -50,10 +50,22 @@ bewezen 3-lane-mechaniek als basis).
       gevonden en gefixt (viewport/canvas-coördinaten-mismatch, zie
       `~/projects/apps/neon-drift/CLAUDE.md` voor de volledige analyse).
 - [x] Naar staging gedeployed en geverifieerd: `staging.johanlijffijt.dev/games/neon-drift/`.
+
+## Game 2 — Neon Drift: Dag 2, deel 2 (wow-factor + leesbaarheidsfix) (13 september 2026)
+
+- [x] **Near-miss-combo-multiplier** — onderzoek gedaan naar Traffic Racer/Subway Surfers/Crossy
+      Road (zie `~/projects/apps/neon-drift/CLAUDE.md` voor de volledige analyse en bronnen);
+      opeenvolgende near-misses schalen nu op (tot 4x) i.p.v. een vlakke +5-bonus, met decay na
+      2,5s stilte en reset bij een crash. Coins/power-ups/unlocks/missies bewust nog niet
+      meegenomen — eerst dit ene mechanisme laten landen.
+- [x] **Game-over-tekst-leesbaarheidsfix** — Johans screenshot liet zien dat een bevroren
+      rivaal-auto de retry-tekst overlapte; halfdoorzichtige achtergrondbox toegevoegd (zelfde
+      patroon als Meteor Survivor's Game Over-scherm eerder al nodig had).
+- [x] 9/9 E2E-tests (2 nieuw), gedeployed en geverifieerd op staging.
 - [ ] **Balans-tuning nog niet bewust gedaan** — spawn-interval/snelheidscurve zijn nog de
       Dag 1-waardes, niet getest op "voelt het eerlijk aan bij een botsing".
 - [ ] Portal-packaging (`npm run zip`) bestaat maar is nog niet uitgeprobeerd/geverifieerd.
-- [ ] Wacht op Johans beoordeling van deze racespel-versie op staging, dan pas balans-tuning of
+- [ ] Wacht op Johans beoordeling van de combo-versie op staging, dan pas balans-tuning of
       "GO voor productie" overwegen.
 
 ## Fase 4 — Native Mobile Export (Capacitor): backlog, niet nu oppakken
