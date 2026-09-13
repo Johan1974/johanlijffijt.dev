@@ -210,6 +210,53 @@ geen bewezen spelersbasis of inkomsten zijn:
   perfectioneren van core loop, juice, audio en retentie van de huidige singleplayer-titels
   (te beginnen met Meteor Dodge) — geen multiplayer-concepten oppakken als "leuk zijstapje".
 
+## 🎯 Commercieel tussendoel & catalogusstrategie (vastgelegd 13 september 2026)
+
+Concretiseert § Scope hierboven ("eerste inkomsten via advertenties/gameportals") met echte
+getallen, na een strategie-sessie met Johan:
+
+- **Tussentijds doel:** een stabiele **€500/maand** aan passieve advertentie-inkomsten als eerste
+  commerciële mijlpaal — geen eindstation, wel het eerste concrete bewijs dat dit spoor werkt.
+- **Rekenmodel:** bij een gemiddelde portal-eCPM van ~€2,00-€3,00 is daarvoor ~150.000-250.000
+  plays/maand nodig. Dit is een vuistregel om beslissingen aan te toetsen, geen keihard gegarandeerd
+  getal — eCPM's variëren sterk per portal/regio/seizoen.
+- **Portfolio-hefboom, niet één toevalstreffer:** een compacte **catalogus van 3 tot 5
+  micro-games**, elk met een bescheiden doel van ~1.200-2.000 plays/dag, telt op tot het
+  maandtotaal. Dit spreidt het risico dat één titel simpelweg niet aanslaat — precies de reden dat
+  Meteor Survivor niet de enige titel blijft (zie § Directe actie: Game 2 hieronder).
+- **Bouwcadans:** de basisinfrastructuur die voor Meteor Survivor is opgezet (Vite+Phaser-scaffold,
+  nginx-deploy-patroon, Playwright E2E-testgate vóór elke staging-deploy, portal-packaging via
+  Python's `zipfile`) is nu een **herbruikbare mal**, geen eenmalig maatwerk. Vandaar een streven
+  van **~2 effectieve bouwdagen (8-12 uur) per nieuwe micro-titel**:
+  - *Dag 1:* Prototype & Core Mechanic — de kernloop speelbaar, nog kaal.
+  - *Dag 2:* Juice, Audio, Balans & Packaging — procedurele visuals/audio (zelfde aanpak als Meteor
+    Survivor, geen externe assets), afronden, portal-export.
+- **Tijdlijn:** streven naar een actieve catalogus van 3 à 4 titels live binnen 3-4 weken vanaf
+  13 september 2026.
+
+**Status Meteor Survivor: monitoring-modus (13 september 2026).** Geen actieve verdere development
+totdat er spelersdata/portal-reviews binnenkomen — de Dagelijkse Game Optimization Loop hierboven
+pauzeert voor deze titel, niet omdat het project stopt, maar omdat verder itereren zonder
+spelersfeedback gokwerk zou zijn. **Uitzondering:** zodra CrazyGames de lopende review goedkeurt,
+heeft **CrazyGames SDK-integratie (rewarded ads + midrolls)** direct prioriteit boven alle andere
+Meteor Survivor-werk — dat is de eerste concrete stap richting het €500/maand-doel op een titel die
+al bewezen speelbaar/goedgekeurd is.
+
+## Directe actie: Game 2 — Neon Drift (13 september 2026)
+
+Eerste uitbreiding van de catalogus-strategie hierboven. Zie `~/projects/apps/neon-drift/` voor de
+scaffold en `TODO.md` voor de dag-1/dag-2-taken.
+
+- **Genre/concept:** snelle neon/synthwave arcade drift-/reflexgame — one-touch/snappy
+  stuurmechaniek, korte speelsessies (past bij portal-ad-economie: meer sessies/uur = meer
+  ad-impressies dan één lange sessie).
+- **Bewuste herkenbare afwijking van Meteor Survivor:** geen vrije 2D-beweging + auto-shoot, maar
+  een strak 3-lane-dodge-mechaniek — portfolio-diversificatie i.p.v. dezelfde game met een ander
+  jasje, terwijl de onderliggende tech (Vite/Phaser/procedurele graphics/Web Audio/Playwright-gate)
+  hergebruikt wordt.
+- **Workflow:** zelfde Gouden Regel als altijd — eerst `staging.johanlijffijt.dev`, pas na
+  expliciete "GO" naar productie.
+
 ## Toekomstvisie / Post-Revenue
 
 **Bewust hier geparkeerd, niet nu oppakken** — het idee blijft bewaard zodat het niet steeds
@@ -220,6 +267,28 @@ opnieuw ter sprake hoeft te komen, maar het is nadrukkelijk geen actieve taak:
   singleplayer-portfolio (zie § Scope hierboven). Geen concrete plannen, geen architectuur-
   voorbereiding vooruit bouwen — dat zou precies de over-engineering zijn die deze scope-
   beslissing wil voorkomen.
+
+## Fase 4 — Native Mobile Export via Capacitor (vastgelegd 13 september 2026, gate-based, niet nu starten)
+
+**Formele toevoeging aan de roadmap, bewust nog niet actief** — net als § Toekomstvisie hierboven:
+het idee staat vastgelegd zodat het niet steeds opnieuw ter sprake hoeft te komen, maar niemand
+begint hieraan totdat de harde triggers hieronder zijn gehaald.
+
+- **Doel:** bewezen webgames uit de catalogus (zie § Commercieel tussendoel hierboven) omzetten
+  naar native apps voor Google Play/Apple App Store, via **Capacitor** — een WebView-wrapper om de
+  bestaande Phaser `dist/`-bundle heen, geen herschrijven van gameplay-code.
+- **Harde gates vóór start (allebei, niet één van beide):**
+  1. **Bewezen web-tractie:** alleen titels met >1.000 daily plays, of aantoonbare vraag naar een
+     offline/installeerbare versie (bv. herhaalde speler-verzoeken).
+  2. **Kosten al gedekt:** de web-inkomsten van die titel moeten de accountkosten dekken vóór
+     indiening — $25 eenmalig (Google Play) en $99/jaar (Apple Developer Program) — dus geen geld
+     vooruit investeren op een titel die zichzelf nog niet bewezen heeft.
+- **Techniek (voor zodra de gates gehaald zijn):** Capacitor iOS/Android-shell, Google AdMob SDK
+  (rewarded video ads als primair verdienmodel, consistent met de ad-supported-aanpak hierboven),
+  optioneel een simpele IAP ("Ad-free") — geen ingewikkelder monetisatie dan dat.
+- **Backlogtaak (niet nu oppakken):** ooit een losse spike reserveren om een Capacitor-export uit
+  te proberen op de eerste titel die de tractie-gate haalt — pas relevant zodra dat moment zich
+  voordoet, zie `TODO.md`.
 
 ## Organische Groei & SEO Strategie (vastgelegd 12 september 2026)
 

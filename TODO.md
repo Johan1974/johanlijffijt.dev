@@ -1,5 +1,49 @@
 # Todo — dagelijks bij te werken
 
+## Meteor Survivor: monitoring-modus (13 september 2026)
+
+Zie ROADMAP.md § Commercieel tussendoel & catalogusstrategie — geen actieve verdere development
+totdat spelersdata/portal-reviews binnenkomen.
+
+- [ ] **Uitzondering, hoogste prioriteit zodra van toepassing:** zodra CrazyGames de lopende review
+      goedkeurt → direct CrazyGames SDK-integratie oppakken (`gameplayStart()`/`gameplayStop()`-
+      events, rewarded ads/midrolls, Full Launch) — eerste concrete stap richting het
+      €500/maand-doel.
+- [ ] Reacties van Newgrounds (Under Judgment) en Kongregate (developer-goedkeuring) monitoren,
+      geen actie totdat die binnenkomen.
+
+## Game 2 — Neon Drift: Dag 1 (Prototype & Core Mechanic) (13 september 2026)
+
+Zie ROADMAP.md § Directe actie: Game 2 — Neon Drift. Project: `~/projects/apps/neon-drift/`.
+
+- [ ] Scaffold opzetten (Vite + Phaser, zelfde structuur als meteor-dodge).
+- [ ] Kernmechaniek speelbaar: 3-lane-dodge, one-touch/snappy sturen (tap-zones mobiel,
+      pijltjestoetsen desktop), oplopende snelheid, score = overleefde afstand/gepasseerde
+      obstakels, game-over bij botsing.
+- [ ] Procedureel gegenereerde placeholder-graphics (zelfde Phaser Graphics-aanpak als Meteor
+      Survivor) — geen externe assets.
+- [ ] **Nog geen juice/audio/balans/packaging** — dat is bewust Dag 2, niet vermengen met de
+      kern-mechaniek-validatie van Dag 1.
+
+## Game 2 — Neon Drift: Dag 2 (Juice, Audio, Balans & Packaging) (nog niet gestart)
+
+- [ ] Procedurele Web Audio-synthesizer (zelfde aanpak als `SoundManager.js`) — geluid bij
+      lane-wissel, botsing, milestone-scores.
+- [ ] Game juice: screenshake/particle-burst bij botsing, snelheidslijnen/parallax-achtergrond,
+      combo- of streak-beloning voor near-misses.
+- [ ] Balans: hoe snel loopt de moeilijkheidsgraad op, voelt het eerlijk aan bij een botsing.
+      E2E-tests (Playwright) zoals bij Meteor Survivor, vóór de eerste staging-deploy.
+- [ ] Portal-packaging: `npm run build:portal`/`npm run zip`-equivalent, zelfde patroon als
+      Meteor Survivor.
+
+## Fase 4 — Native Mobile Export (Capacitor): backlog, niet nu oppakken
+
+Zie ROADMAP.md § Fase 4 voor de volledige uitleg en de twee harde gates (>1.000 daily plays of
+duidelijke vraag naar offline builds, én web-inkomsten dekken de accountkosten).
+
+- [ ] Backlogtaak: spike reserveren voor een Capacitor-export **zodra** een titel uit de catalogus
+      een van beide gates haalt — niet vooruit bouwen.
+
 Concrete, direct uitvoerbare actiepunten voor het hele project: de hub-site (johanlijffijt.dev)
 én de Tumble-app (`~/projects/apps/tumble/`) horen bij elkaar, dus staat het hier samen. Voor
 de gefaseerde langetermijnplanning en het besluiten-log van de app zelf, zie
