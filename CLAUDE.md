@@ -331,6 +331,85 @@ gelijkwaardig zichtbare, expliciete keuzes — nooit een verborgen/impliciete st
   Over-beloningsflow. Meteor Survivor volgt zodra de CrazyGames SDK-integratie daadwerkelijk
   wordt opgepakt (zie § Commercieel tussendoel & catalogusstrategie).
 
+### 🏆 AUTONOOM KWALITEITSMANDAAT: De Top-5 Benchmark
+
+**Vastgelegd 13 september 2026 — bindend.** Johan wil niet continu hoeven aanwijzen wat er saai,
+lelijk of haperend is — Claude is de Lead Game Developer en moet zélf de kritische blik hebben.
+
+1. **Geen halfbakken opleveringen of schoolproject-vibes:**
+   - Nooit kale rechthoeken, dode achtergronden, storende tekst-overlays of haperende
+     camera-shakes opleveren.
+   - Als een build nog saai oogt of niet binnen 2 seconden een "wow"-gevoel geeft, is het NIET
+     klaar voor staging review.
+2. **Verplichte autonome benchmark (Top-5 portals):**
+   - Vóór elke feature of visuele iteratie toetst Claude de game zélf aan de bewezen Top-5 van
+     portals (CrazyGames, Poki, itch.io) binnen het specifieke genre (bijv. voor Neon Drift:
+     Retro Highway, Highway Racer, Drift Boss) — welke snelheidssensatie, neon-diepte,
+     horizon-dynamiek, audio-ritmes en near-miss-beloningen maken die spellen verslavend?
+   - Implementeer die bewezen kwaliteitsstandaard direct in de kern, zónder dat Johan hierom
+     hoeft te vragen.
+3. **Zelfkritische poortwachter:** stel bij elke iteratie de vraag *"Zou een speler op
+   CrazyGames hier direct enthousiast van worden, of klikt hij na 5 seconden weg?"* — en voer
+   zelfstandig de nodige polish door (particle-trails, lighting, sound-impact, strakke HUD)
+   vóórdat Johan gevraagd wordt te testen.
+
+### 📐 THEORETISCHE STANDAARDEN & GAME DESIGN BEST PRACTICES
+
+**Vastgelegd 13 september 2026 — bindend.** Bij het ontwerpen van mechanics, besturing en
+graphics hanteert Claude autonoom de volgende vaste vakliteratuur en principes:
+
+1. **Vlambeer's "Game Feel & Juice" Principes:**
+   - Geen statische verplaatsingen: gebruik altijd easing (bijv. `easeOutQuad`) voor bewegingen.
+   - Acties vereisen audiovisuele impact: screen freeze (hit-stop), deeltjessporen (particles/
+     exhaust trails), en dynamische lichteffecten.
+   - Cameraprincipes: de camera blijft stabiel en rustig. Schermtrillingen (shake) worden
+     uitsluitend gedoseerd ingezet bij harde impact (crashes), NOOIT bij reguliere besturing.
+2. **Game Programming Patterns (Nystrom):**
+   - Strikte scheiding tussen Game State (State Machine), Input Handling en Visual FX.
+   - UI en overlays (pauze, game over) worden gerenderd in een geïsoleerde UI-laag en mogen nooit
+     de wereld-physics of het zicht op de gameplay verstoren.
+3. **Psychologische Flow & Near-Miss Pacing:**
+   - Risico-beloning (Octalysis): beloon gewaagd gedrag structureel (Near Miss-bonussen,
+     multipliers bij rakelings passeren).
+   - Tension & Relief: zorg voor golven in moeilijkheidsgraad in plaats van een saaie, lineaire
+     snelheidsopbouw.
+
+Claude toetst elke nieuwe build vóór oplevering aan deze standaarden.
+
+### 🎛️ VIER AANVULLENDE KWALITEITSEISEN
+
+**Vastgelegd 13 september 2026 — bindend, onderdeel van het Autonoom Kwaliteitsmandaat hierboven.**
+
+1. **Diegetische feedback & schoon speelveld:** nooit zwevende tekstblokken/meldingen over de
+   rijbaan die het zicht belemmeren. Statuswijzigingen (combo's, versnelling, gevaar) tonen via
+   diegetische elementen (kleurverandering van auto/uitlaatvlam, pulserende vangrails) of strakke
+   HUD-elementen aan de uiterste schermranden — niet via losse pop-ups op het speelveld.
+2. **Audio-visuele polish:** een dynamisch low-pass filter op de (motor-)audio dat dempt bij
+   pauze/crash en oppompt bij hoge snelheid; micro-timing zoals hit-stop (30-40ms freeze-frame) bij
+   een crash vóórdat deeltjes exploderen.
+3. **Spanningsopbouw (Tension & Relief):** obstakels spawnen niet in een monotone stroom, maar in
+   patronen — krappe, chaotische verkeersdrukte afgewisseld met open ademruimtes vol pickups/
+   nitro-pads.
+4. **Zelfstandige visuele controle:** actief via Playwright controleren dat HUD-elementen en
+   knoppen elkaar niet overlappen, zowel op mobiele portret-viewport als desktop-breedbeeld.
+
+### 🎰 PSYCHOLOGISCHE RETENTIE-HEFBOMEN & GAME FEEL
+
+**Vastgelegd 13 september 2026 — bindend.** Elke actieve game moet verplicht de volgende 3
+verslavingsmechanismen bevatten:
+
+1. **Variabele beloningen & escalatie:** nooit een monotone stroom — zeldzame 'Mystery Pickups'
+   of 'Nitro Overdrives' met onverwachte voordelen; bij oplopende combo's escaleert de visual
+   (uitlaatvlammen/vangrail-kleur verandert, pulserende neon-trails).
+2. **Verliesaversie op Game Over:** toon een tastbare, **echte** progressie-indicator (nooit een
+   verzonnen/niet-bestaand systeem, zie de "geen verzonnen assets"-afspraak elders in dit
+   bestand) — bijv. "Nog Xm tot je persoonlijk record" op basis van een daadwerkelijk
+   bijgehouden high score. Als er (nog) geen echt cosmetisch unlock-systeem bestaat, wordt er
+   nooit een nep-voortgangsbalk daarvoor getoond.
+3. **Visuele recordmarkering:** de speler kan tijdens een run tastbaar zien hoe dicht die bij
+   zijn/haar record zit (bijv. een HUD-indicator "Xm tot record"), met een duidelijk herkenbaar
+   moment (flash/geluid/melding) zodra het record daadwerkelijk gebroken wordt.
+
 ## Bewuste keuzes
 
 - **Geen relatie met `solo-stack-blog`** (`~/projects/solo-stack-blog/`): die blog gebruikt

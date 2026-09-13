@@ -3,6 +3,8 @@
 # test target, not worth versioning every staging deploy.
 site-game-staging/
 site-neon-drift-staging/
+site-gravity-flip-staging/
+temp/
 
 # Editor-local, auto-generated when a multi-root workspace is opened (e.g. this project +
 # ~/projects/apps side by side) — not part of the deployable codebase.
