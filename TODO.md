@@ -86,6 +86,29 @@ Vervolg op Johans feedback: "Geen pauze knop", "nog steeds niet duidelijke tekst
 - [ ] Wacht op Johans beoordeling van deze versie op staging, dan pas balans-tuning of
       "GO voor productie" overwegen.
 
+## Game 2 — Neon Drift: Top 5 Benchmark & Wauw-Factor Plan (13 september 2026)
+
+Uitgevoerd conform de nieuwe bindende standaard in CLAUDE.md § Automatische Top 5 Benchmark &
+Wauw-Factor Cyclus. Benchmark: Drift Boss, Tunnel Rush, Retro Highway, Subway Surfers, Super
+Hexagon/Geometry Dash — zie CLAUDE.md voor de volledige analyse + bronnen.
+
+- [ ] **1. Pseudo-diepte-illusie** (verdwijnpunt-simulatie voor obstakels, camera-tilt bij
+      lane-wissel) — in uitvoering.
+- [ ] **2. Snelheids-stapeling** (zij-streak-particles, snelheid-geschaalde camera-shake-pulsen,
+      zoom-punch elke 100m).
+- [ ] **3. Fever/Overdrive-modus bij max-combo** (kleur-overlay, opgevoerde motor-oscillator,
+      sparkburst op het passeermoment i.p.v. tekst).
+- [ ] **4. Drift-screech + rijkere motor-audio** (noise-burst-screech bij lane-wissel, tweede
+      ontstemde oscillator die infadet met snelheid).
+
+**Commerciële benchmark (zie CLAUDE.md § Commerciële & Monetisatie Benchmark), ontwerp klaar,
+nog niet gebouwd** — rewarded ads hebben pas functie zodra CrazyGames SDK/AdMob daadwerkelijk
+geïntegreerd is (Full-Launch-stap, nog niet aan de orde):
+- [ ] Revive-op-crash (watch ad, behoud combo/afstand) — trigger direct op het CRASH-scherm.
+- [ ] 2x coins/score-aanbod ná afloop van de run.
+- [ ] Meta-sink: "Neon Cores"-currency (verdiend per run) → exponentieel "Engine Level"-
+      upgradesysteem (startcombo/topsnelheid), maakt spelers ontvankelijker voor de 2x-ad.
+
 ## Fase 4 — Native Mobile Export (Capacitor): backlog, niet nu oppakken
 
 Zie ROADMAP.md § Fase 4 voor de volledige uitleg en de twee harde gates (>1.000 daily plays of
