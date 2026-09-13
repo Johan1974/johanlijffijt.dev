@@ -62,10 +62,28 @@ bewezen 3-lane-mechaniek als basis).
       rivaal-auto de retry-tekst overlapte; halfdoorzichtige achtergrondbox toegevoegd (zelfde
       patroon als Meteor Survivor's Game Over-scherm eerder al nodig had).
 - [x] 9/9 E2E-tests (2 nieuw), gedeployed en geverifieerd op staging.
+
+## Game 2 — Neon Drift: Dag 2, deel 3 (pauzeknop + écht voelbare combo) (13 september 2026)
+
+Vervolg op Johans feedback: "Geen pauze knop", "nog steeds niet duidelijke tekst pop" en
+"ik zie hier ook nog geen wauw factor".
+
+- [x] **Pauzeknop toegevoegd** (ontbrak volledig) — P/Escape + knop met 44×44-tikzone, motorgeluid
+      gedempt tijdens pauze. Twee echte bugs gevonden via tests (niet aangenomen dat het werkte):
+      pijltjestoetsen werkten nog door tijdens pauze (guard zat op de verkeerde plek), en
+      hervatten zou de moeilijkheidsgraad laten springen (globale klok loopt door tijdens pauze) —
+      beide gefixt en apart getest.
+- [x] **Combo-tekst-fix, root cause:** de pop-up stond gecentreerd op de x-positie van de
+      inhalende auto, viel in de buitenste rijstroken deels buiten beeld. Vaste, gegarandeerd
+      zichtbare positie + groter lettertype.
+- [x] **Permanente "COMBO x2.0"-badge** naast de score (blijft staan tijdens de hele streak,
+      i.p.v. een tekst die na 0,5s weer verdwijnt) + een schermflits die van cyaan naar goud
+      kleurt naarmate de combo oploopt — dit was het ontbrekende "wauw"-stuk.
+- [x] 12/12 E2E-tests (3 nieuw voor pauze), gedeployed en geverifieerd op staging.
 - [ ] **Balans-tuning nog niet bewust gedaan** — spawn-interval/snelheidscurve zijn nog de
       Dag 1-waardes, niet getest op "voelt het eerlijk aan bij een botsing".
 - [ ] Portal-packaging (`npm run zip`) bestaat maar is nog niet uitgeprobeerd/geverifieerd.
-- [ ] Wacht op Johans beoordeling van de combo-versie op staging, dan pas balans-tuning of
+- [ ] Wacht op Johans beoordeling van deze versie op staging, dan pas balans-tuning of
       "GO voor productie" overwegen.
 
 ## Fase 4 — Native Mobile Export (Capacitor): backlog, niet nu oppakken
