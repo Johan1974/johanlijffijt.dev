@@ -12,7 +12,17 @@ totdat spelersdata/portal-reviews binnenkomen.
 - [ ] Reacties van Newgrounds (Under Judgment) en Kongregate (developer-goedkeuring) monitoren,
       geen actie totdat die binnenkomen.
 
-## Game 2 — Neon Drift: Dag 1 (Prototype & Core Mechanic) (13 september 2026)
+## [ON-HOLD] Game 2 — Neon Drift (gepauzeerd 13 september 2026)
+
+**Reden:** strategisch besluit van Johan om ontwikkelsnelheid te richten op Titel 3 (Gravity
+Flip, zie ROADMAP.md/verderop in dit bestand) — geen ad-hoc doorontwikkelen meer aan Neon Drift's
+pseudo-3D camera/wegdek. Laatste staat is een werkende, volledig geteste build (17/17 E2E-tests,
+inclusief een net-gefixte echte botsingsbug in de buitenste rijstroken) gedeployed op
+`staging.johanlijffijt.dev/games/neon-drift/` — geen halfwerkende/kapotte tussenstand. Nog open:
+balans-tuning, portal-packaging-verificatie, en "GO voor productie". Zie
+`~/projects/apps/neon-drift/CLAUDE.md` voor de volledige ontwikkelhistorie.
+
+## [ON-HOLD] Game 2 — Neon Drift: Dag 1 (Prototype & Core Mechanic) (13 september 2026)
 
 Zie ROADMAP.md § Directe actie: Game 2 — Neon Drift. Project: `~/projects/apps/neon-drift/`.
 
@@ -30,7 +40,7 @@ Zie ROADMAP.md § Directe actie: Game 2 — Neon Drift. Project: `~/projects/app
 - [x] Johan bevestigde op staging dat de kernmechaniek goed voelt ("het werkt ik kan heen en weer
       slalommen") — groen licht om door te bouwen.
 
-## Game 2 — Neon Drift: Dag 2, deel 1 (evolutie naar "traffic racer") (13 september 2026)
+## [ON-HOLD] Game 2 — Neon Drift: Dag 2, deel 1 (evolutie naar "traffic racer") (13 september 2026)
 
 Grotere scope dan oorspronkelijk gepland — Johan vroeg expliciet om door te bouwen "tot een echt
 racespel", zie ROADMAP.md/CLAUDE.md voor de volledige onderbouwing (traffic-racer-genre, zelfde
@@ -51,7 +61,7 @@ bewezen 3-lane-mechaniek als basis).
       `~/projects/apps/neon-drift/CLAUDE.md` voor de volledige analyse).
 - [x] Naar staging gedeployed en geverifieerd: `staging.johanlijffijt.dev/games/neon-drift/`.
 
-## Game 2 — Neon Drift: Dag 2, deel 2 (wow-factor + leesbaarheidsfix) (13 september 2026)
+## [ON-HOLD] Game 2 — Neon Drift: Dag 2, deel 2 (wow-factor + leesbaarheidsfix) (13 september 2026)
 
 - [x] **Near-miss-combo-multiplier** — onderzoek gedaan naar Traffic Racer/Subway Surfers/Crossy
       Road (zie `~/projects/apps/neon-drift/CLAUDE.md` voor de volledige analyse en bronnen);
@@ -63,7 +73,7 @@ bewezen 3-lane-mechaniek als basis).
       patroon als Meteor Survivor's Game Over-scherm eerder al nodig had).
 - [x] 9/9 E2E-tests (2 nieuw), gedeployed en geverifieerd op staging.
 
-## Game 2 — Neon Drift: Dag 2, deel 3 (pauzeknop + écht voelbare combo) (13 september 2026)
+## [ON-HOLD] Game 2 — Neon Drift: Dag 2, deel 3 (pauzeknop + écht voelbare combo) (13 september 2026)
 
 Vervolg op Johans feedback: "Geen pauze knop", "nog steeds niet duidelijke tekst pop" en
 "ik zie hier ook nog geen wauw factor".
@@ -86,7 +96,7 @@ Vervolg op Johans feedback: "Geen pauze knop", "nog steeds niet duidelijke tekst
 - [ ] Wacht op Johans beoordeling van deze versie op staging, dan pas balans-tuning of
       "GO voor productie" overwegen.
 
-## Game 2 — Neon Drift: Top 5 Benchmark & Wauw-Factor Plan (13 september 2026)
+## [ON-HOLD] Game 2 — Neon Drift: Top 5 Benchmark & Wauw-Factor Plan (13 september 2026)
 
 Uitgevoerd conform de nieuwe bindende standaard in CLAUDE.md § Automatische Top 5 Benchmark &
 Wauw-Factor Cyclus. Benchmark: Drift Boss, Tunnel Rush, Retro Highway, Subway Surfers, Super

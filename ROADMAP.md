@@ -242,7 +242,12 @@ heeft **CrazyGames SDK-integratie (rewarded ads + midrolls)** direct prioriteit 
 Meteor Survivor-werk — dat is de eerste concrete stap richting het €500/maand-doel op een titel die
 al bewezen speelbaar/goedgekeurd is.
 
-## Directe actie: Game 2 — Neon Drift (13 september 2026)
+**Status Neon Drift: on-hold (13 september 2026).** Strategisch besluit om ontwikkelsnelheid te
+richten op Titel 3 (Gravity Flip, zie hieronder) i.p.v. ad-hoc door te sleutelen aan Neon Drift's
+pseudo-3D camera/wegdek. Laatste staat: werkende, volledig geteste build (17/17 E2E-tests) op
+staging, geen halfwerkende tussenstand — zie `TODO.md` en `~/projects/apps/neon-drift/CLAUDE.md`.
+
+## Directe actie: Game 2 — Neon Drift (13 september 2026, on-hold)
 
 Eerste uitbreiding van de catalogus-strategie hierboven. Zie `~/projects/apps/neon-drift/` voor de
 scaffold en `TODO.md` voor de dag-1/dag-2-taken.
@@ -261,6 +266,23 @@ scaffold en `TODO.md` voor de dag-1/dag-2-taken.
   twee expliciete knoppen (gratis directe herstart, of een opt-in rewarded video die de score
   verdubbelt), mock-first via `RewardAdManager` zodat de flow nu al end-to-end getest is, vooruit-
   lopend op echte CrazyGames-SDK/AdMob-integratie.
+
+## Directe actie: Game 3 — Gravity Flip (13 september 2026)
+
+Derde titel in de catalogus-strategie, gestart terwijl Neon Drift on-hold staat (zie hierboven).
+Zie `~/projects/apps/gravity-flip/` voor de scaffold en `TODO.md` voor de dag-1-taken.
+
+- **Genre/concept:** minimalistische 2D side-scrolling neon-runner met **one-button/deterministic
+  gameplay** — één tap/Spatie/pijl-omhoog kaart de zwaartekracht om (vloer ↔ plafond). Bewuste
+  keuze voor determinisme na Neon Drift's pseudo-3D-camera-gedoe: geen doorlopende camera-
+  beweging, geen perspectief-projectie om fout te krijgen — de camera scrollt strak horizontaal
+  mee met een vaste snelheid, punt uit.
+- **Bewuste herkenbare afwijking van Meteor Survivor/Neon Drift:** een derde duidelijk ander
+  besturingsparadigma (one-button i.p.v. vrije 2D-beweging of 3-lane-sturen) — portfolio-
+  diversificatie, dezelfde onderliggende tech (Vite/Phaser/procedurele graphics/Web Audio/
+  Playwright-gate) hergebruikt.
+- **Workflow:** zelfde Gouden Regel als altijd — eerst `staging.johanlijffijt.dev`, pas na
+  expliciete "GO" naar productie.
 
 ## Toekomstvisie / Post-Revenue
 
