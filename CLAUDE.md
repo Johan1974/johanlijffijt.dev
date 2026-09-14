@@ -397,19 +397,43 @@ Let's Encrypt-certificaat, geverifieerd via curl).
 ## Sessie-start-instructie (bindend)
 
 Bij het starten van een nieuwe sessie op dit project: lees eerst `ROADMAP.md`, `TODO.md`,
-`FEEDBACK.md` én `REGISTRATIONS.md` volledig door voor de laatste stand van zaken, vóórdat je
-verder werkt, voorstellen doet of code aanpast. Vastgelegd op verzoek van Johan (12 september
-2026) zodat elke sessie aansluit op waar de vorige is gebleven, in plaats van blind op deze
-CLAUDE.md alleen te vertrouwen — dit bestand beschrijft bewuste keuzes en architectuur,
-`ROADMAP.md`/`TODO.md` de actuele status en openstaande taken, `FEEDBACK.md` wat gebruikers zelf
-aandragen, `REGISTRATIONS.md` op welke externe sites/diensten al een account bestaat (nooit gokken
-of iets al geregistreerd is). Check bij `FEEDBACK.md` specifiek of er nieuwe, nog onbeoordeelde
-inzendingen zijn die meegenomen moeten worden.
+`FEEDBACK.md`, `REGISTRATIONS.md` én `INTEGRATIONS.md` volledig door voor de laatste stand van
+zaken, vóórdat je verder werkt, voorstellen doet of code aanpast. Vastgelegd op verzoek van Johan
+(12 september 2026, `INTEGRATIONS.md` toegevoegd 14 september 2026) zodat elke sessie aansluit op
+waar de vorige is gebleven, in plaats van blind op deze CLAUDE.md alleen te vertrouwen — dit
+bestand beschrijft bewuste keuzes en architectuur, `ROADMAP.md`/`TODO.md` de actuele status en
+openstaande taken, `FEEDBACK.md` wat gebruikers zelf aandragen, `REGISTRATIONS.md` op welke
+externe sites/diensten al een account bestaat (nooit gokken of iets al geregistreerd is), en
+`INTEGRATIONS.md` specifiek de commerciële/affiliate-integratielaag (netwerken, merchant-status
+per retailer, API/data-feeds) — zie dat bestand voor het onderscheid met `REGISTRATIONS.md`. Check
+bij `FEEDBACK.md` specifiek of er nieuwe, nog onbeoordeelde inzendingen zijn die meegenomen moeten
+worden.
 
 Kijk bij die sessie-start ook expliciet naar **organische vindbaarheid en SEO-metadata** — klopt
 `sitemap.xml` nog met de live pagina's, zijn titel/description/JSON-LD actueel als er een tool
 bijkomt of wijzigt, staat er geen dode/verouderde structured data. SEO is een terugkerend
 aandachtspunt, geen eenmalige toevoeging.
+
+### 📋 Vast protocol: Sessie-Start & Status Rapportage
+
+**Vastgelegd 14 september 2026 — bindend.** Wanneer Johan vraagt naar de actuele status of de
+roadmap (bijv. "lees de roadmap", "status-update", of vergelijkbaar), leest Claude `ROADMAP.md` en
+`TODO.md` uit en levert **altijd** dit vaste 3-delige overzicht, vóórdat er code gegenereerd
+wordt:
+
+1. **Status van de suite (tools + feedbackblok):** welke tools staan LIVE op productie, welke
+   staan op STAGING/in actieve ontwikkeling, welke staan op BINNENKORT/backlog.
+2. **Claude's technische taak voor deze sessie:** welke concrete code-, test- of staging-stap
+   Claude nu oppakt.
+3. **Handmatige to-do's voor Johan (acties buiten de code):** expliciete opsomming van externe
+   acties die alleen Johan zelf kan uitvoeren (`[ACTIE JOHAN]`-items uit `TODO.md`, **plus altijd
+   de commerciële showstoppers uit `INTEGRATIONS.md`** — affiliate-netwerkregistraties,
+   merchant-aanvragen, API/feed-keuzes, accounts activeren, Search Console-controles, formele
+   "GO voor productie").
+
+Pas ná dit overzicht en expliciet akkoord van Johan gaat Claude aan de slag met coderen — dit
+geldt specifiek voor status-vragen bij sessie-start, niet voor een doorlopende sessie waarin al
+een concrete taak is afgesproken.
 
 ## Bewuste keuzes
 

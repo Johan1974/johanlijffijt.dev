@@ -55,6 +55,66 @@ correcte rekenlogica, heldere structuur, sterke SEO-copy — geen artistieke ass
   zie de git-historie van dit bestand en van `CLAUDE.md`/`TODO.md` vóór 14 september 2026. Die
   content stuurt het werk hier niet langer aan, maar is niet weggegooid.
 
+## 🔬 Marktanalyse & Differentiators (Benelux Top 5, vastgelegd 14 september 2026)
+
+Gerichte benchmark op Kieskeurig, Tweakers Pricewatch, Beslist.nl, Independer en Gaslicht.com —
+op basis van hun eigen Trustpilot-reviewpagina's (niet uit het geheugen verzonnen, zie bronnen
+onderaan). Doel: niet hun UI kopiëren, maar de **structurele frustraties** die uit hun eigen
+reviews naar boven komen gericht oplossen.
+
+### Sterktes van de Top 5 (waarom ze populair zijn)
+
+- **Kieskeurig** (Trustpilot 4.4/5, 525 reviews): eerlijke, onafhankelijke gebruikersreviews naast
+  de prijsvergelijking — mensen gebruiken het juist óók als productresearch, niet alleen prijs.
+- **Tweakers Pricewatch**: community-gedreven winkelbeoordelingen + prijshistorie, hoog vertrouwen
+  bij een kritisch, prijsbewust publiek — geen sterke klachtensignalen gevonden in deze zoekronde,
+  wat zelf al veelzeggend is over hoe goed het model hier werkt.
+- **Independer**: overzichtelijke, duidelijke site — overstappen naar een andere aanbieder is
+  simpel en snel te doorlopen.
+- **Beslist.nl**: enorm assortiment, één centraal overzicht van vrijwel elke webshop.
+- **Gaslicht.com** (9.6/10 op onafhankelijke reviewsites): heldere UX, 7 dagen per week
+  telefonische klantenservice — het meest consistent positief beoordeelde platform van de vijf.
+
+### Terugkerende klachten uit hun eigen reviews
+
+- **Prijs klopt niet bij doorklikken:** Kieskeurig-reviewers melden dat vermelde prijzen niet altijd
+  overeenkomen met de werkelijkheid bij de winkel zelf; Beslist-klanten melden tot ~€20 verschil
+  omdat verzendkosten pas ná doorklikken zichtbaar worden.
+- **Verantwoordelijkheid ontwijken bij problemen:** Beslist-klanten die nooit een bestelling
+  ontvingen, worden heen-en-weer gestuurd tussen Beslist en de webshop zonder dat één partij de
+  regie neemt.
+- **Opdringerige/moeilijk bereikbare lead-flows:** Independer-reviewers melden dat er nauwelijks
+  telefonisch contact mogelijk is, met onervaren medewerkers en trage/onvervulde beloftes bij
+  klachtafhandeling.
+- **Twijfelachtige reviewpraktijken:** Trustpilot markeerde zelf dat Independer mogelijk reviews
+  verzamelt op een manier die niet is toegestaan; een Kieskeurig-gebruiker meldt dat een
+  winkelscore stilzwijgend van 6 naar 10 werd aangepast zonder uitleg, en dat een negatieve review
+  werd geweigerd met een twijfelachtige reden.
+- **Branchebreed bekend (niet uit deze zoekronde, maar algemeen gedocumenteerd patroon):**
+  gesponsorde/betaalde plaatsing die hoger rankt ongeacht de daadwerkelijk beste prijs.
+
+### Onze differentiators — direct gekoppeld aan een specifieke frustratie hierboven
+
+1. **Eerlijke transportkosten-inclusiviteit:** cruciaal bij bulk-/bouwmateriaal (big bags wegen
+   veel, bezorgkosten kunnen de "goedkoopste" aanbieder makkelijk verslaan) — lost exact het
+   Beslist-patroon op ("prijs excl. verzending, pas zichtbaar na doorklikken").
+2. **Multi-store order-splitsing (Klusmand Optimizer, N-store arbitrage):** geen van de vijf
+   benchmarkte sites biedt dit aan — echt uniek, geen kopie van een bestaand patroon.
+3. **Zero-frictie architectuur:** geen verplichte accounts, voorkeuren via client-side
+   `localStorage` (zie "Mijn Klusprofiel") — lost het Independer-patroon op (moeilijk bereikbaar,
+   opdringerige lead-formulieren, telefonisch opvolgen).
+4. **Transparantie over affiliate-links + deterministische sortering:** vaste, uitlegbare
+   sorteerlogica zonder verborgen betaalde boost — lost zowel het branchebrede
+   gesponsorde-plaatsing-patroon op als het Kieskeurig-vertrouwensprobleem (stilzwijgend
+   aangepaste scores, geweigerde negatieve reviews).
+
+**Bronnen (Trustpilot/reviewsites, geraadpleegd 14 september 2026):**
+[Kieskeurig.nl reviews](https://www.trustpilot.com/review/www.kieskeurig.nl) ·
+[Independer.nl reviews](https://www.trustpilot.com/review/www.independer.nl) ·
+[Beslist.nl reviews](https://nl.trustpilot.com/review/www.beslist.nl) ·
+[Gaslicht.com reviews](https://www.trustpilot.com/review/gaslicht.com) ·
+[Tweakers (achtergrond)](https://en.wikipedia.org/wiki/Tweakers).
+
 ## 🗺️ Mijlpalen & Monetisatie (formeel vastgesteld 14 september 2026)
 
 **Status van de checkboxes hieronder wordt bijgehouden — vinkjes betekenen daadwerkelijk
@@ -239,6 +299,83 @@ Elk voorstel wordt getoetst tegen de mijlpaal waar we ons op dat moment in bevin
 een groot vergelijkingsbedrijf zoals Omni Calculator of RapidTables — geen teamgrootte, geen
 live-ops, geen marketingbudget, dit is en blijft een solo, organisch project (zie ook `CLAUDE.md`
 § Core Regel: SEO-Eerst en § Core Regel: Monetisatie).
+
+## ⏱️ Tijdsplanning & Mijlpalen (vastgelegd 14 september 2026)
+
+Inschatting voor de 4 resterende tools om de volledige suite van 5 live te krijgen. **Basis:
+effectieve, gefocuste ontwikkelsessies (een paar uur puur bouwwerk), geen kalendertijd** — hoe
+snel dit in weken landt hangt af van sessiecadans, niet van iets dat hier te voorspellen is.
+Externe wachttijd (goedkeuringen, accounts) staat expliciet apart, want dat is geen dev-tijd.
+
+### Tool 3 — Terras, Bestrating & Egaline Calculator
+- **Geschatte tijd:** 2–3 sessies (≈ 6–9 uur).
+- **Grootste uitdaging:** geen technische — de tegel-/klinkermaten, snijverlies-percentage en
+  egaline-verbruik per m² moeten net zo geverifieerd worden als de materiaalcalculator-dichtheden
+  (zie de eerdere "40% naast de echte boomschors-prijs"-les). Geen externe afhankelijkheid.
+- **Waarom snelst te bouwen:** structureel bijna identiek aan Tool 1 — zelfde
+  `calculator-core.js`-patroon (pure functies), zelfde pagina-shell/CSS, zelfde retailer-card +
+  disclaimer + `verify-site.js`-conventies. Grotendeels hergebruik, geen nieuwe architectuur.
+
+### Tool 4 — Thuisbatterij & Terugverdientijd Calculator
+- **Geschatte tijd:** 3–4 sessies (≈ 9–12 uur).
+- **Grootste uitdaging:** een écht financieel model (rendement/terugverdientijd op basis van
+  zonnepanelen, jaarverbruik, dynamische tarieven, laad-/ontlaadrendement, degradatie) — meer
+  variabelen en meer kans op een onjuiste aanname dan bij de materiaal-tools. Gezien het over een
+  financiële beslissing gaat (geen bouwmateriaal), moet dit extra zorgvuldig gedisclaimd worden —
+  vergelijkbaar risico als de "geen handmatig geschatte bedragen"-les, maar dan voor rendement in
+  plaats van prijs.
+- **Geen externe afhankelijkheid** om te lánceren: kan als zuiver informatieve tool live zonder op
+  Fase B (prijsfeed) te wachten — affiliate/AdSense is hier optioneel, niet blokkerend.
+
+### Tool 5 — Factuur / UBL XML Validator (Fase 1: gratis validator, zonder betaalmuur)
+- **Geschatte tijd:** 3–4 sessies (≈ 9–12 uur) voor een bewust **beperkte** subset-validator
+  (syntax + de belangrijkste verplichte UBL/Peppol-velden, in mensentaal uitgelegd) — niet een
+  volledige XSD-schema-validator claimen, dat zou dezelfde overclaiming-fout zijn als een
+  geschatte prijs voor een echte.
+- **Grootste uitdaging/afhankelijkheid:** de freemium-laag (3 gratis/dag, € 9/mnd via Stripe) kan
+  **niet** client-side — dat vereist een nieuw stuk server-side infrastructuur (gebruiksteller +
+  Stripe-integratie), iets dit project nog niet heeft (de bestaande `api/`-backend doet alleen
+  NDJSON-feedback/tracking, geen entitlements/billing). **Aparte fase, apart `[ACTIE JOHAN]`**
+  (Stripe-account) — niet meegeteld in de 3–4 sessies hierboven, geschat +3–5 sessies apart zodra
+  dat wordt opgepakt.
+
+### Tool 2 — Klusmand & Multi-Store Optimizer (N-store arbitrage)
+- **Geschatte tijd:** 4–5 sessies (≈ 12–16 uur) — combinatorisch algoritme (prijs + bezorgkosten
+  per unieke leverancier over N winkels), mandje-samenstel-UI, resultaten-UI met deeplinks,
+  store-exclusion + drempelwaarde-alert, en "Mijn Klusprofiel" (`localStorage`, herbruikbaar over
+  de hele Tools Hub).
+- **Grootste uitdaging is geen technische, maar een harde externe afhankelijkheid:** dit werkt pas
+  functioneel met écht meerdere leveranciers-prijzen per artikel (Fase B, live productfeed via
+  TradeTracker) — zie `CLAUDE.md` § Core Regel: Monetisatie punt 4 ("geen handmatig beheerde
+  bedragen"). Coderen kán al eerder, maar zonder Fase B staat het resultaat gewoon in de backlog
+  te wachten. Externe wachttijd (merchant-goedkeuring bij TradeTracker) ligt buiten onze controle
+  en is hier bewust niet in sessies uitgedrukt.
+
+### Voorgestelde bouwvolgorde (voor zo snel mogelijk maximale conversie)
+
+1. **Tool 3** eerst — snelste bouwtijd, geen afhankelijkheid, zelfde consument-/klus-doelgroep en
+   dus vermoedelijk vergelijkbaar zoekvolume als Tool 1.
+2. **Tool 4** direct daarna — geen externe blokkade om te lanceren, en thuisbatterijen/dynamische
+   energietarieven is op dit moment een hoog-volume, hoog-koopintentie onderwerp in Nederland;
+   waarschijnlijk de grootste organische kans van de vier.
+3. **Tool 5, Fase 1 (gratis validator, geen Stripe)** — B2B-leadgen/vertrouwen opbouwen zonder op
+   de betaalmuur-infrastructuur te wachten; Stripe/freemium volgt als losse, latere fase.
+4. **Tool 2 laatst** — bewust, niet omdat het minder belangrijk is, maar omdat het de enige tool
+   is die zonder Fase B geen echte waarde kan leveren; eerder bouwen levert alleen een halve tool
+   in de backlog op. Ideaal getimed vlak ná (of gelijk met) het onafhankelijk lopende Fase
+   B-traject.
+
+**Totale dev-tijd-inschatting (excl. Tool 5 Fase 2/Stripe, excl. externe wachttijd):**
+12–16 sessies, ≈ 36–48 uur puur bouwwerk.
+
+## 📋 Vast protocol: Sessie-Start & Status Rapportage
+
+**Vastgelegd 14 september 2026 — bindend, volledige regeltekst in `CLAUDE.md` § Vast protocol:
+Sessie-Start & Status Rapportage.** Bij een status-/roadmap-vraag van Johan bij sessie-start levert
+Claude altijd eerst het vaste 3-delige overzicht (suite-status live/staging/backlog, Claude's
+technische taak voor de sessie, handmatige `[ACTIE JOHAN]`-to-do's uit `TODO.md` + de commerciële
+showstoppers uit `INTEGRATIONS.md`) vóórdat er gecodeerd wordt — pas na Johans akkoord start het
+werk.
 
 ## Staging-workflow
 
