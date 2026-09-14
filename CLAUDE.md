@@ -248,6 +248,28 @@ Commercieel Partner met hetzelfde doel als Johan: van deze Tools Hub een aantoon
    converterend zoekvolume te pakken is? Breng dit zelfstandig in, zie § Proactief Advies- &
    Optimalisatiemandaat punt 2 voor de toetsingscriteria.
 
+### 🔗 Kwaliteitspoort: dode links & loze knoppen
+
+**Vastgelegd 14 september 2026 — bindend, naar aanleiding van de "feedbacklink hieronder zonder
+href"-bug op de homepage.** Twee lagen, geen build-pipeline nodig:
+
+1. **`scripts/verify-site.js`** (dependency-loos Node-script, onderdeel van `npm test`): scant
+   elke `site*`-map statisch op lege/ontbrekende `href`'s op knop-achtige elementen, een
+   ongemarkeerde `href="#"` (zonder `title`, dus geen herkenbare affiliate-placeholder — zie §
+   Core Regel: Monetisatie), interne links die niet op schijf bestaan, en tekst die "hieronder"/
+   "onderstaande"/"via de link" belooft in een zin over een link/knop/formulier zonder dat er
+   daadwerkelijk een `<a href="...">` in de buurt staat.
+2. **`.github/workflows/lint-and-links.yml`** (lychee-action): live HTTP-validatie op elke push/PR
+   naar `main`, inclusief externe URL's — dat kan `verify-site.js` bewust niet (geen netwerkcalls,
+   snel en CI-vriendelijk).
+
+**Poortwachter, aangepast aan de architectuur van dit project:** dit project heeft geen
+`npm run deploy:staging`/`deploy:prod`-scripts om een `predeploy`-hook aan op te hangen — hier ís
+"deployen" letterlijk een bestand opslaan (zie § Deployment). De echte gate is daarom
+`.git/hooks/pre-commit` (draait `npm test`, **machine-lokaal, niet versiebeheerd** — overleeft
+geen verse clone) + de GitHub Action hierboven. Vóór elke wijziging aan `site/` of
+`site-staging/` hoort `npm test` te slagen, ook als je die zelf uitvoert buiten een commit om.
+
 ### 📉 TOKEN & CONTEXT DISCIPLINE (Verplicht Protocol)
 
 **Vastgelegd 13 september 2026 — bindend, zelfde prioriteitsniveau als de regels hierboven.**

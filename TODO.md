@@ -8,6 +8,14 @@ vanaf de nieuwe scope — de volledige gamedev-todo-geschiedenis (Meteor Survivo
 Gravity Flip, Marble Jam, dagelijkse optimization loop, SEO-loop voor games) staat nog in de
 git-historie van dit bestand vóór 14 september 2026, maar stuurt het werk niet meer aan.
 
+## ✅ Gedaan: Kwaliteitspoort tegen dode links & loze knoppen (14 september 2026)
+
+Zie `CLAUDE.md` § Kwaliteitspoort voor de volledige uitleg. `scripts/verify-site.js` (in
+`npm test` + `.git/hooks/pre-commit`, machine-lokaal) + `.github/workflows/lint-and-links.yml`
+(lychee, live HTTP-check op push/PR). **Geen `predeploy:staging`/`predeploy:prod`-scripts** — die
+bestaan niet in dit project (geen build-pipeline, zie § Deployment); de git-hook is hier het
+echte equivalent.
+
 ## 📋 Dagelijkse Routine: Tools Hub Optimalisatie & SEO Loop (vastgelegd 14 september 2026)
 
 Zie `CLAUDE.md` § Dagelijkse Routine + § PROTOCOL: SEO-Eerst & Analytics Groeilus voor de
