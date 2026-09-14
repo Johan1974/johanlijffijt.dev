@@ -22,8 +22,6 @@ actuele status + openstaande acties.
       door Daisycon zelf (kan dagen duren, geen actie nodig). Na goedkeuring: kandidaat kiezen
       voor "gespecialiseerde webshop"-merchant en aanvraag indienen.
 - [ ] Stripe-account voor UBL-validator freemium (Tool 4, Fase 2) — niet nu blokkerend.
-- [ ] Search Console/Bing-resubmit heroverwegen: nieuwe homepage-copy + 3 nieuwe productie-URL's
-      (Tool 2, 3, 4, sitemap.xml al bijgewerkt).
 
 ## Actief — Mijlpaal 1
 

@@ -13,7 +13,10 @@ git-historie van dit bestand vóór die datum, stuurt het werk niet meer aan.
 2. **SEO-eerst, elke tekst voor dit project.** Kernwoorden vooraan (titel + openingszin),
    link terug naar de tool, beschrijvende alt-teksten, precies 1 H1/pagina met logische
    H1/H2-structuur, geen keyword-stuffing. Groei is 100% organisch — nooit betaald verkeer
-   voorstellen.
+   voorstellen. Title-tag richtlijn: 30-60 tekens. Bing Webmaster Tools' eigen on-page-checker
+   ("SEO/GEO issues", bijv. "title too short") gebruikt afwijkende/strengere heuristieken dan
+   Google en checkt soms een verouderde crawl — zo'n melding pas als echt probleem behandelen
+   na check tegen deze 30-60-regel én de laatste crawl-datum in Bing.
 3. **Monetisatie.**
    - Affiliate: nooit een echte/live link verzinnen. Placeholder ("binnenkort — affiliate-link
      volgt") tot Johan een echte link/tracking-ID aanlevert.
