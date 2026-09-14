@@ -142,14 +142,33 @@ Zie § Gedaan hierboven voor het volledige overzicht. Eén openstaand detailpunt
 - [ ] B2B teamlicenties + REST API, leveranciersponsoring, DE/EN-vertaling (Mijlpaal 3).
 - [ ] Domeinmigratie-evaluatie (pas bij € 250+/mnd omzet: onderzoek passend .nl-label voor de
       tools hub, zie `ROADMAP.md` § Fase: Eventuele Domeinmigratie naar Nederlands Merklabel).
-- [ ] Overwegen of de oude game-projecten (`~/projects/apps/meteor-dodge/`, `neon-drift/`,
-      `gravity-flip/`, `marble-jam/`) op enig moment opgeruimd moeten worden, of gewoon blijven
-      staan als afgesloten archief (geen actie nodig, kost niets in stilstand).
+## Opgeruimd (14 september 2026): web-facing gamedev/Tumble-ballast in déze repo
+
+- [x] `site/game/`, `site/tumble/`, `site/images/meteor-*`, `site-game-staging/`,
+      `site-gravity-flip-staging/`, `site-marble-jam-staging/`, `site-neon-drift-staging/`
+      verwijderd (git-getrackte bestanden via `git rm`, gitignored staging-buildmappen via `rm`).
+- [x] `nginx/johanlijffijt.dev.conf` opgeschoond: dode `location /game/`, `/game/assets/`,
+      `/supabase/`-proxy en de Tumble-app-store-redirects (`/tumble/ios`, `/tumble/android`)
+      verwijderd. Routing is nu uitsluitend nog `/`, `/tools/`, `/feedback/`, `/api/` (+ hun
+      staging-aliassen). `nginx -t` + reload gedraaid, geverifieerd: productie/staging draaien
+      nog, de verwijderde routes geven terecht 404.
+- [x] `REGISTRATIONS.md`: de game-portal-registraties (itch.io, CrazyGames, Newgrounds,
+      Kongregate, GameJolt) gemarkeerd als 🗄️ gearchiveerd — niet verwijderd uit de tabel, wel
+      duidelijk niet meer actief.
+- [ ] **Nog open, buiten déze repo — zie hieronder:** de broncode-projecten zelf
+      (`~/projects/apps/meteor-dodge/`, `neon-drift/`, `gravity-flip/`, `marble-jam/`, `tumble/`)
+      zijn niet verwijderd. Bij onderzoek bleek `meteor-dodge/` en `neon-drift/` **uncommitte
+      wijzigingen** te hebben, en `tumble/` heeft git-historie **zonder remote-backup** (geen
+      `git remote` geconfigureerd) plus een Postgres-datadirectory
+      (`tumble/supabase/volumes/db/data/`, niet leesbaar als `johan`-user — vermoedelijk
+      root-owned echte databasebestanden van de test-periode met een echte ADHD-gebruiker). Een
+      onvoorwaardelijke `rm -rf` zou dat onomkeerbaar wissen — bewust niet gedaan zonder
+      Johans akkoord over hoe (eerst committen/pushen? archiveren i.p.v. verwijderen? gewoon
+      wissen?).
 
 ## On hold: Tumble (sinds 12 september 2026 — geen actief vervolgwerk)
 
-Geen wijziging door deze koerswijziging — Tumble stond al on hold vóór de gamedev-episode en
-blijft dat. Zie `~/projects/apps/tumble/ROADMAP.md`/`CLAUDE.md` voor de status van dat project
-zelf. `site/tumble/...`-pagina's blijven bereikbaar maar worden niet actief onderhouden; hun
-formulieren werken niet meer sinds Tumble's Supabase-stack is gestopt (zie `CLAUDE.md` §
-Supabase-proxy).
+Zie hierboven voor wat er inmiddels is opgeruimd in déze repo. Het losse project
+`~/projects/apps/tumble/` zelf staat nog op schijf, status van de eventuele verwijdering
+hierboven. `~/projects/apps/tumble/ROADMAP.md`/`CLAUDE.md` beschrijven de status van dat project
+zelf, voor zover dat nog relevant is.

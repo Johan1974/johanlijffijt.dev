@@ -38,14 +38,18 @@ correcte rekenlogica, heldere structuur, sterke SEO-copy — geen artistieke ass
 
 **Wat dit betekent voor de bestaande games:**
 - Meteor Survivor, Neon Drift, Gravity Flip en Marble Jam worden **niet meer doorontwikkeld**.
-- De broncode van deze projecten (`~/projects/apps/meteor-dodge/`, `neon-drift/`,
-  `gravity-flip/`, `marble-jam/`) blijft ongewijzigd staan — geen opruimactie, kost niets in
-  stilstand.
 - Productie draait sinds "GO voor productie" op 14 september 2026 op de nieuwe Tools
   Hub-homepage + materiaalcalculator (zie Gouden Regel voor Deployment).
-- Staging-only game-routes (`/games/neon-drift/`, `/games/gravity-flip/`, `/games/marble-jam/`)
-  zijn uit `nginx/johanlijffijt.dev.conf` verwijderd; de bijbehorende staging-buildmappen
-  (`site-*-staging/`) staan nog op schijf maar worden niet meer geserveerd.
+- **Opgeruimd (14 september 2026):** alle web-facing gamedev-sporen in déze repo — `site/game/`,
+  `site/tumble/`, `site/images/meteor-*`, de staging-buildmappen (`site-game-staging/` en de
+  overige `site-*-staging/`-game-varianten) — zijn verwijderd, en de bijbehorende dode
+  nginx-locations (`/game/`, `/game/assets/`, `/supabase/`, de Tumble-app-store-redirects) zijn
+  uit `nginx/johanlijffijt.dev.conf` geschrapt. Geverifieerd: productie/staging serveren nog
+  correct, de verwijderde routes geven terecht 404.
+- **Nog een open vraag, niet in déze repo:** de broncode-projecten zelf
+  (`~/projects/apps/meteor-dodge/`, `neon-drift/`, `gravity-flip/`, `marble-jam/`, `tumble/`)
+  staan buiten dit repo en buiten versiebeheer met remote-backup voor sommige ervan — zie
+  `TODO.md` voor de status van die beslissing.
 - Voor de volledige geschiedenis van de gamedev-episode (dagelijkse optimization loop,
   Top-5-benchmarking, ad-pacing-regels, Vlambeer/Octalysis-onderbouwing, per-game beslissingen):
   zie de git-historie van dit bestand en van `CLAUDE.md`/`TODO.md` vóór 14 september 2026. Die

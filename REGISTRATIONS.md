@@ -17,22 +17,26 @@ huidige account staan, niet met terugwerkende kracht wijzigen.
 | Let's Encrypt / Certbot | — (geen account, automatisch per domein) | ✅ Actief | SSL voor `johanlijffijt.dev` + `staging.johanlijffijt.dev` | 7 & 12 sept 2026 |
 | Google Search Console | `play@johanlijffijt.dev`* | ✅ Geverifieerd | Sitemap ingediend, indexering monitoren voor SEO | 12 sept 2026 |
 | Bing Webmaster Tools | `play@johanlijffijt.dev`* | ✅ Geverifieerd | Via "importeer vanuit Google Search Console" — property + sitemap in één keer meegenomen | 12 sept 2026 |
-| itch.io | `Johan1974` (via GitHub-OAuth) | ✅ Live | Meteor Dodge gepubliceerd als **"Meteor Survivor: Rogue Space"** — https://johan1974.itch.io/meteor-survivor-rogue-space (200, getitled bevestigd) | 12 sept 2026 |
-| CrazyGames | `play@johanlijffijt.dev` | 🔄 Ingediend, AWAITING REVIEW | Meteor Survivor Basic Launch-submissie, Category "Shooting" | 12 sept 2026 |
-| Newgrounds | `play@johanlijffijt.dev` (username `MeteorSurvivor`) | 🔄 Ingediend, Under Judgment | https://www.newgrounds.com/portal/view/project/8098322 — communitystemsysteem, geen reviewteam | 13 sept 2026 |
-| Kongregate | `play@johanlijffijt.dev` (username `JohanLijffijt`) | ⏳ Developer Application ingediend, wacht op goedkeuring | Nog geen game geüpload — Kongregate keurt eerst de developer zelf goed vóór upload mogelijk is | 13 sept 2026 |
-| GameJolt | `play@johanlijffijt.dev` (username `JohanLijffijt`) | ✅ Live, gepubliceerd | Meteor Survivor v1.0.0, direct live zonder review — geen "Become a Creator"-status nodig | 13 sept 2026 |
+| itch.io | `Johan1974` (via GitHub-OAuth) | 🗄️ Gearchiveerd / niet meer actief gebruikt | Was "Meteor Survivor: Rogue Space" — browsergames definitief stopgezet 14 sept 2026, zie CLAUDE.md § Fundamentele Koerswijziging. Account/pagina zelf niet verwijderd (buiten bereik van deze sessie), alleen hier gemarkeerd als niet meer relevant voor de Tools Hub. | 12 sept 2026 |
+| CrazyGames | `play@johanlijffijt.dev` | 🗄️ Gearchiveerd / niet meer actief gebruikt | Was Meteor Survivor-submissie — browsergames stopgezet, geen vervolgactie meer nodig hier. | 12 sept 2026 |
+| Newgrounds | `play@johanlijffijt.dev` (username `MeteorSurvivor`) | 🗄️ Gearchiveerd / niet meer actief gebruikt | Browsergames stopgezet. | 13 sept 2026 |
+| Kongregate | `play@johanlijffijt.dev` (username `JohanLijffijt`) | 🗄️ Gearchiveerd / niet meer actief gebruikt | Browsergames stopgezet, developer-aanvraag niet verder opgevolgd. | 13 sept 2026 |
+| GameJolt | `play@johanlijffijt.dev` (username `JohanLijffijt`) | 🗄️ Gearchiveerd / niet meer actief gebruikt | Browsergames stopgezet. | 13 sept 2026 |
 
 *Welk account GSC/Bing precies gebruiken is niet expliciet bevestigd (van vóór de
 `play@johanlijffijt.dev`-instructie hierboven) — bij twijfel navragen, niet aannemen.
 
-**Legenda:** ✅ actief/voltooid — 🔄 bezig — ⏳ nog te doen — ❌ afgesloten/niet meer gebruikt.
+**Legenda:** ✅ actief/voltooid — 🔄 bezig — ⏳ nog te doen — 🗄️ gearchiveerd/niet meer actief
+gebruikt — ❌ afgesloten.
 
 ## Nog te checken/aanvullen
 
-- CrazyGames en Newgrounds: beide ingediend (zie tabel). Kongregate, GameJolt, Armor Games, Y8,
-  Poki: nog geen van alle geregistreerd — zie TODO.md § Multi-portal distributie voor de volgorde.
-  Gebruik `play@johanlijffijt.dev` bij elke nieuwe registratie.
+- De game-portal-registraties (CrazyGames, Newgrounds, Kongregate, GameJolt, itch.io) zijn
+  gearchiveerd (zie tabel) — browsergames zijn definitief stopgezet (14 sept 2026, zie
+  `CLAUDE.md` § Fundamentele Koerswijziging). Geen nieuwe game-portal-registraties meer, ook niet
+  Armor Games/Y8/Poki die nog niet waren opgepakt.
+- Nieuwe registraties voor de Tools Hub (affiliate-netwerken, AdSense) gebruiken dezelfde
+  `play@johanlijffijt.dev`-regel — zie `CLAUDE.md` § Gouden Regel: registraties en `TODO.md` §
+  Mijlpaal 1 — Sprint 1 voor de eerstvolgende (TradeTracker).
 - Tumble's eigen externe registraties (Apple/Google developer-accounts, Expo) staan in
-  `~/projects/apps/tumble/ROADMAP.md`/`TODO.md` — dit bestand dupliceert dat niet, alleen
-  registraties die direct met de hub-site/johanlijffijt.dev-project te maken hebben.
+  `~/projects/apps/tumble/ROADMAP.md`/`TODO.md` — dit bestand dupliceert dat niet.
