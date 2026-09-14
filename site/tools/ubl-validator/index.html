@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google Analytics (GA4) — dynamic-by-hostname pattern, see hub CLAUDE.md §
+     Google Analytics (GA4). Production copy, live since "GO voor productie" on
+     14 september 2026 — always loads G-TLWY630Z6D here. -->
+<script>
+  (function () {
+    var host = window.location.hostname;
+    var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '';
+    if (isLocal) return;
+    var measurementId = null;
+    var extraConfig = {};
+    if (host.indexOf('staging') !== -1) {
+      measurementId = 'G-4C5KX41VNB';
+      extraConfig.debug_mode = true;
+    } else if (host === 'johanlijffijt.dev') {
+      measurementId = 'G-TLWY630Z6D';
+    }
+    if (!measurementId) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId, extraConfig);
+  })();
+</script>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2310b981'/%3E%3Crect x='7' y='7' width='18' height='5' rx='1.5' fill='white'/%3E%3Crect x='7' y='15' width='5' height='5' rx='1' fill='white'/%3E%3Crect x='14' y='15' width='5' height='5' rx='1' fill='white'/%3E%3Crect x='21' y='15' width='4' height='5' rx='1' fill='white'/%3E%3Crect x='7' y='22' width='5' height='4' rx='1' fill='white'/%3E%3Crect x='14' y='22' width='5' height='4' rx='1' fill='white'/%3E%3Crect x='21' y='22' width='4' height='4' rx='1' fill='white'/%3E%3C/svg%3E">
+<title>UBL/Peppol Invoice Validator — Check XML e-Invoice Validity Online</title>
+<meta name="description" content="Free online UBL/Peppol invoice validator. Paste or upload a UBL XML e-invoice and instantly check it's well-formed and a valid Invoice or CreditNote document — runs entirely in your browser, nothing is uploaded.">
+<meta name="keywords" content="UBL validator, peppol invoice validator, validate UBL invoice online, peppol XML checker, e-invoice validator, UBL XML checker">
+<link rel="canonical" href="https://johanlijffijt.dev/tools/ubl-validator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://johanlijffijt.dev/tools/ubl-validator/">
+<meta property="og:site_name" content="johanlijffijt.dev — Tools & Calculators">
+<meta property="og:title" content="UBL/Peppol Invoice Validator — Check XML e-Invoice Validity">
+<meta property="og:description" content="Paste or upload a UBL XML e-invoice and instantly check it's well-formed and a valid Invoice or CreditNote. Runs in your browser, nothing is uploaded.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UBL/Peppol Invoice Validator">
+<meta name="twitter:description" content="Instantly check a UBL/Peppol e-invoice XML file for validity — free, runs in your browser.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "UBL/Peppol Invoice Validator",
+  "description": "Free tool to check whether a UBL XML file is well-formed and a valid UBL 2.1 Invoice or CreditNote document, as used in Peppol e-invoicing. Runs entirely client-side in the browser.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "url": "https://johanlijffijt.dev/tools/ubl-validator/",
+  "author": {
+    "@type": "Person",
+    "name": "Johan Lijffijt"
+  }
+}
+</script>
+
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f8fafc;
+    --ink: #0f172a;
+    --ink-dim: #334155;
+    --accent: #10b981;
+    --accent-dark: #059669;
+    --accent-ink: #ffffff;
+    --accent-soft: #ecfdf5;
+    --accent-soft-line: #a7f3d0;
+    --bad: #dc2626;
+    --bad-soft: #fef2f2;
+    --bad-soft-line: #fecaca;
+    --line: #e2e8f0;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+    --amber-bg: #fef3c7;
+    --amber-ink: #92400e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent-dark); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .staging-banner {
+    background: var(--amber-bg);
+    color: var(--amber-ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.55rem 1rem;
+  }
+
+  header.top { padding: 1.25rem 0 0.5rem; }
+  header.top a.back {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  header.top a.back:hover { color: var(--accent); }
+
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.25;
+    margin: 0.75rem 0 0.5rem;
+  }
+  .lede {
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    max-width: 65ch;
+    margin: 0 0 0.75rem;
+  }
+  .privacy-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-soft-line);
+    color: var(--accent-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    margin: 0 0 2rem;
+  }
+
+  .calc-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .field-group { margin-bottom: 1.25rem; }
+  .field-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    color: var(--ink-dim);
+  }
+
+  .upload-zone {
+    border: 1.5px dashed var(--line);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    background: var(--bg);
+  }
+  .upload-zone.drag-over {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .upload-zone input[type="file"] {
+    display: none;
+  }
+  .upload-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.65rem 1.2rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .upload-hint {
+    margin: 0.6rem 0 0;
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+  }
+  .file-name {
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    color: var(--ink-dim);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  textarea#xml-input {
+    width: 100%;
+    min-height: 220px;
+    padding: 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--input-bg);
+    color: var(--ink);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    resize: vertical;
+  }
+  textarea#xml-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  .results {
+    margin-top: 1.25rem;
+    border-radius: 14px;
+    padding: 1.25rem;
+    border: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .results.valid { background: var(--accent-soft); border-color: var(--accent-soft-line); }
+  .results.invalid { background: var(--bad-soft); border-color: var(--bad-soft-line); }
+  .result-verdict {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  .results.valid .result-verdict { color: var(--accent-dark); }
+  .results.invalid .result-verdict { color: var(--bad); }
+  .result-doctype {
+    margin: 0.35rem 0 0;
+    font-size: 0.9rem;
+    color: var(--ink-dim);
+  }
+  .result-issues {
+    margin: 0.75rem 0 0;
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+  }
+  .result-issues li { margin-bottom: 0.35rem; }
+
+  .info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .info-card h2 { font-size: 1.15rem; margin-top: 0; }
+  .info-card ul { padding-left: 1.2rem; }
+  .info-card li { margin-bottom: 0.4rem; }
+
+  .soon-card {
+    border-top: 1px solid var(--line);
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--ink-dim);
+  }
+
+  footer.site-footer {
+    padding: 2rem 0 3rem;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+  }
+  footer.site-footer a { color: var(--ink-dim); }
+  .related-tools { color: var(--ink-dim); font-size: 0.9rem; margin: 1.5rem 0 0; }
+</style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="back" href="/">← Back to Tools & Calculators</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>UBL/Peppol Invoice Validator: check your XML e-invoice online</h1>
+    <p class="lede">
+      Paste or upload a UBL XML file and instantly check whether it's well-formed and a
+      recognized UBL 2.1 <strong>Invoice</strong> or <strong>CreditNote</strong> document — the
+      two document types used in Peppol e-invoicing.
+    </p>
+    <p class="privacy-note">🔒 Runs entirely in your browser — your file is never uploaded anywhere.</p>
+
+    <section class="calc-card" aria-label="UBL/Peppol validator">
+      <div class="field-group">
+        <span class="field-label">Upload a UBL/XML file</span>
+        <div class="upload-zone" id="upload-zone">
+          <label class="upload-label" for="file-input">
+            📄 Choose file…
+          </label>
+          <input type="file" id="file-input" accept=".xml,text/xml,application/xml">
+          <p class="upload-hint">or drag and drop an .xml file here</p>
+          <p class="file-name" id="file-name" hidden></p>
+        </div>
+      </div>
+
+      <div class="divider">or paste XML</div>
+
+      <div class="field-group">
+        <label class="field-label" for="xml-input">Paste UBL XML</label>
+        <textarea id="xml-input" spellcheck="false" aria-label="Paste UBL XML here" placeholder="<Invoice xmlns=&quot;urn:oasis:names:specification:ubl:schema:xsd:Invoice-2&quot;>...</Invoice>"></textarea>
+      </div>
+
+      <div class="results" id="results" aria-live="polite" hidden>
+        <div class="result-verdict" id="result-verdict"></div>
+        <p class="result-doctype" id="result-doctype"></p>
+        <ul class="result-issues" id="result-issues"></ul>
+      </div>
+
+      <div class="soon-card">
+        This free check covers well-formedness and document type only. A deeper check against
+        the full Peppol BIS Billing 3.0 business rules is planned as a paid tier later — not
+        available yet, no signup needed for what's here today.
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>What does this check?</h2>
+      <p>Phase 1 of this validator deliberately checks two things only:</p>
+      <ul>
+        <li><strong>Well-formed XML</strong> — the file parses without syntax errors (via your
+          browser's native XML parser).</li>
+        <li><strong>Recognized UBL root element</strong> — the document's root element is
+          <code>&lt;Invoice&gt;</code> or <code>&lt;CreditNote&gt;</code> in the UBL 2.1
+          namespace (<code>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2</code> or
+          <code>...CreditNote-2</code>).</li>
+      </ul>
+      <p>
+        It does <strong>not</strong> check mandatory fields, Peppol BIS Billing 3.0 business
+        rules, or schematron validation — a "valid" result here means your file is structurally
+        a UBL invoice or credit note, not that it will be accepted by every Peppol access point
+        or accounting system.
+      </p>
+
+      <h2 style="margin-top: 1.5rem;">FAQ</h2>
+      <p><strong>Is my invoice data uploaded anywhere?</strong><br>
+        No. Parsing and validation happen entirely in your browser using JavaScript — the file
+        content is never sent to a server.</p>
+      <p><strong>What's the difference between UBL and Peppol?</strong><br>
+        UBL (Universal Business Language) is the XML format; Peppol is the network and rule set
+        (BIS Billing 3.0) that defines which UBL fields are mandatory for e-invoicing across the
+        EU. This tool checks the UBL structure, not the full Peppol business rules.</p>
+        <p><strong>Why does a well-formed UBL file still get rejected by my accounting software?</strong><br>
+        Well-formed XML with a correct root element can still be missing mandatory Peppol BIS
+        fields (like a buyer reference or tax breakdown) — this Phase 1 check doesn't catch that
+        yet.</p>
+    </section>
+
+    <p class="related-tools">
+      More tools: <a href="/" data-track="related-hub">browse all calculators on the hub</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>
+        Part of <a href="/">johanlijffijt.dev — Tools &amp; Calculators</a>, built by Johan
+        Lijffijt. Found a UBL/Peppol document type this should recognize, or something broken?
+        <a href="/feedback/" data-track="feedback">Let us know</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="ubl-core.js"></script>
+  <script>
+    var els = {
+      fileInput: document.getElementById('file-input'),
+      uploadZone: document.getElementById('upload-zone'),
+      fileName: document.getElementById('file-name'),
+      xmlInput: document.getElementById('xml-input'),
+      results: document.getElementById('results'),
+      resultVerdict: document.getElementById('result-verdict'),
+      resultDoctype: document.getElementById('result-doctype'),
+      resultIssues: document.getElementById('result-issues')
+    };
+
+    function gaEvent(name, params) {
+      if (window.gtag) window.gtag('event', name, params || {});
+    }
+
+    var calcDebounceTimer = null;
+
+    function renderResult(result) {
+      els.results.hidden = false;
+      els.results.className = 'results ' + (result.valid ? 'valid' : 'invalid');
+      els.resultVerdict.textContent = result.valid ? '✅ Valid UBL document' : '❌ Not a valid UBL document';
+      els.resultDoctype.textContent = result.valid ? 'Document type: ' + result.documentType : '';
+      els.resultDoctype.hidden = !result.valid;
+      els.resultIssues.innerHTML = '';
+      result.issues.forEach(function (issue) {
+        var li = document.createElement('li');
+        li.textContent = issue;
+        els.resultIssues.appendChild(li);
+      });
+
+      clearTimeout(calcDebounceTimer);
+      calcDebounceTimer = setTimeout(function () {
+        gaEvent('tool_calculate', { valid: result.valid, documentType: result.documentType });
+      }, 1200);
+    }
+
+    function validateXmlString(xmlString) {
+      if (!xmlString || !xmlString.trim()) {
+        els.results.hidden = true;
+        return;
+      }
+      var parsedInfo;
+      try {
+        parsedInfo = UblCore.parseXmlDocument(xmlString);
+      } catch (err) {
+        parsedInfo = { hasParseError: true, parseErrorMessage: err.message };
+      }
+      renderResult(UblCore.checkRootElement(parsedInfo));
+    }
+
+    els.xmlInput.addEventListener('input', function () {
+      validateXmlString(els.xmlInput.value);
+    });
+
+    function handleFile(file) {
+      if (!file) return;
+      els.fileName.hidden = false;
+      els.fileName.textContent = '📄 ' + file.name;
+      var reader = new FileReader();
+      reader.onload = function () {
+        els.xmlInput.value = String(reader.result || '');
+        validateXmlString(els.xmlInput.value);
+      };
+      reader.readAsText(file);
+    }
+
+    els.fileInput.addEventListener('change', function () {
+      handleFile(els.fileInput.files[0]);
+    });
+
+    ['dragenter', 'dragover'].forEach(function (evt) {
+      els.uploadZone.addEventListener(evt, function (e) {
+        e.preventDefault();
+        els.uploadZone.classList.add('drag-over');
+      });
+    });
+    ['dragleave', 'drop'].forEach(function (evt) {
+      els.uploadZone.addEventListener(evt, function (e) {
+        e.preventDefault();
+        els.uploadZone.classList.remove('drag-over');
+      });
+    });
+    els.uploadZone.addEventListener('drop', function (e) {
+      var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      handleFile(file);
+    });
+
+    document.querySelectorAll('a[data-track]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        try {
+          fetch('/api/track', {
+            method: 'POST',
+            keepalive: true,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ target: a.dataset.track })
+          });
+        } catch (err) {}
+      });
+    });
+  </script>
+</body>
+</html>

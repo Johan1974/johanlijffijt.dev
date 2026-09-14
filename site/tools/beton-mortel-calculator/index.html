@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google Analytics (GA4) — dynamic-by-hostname pattern, see hub CLAUDE.md §
+     Google Analytics (GA4). Production copy, live since "GO voor productie" on
+     14 september 2026 — always loads G-TLWY630Z6D here. -->
+<script>
+  (function () {
+    var host = window.location.hostname;
+    var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '';
+    if (isLocal) return;
+    var measurementId = null;
+    var extraConfig = {};
+    if (host.indexOf('staging') !== -1) {
+      measurementId = 'G-4C5KX41VNB';
+      extraConfig.debug_mode = true;
+    } else if (host === 'johanlijffijt.dev') {
+      measurementId = 'G-TLWY630Z6D';
+    }
+    if (!measurementId) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId, extraConfig);
+  })();
+</script>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2310b981'/%3E%3Crect x='7' y='7' width='18' height='5' rx='1.5' fill='white'/%3E%3Crect x='7' y='15' width='5' height='5' rx='1' fill='white'/%3E%3Crect x='14' y='15' width='5' height='5' rx='1' fill='white'/%3E%3Crect x='21' y='15' width='4' height='5' rx='1' fill='white'/%3E%3Crect x='7' y='22' width='5' height='4' rx='1' fill='white'/%3E%3Crect x='14' y='22' width='5' height='4' rx='1' fill='white'/%3E%3Crect x='21' y='22' width='4' height='4' rx='1' fill='white'/%3E%3C/svg%3E">
+<title>Beton & Mortel Calculator — Zakken, Cement, Zand & Grind Berekenen</title>
+<meta name="description" content="Beton & Mortel Calculator: bereken direct hoeveel zakken betonmix of cement, zand en grind je nodig hebt voor een fundering of vloerplaat, en hoeveel metselspecie voor je muur. Gratis, geen download.">
+<meta name="keywords" content="beton berekenen, hoeveel zakken beton, cement zand grind calculator, betonmix calculator, metselspecie berekenen, mortel calculator, stenen berekenen per m2">
+<link rel="canonical" href="https://johanlijffijt.dev/tools/beton-mortel-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://johanlijffijt.dev/tools/beton-mortel-calculator/">
+<meta property="og:site_name" content="johanlijffijt.dev — Tools & Calculators">
+<meta property="og:title" content="Beton & Mortel Calculator — Zakken, Cement, Zand & Grind Berekenen">
+<meta property="og:description" content="Bereken direct hoeveel zakken betonmix, cement, zand of grind je nodig hebt voor een fundering, vloerplaat of metselwerk.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Beton & Mortel Calculator">
+<meta name="twitter:description" content="Bereken direct hoeveel zakken beton of metselspecie je nodig hebt.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Beton & Mortel Calculator",
+  "description": "Gratis calculator om te berekenen hoeveel zakken betonmix, of cement, zand en grind, nodig zijn voor een fundering of vloerplaat, en hoeveel metselspecie voor een muur.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "inLanguage": "nl",
+  "isAccessibleForFree": true,
+  "url": "https://johanlijffijt.dev/tools/beton-mortel-calculator/",
+  "author": {
+    "@type": "Person",
+    "name": "Johan Lijffijt"
+  }
+}
+</script>
+
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f8fafc;
+    --ink: #0f172a;
+    --ink-dim: #334155;
+    --accent: #10b981;
+    --accent-dark: #059669;
+    --accent-ink: #ffffff;
+    --accent-soft: #ecfdf5;
+    --accent-soft-line: #a7f3d0;
+    --good: #059669;
+    --line: #e2e8f0;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+    --amber-bg: #fef3c7;
+    --amber-ink: #92400e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent-dark); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .staging-banner {
+    background: var(--amber-bg);
+    color: var(--amber-ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.55rem 1rem;
+  }
+
+  header.top { padding: 1.25rem 0 0.5rem; }
+  header.top a.back {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  header.top a.back:hover { color: var(--accent); }
+
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.25;
+    margin: 0.75rem 0 0.5rem;
+  }
+  .lede {
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    max-width: 65ch;
+    margin: 0 0 2rem;
+  }
+
+  .calc-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .field-group { margin-bottom: 1.25rem; }
+  .field-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    color: var(--ink-dim);
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .tab-btn {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    border: 1.5px solid var(--line);
+    background: var(--input-bg);
+    color: var(--ink-dim);
+    border-radius: 12px;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    min-height: 44px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .tab-btn .tab-icon { font-size: 1.3rem; line-height: 1; }
+  .tab-btn:hover { border-color: var(--accent-soft-line); }
+  .tab-btn[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-dark);
+  }
+
+  .shape-toggle {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .shape-btn {
+    appearance: none;
+    border: none;
+    background: var(--input-bg);
+    color: var(--ink);
+    padding: 0.65rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 44px;
+    flex: 1 1 0;
+  }
+  .shape-btn + .shape-btn { border-left: 1px solid var(--line); }
+  .shape-btn[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .dims-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .dims-row.dims-row-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .input-wrap { position: relative; }
+  .input-wrap input[type="number"] {
+    width: 100%;
+    padding: 0.65rem 3.2rem 0.65rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--input-bg);
+    color: var(--ink);
+    font-size: 1rem;
+    min-height: 44px;
+  }
+  .input-wrap input[type="number"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .input-wrap .unit {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-dim);
+    font-size: 0.8rem;
+    pointer-events: none;
+  }
+
+  .results {
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-soft-line);
+    border-radius: 14px;
+    padding: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 520px) {
+    .results { grid-template-columns: repeat(3, 1fr); }
+  }
+  .result-item .result-label {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.25rem;
+  }
+  .result-item .result-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--accent-dark);
+  }
+  .result-item .result-sub {
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+  }
+
+  .retailer-card {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .retailer-card h2 { font-size: 1.05rem; margin: 0 0 0.9rem; }
+  .retailer-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .retailer-row:last-of-type { border-bottom: none; }
+  .retailer-info { display: flex; flex-direction: column; }
+  .retailer-name { font-weight: 700; color: var(--ink); }
+  .retailer-desc { font-size: 0.82rem; color: var(--ink-dim); }
+  .btn-affiliate {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    background: var(--good);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    min-height: 44px;
+    white-space: nowrap;
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  @media (min-width: 520px) {
+    .retailer-row { flex-direction: row; align-items: center; justify-content: space-between; }
+    .retailer-info { flex: 1 1 auto; min-width: 0; }
+    .btn-affiliate { flex: 0 0 auto; }
+  }
+  .affiliate-disclaimer {
+    margin: 0.5rem 0 0;
+    font-size: 0.75rem;
+    color: #64748b;
+    text-align: center;
+  }
+
+  .info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .info-card h2 { font-size: 1.15rem; margin-top: 0; }
+  .info-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+  .info-card th, .info-card td {
+    text-align: left;
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .info-card th { color: var(--ink-dim); font-weight: 600; font-size: 0.8rem; }
+
+  footer.site-footer {
+    padding: 2rem 0 3rem;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+  }
+  footer.site-footer a { color: var(--ink-dim); }
+  .related-tools { color: var(--ink-dim); font-size: 0.9rem; margin: 1.5rem 0 0; }
+</style>
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="back" href="/">← Terug naar Tools & Calculators</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Beton &amp; Mortel Calculator: zakken, cement, zand en grind berekenen</h1>
+    <p class="lede">
+      Bereken direct hoeveel zakken betonmix, of losse cement, zand en grind je nodig hebt voor
+      een fundering of vloerplaat — en hoeveel metselspecie en stenen voor je muur. Gratis, geen
+      download, geen account nodig.
+    </p>
+
+    <section class="calc-card" aria-label="Beton- en mortelcalculator">
+      <div class="field-group">
+        <span class="field-label">Toepassing</span>
+        <div class="tabs" role="group" aria-label="Kies toepassing">
+          <button type="button" class="tab-btn" data-toepassing="beton" aria-pressed="true"><span class="tab-icon">🧊</span>Beton (fundering / vloer)</button>
+          <button type="button" class="tab-btn" data-toepassing="mortel" aria-pressed="false"><span class="tab-icon">🧱</span>Metselspecie / muur</button>
+        </div>
+      </div>
+
+      <!-- BETON -->
+      <div id="paneel-beton">
+        <div class="field-group">
+          <span class="field-label">Volume invoeren als</span>
+          <div class="shape-toggle" role="group" aria-label="Kies invoermethode voor volume">
+            <button type="button" class="shape-btn" data-volumemode="afmetingen" aria-pressed="true">Afmetingen</button>
+            <button type="button" class="shape-btn" data-volumemode="direct-m3" aria-pressed="false">Directe m³</button>
+          </div>
+        </div>
+
+        <div class="field-group" id="dims-afmetingen">
+          <span class="field-label">Afmetingen</span>
+          <div class="dims-row dims-row-3">
+            <div class="input-wrap">
+              <input type="number" id="beton-lengte" min="0" step="0.1" value="3" inputmode="decimal" aria-label="Lengte in meter">
+              <span class="unit">m lengte</span>
+            </div>
+            <div class="input-wrap">
+              <input type="number" id="beton-breedte" min="0" step="0.1" value="2" inputmode="decimal" aria-label="Breedte in meter">
+              <span class="unit">m breedte</span>
+            </div>
+            <div class="input-wrap">
+              <input type="number" id="beton-dikte" min="0" step="1" value="10" inputmode="decimal" aria-label="Dikte in centimeter">
+              <span class="unit">cm dik</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group" id="dims-direct-m3" hidden>
+          <span class="field-label">Volume</span>
+          <div class="dims-row" style="grid-template-columns: 1fr;">
+            <div class="input-wrap">
+              <input type="number" id="beton-volume-m3" min="0" step="0.1" value="1" inputmode="decimal" aria-label="Volume in kubieke meter">
+              <span class="unit">m³</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <span class="field-label">Methode</span>
+          <div class="shape-toggle" role="group" aria-label="Kies methode">
+            <button type="button" class="shape-btn" data-methode="zakken" aria-pressed="true">Kant-en-klare zakken</button>
+            <button type="button" class="shape-btn" data-methode="zelf-mengen" aria-pressed="false">Zelf mengen</button>
+          </div>
+        </div>
+
+        <div class="results" aria-live="polite" id="results-beton-zakken">
+          <div class="result-item">
+            <div class="result-label">Volume</div>
+            <div class="result-value" id="out-beton-volume">–</div>
+            <div class="result-sub">m³</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Natte beton</div>
+            <div class="result-value" id="out-beton-liter">–</div>
+            <div class="result-sub">liter</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Zakken betonmix</div>
+            <div class="result-value" id="out-beton-zakken">–</div>
+            <div class="result-sub">van 25 kg</div>
+          </div>
+        </div>
+
+        <div class="results" aria-live="polite" id="results-beton-zelfmengen" hidden>
+          <div class="result-item">
+            <div class="result-label">Cement</div>
+            <div class="result-value" id="out-cement-zakken">–</div>
+            <div class="result-sub" id="out-cement-kg">zakken van 25 kg</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Zand</div>
+            <div class="result-value" id="out-zand-kg">–</div>
+            <div class="result-sub">kg</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Grind</div>
+            <div class="result-value" id="out-grind-kg">–</div>
+            <div class="result-sub">kg</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MORTEL -->
+      <div id="paneel-mortel" hidden>
+        <div class="field-group">
+          <span class="field-label">Invoeren als</span>
+          <div class="shape-toggle" role="group" aria-label="Kies invoermethode voor mortel">
+            <button type="button" class="shape-btn" data-stenenmode="oppervlakte" aria-pressed="true">Oppervlakte muur (m²)</button>
+            <button type="button" class="shape-btn" data-stenenmode="stenen" aria-pressed="false">Aantal stenen</button>
+          </div>
+        </div>
+
+        <div class="field-group" id="dims-mortel-oppervlakte">
+          <span class="field-label">Oppervlakte</span>
+          <div class="dims-row" style="grid-template-columns: 1fr;">
+            <div class="input-wrap">
+              <input type="number" id="mortel-m2" min="0" step="0.1" value="10" inputmode="decimal" aria-label="Oppervlakte muur in vierkante meter">
+              <span class="unit">m²</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group" id="dims-mortel-stenen" hidden>
+          <span class="field-label">Aantal stenen</span>
+          <div class="dims-row" style="grid-template-columns: 1fr;">
+            <div class="input-wrap">
+              <input type="number" id="mortel-stenen" min="0" step="1" value="500" inputmode="decimal" aria-label="Aantal stenen">
+              <span class="unit">stuks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="results" aria-live="polite" id="results-mortel">
+          <div class="result-item">
+            <div class="result-label">Stenen nodig</div>
+            <div class="result-value" id="out-stenen">–</div>
+            <div class="result-sub">waalformaat, 10 mm voeg</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Metselspecie</div>
+            <div class="result-value" id="out-mortel-zakken">–</div>
+            <div class="result-sub" id="out-mortel-kg">zakken van 25 kg</div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">Cement / zand</div>
+            <div class="result-value" id="out-mortel-cement">–</div>
+            <div class="result-sub" id="out-mortel-zand">kg cement</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="retailer-card">
+        <h2>Waar te bestellen?</h2>
+
+        <div class="retailer-row">
+          <div class="retailer-info">
+            <span class="retailer-name">GAMMA</span>
+            <span class="retailer-desc">Betonmix, cement, zand &amp; grind</span>
+          </div>
+          <a href="#" class="btn-affiliate" data-track="affiliate-gamma" data-retailer="gamma" rel="sponsored nofollow" title="Affiliate-link volgt zodra TradeTracker is aangesloten">Bekijk actuele prijzen bij Gamma →</a>
+        </div>
+
+        <div class="retailer-row">
+          <div class="retailer-info">
+            <span class="retailer-name">KARWEI</span>
+            <span class="retailer-desc">Betonmix, metselmortel &amp; bouwmaterialen</span>
+          </div>
+          <a href="#" class="btn-affiliate" data-track="affiliate-karwei" data-retailer="karwei" rel="sponsored nofollow" title="Affiliate-link volgt zodra TradeTracker is aangesloten">Bekijk actuele prijzen bij Karwei →</a>
+        </div>
+
+        <div class="retailer-row">
+          <div class="retailer-info">
+            <span class="retailer-name">Gespecialiseerde webshop</span>
+            <span class="retailer-desc">Scherpe tarieven bij grotere volumes</span>
+          </div>
+          <a href="#" class="btn-affiliate" data-track="affiliate-specialist" data-retailer="specialist" rel="sponsored nofollow" title="Affiliate-link volgt zodra een partnerprogramma is aangesloten">Bekijk prijzen bij specialist →</a>
+        </div>
+
+        <p class="affiliate-disclaimer">
+          * Klik door om de actuele dagprijzen, bezorgkosten en voorraad direct bij de leverancier
+          te bekijken. Bij een bestelling ontvangen wij mogelijk een commissie.
+        </p>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>Hoe wordt dit berekend?</h2>
+      <p>
+        Bij kant-en-klare zakken betonmix rekenen we met de gangbare NL-vuistregel: <strong>1 zak
+        van 25 kg droge betonmix ≈ 12,5 liter natte beton</strong>. Bij zelf mengen gebruiken we de
+        referentietabel voor constructief beton met een mengverhouding van ongeveer 1 : 2 : 3
+        (cement : zand : grind) — omgerekend <strong>300 kg cement, 600 kg zand en 1200 kg grind
+        per m³</strong> gestort beton, plus circa 150-180 liter aanmaakwater (afhankelijk van de
+        vochtigheid van het zand — niet in zakken te kopen, dus hier niet apart doorberekend).
+      </p>
+      <p>
+        Bij metselspecie gaan we uit van <strong>100 stenen per m²</strong> muur bij waalformaat
+        (210 × 100 × 50 mm) met een 10 mm voeg. Het mortelvolume per steen — het beganggevoeg
+        (220 × 10 × 100 mm) plus het stootvoeg (10 × 50 × 100 mm) — komt daarbij op ≈ 0,27 liter
+        per steen, afgerond op <strong>25 liter natte specie per m²</strong>. Mengverhouding
+        cement : zand is 1 : 4, dichtheid natte metselspecie ≈ 1900 kg/m³.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Onderdeel</th><th>Vuistregel</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zak betonmix (25 kg)</td><td>≈ 12,5 liter natte beton</td></tr>
+          <tr><td>Zelf mengen beton</td><td>300 kg cement / 600 kg zand / 1200 kg grind per m³</td></tr>
+          <tr><td>Stenen per m² (waalformaat)</td><td>≈ 100 stuks, 10 mm voeg</td></tr>
+          <tr><td>Metselspecie</td><td>≈ 25 liter/m², mengverhouding cement:zand 1:4</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--ink-dim);">
+        Dit zijn praktijkvuistregels voor niet-constructieve DIY-toepassingen (bijgebouw,
+        schuurvloer, tuinmuurtje). Voor dragende constructies (fundering onder een uitbouw,
+        draagmuur) raadpleeg je altijd een constructeur of bouwkundige — deze calculator vervangt
+        geen constructieberekening.
+      </p>
+
+      <h2 style="margin-top: 1.5rem;">Veelgestelde vragen</h2>
+      <p><strong>Hoeveel zakken beton heb ik nodig voor 3 × 2 meter bij 10 cm dik?</strong><br>
+        3 × 2 × 0,10 = 0,6 m³ = 600 liter natte beton; gedeeld door 12,5 liter per zak ≈ 48 zakken
+        van 25 kg.</p>
+      <p><strong>Hoeveel cement, zand en grind heb ik nodig voor 1 m³ beton?</strong><br>
+        Volgens de 1:2:3-vuistregel: 300 kg cement (12 zakken van 25 kg), 600 kg zand en 1200 kg
+        grind.</p>
+      <p><strong>Hoeveel metselspecie heb ik nodig voor 10 m² muur?</strong><br>
+        10 m² × 25 liter × 1,9 kg/liter ≈ 475 kg specie, gedeeld door 25 kg per zak ≈ 19 zakken —
+        plus ongeveer 1000 stenen (waalformaat, 10 mm voeg).</p>
+    </section>
+
+    <p class="related-tools">
+      Meer tools: <a href="/" data-track="related-hub">bekijk alle calculators op de hub</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>
+        Onderdeel van <a href="/">johanlijffijt.dev — Tools &amp; Calculators</a>, gebouwd door
+        Johan Lijffijt. Werkt de rekentool niet zoals verwacht, of mis je een mengverhouding?
+        <a href="/feedback/" data-track="feedback">Laat het weten</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="beton-mortel-core.js"></script>
+  <script>
+    var state = { toepassing: 'beton', volumeMode: 'afmetingen', methode: 'zakken', stenenMode: 'oppervlakte' };
+
+    var els = {
+      betonLengte: document.getElementById('beton-lengte'),
+      betonBreedte: document.getElementById('beton-breedte'),
+      betonDikte: document.getElementById('beton-dikte'),
+      betonVolumeM3: document.getElementById('beton-volume-m3'),
+      dimsAfmetingen: document.getElementById('dims-afmetingen'),
+      dimsDirectM3: document.getElementById('dims-direct-m3'),
+      resultsBetonZakken: document.getElementById('results-beton-zakken'),
+      resultsBetonZelfmengen: document.getElementById('results-beton-zelfmengen'),
+      outBetonVolume: document.getElementById('out-beton-volume'),
+      outBetonLiter: document.getElementById('out-beton-liter'),
+      outBetonZakken: document.getElementById('out-beton-zakken'),
+      outCementZakken: document.getElementById('out-cement-zakken'),
+      outCementKg: document.getElementById('out-cement-kg'),
+      outZandKg: document.getElementById('out-zand-kg'),
+      outGrindKg: document.getElementById('out-grind-kg'),
+
+      paneelBeton: document.getElementById('paneel-beton'),
+      paneelMortel: document.getElementById('paneel-mortel'),
+
+      mortelM2: document.getElementById('mortel-m2'),
+      mortelStenen: document.getElementById('mortel-stenen'),
+      dimsMortelOppervlakte: document.getElementById('dims-mortel-oppervlakte'),
+      dimsMortelStenen: document.getElementById('dims-mortel-stenen'),
+      outStenen: document.getElementById('out-stenen'),
+      outMortelZakken: document.getElementById('out-mortel-zakken'),
+      outMortelKg: document.getElementById('out-mortel-kg'),
+      outMortelCement: document.getElementById('out-mortel-cement'),
+      outMortelZand: document.getElementById('out-mortel-zand')
+    };
+
+    function fmt(n, decimals) {
+      if (!isFinite(n)) return '–';
+      return n.toLocaleString('nl-NL', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    }
+
+    function gaEvent(name, params) {
+      if (window.gtag) window.gtag('event', name, params || {});
+    }
+
+    var calcDebounceTimer = null;
+    var hasRenderedOnce = false;
+
+    function currentBetonDims() {
+      return state.volumeMode === 'afmetingen'
+        ? { lengte: els.betonLengte.value, breedte: els.betonBreedte.value, dikteCm: els.betonDikte.value }
+        : { volumeM3: els.betonVolumeM3.value };
+    }
+
+    function recalc() {
+      if (state.toepassing === 'beton') {
+        var volume = BetonMortelCore.calculateBetonVolumeM3(state.volumeMode, currentBetonDims());
+
+        if (state.methode === 'zakken') {
+          var liter = BetonMortelCore.calculateBetonZakLiter(volume);
+          var zakken = BetonMortelCore.calculateBetonZakken(volume);
+          els.outBetonVolume.textContent = fmt(volume, 2);
+          els.outBetonLiter.textContent = fmt(liter, 0);
+          els.outBetonZakken.textContent = zakken;
+        } else {
+          var mix = BetonMortelCore.calculateBetonZelfMengen(volume);
+          els.outCementZakken.textContent = mix.cementZakken;
+          els.outCementKg.textContent = 'zakken van 25 kg (≈ ' + fmt(mix.cementKg, 0) + ' kg)';
+          els.outZandKg.textContent = fmt(mix.zandKg, 0);
+          els.outGrindKg.textContent = fmt(mix.grindKg, 0);
+        }
+      } else {
+        var dims = state.stenenMode === 'stenen'
+          ? { aantalStenen: els.mortelStenen.value }
+          : { m2: els.mortelM2.value };
+        var m2 = BetonMortelCore.calculateMortelM2(state.stenenMode, dims);
+        var stenen = BetonMortelCore.calculateStenenNodig(m2);
+        var mortelKg = BetonMortelCore.calculateMortelKg(m2);
+        var mortelZakken = BetonMortelCore.calculateMortelZakken(m2);
+        var cementKg = BetonMortelCore.calculateMortelCementKg(m2);
+        var zandKg = BetonMortelCore.calculateMortelZandKg(m2);
+
+        els.outStenen.textContent = stenen;
+        els.outMortelZakken.textContent = mortelZakken;
+        els.outMortelKg.textContent = 'zakken van 25 kg (≈ ' + fmt(mortelKg, 0) + ' kg)';
+        els.outMortelCement.textContent = fmt(cementKg, 0);
+        els.outMortelZand.textContent = 'kg cement, ≈ ' + fmt(zandKg, 0) + ' kg zand';
+      }
+
+      if (hasRenderedOnce) {
+        clearTimeout(calcDebounceTimer);
+        calcDebounceTimer = setTimeout(function () {
+          gaEvent('tool_calculate', { toepassing: state.toepassing });
+        }, 1200);
+      }
+      hasRenderedOnce = true;
+    }
+
+    document.querySelectorAll('.tab-btn[data-toepassing]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.tab-btn[data-toepassing]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        state.toepassing = btn.dataset.toepassing;
+        els.paneelBeton.hidden = state.toepassing !== 'beton';
+        els.paneelMortel.hidden = state.toepassing !== 'mortel';
+        recalc();
+      });
+    });
+
+    document.querySelectorAll('.shape-btn[data-volumemode]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.shape-btn[data-volumemode]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        state.volumeMode = btn.dataset.volumemode;
+        els.dimsAfmetingen.hidden = state.volumeMode !== 'afmetingen';
+        els.dimsDirectM3.hidden = state.volumeMode !== 'direct-m3';
+        recalc();
+      });
+    });
+
+    document.querySelectorAll('.shape-btn[data-methode]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.shape-btn[data-methode]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        state.methode = btn.dataset.methode;
+        els.resultsBetonZakken.hidden = state.methode !== 'zakken';
+        els.resultsBetonZelfmengen.hidden = state.methode !== 'zelf-mengen';
+        recalc();
+      });
+    });
+
+    document.querySelectorAll('.shape-btn[data-stenenmode]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.shape-btn[data-stenenmode]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        state.stenenMode = btn.dataset.stenenmode;
+        els.dimsMortelOppervlakte.hidden = state.stenenMode !== 'oppervlakte';
+        els.dimsMortelStenen.hidden = state.stenenMode !== 'stenen';
+        recalc();
+      });
+    });
+
+    [els.betonLengte, els.betonBreedte, els.betonDikte, els.betonVolumeM3, els.mortelM2, els.mortelStenen].forEach(function (el) {
+      el.addEventListener('input', recalc);
+    });
+
+    recalc();
+
+    document.querySelectorAll('a[data-track]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (a.classList.contains('btn-affiliate')) {
+          e.preventDefault();
+          gaEvent('click_affiliate', { target: a.dataset.track, retailer: a.dataset.retailer || null });
+        }
+        try {
+          fetch('/api/track', {
+            method: 'POST',
+            keepalive: true,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ target: a.dataset.track })
+          });
+        } catch (err) {}
+      });
+    });
+  </script>
+</body>
+</html>

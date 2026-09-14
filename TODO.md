@@ -6,11 +6,10 @@ actuele status + openstaande acties.
 ## Status
 
 - Tool 1 (Materiaal Calculator): live productie.
-- Tool 2 (Beton & Mortel Calculator): live staging, 6/6 tests groen, klaar voor Johans review/GO.
-- Tool 3 (Bestrating & Egaline Calculator): live staging (5/5 tests groen, curl-geverifieerd),
-  klaar voor Johans review/GO.
-- Tool 4 (UBL/Peppol Invoice Validator, Engelstalig): live staging, Fase 1 (well-formed XML +
-  UBL-root check, 7/7 tests groen), klaar voor Johans review/GO.
+- Tool 2 (Beton & Mortel Calculator): live productie sinds 14-09-2026 (GO), 6/6 tests groen.
+- Tool 3 (Bestrating & Egaline Calculator): live productie sinds 14-09-2026 (GO), 5/5 tests groen.
+- Tool 4 (UBL/Peppol Invoice Validator, Engelstalig, Fase 1): live productie sinds 14-09-2026
+  (GO), 7/7 tests groen.
 - Kwaliteitspoort (`scripts/verify-site.js` + lychee CI + pre-commit hook): actief, `npm test`
   groen (23/23).
 
@@ -21,9 +20,8 @@ actuele status + openstaande acties.
       dan pas Gamma/Karwei-merchantaanvragen indienen.
 - [ ] Daisycon-registratie zodra relevant voor een andere retailer.
 - [ ] Stripe-account voor UBL-validator freemium (Tool 4, Fase 2) — niet nu blokkerend.
-- [ ] Heroverwegen Search Console/Bing-resubmit voor de nieuwe homepage-copy.
-- [ ] Review + "GO voor productie" voor Tool 2 (Beton & Mortel), Tool 3 (Bestrating & Egaline) en
-      Tool 4 (UBL/Peppol Validator, Fase 1), alle drie op staging.
+- [ ] Search Console/Bing-resubmit heroverwegen: nieuwe homepage-copy + 3 nieuwe productie-URL's
+      (Tool 2, 3, 4, sitemap.xml al bijgewerkt).
 
 ## Actief — Mijlpaal 1
 
@@ -39,8 +37,3 @@ actuele status + openstaande acties.
 - [ ] Klusmand Multi-Store Optimizer — wacht op Fase B.
 - [ ] B2B teamlicenties/REST API, leveranciersponsoring, DE/EN-vertaling.
 - [ ] Domeinmigratie-evaluatie (pas bij €250+/mnd omzet).
-
-## On hold
-
-- Tumble en de oude game-projecten: zie `ROADMAP.his` voor volledige status — nog geen besluit
-  over commit/archiveren/verwijderen van de broncode buiten dit repo.
