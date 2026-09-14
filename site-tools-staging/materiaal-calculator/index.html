@@ -71,7 +71,7 @@
     color-scheme: light;
     --bg: #f8fafc;
     --ink: #0f172a;
-    --ink-dim: #475569;
+    --ink-dim: #334155;
     --accent: #10b981;
     --accent-dark: #059669;
     --accent-ink: #ffffff;
@@ -265,31 +265,48 @@
     color: var(--ink-dim);
   }
 
-  .affiliate-row {
+  .retailer-card {
     margin-top: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
   }
+  .retailer-card h2 {
+    font-size: 1.05rem;
+    margin: 0 0 0.9rem;
+  }
+  .retailer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .retailer-row:last-of-type { border-bottom: none; }
+  .retailer-info { display: flex; flex-direction: column; }
+  .retailer-name { font-weight: 700; color: var(--ink); }
+  .retailer-desc { font-size: 0.82rem; color: var(--ink-dim); }
   .btn-affiliate {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
     background: var(--good);
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
-    padding: 0.7rem 1.1rem;
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
     border-radius: 10px;
     min-height: 44px;
+    white-space: nowrap;
     opacity: 0.55;
     cursor: not-allowed;
   }
-  .affiliate-note {
+  .affiliate-disclaimer {
+    margin: 0.5rem 0 0;
     font-size: 0.75rem;
-    color: var(--ink-dim);
-    align-self: center;
+    color: #64748b;
+    text-align: center;
   }
 
   .info-card {
@@ -420,11 +437,37 @@
         Geschat gewicht: <strong id="out-gewicht-kg">–</strong> kg (≈ <span id="out-gewicht-ton">–</span> ton)
       </p>
 
-      <div class="affiliate-row">
-        <a href="#" class="btn-affiliate" data-track="affiliate-bigbag-placeholder" title="Affiliate-link volgt zodra een partnerprogramma is aangesloten">
-          🛒 Bekijk Big Bags bij bouwmarkt
-        </a>
-        <span class="affiliate-note">(binnenkort — affiliate-link volgt)</span>
+      <div class="retailer-card">
+        <h2>Waar te bestellen?</h2>
+
+        <div class="retailer-row">
+          <div class="retailer-info">
+            <span class="retailer-name">GAMMA</span>
+            <span class="retailer-desc">Big bags &amp; los gestort</span>
+          </div>
+          <a href="#" class="btn-affiliate" data-track="affiliate-gamma" data-retailer="gamma" rel="sponsored nofollow" title="Affiliate-link volgt zodra TradeTracker is aangesloten">Bekijk bij Gamma →</a>
+        </div>
+
+        <div class="retailer-row">
+          <div class="retailer-info">
+            <span class="retailer-name">KARWEI</span>
+            <span class="retailer-desc">Big bags &amp; tuinaarde</span>
+          </div>
+          <a href="#" class="btn-affiliate" data-track="affiliate-karwei" data-retailer="karwei" rel="sponsored nofollow" title="Affiliate-link volgt zodra TradeTracker is aangesloten">Bekijk bij Karwei →</a>
+        </div>
+
+        <div class="retailer-row">
+          <div class="retailer-info">
+            <span class="retailer-name">Gespecialiseerde webshop</span>
+            <span class="retailer-desc">Vaak scherpere prijs bij grotere hoeveelheden</span>
+          </div>
+          <a href="#" class="btn-affiliate" data-track="affiliate-specialist" data-retailer="specialist" rel="sponsored nofollow" title="Affiliate-link volgt zodra een partnerprogramma is aangesloten">Bekijk alternatief →</a>
+        </div>
+
+        <p class="affiliate-disclaimer">
+          * Prijzen zijn indicatief. Bij bestelling via onze links ontvangen wij mogelijk een
+          commissie, zonder extra kosten voor jou.
+        </p>
       </div>
     </section>
 
@@ -449,6 +492,17 @@
           <tr><td>Tuinaarde / Compost</td><td>+15%</td><td>≈ 800 kg/m³</td></tr>
         </tbody>
       </table>
+
+      <h2 style="margin-top: 1.5rem;">Vuistregels voor laagdikte</h2>
+      <ul>
+        <li><strong>Zand (ophoging/egaliseren):</strong> 5–10 cm, afhankelijk van hoeveel je moet
+          ophogen.</li>
+        <li><strong>Grind/split (paden, opritten):</strong> 5–7 cm op een verdichte ondergrond.</li>
+        <li><strong>Boomschors (onkruidwering):</strong> minimaal 7–8 cm — dunner laat licht door
+          tot de bodem, waardoor onkruid alsnog kiemt en het effect grotendeels wegvalt.</li>
+        <li><strong>Tuinaarde/compost (bodemverbetering):</strong> 3–5 cm, licht doorwerken in de
+          bovengrond.</li>
+      </ul>
 
       <h2 style="margin-top: 1.5rem;">Veelgestelde vragen</h2>
       <p><strong>Hoeveel kuub zand heb ik nodig voor 10 m² bij 5 cm dik?</strong><br>
@@ -477,13 +531,9 @@
     </div>
   </footer>
 
+  <script src="calculator-core.js"></script>
   <script>
-    var MATERIALS = {
-      zand:      { label: 'Zand / Ophoogzand',    inklinking: 0.10, dichtheid: 1600 },
-      grind:     { label: 'Grind / Split',         inklinking: 0.10, dichtheid: 1500 },
-      schors:    { label: 'Boomschors',            inklinking: 0.20, dichtheid: 250  },
-      tuinaarde: { label: 'Tuinaarde / Compost',   inklinking: 0.15, dichtheid: 800  }
-    };
+    var MATERIALS = CalculatorCore.MATERIALS;
 
     var state = { material: 'zand', shape: 'rechthoek' };
 
@@ -518,28 +568,18 @@
     var hasRenderedOnce = false;
 
     function recalc() {
-      var oppervlakte = 0;
-      if (state.shape === 'rechthoek') {
-        var lengte = parseFloat(els.lengte.value) || 0;
-        var breedte = parseFloat(els.breedte.value) || 0;
-        oppervlakte = lengte * breedte;
-      } else {
-        var diameter = parseFloat(els.diameter.value) || 0;
-        var straal = diameter / 2;
-        oppervlakte = Math.PI * straal * straal;
-      }
-
-      var laagdikteCm = parseFloat(els.laagdikte.value) || 0;
-      var laagdikteM = laagdikteCm / 100;
-      var volumeBasis = oppervlakte * laagdikteM;
+      var dims = state.shape === 'rechthoek'
+        ? { lengte: els.lengte.value, breedte: els.breedte.value }
+        : { diameter: els.diameter.value };
+      var oppervlakte = CalculatorCore.calculateOppervlakte(state.shape, dims);
 
       var mat = MATERIALS[state.material];
-      var volumeIncl = volumeBasis * (1 + mat.inklinking);
+      var volumeIncl = CalculatorCore.calculateVolumeInclInklinking(oppervlakte, els.laagdikte.value, mat.inklinking);
 
-      var bigbags1 = volumeIncl > 0 ? Math.ceil(volumeIncl / 1) : 0;
-      var bigbagsHalve = volumeIncl > 0 ? Math.ceil(volumeIncl / 0.5) : 0;
+      var bigbags1 = CalculatorCore.calculateBigBags(volumeIncl, 1);
+      var bigbagsHalve = CalculatorCore.calculateBigBags(volumeIncl, 0.5);
 
-      var gewichtKg = volumeIncl * mat.dichtheid;
+      var gewichtKg = CalculatorCore.calculateGewichtKg(volumeIncl, mat.dichtheid);
       var gewichtTon = gewichtKg / 1000;
 
       els.outOppervlakte.textContent = fmt(oppervlakte, 2);
@@ -589,7 +629,7 @@
       a.addEventListener('click', function (e) {
         if (a.classList.contains('btn-affiliate')) {
           e.preventDefault();
-          gaEvent('click_affiliate', { target: a.dataset.track });
+          gaEvent('click_affiliate', { target: a.dataset.track, retailer: a.dataset.retailer || null });
         }
         try {
           fetch('/api/track', {

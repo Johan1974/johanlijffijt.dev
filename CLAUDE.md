@@ -269,6 +269,26 @@ voor eigen promotie (zie § Core Regel: SEO-Eerst).
      GSC-export in de context nodig, alleen de gemelde termen zelf (zie § Token & Context
      Discipline).
 
+### 🔍 Dagelijkse Vergelijkings-Benchmark: Leren van de Top 5
+
+**Vastgelegd 14 september 2026 — bindend.** Benchmark tegen de top 5 Nederlandse
+vergelijkingssites (Tweakers, Kieskeurig, Independer, Gaslicht/Beslist) voor elke affiliate-/
+vergelijkingstabel in de portfolio — concretiseert § PROTOCOL: SEO-Eerst hierboven, geen aparte
+regelset.
+
+1. **Wat we overnemen:**
+   - **Subtiele disclosure (ACM-proof):** één strakke regel direct bij de vergelijkingstabel, geen
+     kader/banner: `* Prijzen zijn indicatief. Bij bestelling via onze links ontvangen wij
+     mogelijk een commissie, zonder extra kosten voor jou.`
+   - **Tabel-architectuur:** compacte rijen, logo/winkelnaam, indicatieve prijs ("v.a."), directe
+     deeplink-knop met `rel="sponsored nofollow"`.
+   - **E-E-A-T-FAQ:** korte toelichting onder de tabel over berekeningsaannames en levering per
+     regio (zie § Kwaliteitseisen per tool).
+2. **Dagelijkse check (max 3 regels):** bij het ontwerpen van een nieuwe calculator, toets hoe de
+   grote vergelijkers vergelijkbare producttabellen indelen; voorkom opdringerige advertentie-
+   blokken — rust, redactionele onafhankelijkheid en direct gebruikersgemak wegen zwaarder dan
+   conversie-tactieken.
+
 ---
 
 Persoonlijke hub-/portfoliopagina van Johan, domein `johanlijffijt.dev` (Namecheap, geregistreerd

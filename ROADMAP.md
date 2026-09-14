@@ -121,6 +121,26 @@ B2B-tool.*
   - Gratis downloadbare checklists (bijv. "UBL Fouten Cheat Sheet" of "Terras Aanleg Checklist")
     in ruil voor e-mailadressen.
 
+### 🔀 Overkoepelend architectuurpatroon: Universele Dynamische Prijsvergelijker
+
+**Van toepassing op alle affiliate-tools uit Mijlpaal 1 én 2** — vervangt het losse statische
+affiliate-knop-patroon (zie § Core Regel: Monetisatie in `CLAUDE.md`) door één herbruikbaar
+vergelijker-component per tool:
+
+- Materiaalcalculator: Gamma vs. Karwei vs. specialist (zand, grind, boomschors big bags).
+- Betoncalculator (Tool 3): vergelijking per zak premix beton/cement.
+- Bestratingcalculator (Tool 4): opsluitbanden, voegzand, tegeldragers.
+- B2B-tools: vergelijking van Peppol/e-facturatie-softwareabonnementen.
+
+**Twee fasen:**
+1. **Fase A (lean start):** lichte vergelijker-UI met indicatieve marktprijzen en deeplinks —
+   dezelfde inerte-placeholder-discipline als de huidige affiliate-knop totdat een echte
+   partnerkoppeling er is (zie § Core Regel: Monetisatie).
+2. **Fase B (geautomatiseerd):** centrale cronjob op de VPS die dagelijks productfeeds
+   (TradeTracker/Daisycon CSV/XML) inleest en wegschrijft naar `api/data/prices.json` — geen
+   handmatig onderhoud per tool. Bouwt voort op de bestaande `api/`-backend (zie `CLAUDE.md` §
+   Eigen backend), geen nieuwe infrastructuur ernaast.
+
 ### 🏢 Mijlpaal 3: Doorgroei naar € 3.000 – € 5.000 / maand (B2B Teams & Expansie)
 
 *Doel: Zakelijke teamlicenties, API-toegang en internationale organische expansie.*

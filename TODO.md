@@ -33,6 +33,11 @@ volledige, gesynchroniseerde tool-indeling per mijlpaal):
 4. Bestrating & Snijverlies Calculator — klinkers/tegels/straatzandbed.
 5. CAMT.053 / MT940 Bankexport Converter — B2B-utility.
 
+**Vergelijkings-benchmark (zie `CLAUDE.md` § Dagelijkse Vergelijkings-Benchmark):** subtiele
+1-regel disclosure ✅ live op de materiaalcalculator; `rel="sponsored nofollow"` op affiliate-
+knoppen ✅ toegevoegd. Logo + "v.a."-indicatieprijs per rij: backlog, pas zinvol zodra Fase B
+(prijsfeed → `api/data/prices.json`, zie `ROADMAP.md`) echte prijzen aanlevert.
+
 ## ✅ Gedaan: Tool 1 — Bouw- & Tuinmateriaal Calculator, live op staging (14 september 2026)
 
 - `site-tools-staging/materiaal-calculator/index.html` — zelfstandige HTML-pagina, geen
@@ -73,13 +78,26 @@ Zie § Gedaan hierboven voor het volledige overzicht. Eén openstaand detailpunt
       (`site-feedback-staging/` → `site/feedback/`) naar `site/` kopiëren, `site/sitemap.xml`
       bijwerken (nieuwe URL + `lastmod`), en heroverwegen of de nieuwe homepage-copy opnieuw
       ingediend moet worden bij Search Console/Bing (zie `REGISTRATIONS.md`).
+      **Kant-en-klare sitemap-inhoud voor dat moment** (nu nog niet toegepast — `site/sitemap.xml`
+      is een gedeeld bestand met productie, dus een `/tools/...`-entry erin zetten vóór de tool
+      daadwerkelijk op `site/tools/...` staat zou een 404-URL bij Google indienen; `/game/` staat
+      er nu terecht nog in, want dat is nog live op productie):
+      ```xml
+      <url><loc>https://johanlijffijt.dev/</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+      <url><loc>https://johanlijffijt.dev/tools/materiaal-calculator/</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+      <url><loc>https://johanlijffijt.dev/feedback/</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
+      ```
+      (`/game/` eruit, `lastmod` invullen op de dag van de GO-deploy.)
 
 ### Stap 3 — Pijler A: affiliate-monetisatie activeren
 
-- [ ] Aanmelden bij affiliate-netwerken (Daisycon / TradeTracker / bouwmarkt-partnerprogramma's)
+- [ ] Scaffold herbruikbare prijsvergelijker-component voor calculators (Fase A, zie
+      `ROADMAP.md` § Universele Dynamische Prijsvergelijker) — vervangt de losse statische
+      affiliate-knop, herbruikbaar over materiaal-/beton-/bestratingcalculator heen.
+- [ ] Aanmelden bij TradeTracker (Gamma/Karwei) en Daisycon zodra staging live gezet wordt
       — registratie met `play@johanlijffijt.dev` (zie `CLAUDE.md` § Gouden Regel: registraties).
-- [ ] Inerte CTA-knoppen op de materiaalcalculator vervangen door echte affiliate-links voor
-      1 m³ / 0,5 m³ big bags zand, grind en boomschors.
+- [ ] Inerte CTA-knoppen op de materiaalcalculator vervangen door echte affiliate-links/
+      prijsvergelijker voor 1 m³ / 0,5 m³ big bags zand, grind en boomschors.
 - Rekenmodel: ~15–20 bestellingen/maand @ € 15–20 commissie = € 250–350/maand.
 
 ### Stap 4 — Pijler B: UBL/Factuur Validator scaffolden (`/tools/ubl-validator/`, staging-only)

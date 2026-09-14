@@ -1,0 +1,8 @@
+{
+  "name": "johanlijffijt-dev",
+  "private": true,
+  "description": "Test-gate voor de rekenkundige logica van de Tools Hub-calculators (geen build-pipeline voor de site zelf, zie CLAUDE.md).",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  }
+}
