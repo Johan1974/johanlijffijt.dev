@@ -6,18 +6,22 @@ actuele status + openstaande acties.
 ## Status
 
 - Tool 1 (Materiaal Calculator): live productie.
-- Tool 2 (Bestrating & Egaline Calculator): live staging, klaar voor review/GO.
+- Tool 2 (Beton & Mortel Calculator): live staging, 6/6 tests groen, klaar voor Johans review/GO.
+- Tool 3 (Bestrating & Egaline Calculator): live staging (5/5 tests groen, curl-geverifieerd),
+  klaar voor Johans review/GO.
 - Kwaliteitspoort (`scripts/verify-site.js` + lychee CI + pre-commit hook): actief, `npm test`
-  groen.
+  groen (16/16).
 
 ## [ACTIE JOHAN]
 
-- [ ] TradeTracker-registratie (Gamma/Karwei affiliate) met `play@johanlijffijt.dev` — blokkeert
-      affiliate-deeplinks + live prijsfeed.
+- [ ] TradeTracker: aanmelding verstuurd (14-09-2026), wacht op activatiemail + accountgoedkeuring
+      (kan dagen duren). Na goedkeuring: verificatiecode op site plaatsen (eigenaarschapsbewijs),
+      dan pas Gamma/Karwei-merchantaanvragen indienen.
 - [ ] Daisycon-registratie zodra relevant voor een andere retailer.
 - [ ] Stripe-account voor UBL-validator freemium (Tool 4, Fase 2) — niet nu blokkerend.
 - [ ] Heroverwegen Search Console/Bing-resubmit voor de nieuwe homepage-copy.
-- [ ] Review + "GO voor productie" voor Tool 2 (Bestrating & Egaline, staat op staging).
+- [ ] Review + "GO voor productie" voor Tool 2 (Beton & Mortel) en Tool 3 (Bestrating & Egaline),
+      beide op staging.
 
 ## Actief — Mijlpaal 1
 
@@ -29,7 +33,6 @@ actuele status + openstaande acties.
 
 ## Backlog (Mijlpaal 2/3)
 
-- [ ] Tool 3: Beton- & Mortel Calculator.
 - [ ] Tool 5: CAMT.053/MT940 Converter.
 - [ ] Lead capture (checklists i.r.v. e-mailadres).
 - [ ] Klusmand Multi-Store Optimizer — wacht op Fase B.

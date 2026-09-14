@@ -10,8 +10,8 @@ Bindende regels: zie `CLAUDE.md`. Dit document = wat gebouwd wordt, in welke vol
 | # | Tool | Status |
 |---|---|---|
 | 1 | Materiaal Calculator | Live productie |
-| 2 | Bestrating & Egaline Calculator | Live staging — klaar voor Johans review/GO |
-| 3 | Beton & Mortel Calculator | Backlog |
+| 2 | Beton & Mortel Calculator | Live staging — klaar voor Johans review/GO |
+| 3 | Bestrating & Egaline Calculator | Live staging — klaar voor Johans review/GO |
 | 4 | UBL/Peppol Factuur Validator | Backlog (B2B, €9/mnd) |
 | 5 | CAMT.053/MT940 Bankexport Converter | Backlog (B2B, zelfde abonnement) |
 | — | Klusmand Multi-Store Optimizer | Concept, geblokkeerd tot Fase B |
@@ -19,8 +19,11 @@ Bindende regels: zie `CLAUDE.md`. Dit document = wat gebouwd wordt, in welke vol
 
 ## Directe prioriteit
 
-Tool 2 (Bestrating & Egaline) staat live op staging (5 Node-tests groen, curl-geverifieerd) —
-wacht op Johans review en expliciete "GO voor productie".
+Tool 2 (Beton & Mortel Calculator) en Tool 3 (Bestrating & Egaline Calculator) staan **live op
+staging**, `npm test` groen (16/16). Mengverhouding-aannames Tool 2 zijn vooraf met Johan
+afgestemd (zakken 12,5L/25kg, zelf mengen 1:2:3, mortel 100 stenen/m² + 1:4 cement:zand — zie
+onderbouwing op de toolpagina zelf). Enige volgende stap: Johans inspectie + expliciete "GO voor
+productie" voor beide.
 
 ## Mijlpalen & omzetdoel
 
@@ -39,14 +42,13 @@ wacht op Johans review en expliciete "GO voor productie".
 
 | Tool | Sessies | Blokkade |
 |---|---|---|
-| 3. Beton & Mortel | ~3 | geen — verifieer mengverhouding-aannames |
 | 4. UBL Validator (Fase 1, gratis) | 3-4 | geen |
 | 4b. UBL Stripe/freemium | +3-5 | [ACTIE JOHAN] Stripe-account |
 | 5. MT940/CAMT.053 Converter | ~3 | geen |
 | Klusmand Optimizer | 4-5 | Fase B (live prijsfeed) vereist |
 
-Bouwvolgorde: **Tool 2 (Bestrating, staging) → Tool 3 (Beton) → Tool 4 (UBL Fase 1) → Tool 5
-(MT940) → Klusmand Optimizer**.
+Bouwvolgorde: **Tool 2/3 (staging, wachten op GO) → Tool 4 (UBL Fase 1) → Tool 5 (MT940) →
+Klusmand Optimizer**.
 
 ## Domeinmigratie (optioneel, post-validatie)
 
