@@ -64,6 +64,23 @@ knoppen ✅ toegevoegd. Logo + "v.a."-indicatieprijs per rij: backlog, pas zinvo
   (nog geen productie-route, per de Gouden Regel voor Deployment — terecht).
 - `CLAUDE.md`/`ROADMAP.md` herschreven voor de nieuwe scope (dit bestand als derde).
 
+## ✅ Gedaan: Tool 3 — Bestrating & Egaline Calculator, live op staging (14 september 2026)
+
+Eerste bouwsessie volgens `ROADMAP.md` § Tijdsplanning & Mijlpalen, bouwvolgorde-positie 1.
+
+- `site-tools-staging/bestrating-calculator/` — `pavers-core.js` (pure rekenlogica, zelfde
+  UMD-patroon als `calculator-core.js`) + `index.html` (hergebruik van Tool 1's shell: tabs,
+  shape-toggle, results-grid, retailer-card zonder handmatige prijzen, E-E-A-T-sectie + FAQ).
+- Twee toepassingen in één tool: **Bestrating** (tegelformaat 60×60/30×30/20×30, +10%
+  snijverlies, opsluitbanden in strekkende meter — alleen bij lengte×breedte-invoer, bewust geen
+  gegokte waarde bij directe m²-invoer, zandbed 10 cm/1600 kg/m³) en **Egaline** (≈1,6 kg/m² per
+  mm laagdikte, +10% marge, zakken van 25 kg).
+- `tests/pavers-core.test.js` — 5 tests (2 rekenscenario's + 3 randgevallen), toegevoegd aan
+  `npm test` via de bestaande glob, geen `package.json`-wijziging nodig.
+- `npm test` (linkchecker + 10 tests totaal) slaagt 100%; staging-homepage-kaart omgezet van
+  "Binnenkort" naar actief ("Nieuw", knop naar `/tools/bestrating-calculator/`).
+- Geverifieerd met curl: tool (200), `pavers-core.js` (200), homepage (200).
+
 ## 📍 Mijlpaal 1 — Sprint 1 (huidige focus, zie `ROADMAP.md` § Mijlpalen & Monetisatie)
 
 Volgorde is bewust: eerst de consument-tool afronden en op review laten liggen (kost Johan geen
