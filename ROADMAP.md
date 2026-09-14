@@ -41,9 +41,8 @@ correcte rekenlogica, heldere structuur, sterke SEO-copy — geen artistieke ass
 - De broncode van deze projecten (`~/projects/apps/meteor-dodge/`, `neon-drift/`,
   `gravity-flip/`, `marble-jam/`) blijft ongewijzigd staan — geen opruimactie, kost niets in
   stilstand.
-- Productie (`site/index.html`, `site/game/`) toont op het moment van schrijven nog de oude
-  game-arcade-homepage — die blijft zo totdat Johan expliciet "GO voor productie" geeft voor de
-  nieuwe Tools Hub-homepage (zie Gouden Regel voor Deployment).
+- Productie draait sinds "GO voor productie" op 14 september 2026 op de nieuwe Tools
+  Hub-homepage + materiaalcalculator (zie Gouden Regel voor Deployment).
 - Staging-only game-routes (`/games/neon-drift/`, `/games/gravity-flip/`, `/games/marble-jam/`)
   zijn uit `nginx/johanlijffijt.dev.conf` verwijderd; de bijbehorende staging-buildmappen
   (`site-*-staging/`) staan nog op schijf maar worden niet meer geserveerd.
@@ -121,6 +120,60 @@ B2B-tool.*
   - Gratis downloadbare checklists (bijv. "UBL Fouten Cheat Sheet" of "Terras Aanleg Checklist")
     in ruil voor e-mailadressen.
 
+#### 🛒 Geavanceerde tools — concept: "Klusmand & Materiaal Optimizer" (N-Store Arbitrage)
+
+**Vastgelegd 14 september 2026, Johans strategisch inzicht — concept, nog niet gestart. Opgeschaald
+dezelfde dag van vaste 2-aanbieder-splitsing naar flexibele N-store-arbitrage.**
+Vergelijkingssites vergelijken vrijwel nooit per artikel binnen één samengesteld project; dat is
+precies de opening voor deze tool.
+
+- **Probleem:** consumenten kopen nu alles bij 1 bouwmarkt uit gemak, terwijl mixen (bijv. stenen
+  bij Bouwmarkt A en big bags zand bij Bouwmarkt B) tientallen tot honderden euro's bespaart.
+- **Kernfunctionaliteit:** gebruiker stelt een gecombineerd project samen (bijv. bestrating +
+  ophoogzand + worteldoek); het algoritme splitst niet langer per se over precies 2 aanbieders,
+  maar zoekt flexibel over N leveranciers.
+- **Algoritme (Combinatorische Mand-Optimizer):**
+  - Berekent alle combinaties over N winkels: Prijs(artikelen) + Bezorgkosten(per unieke
+    leverancier) — bezorgkosten tellen dus maar één keer per leverancier mee, niet per artikel.
+  - Automatische detectie van gratis pakketverzending (bijv. klein materiaal via webshop/
+    pakketpost) versus zwaar vrachtvervoer (big bags/stenen per vrachtwagen) — dit onderscheid
+    bepaalt of splitsen over meerdere leveranciers de bezorgkosten juist laat oplopen of niet.
+- **Resultaten-UI:**
+  - Toont de "Optimale Mand-Samenstelling": kan bestaan uit 1, 2 of 3 leveranciers, niet vast op 2.
+  - Geeft per leverancier een directe bestelknop met deeplink naar de specifieke artikelen.
+  - Toont de nettobesparing ten opzichte van de goedkoopste 'alles-in-1'-aanbieder.
+- **Commercieel voordeel:** meervoudige affiliate-kliks — de bezoeker rekent mogelijk af bij
+  meerdere adverteerders in plaats van één, schaalt mee met N in plaats van vast op twee.
+- **Feature: Store Exclusion met "Groot Voordeel"-Trigger (Soft Exclusion):**
+  - **Gebruikerscontrole:** eenvoudige toggles/checkboxes om specifieke winkels uit te sluiten van
+    het vergelijkingsresultaat.
+  - **Drempelwaarde-alert (besparings-geweten):** het algoritme toetst de uitkomst altijd tegen
+    het absolute marktminimum inclusief de uitgesloten winkels. Levert een uitgesloten winkel een
+    significant voordeel op (drempelwaarde bijv. > € 25 of > 10% van het orderbedrag), dan toont
+    de UI een vriendelijke alert: "Je hebt [Winkel X] uitgesloten, maar als je [Artikel Y] tóch
+    daar bestelt bespaar je € ZZ extra. [Toon optie met Winkel X]".
+  - Blijft het verschil onder de drempelwaarde, dan respecteert de tool de uitsluiting 100%
+    geruisloos — geen alert, geen guilt-tripping bij een verwaarloosbaar verschil.
+- **Feature: "Mijn Klusprofiel" (client-side state via `localStorage`):**
+  - **Concept:** gebruiker stelt eenmalig zijn situatie in; alle tools op het platform rekenen
+    direct gepersonaliseerd door zonder logins of server-accounts.
+  - **Profiel-instellingen:**
+    - Transport: "Laten bezorgen" vs. "Zelf ophalen / eigen aanhanger" (bepaalt of bezorgkosten
+      meegerekend worden in de arbitrage).
+    - Klantenkaarten: Gamma Voordeelpas, Karwei Kaart, Hornbach ProfiCard.
+    - Winkelvoorkeuren: uitsluitingen van specifieke aanbieders (koppelt direct aan de Store
+      Exclusion-feature hierboven — hetzelfde uitsluitingsprofiel, niet twee losse instellingen).
+  - **Techniek:** pure browseropslag (`localStorage`), zero-backend-frictie, privacy-vriendelijk
+    en instant actief over de hele Tools Hub — geen aparte database/account-systeem nodig, dus
+    geen nieuwe infrastructuur naast de bestaande `api/`-backend.
+  - **Commerciële waarde:** verhoogt terugkerend bezoek (retentie) en vormt de basis voor latere
+    B2B/zzp-exportfuncties.
+- **Afhankelijkheid:** vereist een werkende live prijsfeed per aanbieder (zie § Universele
+  Dynamische Prijsvergelijker, Fase B) — zonder betrouwbare, actuele prijzen per artikel is een
+  combinatorische optimalisatie per definitie een schatting, wat tegen de "geen handmatig beheerde
+  bedragen"-regel in `CLAUDE.md` ingaat. Komt dus pas na Fase B, niet ervoor — en pas voor meer dan
+  2 leveranciers relevant zodra er ook daadwerkelijk meer dan 2 aanbieders een live feed leveren.
+
 ### 🔀 Overkoepelend architectuurpatroon: Universele Dynamische Prijsvergelijker
 
 **Van toepassing op alle affiliate-tools uit Mijlpaal 1 én 2** — vervangt het losse statische
@@ -132,14 +185,19 @@ vergelijker-component per tool:
 - Bestratingcalculator (Tool 4): opsluitbanden, voegzand, tegeldragers.
 - B2B-tools: vergelijking van Peppol/e-facturatie-softwareabonnementen.
 
-**Twee fasen:**
-1. **Fase A (lean start):** lichte vergelijker-UI met indicatieve marktprijzen en deeplinks —
-   dezelfde inerte-placeholder-discipline als de huidige affiliate-knop totdat een echte
-   partnerkoppeling er is (zie § Core Regel: Monetisatie).
-2. **Fase B (geautomatiseerd):** centrale cronjob op de VPS die dagelijks productfeeds
-   (TradeTracker/Daisycon CSV/XML) inleest en wegschrijft naar `api/data/prices.json` — geen
-   handmatig onderhoud per tool. Bouwt voort op de bestaande `api/`-backend (zie `CLAUDE.md` §
-   Eigen backend), geen nieuwe infrastructuur ernaast.
+**Twee fasen — herzien 14 september 2026 (Johans kwaliteits-/integriteitsbesluit: géén
+handmatig beheerde bedragen in de interface, ook niet indicatief-gelabeld):**
+1. **Fase A (lean start, huidige staat):** vergelijker-UI **zonder bedragen** — pure deeplinks per
+   aanbieder ("Bekijk actuele prijzen bij Gamma/Karwei →"), inert totdat een echte
+   partnerkoppeling er is (zie § Core Regel: Monetisatie). Een eerdere versie toonde wél
+   geschatte/handmatige `v.a. €`-bedragen (`prices.json`-mockup) — teruggedraaid nadat bleek dat
+   een handmatige schatting 40% van de echte prijs kon afwijken. Prijzen tonen we pas weer zodra
+   Fase B draait.
+2. **Fase B (geautomatiseerd, pas dan bedragen tonen):** centrale cronjob op de VPS die dagelijks
+   productfeeds (TradeTracker/Daisycon CSV/XML) inleest en wegschrijft naar `api/data/prices.json`
+   — geen handmatig onderhoud per tool, dus geen mens meer tussen de bron en het getoonde bedrag.
+   Bouwt voort op de bestaande `api/`-backend (zie `CLAUDE.md` § Eigen backend), geen nieuwe
+   infrastructuur ernaast.
 
 ### 🏢 Mijlpaal 3: Doorgroei naar € 3.000 – € 5.000 / maand (B2B Teams & Expansie)
 
@@ -153,6 +211,23 @@ vergelijker-component per tool:
     vaste sponsorplek).
 - [ ] **Internationale Expansie (DE/EN):**
   - UBL/Peppol validator vertalen naar `/en/` en `/de/` voor de bredere Europese markt.
+
+### 🌐 Fase: Eventuele Domeinmigratie naar Nederlands Merklabel (Optioneel, Post-Validatie)
+
+**Vastgelegd 14 september 2026 — geparkeerd voor de huidige fase, formeel vastgelegd voor de
+lange termijn.** Geen actie nu; de discussie is voor nu definitief gesloten, dit is alleen de
+overstapstrategie voor het moment dat de voorwaarde eronder ooit wordt gehaald.
+
+- **Voorwaarde vóór overweging:** stabiele tractie en bewezen omzet (> € 250–500/maand) op
+  `johanlijffijt.dev` — geen domeinwissel op basis van een hypothese, pas na bewijs.
+- **Architectuur & SEO-veiligheid, mocht die drempel ooit gehaald worden:**
+  - Geen verlies van opgebouwde waarde: overstap via een HTTP 301 Permanent Redirect in nginx
+    (`return 301 https://nieuw-domein.nl$request_uri;`).
+  - Behoud van Google-rankings, backlinks en traffic via de officiële 'Adreswijziging'-verhuistool
+    in Google Search Console.
+  - Oude links naar tools blijven hierdoor 1-op-1 geruisloos functioneren.
+- **Focus blijft nu 100% op het valideren van de eerste 3 tools op `johanlijffijt.dev/tools/`** —
+  zie `TODO.md` voor de evaluatie-trigger.
 
 ### Toetsingskader
 

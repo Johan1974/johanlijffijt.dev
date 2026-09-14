@@ -69,35 +69,46 @@ Zie § Gedaan hierboven voor het volledige overzicht. Eén openstaand detailpunt
       boomschors tegen lichtkiemend onkruid" i.p.v. alleen een algemeen laagdikte-getal) — kleine
       copy-aanvulling, kan tegelijk met de eerstvolgende staging-wijziging.
 
-### Stap 2 — Wacht op Johans review, dan "GO voor productie"
+### Stap 2 — ✅ "GO voor productie" ontvangen en uitgevoerd (14 september 2026)
 
-- [ ] Johan test `staging.johanlijffijt.dev` (homepage + `/tools/materiaal-calculator/`) op
-      desktop en mobiel.
-- [ ] Feedback verwerken (rekenlogica, copy, styling).
-- [ ] Pas na expliciete "GO voor productie": tool + nieuwe homepage + nieuwe `/feedback/`
-      (`site-feedback-staging/` → `site/feedback/`) naar `site/` kopiëren, `site/sitemap.xml`
-      bijwerken (nieuwe URL + `lastmod`), en heroverwegen of de nieuwe homepage-copy opnieuw
-      ingediend moet worden bij Search Console/Bing (zie `REGISTRATIONS.md`).
-      **Kant-en-klare sitemap-inhoud voor dat moment** (nu nog niet toegepast — `site/sitemap.xml`
-      is een gedeeld bestand met productie, dus een `/tools/...`-entry erin zetten vóór de tool
-      daadwerkelijk op `site/tools/...` staat zou een 404-URL bij Google indienen; `/game/` staat
-      er nu terecht nog in, want dat is nog live op productie):
-      ```xml
-      <url><loc>https://johanlijffijt.dev/</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-      <url><loc>https://johanlijffijt.dev/tools/materiaal-calculator/</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-      <url><loc>https://johanlijffijt.dev/feedback/</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
-      ```
-      (`/game/` eruit, `lastmod` invullen op de dag van de GO-deploy.)
+- [x] Johan heeft staging getest en goedgekeurd ("geen handmatig geschatte bedragen meer in de
+      UI, uitsluitend directe doorverwijzingen, 5/5 Node-tests groen").
+- [x] Materiaalcalculator (`site/tools/materiaal-calculator/`, incl. `calculator-core.js`) en de
+      nieuwe homepage (`site/index.html`) naar productie gekopieerd — staging-banner en
+      `noindex`-meta verwijderd, echte Google Search Console-verificatiecode (`m6UQ8nee...`)
+      behouden uit de oude homepage. GA4 gebruikt op beide bestanden de dynamische
+      hostname-detectie, laadt dus automatisch `G-TLWY630Z6D` op productie.
+      **Bewust niet meegenomen:** `/feedback/` — de opdracht voor deze GO noemde alleen tool +
+      homepage, dus `site-feedback-staging/` blijft nog even staging-only.
+- [x] `site/sitemap.xml` bijgewerkt: `/game/` eruit, `/tools/materiaal-calculator/` erin
+      (priority 0.9, lastmod 2026-09-14), homepage-lastmod bijgewerkt, `/feedback/` ongewijzigd
+      (die pagina zelf is vandaag niet gewijzigd).
+- [x] Geverifieerd met curl: homepage + tool geven 200, geen `noindex`/staging-banner meer
+      aanwezig op productie, `calculator-core.js` laadt (200).
+- [ ] Heroverwegen of de nieuwe homepage-copy opnieuw ingediend moet worden bij Search Console/
+      Bing (zie `REGISTRATIONS.md`) — niet gedaan in deze sessie, aparte actie.
 
 ### Stap 3 — Pijler A: affiliate-monetisatie activeren
 
-- [ ] Scaffold herbruikbare prijsvergelijker-component voor calculators (Fase A, zie
-      `ROADMAP.md` § Universele Dynamische Prijsvergelijker) — vervangt de losse statische
-      affiliate-knop, herbruikbaar over materiaal-/beton-/bestratingcalculator heen.
-- [ ] Aanmelden bij TradeTracker (Gamma/Karwei) en Daisycon zodra staging live gezet wordt
-      — registratie met `play@johanlijffijt.dev` (zie `CLAUDE.md` § Gouden Regel: registraties).
-- [ ] Inerte CTA-knoppen op de materiaalcalculator vervangen door echte affiliate-links/
-      prijsvergelijker voor 1 m³ / 0,5 m³ big bags zand, grind en boomschors.
+- [x] ~~Live-Ready JSON-koppeling (statisch `prices.json`-mockup + `fetch()`)~~ — **gebouwd
+      (14 september 2026) én diezelfde dag weer teruggedraaid**, op Johans expliciete
+      kwaliteits-/integriteitsbesluit: géén handmatig beheerde bedragen in de interface, ook niet
+      als "indicatief" gelabeld. Een geschatte boomschors-prijs bleek 40% naast de echte waarde te
+      zitten (zie eerdere Sprint-notitie) — dat soort fouten ondermijnt de geloofwaardigheid van
+      de hele vergelijker. `prices.json` is verwijderd, de `fetch()`/prijsberekening uit
+      `index.html` verwijderd; de 3 rijen zijn nu pure doorverwijzers ("Bekijk actuele prijzen bij
+      Gamma/Karwei →", "Bekijk prijzen bij specialist →") zonder bedrag. **Nieuwe regel:** zolang
+      er geen live feed draait, tonen we geen bedragen — zie `[HOGE PRIORITEIT]`-item hieronder.
+- [ ] **[ACTIE JOHAN] — blokkeert zowel de deeplinks als de live feed:** aanmelden bij
+      TradeTracker voor het affiliate-programma van Gamma en Karwei — registratie met
+      `play@johanlijffijt.dev` (zie `CLAUDE.md` § Gouden Regel: registraties). Ook Daisycon zodra
+      relevant voor een andere retailer.
+- [ ] **[HOGE PRIORITEIT]** Implementatie geautomatiseerde live prijsfeed (TradeTracker
+      API/XML/CSV) via nachtelijke cronjob zodra merchant-approval binnen is, zodat prijzen 100%
+      accuraat en autonoom getoond worden — zie Backlog-item "Fase B" hieronder voor de technische
+      uitwerking. Pas ná deze feed tonen we weer bedragen in de tool.
+- [ ] Inerte CTA-knoppen op de materiaalcalculator vervangen door echte affiliate-deeplinks
+      zodra de TradeTracker-registratie rond is (los van de prijsfeed — dit kan al vóór Fase B).
 - Rekenmodel: ~15–20 bestellingen/maand @ € 15–20 commissie = € 250–350/maand.
 
 ### Stap 4 — Pijler B: UBL/Factuur Validator scaffolden (`/tools/ubl-validator/`, staging-only)
@@ -118,11 +129,19 @@ Zie § Gedaan hierboven voor het volledige overzicht. Eén openstaand detailpunt
 
 ## Backlog: Mijlpaal 2 & 3 (niet nu oppakken, zie `ROADMAP.md` voor detail)
 
+- [ ] **Fase B — automatische productfeed-cronjob (zie `[HOGE PRIORITEIT]` hierboven):** zodra
+      TradeTracker-feeds binnen zijn ([ACTIE JOHAN]-item hierboven eerst afgerond), een
+      Node.js-fetcher-script op de VPS inrichten dat `api/data/prices.json` 's nachts automatisch
+      synchroniseert. **Definitief geen handmatig prijsbeheer meer in de workflow** — dit is nu de
+      enige weg waarop de tool ooit weer bedragen mag tonen, zie `ROADMAP.md` § Universele
+      Dynamische Prijsvergelijker.
 - [ ] Tool 3 — Bestrating & Tegel Calculator (Mijlpaal 2, Pijler A-vervolg).
 - [ ] Tool 4 — MT940/CAMT.053 Converter, in hetzelfde € 9/mnd-abonnement (Mijlpaal 2, Pijler B-
       vervolg).
 - [ ] Lead capture (gratis checklists i.r.v. e-mailadres, Mijlpaal 2).
 - [ ] B2B teamlicenties + REST API, leveranciersponsoring, DE/EN-vertaling (Mijlpaal 3).
+- [ ] Domeinmigratie-evaluatie (pas bij € 250+/mnd omzet: onderzoek passend .nl-label voor de
+      tools hub, zie `ROADMAP.md` § Fase: Eventuele Domeinmigratie naar Nederlands Merklabel).
 - [ ] Overwegen of de oude game-projecten (`~/projects/apps/meteor-dodge/`, `neon-drift/`,
       `gravity-flip/`, `marble-jam/`) op enig moment opgeruimd moeten worden, of gewoon blijven
       staan als afgesloten archief (geen actie nodig, kost niets in stilstand).

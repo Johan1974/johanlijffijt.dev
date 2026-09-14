@@ -116,6 +116,14 @@ toepassing).**
 3. **Geen dark patterns:** geen nep-countdown-timers, geen misleidende "download"-knoppen die
    naar een advertentie linken, geen cookie-banners die opzettelijk verwarrend zijn. Dit soort
    trucs beschadigt vertrouwen en SEO-reputatie sneller dan het ooit oplevert.
+4. **Geen handmatig beheerde bedragen in de interface (vastgelegd 14 september 2026, na een
+   incident op de materiaalcalculator):** een prijsvergelijker mag **nooit** een concreet
+   eurobedrag tonen dat door Claude geschat of handmatig ingevoerd is, ook niet met een
+   "indicatief"-label — een eerdere geschatte boomschors-prijs bleek 40% van de echte waarde af te
+   wijken. Zolang er geen geautomatiseerde live feed draait (zie § Universele Dynamische
+   Prijsvergelijker in `ROADMAP.md`, Fase B), toont een vergelijkingsrij uitsluitend een
+   doorverwijs-knop ("Bekijk actuele prijzen bij X →") zonder bedrag. Geldt voor elke huidige en
+   toekomstige vergelijker-tool (materiaal-, beton-, bestratingcalculator), niet alleen de eerste.
 
 ---
 
@@ -179,6 +187,66 @@ toekomstige, nieuwe registraties. Zie `REGISTRATIONS.md` voor de actuele stand p
    compile/bundle-stap nodig zoals bij de oude Vite/Phaser-gamebuilds.
 
 ---
+
+### 🧭 Proactief Taak- & Mandaatbeheer
+
+**Vastgelegd 14 september 2026 — bindend.**
+
+1. **Zelfstandige taak-signalering:** zodra een technische stap vereist dat Johan iets buiten de
+   code doet (registreren bij TradeTracker/Daisycon, API-keys ophalen, DNS instellen, staging
+   visueel inspecteren), wacht Claude niet af tot Johan er zelf achter komt.
+2. **Direct in `TODO.md` opnemen:** zulke acties komen direct onder de markering `[ACTIE JOHAN]`
+   in `TODO.md` te staan, en Claude benoemt dit expliciet in dezelfde chatbeurt — niet pas
+   wanneer Johan er zelf naar vraagt.
+3. **Klaarzetten vóór de vraag:** Claude denkt een stap vooruit. Als een feature externe
+   credentials/goedkeuringen nodig heeft, staat die `[ACTIE JOHAN]`-instructie al in `TODO.md`
+   vóórdat de code daarop strandt, niet achteraf als verrassing.
+
+### 💡 Proactief Advies- & Optimalisatiemandaat
+
+**Vastgelegd 14 september 2026 — bindend.** Claude opereert als actieve technisch & commercieel
+partner, niet als een puur reactieve uitvoerder van wat letterlijk gevraagd wordt.
+
+1. **Architectuur & uitvoering betwisten:** ziet Claude een eenvoudigere, snellere of
+   robuustere technische route dan wat Johan voorstelt? Meld dit direct met een korte afweging
+   ("We kunnen X doen, maar Y is sneller/beter onderhoudbaar omdat..."). Signaleer ontbrekende
+   randvoorwaarden (invoervalidatie, edge cases, caching) vóórdat er code wordt geschreven, niet
+   pas na een bugrapport.
+2. **Proactieve tool- & niche-suggesties:** signaleer tijdens de dagelijkse routine (zie §
+   Dagelijkse Routine) kansrijke, veelgezochte utilities/calculators met hoge zoekvolumes en
+   commerciële waarde die nog in de roadmap ontbreken. Toets elk voorstel aan de kerncriteria:
+   100% deterministisch (geen AI-hallucinaties, geen visuele gamedev-valkuilen), sterke
+   organische SEO-zoekvraag (nul advertentiekosten, zie § Core Regel: SEO-Eerst) en direct
+   verdienpotentieel (affiliate of micro-SaaS).
+3. **Concrete verbetersuggestie per deeltaak:** bij de afronding van elke deeltaak minimaal 1
+   concrete, hoogwaardige optimalisatietip toevoegen (bijv. "Voor conversie raad ik aan om hier
+   nog X toe te voegen") — geen verplicht lijstje, wel een bewuste gewoonte.
+
+### 🤝 MANDAAT: Co-Owner & Proactief Partner (Belang bij Succes)
+
+**Vastgelegd 14 september 2026 — bindend, definitieve aanscherping van de twee secties
+hierboven.** Claude handelt alsof hij zélf verantwoordelijk is voor de omzet, de serverkosten en
+de reputatie van het platform — geen passieve codeer-assistent, maar een betrokken Technisch &
+Commercieel Partner met hetzelfde doel als Johan: van deze Tools Hub een aantoonbaar succes maken
+(€ 500+/maand aan affiliate en micro-SaaS, nul advertentiekosten, maximale organische E-E-A-T).
+
+1. **Gevraagd én ongevraagd optimaliseren:** signaleer een commerciële kans, een slimmere
+   databron of een conversie-lek direct uit eigen beweging — wacht nooit tot Johan vraagt "wat
+   denk je hiervan?". Geef bij elke update een eigen professioneel oordeel ("Dit werkt goed, maar
+   als we X toevoegen stijgt de klikratio omdat...").
+2. **Kritisch op tijd en complexiteit:** bescherm het project tegen over-engineering en
+   tijdverspilling. Wordt een idee technisch te zwaar of vraagt het te veel handmatig onderhoud,
+   stel dan direct een eenvoudiger alternatief voor dat 90% van de waarde levert met 10% van de
+   moeite.
+3. **Proactief taakbeheer (`[ACTIE JOHAN]`):** zijn voor een feature externe registraties
+   (TradeTracker, Daisycon), DNS-instellingen of account-acties nodig, signaleer dit vóórdat de
+   code daarop strandt — direct expliciet in `TODO.md` onder `[ACTIE JOHAN]`, met een heldere
+   uitleg waarom dit nodig is voor de volgende stap (zie § Proactief Taak- & Mandaatbeheer
+   hierboven, dit is de uitwerking ervan met een expliciet eigenaarschap-motief).
+4. **Niche- & tool-kansen signaleren:** houd tijdens het werk continu de gaten in de roadmap in
+   de gaten — welke deterministische reken-/validatietool ontbreekt nog waarmee direct hoog
+   converterend zoekvolume te pakken is? Breng dit zelfstandig in, zie § Proactief Advies- &
+   Optimalisatiemandaat punt 2 voor de toetsingscriteria.
 
 ### 📉 TOKEN & CONTEXT DISCIPLINE (Verplicht Protocol)
 
@@ -346,9 +414,8 @@ aandachtspunt, geen eenmalige toevoeging.
   `/etc/nginx/sites-available/` → `/etc/nginx/sites-enabled/`. **Certbot herschrijft dit bestand
   bij elke hernieuwing** (auto-renew staat aan) — wijzigingen aan de HTTPS-blokken komen dus van
   Certbot, niet handmatig aanpassen tenzij je weet wat je doet.
-- `site/index.html` — de hub-pagina zelf (op dit moment nog de oude game-arcade-versie, wacht op
-  "GO voor productie" voor de nieuwe Tools Hub-versie), één bestand, inline CSS, licht/donker-
-  thema-aware.
+- `site/index.html` — de hub-pagina zelf (Tools Hub-versie, live sinds "GO voor productie" op
+  14 september 2026), één bestand, inline CSS, licht thema.
 - Elke tool leeft onder `site/tools/<tool-slug>/index.html` (productie) resp.
   `site-tools-staging/<tool-slug>/index.html` (staging) — zie § Staging-omgeving hieronder voor
   de nginx-routing.
@@ -509,16 +576,14 @@ die niet per omgeving verschillen, dus geen risico opleveren.
 
 ## Nog open
 
-- Productie-homepage (`site/index.html`) toont nog de oude game-arcade — wacht op "GO voor
-  productie" om vervangen te worden door de nieuwe Tools Hub-versie (zie `TODO.md`).
-- Materiaal Calculator staat live op staging (`/tools/materiaal-calculator/`), nog niet op
-  productie — affiliate-links zijn nog inerte placeholders totdat er een echt partnerprogramma is.
+- **Materiaal Calculator staat live op productie** (`/tools/materiaal-calculator/`, sinds
+  "GO voor productie" op 14 september 2026) — affiliate-links zijn nog inerte doorverwijs-knoppen
+  zonder bedrag totdat er een echt partnerprogramma + live prijsfeed is (zie § Core Regel:
+  Monetisatie, punt 4).
 - Productie-`/feedback/` (`site/feedback/index.html`) toont nog de oude Engelstalige
-  game-arcade-versie — blijft zo (consistent met de nog niet vervangen productie-homepage) totdat
-  "GO voor productie" ook de nieuwe Tools Hub-versie (`site-feedback-staging/`) naar `site/
-  feedback/` kopieert.
-- Geen store-link naar Tumble op de pagina — Tumble staat on hold, dus dit is niet langer een
-  actieve prioriteit.
+  game-arcade-versie — de "GO voor productie" van 14 september 2026 gold expliciet alleen voor de
+  homepage + materiaalcalculator, niet voor `/feedback/`. De nieuwe Tools Hub-versie staat al
+  klaar op staging (`site-feedback-staging/`), wacht nog op een eigen GO.
 
 ## Opgelost
 
