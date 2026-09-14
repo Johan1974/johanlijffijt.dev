@@ -18,7 +18,8 @@ actuele status + openstaande acties.
 - [ ] TradeTracker: aanmelding verstuurd (14-09-2026), wacht op activatiemail + accountgoedkeuring
       (kan dagen duren). Na goedkeuring: verificatiecode op site plaatsen (eigenaarschapsbewijs),
       dan pas Gamma/Karwei-merchantaanvragen indienen.
-- [ ] Daisycon-registratie zodra relevant voor een andere retailer.
+- [ ] Daisycon: publisher-account geverifieerd (privé, plan Basic). Wacht op: kandidaat kiezen
+      voor "gespecialiseerde webshop"-merchant en merchant-aanvraag indienen.
 - [ ] Stripe-account voor UBL-validator freemium (Tool 4, Fase 2) — niet nu blokkerend.
 - [ ] Search Console/Bing-resubmit heroverwegen: nieuwe homepage-copy + 3 nieuwe productie-URL's
       (Tool 2, 3, 4, sitemap.xml al bijgewerkt).

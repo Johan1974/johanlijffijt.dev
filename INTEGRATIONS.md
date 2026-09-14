@@ -12,7 +12,7 @@ affiliate- of feed-registratie: hier bijwerken, niet alleen in `REGISTRATIONS.md
 | Netwerk/Merchant | Doel | Status | Actie |
 |---|---|---|---|
 | TradeTracker | Affiliate-netwerk voor Gamma & Karwei | ⏳ Aangemeld (14-09-2026), wacht op accountactivatie/-goedkeuring | Zodra goedgekeurd: verificatiecode op site plaatsen, daarna merchant-aanvragen Gamma/Karwei |
-| Daisycon | Affiliate-netwerk, alternatief/aanvullend | ⏳ Aanmelden door Johan | **[ACTIE JOHAN]** idem, zodra relevant voor een retailer buiten TradeTracker |
+| Daisycon | Affiliate-netwerk, alternatief/aanvullend | ✅ Publisher-account geverifieerd (privé, Basic-plan) | **[ACTIE JOHAN]** kandidaat-merchant kiezen en aanvraag indienen |
 | Gamma (merchant via TradeTracker) | Affiliate-deeplinks Tool 1 (Materiaal Calculator) + Tool 3 (Bestrating & Egaline Calculator) | ⏳ Wacht op TradeTracker-account | Na TradeTracker-account: merchant-aanvraag indienen |
 | Karwei (merchant via TradeTracker) | Affiliate-deeplinks Tool 1 (Materiaal Calculator) + Tool 3 (Bestrating & Egaline Calculator) | ⏳ Wacht op TradeTracker-account | Na TradeTracker-account: merchant-aanvraag indienen |
 | Gespecialiseerde webshop (nog te bepalen) | Derde affiliate-partner op de retailer-vergelijkingskaart | ⏳ Nog geen kandidaat gekozen | Onderzoeken welke specialist-webshop (materiaal/bestrating) een eigen affiliate-programma heeft |
@@ -28,8 +28,8 @@ affiliate- of feed-registratie: hier bijwerken, niet alleen in `REGISTRATIONS.md
 
 - [ ] TradeTracker-account: aanmelding verstuurd, wacht op activatiemail + goedkeuring — blokkeert
       nog steeds de affiliate-deeplinks én de Fase B-prijsfeed voor zowel Tool 1 als Tool 3.
-- [ ] **[ACTIE JOHAN]** Daisycon-account aanmaken zodra er een retailer buiten TradeTracker bij
-      komt.
+- [ ] **[ACTIE JOHAN]** Daisycon: account geverifieerd, kandidaat kiezen voor de "gespecialiseerde
+      webshop"-affiliate-partner en merchant-aanvraag indienen.
 - [ ] Kandidaat voor de "gespecialiseerde webshop"-affiliate-partner kiezen en diens
       affiliate-programma onderzoeken — nog volledig open.
 - [ ] Stripe-account: bewust pas bij Tool 4 Fase 2, niet vooruit aanvragen zonder aanleiding.
