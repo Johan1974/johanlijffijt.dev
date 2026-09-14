@@ -1,407 +1,54 @@
-# Roadmap — johanlijffijt.dev (overkoepelend)
+# Roadmap — johanlijffijt.dev
 
-# Bindende regels — volledige tekst in `CLAUDE.md`
+> Historische mijlpalen, eerdere iteratielogs en gearchiveerde projecten (games/Tumble) zijn
+> verplaatst naar `ROADMAP.his`.
 
-Zie `CLAUDE.md` voor de volledige, bindende tekst van:
+Bindende regels: zie `CLAUDE.md`. Dit document = wat gebouwd wordt, in welke volgorde.
 
-- **Gouden Regel voor Deployment** — altijd eerst staging, nooit productie zonder expliciete "GO".
-- **Core Regel: SEO-Eerst voor Alle Tekst** — kernwoorden vooraan, link terug naar de tool, geen
-  betaald verkeer.
-- **Core Regel: Monetisatie via Affiliate & AdSense** — placeholders totdat een echt
-  partnerprogramma is aangesloten, nooit tussen invoer/resultaat in.
-- **Gouden Regel: Taalkeuze per Doelgroep** — per tool op basis van zoekintentie, niet vast.
-- **Gouden Regel: `play@johanlijffijt.dev`** voor elke nieuwe externe registratie.
-- **Kwaliteitseisen per tool** — rekenkundig correct, instant, mobiel-vriendelijk, eerlijke
-  disclaimers, geen build-pipeline.
-- **Token & Context Discipline.**
+## Status — 5 Tools + Feedback
 
-Deze roadmap gaat over *wat* er gebouwd wordt en *waarom*, niet over de bindende regels zelf —
-die staan opzettelijk maar op één plek.
+| # | Tool | Status |
+|---|---|---|
+| 1 | Materiaal Calculator | Live productie |
+| 2 | Bestrating & Egaline Calculator | Live staging — klaar voor Johans review/GO |
+| 3 | Beton & Mortel Calculator | Backlog |
+| 4 | UBL/Peppol Factuur Validator | Backlog (B2B, €9/mnd) |
+| 5 | CAMT.053/MT940 Bankexport Converter | Backlog (B2B, zelfde abonnement) |
+| — | Klusmand Multi-Store Optimizer | Concept, geblokkeerd tot Fase B |
+| — | `/feedback/` | Nieuwe versie klaar op staging, wacht op eigen GO |
 
-## Visie
+## Directe prioriteit
 
-Een lichte "proeftuin"-portfolio op `johanlijffijt.dev`: geen mobiele app, geen zwaar CMS, gewoon
-statische pagina's die iets nuttigs doen. Sinds 14 september 2026 (zie § Koerswijziging
-hieronder) is dat nuttige "iets": **gratis, snelle, betrouwbare online tools & calculators**, elk
-gericht op een concrete, veelgezochte zoekvraag.
+Tool 2 (Bestrating & Egaline) staat live op staging (5 Node-tests groen, curl-geverifieerd) —
+wacht op Johans review en expliciete "GO voor productie".
 
-## Koerswijziging: van browsergames naar Tools Hub (14 september 2026)
+## Mijlpalen & omzetdoel
 
-Na een pivot naar browsergames op 12 september 2026 (Meteor Survivor, later Neon Drift, Gravity
-Flip, Marble Jam) heeft Johan definitief besloten te stoppen met gamedev. Reden: de
-browsergame-episode kostte veel iteratie zonder dat er een geloofwaardig pad naar de
-commerciële/kwalitatieve lat lag — een taalmodel kan spellogica schrijven maar mist de artistieke
-smaak/assets om een game er niet als "een programmeeroefening" uit te laten zien, en het genre
-leunt zwaar op dingen (visuele polish, marketingbudget, portal-distributie) die buiten wat hier
-haalbaar is. Calculators/tools spelen precies andersom in op wat een taalmodel wél goed kan:
-correcte rekenlogica, heldere structuur, sterke SEO-copy — geen artistieke asset-productie nodig.
+- **Mijlpaal 1 (€500/mnd):** Tool 1 live + affiliate-netwerken aangesloten + Tool 4 Fase 1 live.
+- **Mijlpaal 2 (€1.500/mnd):** Tool 2/3/5 live + lead capture + Klusmand Optimizer (na Fase B).
+- **Mijlpaal 3 (€3-5k/mnd):** B2B teamlicenties/API, leveranciersponsoring, DE/EN-vertaling.
 
-**Wat dit betekent voor de bestaande games:**
-- Meteor Survivor, Neon Drift, Gravity Flip en Marble Jam worden **niet meer doorontwikkeld**.
-- Productie draait sinds "GO voor productie" op 14 september 2026 op de nieuwe Tools
-  Hub-homepage + materiaalcalculator (zie Gouden Regel voor Deployment).
-- **Opgeruimd (14 september 2026):** alle web-facing gamedev-sporen in déze repo — `site/game/`,
-  `site/tumble/`, `site/images/meteor-*`, de staging-buildmappen (`site-game-staging/` en de
-  overige `site-*-staging/`-game-varianten) — zijn verwijderd, en de bijbehorende dode
-  nginx-locations (`/game/`, `/game/assets/`, `/supabase/`, de Tumble-app-store-redirects) zijn
-  uit `nginx/johanlijffijt.dev.conf` geschrapt. Geverifieerd: productie/staging serveren nog
-  correct, de verwijderde routes geven terecht 404.
-- **Nog een open vraag, niet in déze repo:** de broncode-projecten zelf
-  (`~/projects/apps/meteor-dodge/`, `neon-drift/`, `gravity-flip/`, `marble-jam/`, `tumble/`)
-  staan buiten dit repo en buiten versiebeheer met remote-backup voor sommige ervan — zie
-  `TODO.md` voor de status van die beslissing.
-- Voor de volledige geschiedenis van de gamedev-episode (dagelijkse optimization loop,
-  Top-5-benchmarking, ad-pacing-regels, Vlambeer/Octalysis-onderbouwing, per-game beslissingen):
-  zie de git-historie van dit bestand en van `CLAUDE.md`/`TODO.md` vóór 14 september 2026. Die
-  content stuurt het werk hier niet langer aan, maar is niet weggegooid.
+## Prijsvergelijker — Fase A/B
 
-## 🔬 Marktanalyse & Differentiators (Benelux Top 5, vastgelegd 14 september 2026)
+- **Fase A (nu):** geen bedragen, alleen deeplinks ("Bekijk actuele prijzen bij X →"). Geldt
+  voor elke vergelijker-tool.
+- **Fase B (later):** cronjob → `api/data/prices.json` uit TradeTracker/Daisycon-feed. Pas dan
+  bedragen tonen.
 
-Gerichte benchmark op Kieskeurig, Tweakers Pricewatch, Beslist.nl, Independer en Gaslicht.com —
-op basis van hun eigen Trustpilot-reviewpagina's (niet uit het geheugen verzonnen, zie bronnen
-onderaan). Doel: niet hun UI kopiëren, maar de **structurele frustraties** die uit hun eigen
-reviews naar boven komen gericht oplossen.
+## Tijdsplanning (resterende tools, sessies = effectieve bouwtijd)
 
-### Sterktes van de Top 5 (waarom ze populair zijn)
+| Tool | Sessies | Blokkade |
+|---|---|---|
+| 3. Beton & Mortel | ~3 | geen — verifieer mengverhouding-aannames |
+| 4. UBL Validator (Fase 1, gratis) | 3-4 | geen |
+| 4b. UBL Stripe/freemium | +3-5 | [ACTIE JOHAN] Stripe-account |
+| 5. MT940/CAMT.053 Converter | ~3 | geen |
+| Klusmand Optimizer | 4-5 | Fase B (live prijsfeed) vereist |
 
-- **Kieskeurig** (Trustpilot 4.4/5, 525 reviews): eerlijke, onafhankelijke gebruikersreviews naast
-  de prijsvergelijking — mensen gebruiken het juist óók als productresearch, niet alleen prijs.
-- **Tweakers Pricewatch**: community-gedreven winkelbeoordelingen + prijshistorie, hoog vertrouwen
-  bij een kritisch, prijsbewust publiek — geen sterke klachtensignalen gevonden in deze zoekronde,
-  wat zelf al veelzeggend is over hoe goed het model hier werkt.
-- **Independer**: overzichtelijke, duidelijke site — overstappen naar een andere aanbieder is
-  simpel en snel te doorlopen.
-- **Beslist.nl**: enorm assortiment, één centraal overzicht van vrijwel elke webshop.
-- **Gaslicht.com** (9.6/10 op onafhankelijke reviewsites): heldere UX, 7 dagen per week
-  telefonische klantenservice — het meest consistent positief beoordeelde platform van de vijf.
+Bouwvolgorde: **Tool 2 (Bestrating, staging) → Tool 3 (Beton) → Tool 4 (UBL Fase 1) → Tool 5
+(MT940) → Klusmand Optimizer**.
 
-### Terugkerende klachten uit hun eigen reviews
+## Domeinmigratie (optioneel, post-validatie)
 
-- **Prijs klopt niet bij doorklikken:** Kieskeurig-reviewers melden dat vermelde prijzen niet altijd
-  overeenkomen met de werkelijkheid bij de winkel zelf; Beslist-klanten melden tot ~€20 verschil
-  omdat verzendkosten pas ná doorklikken zichtbaar worden.
-- **Verantwoordelijkheid ontwijken bij problemen:** Beslist-klanten die nooit een bestelling
-  ontvingen, worden heen-en-weer gestuurd tussen Beslist en de webshop zonder dat één partij de
-  regie neemt.
-- **Opdringerige/moeilijk bereikbare lead-flows:** Independer-reviewers melden dat er nauwelijks
-  telefonisch contact mogelijk is, met onervaren medewerkers en trage/onvervulde beloftes bij
-  klachtafhandeling.
-- **Twijfelachtige reviewpraktijken:** Trustpilot markeerde zelf dat Independer mogelijk reviews
-  verzamelt op een manier die niet is toegestaan; een Kieskeurig-gebruiker meldt dat een
-  winkelscore stilzwijgend van 6 naar 10 werd aangepast zonder uitleg, en dat een negatieve review
-  werd geweigerd met een twijfelachtige reden.
-- **Branchebreed bekend (niet uit deze zoekronde, maar algemeen gedocumenteerd patroon):**
-  gesponsorde/betaalde plaatsing die hoger rankt ongeacht de daadwerkelijk beste prijs.
-
-### Onze differentiators — direct gekoppeld aan een specifieke frustratie hierboven
-
-1. **Eerlijke transportkosten-inclusiviteit:** cruciaal bij bulk-/bouwmateriaal (big bags wegen
-   veel, bezorgkosten kunnen de "goedkoopste" aanbieder makkelijk verslaan) — lost exact het
-   Beslist-patroon op ("prijs excl. verzending, pas zichtbaar na doorklikken").
-2. **Multi-store order-splitsing (Klusmand Optimizer, N-store arbitrage):** geen van de vijf
-   benchmarkte sites biedt dit aan — echt uniek, geen kopie van een bestaand patroon.
-3. **Zero-frictie architectuur:** geen verplichte accounts, voorkeuren via client-side
-   `localStorage` (zie "Mijn Klusprofiel") — lost het Independer-patroon op (moeilijk bereikbaar,
-   opdringerige lead-formulieren, telefonisch opvolgen).
-4. **Transparantie over affiliate-links + deterministische sortering:** vaste, uitlegbare
-   sorteerlogica zonder verborgen betaalde boost — lost zowel het branchebrede
-   gesponsorde-plaatsing-patroon op als het Kieskeurig-vertrouwensprobleem (stilzwijgend
-   aangepaste scores, geweigerde negatieve reviews).
-
-**Bronnen (Trustpilot/reviewsites, geraadpleegd 14 september 2026):**
-[Kieskeurig.nl reviews](https://www.trustpilot.com/review/www.kieskeurig.nl) ·
-[Independer.nl reviews](https://www.trustpilot.com/review/www.independer.nl) ·
-[Beslist.nl reviews](https://nl.trustpilot.com/review/www.beslist.nl) ·
-[Gaslicht.com reviews](https://www.trustpilot.com/review/gaslicht.com) ·
-[Tweakers (achtergrond)](https://en.wikipedia.org/wiki/Tweakers).
-
-## 🗺️ Mijlpalen & Monetisatie (formeel vastgesteld 14 september 2026)
-
-**Status van de checkboxes hieronder wordt bijgehouden — vinkjes betekenen daadwerkelijk
-opgeleverd, niet alleen gepland.** Zie `TODO.md` voor de dag-tot-dag uitwerking van de eerstvolgende
-stappen (Mijlpaal 1, Sprint 1).
-
-### 🎯 Strategische Focus & Monetisatie Filosofie
-
-We bouwen geen losse gok-projecten, maar een complementaire portfolio van **deterministische
-reken- en validatietools** met direct commercieel zoekverkeer:
-- **Consument / Doe-Het-Zelf:** Hoge affiliate-orders (zand, grind, big bags, bestrating).
-- **B2B / Zakelijk:** Terugkerende Micro-SaaS abonnementen voor foutpreventie (XML/UBL
-  factuurvalidatie).
-- **Display Ads:** Google AdSense als passieve bodem zodra stabiel organisch verkeer loopt.
-
-### 📍 Mijlpaal 1: De Eerste € 500 / maand (Fundering & Validatie)
-
-*Doel: Eerste meetbare inkomsten valideren via affiliates en de lancering van de eerste
-B2B-tool.*
-
-#### Pijler A: Consument (Klus & Materiaal)
-
-- [x] **Bouw- & Tuinmateriaal Calculator (Live op staging):**
-  - [x] Thema omzetten naar een fris, licht en uitnodigend palet (wit/slate met groen accent).
-  - [x] Browser-stepper overlap op invoervelden oplossen (`pr-12` padding).
-  - [x] E-E-A-T SEO-sectie onder de tool toegevoegd: uitleg over inklinking (10–20%) en
-    laagdikte (bv. 7–8 cm boomschors tegen lichtkiemend onkruid) — **openstaand vervolgpunt:**
-    de laagdikte-richtlijn per toepassing (onkruid/paden/borders) nog concreter uitwerken in de
-    uitlegsectie, zie `TODO.md`.
-- [ ] **Affiliate-monetisatie activeren:**
-  - [ ] Aanmelden bij affiliate-netwerken (Daisycon / TradeTracker / partnerprogramma's
-    bouwmarkten) — met `play@johanlijffijt.dev`.
-  - [ ] Inerte CTA-knoppen vervangen door echte affiliate-links voor 1 m³ / 0,5 m³ big bags
-    zand, grind en boomschors.
-  - *Rekenmodel:* ~15 tot 20 bestellingen per maand @ € 15 – € 20 commissie =
-    **€ 250 – € 350 / maand**.
-
-#### Pijler B: B2B Micro-SaaS (UBL / Factuur Validator)
-
-- [ ] **Scaffold Tool 2: `/tools/ubl-validator/`:**
-  - [ ] XSD- en Peppol-syntaxcontrole voor e-facturen.
-  - [ ] Gebruiker plakt XML → direct inzicht in ontbrekende of foutieve tags in begrijpelijke
-    mensentaal.
-  - [ ] Freemium model: 3 gratis validaties per dag; onbeperkt valideren via Stripe Customer
-    Portal voor **€ 9 / maand**.
-  - *Rekenmodel:* 20 tot 30 abonnees = **€ 180 – € 270 / maand**.
-
-#### Pijler C: Display Ads & Hub Integratie
-
-- [ ] Google AdSense aanvragen en activeren zodra de eerste 100 dagelijkse organische bezoekers
-  via Google Search Console binnenkomen (**€ 50 – € 100 / maand**).
-
-### 🚀 Mijlpaal 2: Schalen naar € 1.500 / maand (Portfolio Verdikking)
-
-*Doel: Verhoging van de conversiewaarde per bezoeker en uitbreiding van het B2B-aanbod.*
-
-- [ ] **Tool 3 (Consument): Beton- & Mortel Calculator:**
-  - Rekenmodel: zakken 25 kg premix vs. losse zand/grind/cement-verhouding (1:2:3).
-  - Affiliate link naar cement/premix bij een bouwmarkt.
-- [ ] **Tool 4 (Consument): Bestrating & Snijverlies Calculator:**
-  - Berekening van tegels, klinkers, snijverlies (8–10%) en benodigd zandbed.
-  - Affiliate links naar voegmortel, opsluitbanden en tegeldragers.
-- [ ] **Tool 5 (B2B): CAMT.053 / MT940 Bankexport Converter:**
-  - Converteert bank-exports naar schone formaten voor Exact, Moneybird en Yuki.
-  - Inbegrepen in hetzelfde € 9/mnd Micro-SaaS abonnement (verhoogt retentie en verlaagt churn).
-- [ ] **Lead Capture:**
-  - Gratis downloadbare checklists (bijv. "UBL Fouten Cheat Sheet" of "Terras Aanleg Checklist")
-    in ruil voor e-mailadressen.
-
-#### 🛒 Geavanceerde tools — concept: "Klusmand & Materiaal Optimizer" (N-Store Arbitrage)
-
-**Vastgelegd 14 september 2026, Johans strategisch inzicht — concept, nog niet gestart. Opgeschaald
-dezelfde dag van vaste 2-aanbieder-splitsing naar flexibele N-store-arbitrage.**
-Vergelijkingssites vergelijken vrijwel nooit per artikel binnen één samengesteld project; dat is
-precies de opening voor deze tool.
-
-- **Probleem:** consumenten kopen nu alles bij 1 bouwmarkt uit gemak, terwijl mixen (bijv. stenen
-  bij Bouwmarkt A en big bags zand bij Bouwmarkt B) tientallen tot honderden euro's bespaart.
-- **Kernfunctionaliteit:** gebruiker stelt een gecombineerd project samen (bijv. bestrating +
-  ophoogzand + worteldoek); het algoritme splitst niet langer per se over precies 2 aanbieders,
-  maar zoekt flexibel over N leveranciers.
-- **Algoritme (Combinatorische Mand-Optimizer):**
-  - Berekent alle combinaties over N winkels: Prijs(artikelen) + Bezorgkosten(per unieke
-    leverancier) — bezorgkosten tellen dus maar één keer per leverancier mee, niet per artikel.
-  - Automatische detectie van gratis pakketverzending (bijv. klein materiaal via webshop/
-    pakketpost) versus zwaar vrachtvervoer (big bags/stenen per vrachtwagen) — dit onderscheid
-    bepaalt of splitsen over meerdere leveranciers de bezorgkosten juist laat oplopen of niet.
-- **Resultaten-UI:**
-  - Toont de "Optimale Mand-Samenstelling": kan bestaan uit 1, 2 of 3 leveranciers, niet vast op 2.
-  - Geeft per leverancier een directe bestelknop met deeplink naar de specifieke artikelen.
-  - Toont de nettobesparing ten opzichte van de goedkoopste 'alles-in-1'-aanbieder.
-- **Commercieel voordeel:** meervoudige affiliate-kliks — de bezoeker rekent mogelijk af bij
-  meerdere adverteerders in plaats van één, schaalt mee met N in plaats van vast op twee.
-- **Feature: Store Exclusion met "Groot Voordeel"-Trigger (Soft Exclusion):**
-  - **Gebruikerscontrole:** eenvoudige toggles/checkboxes om specifieke winkels uit te sluiten van
-    het vergelijkingsresultaat.
-  - **Drempelwaarde-alert (besparings-geweten):** het algoritme toetst de uitkomst altijd tegen
-    het absolute marktminimum inclusief de uitgesloten winkels. Levert een uitgesloten winkel een
-    significant voordeel op (drempelwaarde bijv. > € 25 of > 10% van het orderbedrag), dan toont
-    de UI een vriendelijke alert: "Je hebt [Winkel X] uitgesloten, maar als je [Artikel Y] tóch
-    daar bestelt bespaar je € ZZ extra. [Toon optie met Winkel X]".
-  - Blijft het verschil onder de drempelwaarde, dan respecteert de tool de uitsluiting 100%
-    geruisloos — geen alert, geen guilt-tripping bij een verwaarloosbaar verschil.
-- **Feature: "Mijn Klusprofiel" (client-side state via `localStorage`):**
-  - **Concept:** gebruiker stelt eenmalig zijn situatie in; alle tools op het platform rekenen
-    direct gepersonaliseerd door zonder logins of server-accounts.
-  - **Profiel-instellingen:**
-    - Transport: "Laten bezorgen" vs. "Zelf ophalen / eigen aanhanger" (bepaalt of bezorgkosten
-      meegerekend worden in de arbitrage).
-    - Klantenkaarten: Gamma Voordeelpas, Karwei Kaart, Hornbach ProfiCard.
-    - Winkelvoorkeuren: uitsluitingen van specifieke aanbieders (koppelt direct aan de Store
-      Exclusion-feature hierboven — hetzelfde uitsluitingsprofiel, niet twee losse instellingen).
-  - **Techniek:** pure browseropslag (`localStorage`), zero-backend-frictie, privacy-vriendelijk
-    en instant actief over de hele Tools Hub — geen aparte database/account-systeem nodig, dus
-    geen nieuwe infrastructuur naast de bestaande `api/`-backend.
-  - **Commerciële waarde:** verhoogt terugkerend bezoek (retentie) en vormt de basis voor latere
-    B2B/zzp-exportfuncties.
-- **Afhankelijkheid:** vereist een werkende live prijsfeed per aanbieder (zie § Universele
-  Dynamische Prijsvergelijker, Fase B) — zonder betrouwbare, actuele prijzen per artikel is een
-  combinatorische optimalisatie per definitie een schatting, wat tegen de "geen handmatig beheerde
-  bedragen"-regel in `CLAUDE.md` ingaat. Komt dus pas na Fase B, niet ervoor — en pas voor meer dan
-  2 leveranciers relevant zodra er ook daadwerkelijk meer dan 2 aanbieders een live feed leveren.
-
-### 🔀 Overkoepelend architectuurpatroon: Universele Dynamische Prijsvergelijker
-
-**Van toepassing op alle affiliate-tools uit Mijlpaal 1 én 2** — vervangt het losse statische
-affiliate-knop-patroon (zie § Core Regel: Monetisatie in `CLAUDE.md`) door één herbruikbaar
-vergelijker-component per tool:
-
-- Materiaalcalculator: Gamma vs. Karwei vs. specialist (zand, grind, boomschors big bags).
-- Betoncalculator (Tool 3): vergelijking per zak premix beton/cement.
-- Bestratingcalculator (Tool 4): opsluitbanden, voegzand, tegeldragers.
-- B2B-tools: vergelijking van Peppol/e-facturatie-softwareabonnementen.
-
-**Twee fasen — herzien 14 september 2026 (Johans kwaliteits-/integriteitsbesluit: géén
-handmatig beheerde bedragen in de interface, ook niet indicatief-gelabeld):**
-1. **Fase A (lean start, huidige staat):** vergelijker-UI **zonder bedragen** — pure deeplinks per
-   aanbieder ("Bekijk actuele prijzen bij Gamma/Karwei →"), inert totdat een echte
-   partnerkoppeling er is (zie § Core Regel: Monetisatie). Een eerdere versie toonde wél
-   geschatte/handmatige `v.a. €`-bedragen (`prices.json`-mockup) — teruggedraaid nadat bleek dat
-   een handmatige schatting 40% van de echte prijs kon afwijken. Prijzen tonen we pas weer zodra
-   Fase B draait.
-2. **Fase B (geautomatiseerd, pas dan bedragen tonen):** centrale cronjob op de VPS die dagelijks
-   productfeeds (TradeTracker/Daisycon CSV/XML) inleest en wegschrijft naar `api/data/prices.json`
-   — geen handmatig onderhoud per tool, dus geen mens meer tussen de bron en het getoonde bedrag.
-   Bouwt voort op de bestaande `api/`-backend (zie `CLAUDE.md` § Eigen backend), geen nieuwe
-   infrastructuur ernaast.
-
-### 🏢 Mijlpaal 3: Doorgroei naar € 3.000 – € 5.000 / maand (B2B Teams & Expansie)
-
-*Doel: Zakelijke teamlicenties, API-toegang en internationale organische expansie.*
-
-- [ ] **B2B Teamlicenties & REST API:**
-  - Administratiekantoren en softwarehuizen betalen € 29 tot € 49 / maand voor teamtoegang of
-    geautomatiseerde factuurvalidatie via API.
-- [ ] **Directe Leveranciersponsoring:**
-  - Vaste bannerdeals met gespecialiseerde zand-/grindleveranciers (€ 250 – € 500 per maand per
-    vaste sponsorplek).
-- [ ] **Internationale Expansie (DE/EN):**
-  - UBL/Peppol validator vertalen naar `/en/` en `/de/` voor de bredere Europese markt.
-
-### 🌐 Fase: Eventuele Domeinmigratie naar Nederlands Merklabel (Optioneel, Post-Validatie)
-
-**Vastgelegd 14 september 2026 — geparkeerd voor de huidige fase, formeel vastgelegd voor de
-lange termijn.** Geen actie nu; de discussie is voor nu definitief gesloten, dit is alleen de
-overstapstrategie voor het moment dat de voorwaarde eronder ooit wordt gehaald.
-
-- **Voorwaarde vóór overweging:** stabiele tractie en bewezen omzet (> € 250–500/maand) op
-  `johanlijffijt.dev` — geen domeinwissel op basis van een hypothese, pas na bewijs.
-- **Architectuur & SEO-veiligheid, mocht die drempel ooit gehaald worden:**
-  - Geen verlies van opgebouwde waarde: overstap via een HTTP 301 Permanent Redirect in nginx
-    (`return 301 https://nieuw-domein.nl$request_uri;`).
-  - Behoud van Google-rankings, backlinks en traffic via de officiële 'Adreswijziging'-verhuistool
-    in Google Search Console.
-  - Oude links naar tools blijven hierdoor 1-op-1 geruisloos functioneren.
-- **Focus blijft nu 100% op het valideren van de eerste 3 tools op `johanlijffijt.dev/tools/`** —
-  zie `TODO.md` voor de evaluatie-trigger.
-
-### Toetsingskader
-
-Elk voorstel wordt getoetst tegen de mijlpaal waar we ons op dat moment in bevinden, niet tegen
-een groot vergelijkingsbedrijf zoals Omni Calculator of RapidTables — geen teamgrootte, geen
-live-ops, geen marketingbudget, dit is en blijft een solo, organisch project (zie ook `CLAUDE.md`
-§ Core Regel: SEO-Eerst en § Core Regel: Monetisatie).
-
-## ⏱️ Tijdsplanning & Mijlpalen (vastgelegd 14 september 2026)
-
-Inschatting voor de 4 resterende tools om de volledige suite van 5 live te krijgen. **Basis:
-effectieve, gefocuste ontwikkelsessies (een paar uur puur bouwwerk), geen kalendertijd** — hoe
-snel dit in weken landt hangt af van sessiecadans, niet van iets dat hier te voorspellen is.
-Externe wachttijd (goedkeuringen, accounts) staat expliciet apart, want dat is geen dev-tijd.
-
-### Tool 3 — Terras, Bestrating & Egaline Calculator
-- **Geschatte tijd:** 2–3 sessies (≈ 6–9 uur).
-- **Grootste uitdaging:** geen technische — de tegel-/klinkermaten, snijverlies-percentage en
-  egaline-verbruik per m² moeten net zo geverifieerd worden als de materiaalcalculator-dichtheden
-  (zie de eerdere "40% naast de echte boomschors-prijs"-les). Geen externe afhankelijkheid.
-- **Waarom snelst te bouwen:** structureel bijna identiek aan Tool 1 — zelfde
-  `calculator-core.js`-patroon (pure functies), zelfde pagina-shell/CSS, zelfde retailer-card +
-  disclaimer + `verify-site.js`-conventies. Grotendeels hergebruik, geen nieuwe architectuur.
-
-### Tool 4 — Thuisbatterij & Terugverdientijd Calculator
-- **Geschatte tijd:** 3–4 sessies (≈ 9–12 uur).
-- **Grootste uitdaging:** een écht financieel model (rendement/terugverdientijd op basis van
-  zonnepanelen, jaarverbruik, dynamische tarieven, laad-/ontlaadrendement, degradatie) — meer
-  variabelen en meer kans op een onjuiste aanname dan bij de materiaal-tools. Gezien het over een
-  financiële beslissing gaat (geen bouwmateriaal), moet dit extra zorgvuldig gedisclaimd worden —
-  vergelijkbaar risico als de "geen handmatig geschatte bedragen"-les, maar dan voor rendement in
-  plaats van prijs.
-- **Geen externe afhankelijkheid** om te lánceren: kan als zuiver informatieve tool live zonder op
-  Fase B (prijsfeed) te wachten — affiliate/AdSense is hier optioneel, niet blokkerend.
-
-### Tool 5 — Factuur / UBL XML Validator (Fase 1: gratis validator, zonder betaalmuur)
-- **Geschatte tijd:** 3–4 sessies (≈ 9–12 uur) voor een bewust **beperkte** subset-validator
-  (syntax + de belangrijkste verplichte UBL/Peppol-velden, in mensentaal uitgelegd) — niet een
-  volledige XSD-schema-validator claimen, dat zou dezelfde overclaiming-fout zijn als een
-  geschatte prijs voor een echte.
-- **Grootste uitdaging/afhankelijkheid:** de freemium-laag (3 gratis/dag, € 9/mnd via Stripe) kan
-  **niet** client-side — dat vereist een nieuw stuk server-side infrastructuur (gebruiksteller +
-  Stripe-integratie), iets dit project nog niet heeft (de bestaande `api/`-backend doet alleen
-  NDJSON-feedback/tracking, geen entitlements/billing). **Aparte fase, apart `[ACTIE JOHAN]`**
-  (Stripe-account) — niet meegeteld in de 3–4 sessies hierboven, geschat +3–5 sessies apart zodra
-  dat wordt opgepakt.
-
-### Tool 2 — Klusmand & Multi-Store Optimizer (N-store arbitrage)
-- **Geschatte tijd:** 4–5 sessies (≈ 12–16 uur) — combinatorisch algoritme (prijs + bezorgkosten
-  per unieke leverancier over N winkels), mandje-samenstel-UI, resultaten-UI met deeplinks,
-  store-exclusion + drempelwaarde-alert, en "Mijn Klusprofiel" (`localStorage`, herbruikbaar over
-  de hele Tools Hub).
-- **Grootste uitdaging is geen technische, maar een harde externe afhankelijkheid:** dit werkt pas
-  functioneel met écht meerdere leveranciers-prijzen per artikel (Fase B, live productfeed via
-  TradeTracker) — zie `CLAUDE.md` § Core Regel: Monetisatie punt 4 ("geen handmatig beheerde
-  bedragen"). Coderen kán al eerder, maar zonder Fase B staat het resultaat gewoon in de backlog
-  te wachten. Externe wachttijd (merchant-goedkeuring bij TradeTracker) ligt buiten onze controle
-  en is hier bewust niet in sessies uitgedrukt.
-
-### Voorgestelde bouwvolgorde (voor zo snel mogelijk maximale conversie)
-
-1. **Tool 3** eerst — snelste bouwtijd, geen afhankelijkheid, zelfde consument-/klus-doelgroep en
-   dus vermoedelijk vergelijkbaar zoekvolume als Tool 1.
-2. **Tool 4** direct daarna — geen externe blokkade om te lanceren, en thuisbatterijen/dynamische
-   energietarieven is op dit moment een hoog-volume, hoog-koopintentie onderwerp in Nederland;
-   waarschijnlijk de grootste organische kans van de vier.
-3. **Tool 5, Fase 1 (gratis validator, geen Stripe)** — B2B-leadgen/vertrouwen opbouwen zonder op
-   de betaalmuur-infrastructuur te wachten; Stripe/freemium volgt als losse, latere fase.
-4. **Tool 2 laatst** — bewust, niet omdat het minder belangrijk is, maar omdat het de enige tool
-   is die zonder Fase B geen echte waarde kan leveren; eerder bouwen levert alleen een halve tool
-   in de backlog op. Ideaal getimed vlak ná (of gelijk met) het onafhankelijk lopende Fase
-   B-traject.
-
-**Totale dev-tijd-inschatting (excl. Tool 5 Fase 2/Stripe, excl. externe wachttijd):**
-12–16 sessies, ≈ 36–48 uur puur bouwwerk.
-
-## 📋 Vast protocol: Sessie-Start & Status Rapportage
-
-**Vastgelegd 14 september 2026 — bindend, volledige regeltekst in `CLAUDE.md` § Vast protocol:
-Sessie-Start & Status Rapportage.** Bij een status-/roadmap-vraag van Johan bij sessie-start levert
-Claude altijd eerst het vaste 3-delige overzicht (suite-status live/staging/backlog, Claude's
-technische taak voor de sessie, handmatige `[ACTIE JOHAN]`-to-do's uit `TODO.md` + de commerciële
-showstoppers uit `INTEGRATIONS.md`) vóórdat er gecodeerd wordt — pas na Johans akkoord start het
-werk.
-
-## Staging-workflow
-
-**Vastgelegd 12 september 2026, bindend.** Elke wijziging (nieuwe tool, aanpassing aan een
-bestaande tool, homepage-wijziging) wordt eerst gebouwd en getest op
-`staging.johanlijffijt.dev`, pas daarna — na Johans expliciete "GO voor productie" — naar `site/`
-(productie) gekopieerd. Zie `CLAUDE.md` § Staging-omgeving voor de nginx-technische invulling
-(aparte staging-mappen + `alias`, geen gedeelde brontekst voor pagina's die per omgeving kunnen
-verschillen).
-
-## Organische Groei & SEO Strategie
-
-**Vastgelegd 12 september 2026, van kracht gebleven na de koerswijziging (zie CLAUDE.md §
-SEO-Eerst-regel).** Groei komt uitsluitend uit organisch verkeer: zoekmachines (elke tool-pagina
-geoptimaliseerd voor de exacte zoekvraag die hij beantwoordt), en — waar relevant — natuurlijke
-linkgroei (bijv. iemand die een tool deelt in een forum/subreddit over klussen/tuinieren). Geen
-advertentiebudget voor eigen promotie. `sitemap.xml`/`robots.txt`/JSON-LD moeten bij elke nieuwe
-productie-URL meteen kloppen (zie Gouden Regel voor Deployment, punt 3).
-
-## Bewuste keuzes die voor de hele roadmap gelden
-
-- **Geen relatie met `solo-stack-blog`** — aparte identiteit/persona, nooit naar elkaar linken
-  (zie `CLAUDE.md`).
-- **Geen build-pipeline, geen framework** — elke tool is één zelfstandig HTML-bestand, bewerken
-  = deployen (naar de juiste staging/productie-map). Dit is bewust simpeler dan de oude
-  Vite/Phaser-gamebuilds, en past beter bij het soort content (rekenlogica + copy, geen
-  interactieve graphics-engine).
-- **Eén gedeelde eigen backend** (`api/`, zie `CLAUDE.md` § Eigen backend) voor feedback en
-  click-/affiliate-tracking over alle tools heen — geen aparte database per tool.
+Pas overwegen bij >€250-500/mnd bewezen omzet. Dan: 301-redirect + GSC-adreswijziging. Volledige
+overwegingen: `ROADMAP.his`.

@@ -1,0 +1,136 @@
+# ROADMAP.his — koud archief, johanlijffijt.dev
+
+Historisch naslagwerk. **Wordt niet automatisch ingelezen bij sessie-start** (zie `CLAUDE.md` §
+Sessie-start). Alleen lezen op expliciet verzoek van Johan.
+
+## Browsergames-episode (12–14 september 2026, definitief afgesloten)
+
+Pivot naar browsergames op 12-09-2026: Meteor Survivor (working title Meteor Dodge), later Neon
+Drift, Gravity Flip, Marble Jam. Op 14-09-2026 definitief stopgezet — reden: geen geloofwaardig
+pad naar de commerciële/kwalitatieve lat (een taalmodel schrijft spellogica maar mist de
+artistieke smaak/assets voor visuele polish; het genre leunt zwaar op marketingbudget en
+portal-distributie, buiten wat hier haalbaar is). Calculators/tools spelen andersom in op wat een
+taalmodel wél goed kan: correcte rekenlogica, structuur, SEO-copy.
+
+Bijbehorende richtlijnen die toen golden en niet meer van toepassing zijn: game juice,
+Vlambeer-principes, Octalysis, CrazyGames SDK, rewarded ads, Top-5-portal-benchmarking.
+
+**Opruiming in déze repo (14-09-2026):**
+- Verwijderd: `site/game/`, `site/tumble/`, `site/images/meteor-*`, `site-game-staging/`,
+  `site-gravity-flip-staging/`, `site-marble-jam-staging/`, `site-neon-drift-staging/`.
+- nginx: dode `location /game/`, `/game/assets/`, `/supabase/`-proxy, Tumble-app-store-redirects
+  (`/tumble/ios`, `/tumble/android`) verwijderd uit `nginx/johanlijffijt.dev.conf`. Geverifieerd
+  met curl: verwijderde routes geven terecht 404, productie/staging blijven werken.
+- `REGISTRATIONS.md`: game-portal-registraties (itch.io, CrazyGames, Newgrounds, Kongregate,
+  GameJolt) gemarkeerd 🗄️ gearchiveerd, niet verwijderd uit de tabel — zie dat bestand voor de
+  huidige status per platform.
+
+**Niet opgeruimd, buiten déze repo (status per 14-09-2026, nog niet opnieuw beoordeeld):**
+- `~/projects/apps/meteor-dodge/` en `neon-drift/` hadden uncommitted wijzigingen.
+- `~/projects/apps/tumble/` heeft git-historie zonder remote-backup (geen `git remote`
+  geconfigureerd) plus een Postgres-datadirectory (`tumble/supabase/volumes/db/data/`,
+  root-owned, niet leesbaar als `johan`) — vermoedelijk echte databasebestanden uit de
+  testperiode met een echte ADHD-gebruiker.
+- `gravity-flip/`, `marble-jam/` niet apart onderzocht.
+- Een onvoorwaardelijke verwijdering is bewust niet uitgevoerd zonder Johans akkoord over hoe
+  (committen/pushen eerst? archiveren i.p.v. verwijderen? gewoon wissen?) — dit is nog een open
+  beslissing, niet een afgeronde.
+
+## Tumble — on hold sinds 12 september 2026
+
+Losse app buiten dit repo (`~/projects/apps/tumble/`), eigen `ROADMAP.md`/`CLAUDE.md`. Gebruikte
+een self-hosted Supabase-stack, gedeeld met deze hub via een reverse-proxy
+(`location /supabase/` in `nginx/johanlijffijt.dev.conf`) — stack is gestopt, proxy-regel staat
+nog (geeft 502, bewust niet verwijderd, kost niets stil, scheelt herbedraden als Tumble ooit
+wordt opgepakt). Blijft bereikbaar via bestaande try-it-links vanaf deze hub. Geen "Streakly"
+gevonden in de repo-geschiedenis van dit project — als dat een ander/hernoemd project is, graag
+even bevestigen.
+
+## Marktanalyse & Differentiators — volledige Trustpilot-benchmark (14 september 2026)
+
+Benchmark op Kieskeurig, Tweakers Pricewatch, Beslist.nl, Independer, Gaslicht.com, op basis van
+hun eigen Trustpilot-reviewpagina's.
+
+**Sterktes van de Top 5:** Kieskeurig (4.4/5, 525 reviews) combineert prijsvergelijking met
+onafhankelijke productreviews. Tweakers Pricewatch: community-gedreven winkelbeoordelingen +
+prijshistorie, geen sterke klachtensignalen gevonden. Independer: simpel/snel overstapproces.
+Beslist.nl: groot assortiment, centraal overzicht. Gaslicht.com (9.6/10): heldere UX, 7 dagen/wk
+telefonische klantenservice, meest consistent positief beoordeeld.
+
+**Terugkerende klachten uit hun eigen reviews:** prijs klopt niet bij doorklikken (Kieskeurig;
+Beslist tot ~€20 verschil door verzendkosten pas zichtbaar na doorklikken); verantwoordelijkheid
+ontwijken bij problemen (Beslist, heen-en-weer sturen tussen platform en webshop); opdringerige/
+moeilijk bereikbare lead-flows (Independer, onervaren medewerkers, trage klachtafhandeling);
+twijfelachtige reviewpraktijken (Trustpilot markeerde Independer zelf; Kieskeurig-gebruiker
+meldt stilzwijgend aangepaste winkelscore 6→10 en geweigerde negatieve review); branchebreed
+bekend (niet uit deze zoekronde): gesponsorde plaatsing die hoger rankt ongeacht werkelijk beste
+prijs.
+
+**Differentiators, gekoppeld aan een specifieke frustratie hierboven:**
+1. Eerlijke transportkosten-inclusiviteit — lost het Beslist-patroon op.
+2. Multi-store ordersplitsing (Klusmand Optimizer) — geen van de vijf biedt dit.
+3. Zero-frictie architectuur (`localStorage`, geen accounts) — lost het Independer-patroon op.
+4. Transparante affiliate-links + vaste sorteerlogica zonder verborgen boost — lost zowel het
+   branchebrede gesponsorde-plaatsing-patroon op als het Kieskeurig-vertrouwensprobleem op.
+
+Bronnen (Trustpilot/reviewsites, geraadpleegd 14-09-2026): Kieskeurig.nl, Independer.nl,
+Beslist.nl, Gaslicht.com reviews op Trustpilot; Tweakers-achtergrond op Wikipedia.
+
+## Klusmand & Materiaal Optimizer — volledige conceptspec (nog niet gestart)
+
+Vastgelegd 14-09-2026, Johans strategisch inzicht. Concept, geblokkeerd tot Fase B (live
+prijsfeed) — zie actieve `ROADMAP.md`.
+
+- **Probleem:** consumenten kopen nu alles bij 1 bouwmarkt uit gemak; mixen bespaart tientallen
+  tot honderden euro's.
+- **Kernfunctionaliteit:** gebruiker stelt een gecombineerd project samen; algoritme splitst
+  flexibel over N leveranciers, niet vast op 2.
+- **Algoritme:** berekent alle combinaties over N winkels: Prijs(artikelen) +
+  Bezorgkosten(per unieke leverancier) — bezorgkosten tellen één keer per leverancier. Detecteert
+  automatisch gratis pakketverzending vs. zwaar vrachtvervoer.
+- **Resultaten-UI:** "Optimale Mand-Samenstelling" (1–3 leveranciers), directe bestelknop per
+  leverancier, toont nettobesparing t.o.v. goedkoopste alles-in-1-aanbieder.
+- **Store Exclusion met "Groot Voordeel"-trigger:** gebruiker sluit winkels uit via toggles;
+  algoritme toetst altijd tegen het marktminimum inclusief uitgesloten winkels. Bij een verschil
+  boven een drempelwaarde (bijv. >€25 of >10%) toont de UI een alert met de optie om de
+  uitsluiting eenmalig te negeren. Onder de drempel: geruisloos gerespecteerd, geen alert.
+- **"Mijn Klusprofiel" (`localStorage`, client-side):** transportvoorkeur (bezorgen/zelf ophalen),
+  klantenkaarten (Gamma Voordeelpas, Karwei Kaart, Hornbach ProfiCard), winkelvoorkeuren/
+  uitsluitingen — zero-backend, instant actief over de hele hub, geen nieuwe infrastructuur naast
+  de bestaande `api/`-backend.
+- **Afhankelijkheid:** vereist een werkende live prijsfeed per aanbieder (Fase B) — zonder
+  betrouwbare actuele prijzen is combinatorische optimalisatie per definitie een schatting, wat
+  tegen de "geen handmatig beheerde bedragen"-regel ingaat.
+
+## Domeinmigratie naar Nederlands merklabel — volledige overwegingen (optioneel, geparkeerd)
+
+Vastgelegd 14-09-2026. Voorwaarde vóór overweging: stabiele tractie en bewezen omzet
+(>€250–500/maand) — geen domeinwissel op basis van een hypothese. Architectuur bij eventuele
+overstap: HTTP 301 Permanent Redirect in nginx (`return 301 https://nieuw-domein.nl$request_uri;`)
++ officiële 'Adreswijziging'-verhuistool in Google Search Console, zodat rankings/backlinks/
+traffic behouden blijven en oude tool-links 1-op-1 blijven werken.
+
+## Oorspronkelijke gedetailleerde tijdsplanning-redenering per tool (14-09-2026)
+
+Basis: effectieve, gefocuste ontwikkelsessies, geen kalendertijd. Externe wachttijd
+(goedkeuringen, accounts) staat apart, is geen dev-tijd.
+
+- **Bestrating & Egaline:** grootste uitdaging was geen technische, maar het verifiëren van
+  tegel-/klinkermaten, snijverlies-% en egaline-verbruik per m² (zelfde soort les als de eerdere
+  "40% naast de echte boomschors-prijs"-fout). Snelst gebouwd: structureel bijna identiek aan
+  Tool 1 (zelfde `calculator-core.js`-patroon, pagina-shell/CSS, retailer-card-conventies).
+- **Thuisbatterij & Terugverdientijd (destijds als kandidaat-tool overwogen, niet in de huidige
+  actieve 5-tool-lijst):** zou een echt financieel model vereisen (rendement op zonnepanelen,
+  jaarverbruik, dynamische tarieven, laad-/ontlaadrendement, degradatie) — meer variabelen en
+  meer kans op een onjuiste aanname dan de materiaal-tools, vergelijkbaar risico als de
+  prijsschattingsfout maar dan voor rendement i.p.v. prijs. Geen externe afhankelijkheid om te
+  lanceren. Niet meegenomen in de huidige actieve roadmap-prioritering.
+- **UBL/Peppol Validator (Fase 1):** bewust een beperkte subset-validator (syntax + belangrijkste
+  verplichte velden, in mensentaal), geen volledige XSD-schema-validator claimen — zelfde
+  overclaiming-risico als een geschatte prijs. Freemium-laag (Stripe) kan niet client-side: apart
+  stuk server-side infrastructuur (gebruiksteller + billing), aparte fase/sessie-inschatting.
+- **Klusmand Optimizer:** bewust laatste in de bouwvolgorde — enige tool die zonder Fase B geen
+  echte waarde levert; eerder bouwen geeft alleen een halve tool in de backlog.
+
+Totale dev-tijd-inschatting destijds (excl. UBL Fase 2/Stripe, excl. externe wachttijd):
+12–16 sessies, ≈36–48 uur puur bouwwerk.
