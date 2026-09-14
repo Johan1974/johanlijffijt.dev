@@ -158,6 +158,11 @@
     line-height: 1.5;
   }
   .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent-dark);
+    border: 1.5px solid var(--accent);
+  }
   .btn-disabled {
     background: var(--badge-soon-bg);
     color: var(--ink-dim);
@@ -217,10 +222,10 @@
         <span class="badge soon">Binnenkort</span>
         <h3>Nog een tool in de maak</h3>
         <p>
-          Heb je zelf een idee voor een handige calculator of utility? Laat het weten via de
-          feedbacklink hieronder.
+          Heb je een suggestie voor een nieuwe calculator, feedback op een bestaande tool, of mis
+          je een handige optie? Laat het ons weten via <a href="/feedback/" data-track="card-feedback-link">het feedbackformulier</a>.
         </p>
-        <a class="btn btn-disabled" aria-disabled="true">Binnenkort beschikbaar</a>
+        <a class="btn btn-secondary" href="/feedback/" data-track="card-feedback-cta">Geef feedback of ideeën door →</a>
       </div>
     </div>
   </main>
