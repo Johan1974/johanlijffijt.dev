@@ -138,7 +138,7 @@
     margin-bottom: 0.75rem;
     width: fit-content;
   }
-  .card .badge.new { background: var(--badge-new-bg); color: var(--badge-new-ink); }
+  .card .badge.new, .card .badge.active { background: var(--badge-new-bg); color: var(--badge-new-ink); }
   .card .badge.soon { background: var(--badge-soon-bg); color: var(--badge-soon-ink); }
   .card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; }
   .card p { color: var(--ink-dim); font-size: 0.95rem; margin: 0 0 1.25rem; flex-grow: 1; }
@@ -202,7 +202,7 @@
         <h3>Bouw- &amp; Tuinmateriaal Calculator</h3>
         <p>
           Bereken direct hoeveel zand, grind, tuinaarde of boomschors je nodig hebt — inclusief
-          inklinking, aantal big bags en geschat gewicht.
+          inklinking, aantal big bags en gewicht.
         </p>
         <a class="btn btn-primary" href="/tools/materiaal-calculator/" data-track="card-materiaal-calculator">Open tool</a>
       </div>
@@ -212,20 +212,54 @@
         <span class="badge soon">Binnenkort</span>
         <h3>Factuur / XML Validator</h3>
         <p>
-          Controleer een UBL/e-factuur-XML op geldigheid vóór je 'm instuurt of importeert.
+          Controleer UBL- en Peppol e-facturen direct op XML-syntax en verplichte velden vóórdat
+          je ze instuurt of importeert.
         </p>
         <a class="btn btn-disabled" aria-disabled="true">Binnenkort beschikbaar</a>
       </div>
 
       <div class="card">
-        <div class="icon">🧮</div>
+        <div class="icon">🔋</div>
         <span class="badge soon">Binnenkort</span>
-        <h3>Nog een tool in de maak</h3>
+        <h3>Thuisbatterij Calculator</h3>
         <p>
-          Heb je een suggestie voor een nieuwe calculator, feedback op een bestaande tool, of mis
-          je een handige optie? Laat het ons weten via <a href="/feedback/" data-track="card-feedback-link">het feedbackformulier</a>.
+          Bereken het rendement en de terugverdientijd van een thuisaccu op basis van je
+          zonnepanelen, jaarverbruik en dynamische energietarieven.
         </p>
-        <a class="btn btn-secondary" href="/feedback/" data-track="card-feedback-cta">Geef feedback of ideeën door →</a>
+        <a class="btn btn-disabled" aria-disabled="true">Binnenkort beschikbaar</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛒</div>
+        <span class="badge soon">Binnenkort</span>
+        <h3>Klusmand Optimizer</h3>
+        <p>
+          Vergelijk bouwprojecten per artikel en ontdek direct of het splitsen van je bestelling
+          over meerdere leveranciers geld bespaart.
+        </p>
+        <a class="btn btn-disabled" aria-disabled="true">Binnenkort beschikbaar</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔲</div>
+        <span class="badge soon">Binnenkort</span>
+        <h3>Bestrating &amp; Egaline Calculator</h3>
+        <p>
+          Bereken de benodigde vierkante meters tegels, snijverlies, opsluitbanden of zakken
+          egalisatiemortel voor je vloer of terras.
+        </p>
+        <a class="btn btn-disabled" aria-disabled="true">Binnenkort beschikbaar</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">💬</div>
+        <span class="badge active">Actief</span>
+        <h3>Suggestie of Feedback?</h3>
+        <p>
+          Mis je een specifieke calculator of heb je een idee voor een handige utility? Laat het
+          weten via het feedbackformulier.
+        </p>
+        <a class="btn btn-secondary" href="/feedback/" data-track="card-feedback-cta">Stuur een suggestie →</a>
       </div>
     </div>
   </main>
