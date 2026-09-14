@@ -10,21 +10,22 @@ Bindende regels: zie `CLAUDE.md`. Dit document = wat gebouwd wordt, in welke vol
 | # | Tool | Status |
 |---|---|---|
 | 1 | Materiaal Calculator | Live productie |
-| 2 | Beton & Mortel Calculator | Live staging — klaar voor Johans review/GO |
-| 3 | Bestrating & Egaline Calculator | Live staging — klaar voor Johans review/GO |
-| 4 | UBL/Peppol Invoice Validator | Live staging — Fase 1 (well-formed XML + UBL-root check), EN |
+| 2 | Beton & Mortel Calculator | Live productie sinds 14-09-2026 (GO) |
+| 3 | Bestrating & Egaline Calculator | Live productie sinds 14-09-2026 (GO) |
+| 4 | UBL/Peppol Invoice Validator | Live productie sinds 14-09-2026 (GO) — Fase 1 (well-formed XML + UBL-root check), EN |
 | 5 | CAMT.053/MT940 Bankexport Converter | Backlog (B2B, zelfde abonnement) |
 | — | Klusmand Multi-Store Optimizer | Concept, geblokkeerd tot Fase B |
 | — | `/feedback/` | Nieuwe versie klaar op staging, wacht op eigen GO |
 
 ## Directe prioriteit
 
-Tool 2, 3 en 4 staan **live op staging**, `npm test` groen (23/23). Mengverhouding-aannames Tool 2
-zijn vooraf met Johan afgestemd (zakken 12,5L/25kg, zelf mengen 1:2:3, mortel 100 stenen/m² + 1:4
-cement:zand — zie onderbouwing op de toolpagina zelf). Tool 4 is bewust Engelstalig (internationale
-Peppol-standaard, EN-zoekvolume) en Fase 1 checkt alleen well-formed XML + herkend UBL-root-element
-(Invoice/CreditNote) — geen BIS Billing 3.0-veldencheck, staat expliciet zo op de pagina. Enige
-volgende stap: Johans inspectie + expliciete "GO voor productie" voor Tool 2, 3 en 4.
+Tool 2, 3 en 4 staan **live op productie** sinds 14-09-2026 (GO), `npm test` groen (23/23).
+Mengverhouding-aannames Tool 2 zijn vooraf met Johan afgestemd (zakken 12,5L/25kg, zelf mengen
+1:2:3, mortel 100 stenen/m² + 1:4 cement:zand — zie onderbouwing op de toolpagina zelf). Tool 4 is
+bewust Engelstalig (internationale Peppol-standaard, EN-zoekvolume) en Fase 1 checkt alleen
+well-formed XML + herkend UBL-root-element (Invoice/CreditNote) — geen BIS Billing 3.0-veldencheck,
+staat expliciet zo op de pagina. Volgende stap: Daisycon-goedkeuring afwachten en TradeTracker-
+accountactivatie afwachten (zie `TODO.md` § [ACTIE JOHAN]) voor de affiliate-deeplinks.
 
 ## Mijlpalen & omzetdoel
 
@@ -47,7 +48,7 @@ volgende stap: Johans inspectie + expliciete "GO voor productie" voor Tool 2, 3 
 | 5. MT940/CAMT.053 Converter | ~3 | geen |
 | Klusmand Optimizer | 4-5 | Fase B (live prijsfeed) vereist |
 
-Bouwvolgorde: **Tool 2/3/4 (staging, wachten op GO) → Tool 5 (MT940) → Klusmand Optimizer**.
+Bouwvolgorde: **Tool 2/3/4 (live productie) → Tool 5 (MT940) → Klusmand Optimizer**.
 
 ## Domeinmigratie (optioneel, post-validatie)
 
