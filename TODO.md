@@ -9,8 +9,10 @@ actuele status + openstaande acties.
 - Tool 2 (Beton & Mortel Calculator): live staging, 6/6 tests groen, klaar voor Johans review/GO.
 - Tool 3 (Bestrating & Egaline Calculator): live staging (5/5 tests groen, curl-geverifieerd),
   klaar voor Johans review/GO.
+- Tool 4 (UBL/Peppol Invoice Validator, Engelstalig): live staging, Fase 1 (well-formed XML +
+  UBL-root check, 7/7 tests groen), klaar voor Johans review/GO.
 - Kwaliteitspoort (`scripts/verify-site.js` + lychee CI + pre-commit hook): actief, `npm test`
-  groen (16/16).
+  groen (23/23).
 
 ## [ACTIE JOHAN]
 
@@ -20,14 +22,13 @@ actuele status + openstaande acties.
 - [ ] Daisycon-registratie zodra relevant voor een andere retailer.
 - [ ] Stripe-account voor UBL-validator freemium (Tool 4, Fase 2) — niet nu blokkerend.
 - [ ] Heroverwegen Search Console/Bing-resubmit voor de nieuwe homepage-copy.
-- [ ] Review + "GO voor productie" voor Tool 2 (Beton & Mortel) en Tool 3 (Bestrating & Egaline),
-      beide op staging.
+- [ ] Review + "GO voor productie" voor Tool 2 (Beton & Mortel), Tool 3 (Bestrating & Egaline) en
+      Tool 4 (UBL/Peppol Validator, Fase 1), alle drie op staging.
 
 ## Actief — Mijlpaal 1
 
 - [ ] Affiliate-deeplinks live zetten zodra TradeTracker rond is.
 - [ ] Live prijsfeed-cronjob (Fase B) bouwen zodra merchant-approval binnen is.
-- [ ] UBL-validator scaffolden op staging (`site-tools-staging/ubl-validator/`).
 - [ ] AdSense aanvragen zodra GSC 100 dagelijkse bezoekers toont.
 - [ ] Kleine copy-fix: laagdikte-uitleg materiaalcalculator concreter per toepassing.
 

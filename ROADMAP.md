@@ -12,18 +12,19 @@ Bindende regels: zie `CLAUDE.md`. Dit document = wat gebouwd wordt, in welke vol
 | 1 | Materiaal Calculator | Live productie |
 | 2 | Beton & Mortel Calculator | Live staging — klaar voor Johans review/GO |
 | 3 | Bestrating & Egaline Calculator | Live staging — klaar voor Johans review/GO |
-| 4 | UBL/Peppol Factuur Validator | Backlog (B2B, €9/mnd) |
+| 4 | UBL/Peppol Invoice Validator | Live staging — Fase 1 (well-formed XML + UBL-root check), EN |
 | 5 | CAMT.053/MT940 Bankexport Converter | Backlog (B2B, zelfde abonnement) |
 | — | Klusmand Multi-Store Optimizer | Concept, geblokkeerd tot Fase B |
 | — | `/feedback/` | Nieuwe versie klaar op staging, wacht op eigen GO |
 
 ## Directe prioriteit
 
-Tool 2 (Beton & Mortel Calculator) en Tool 3 (Bestrating & Egaline Calculator) staan **live op
-staging**, `npm test` groen (16/16). Mengverhouding-aannames Tool 2 zijn vooraf met Johan
-afgestemd (zakken 12,5L/25kg, zelf mengen 1:2:3, mortel 100 stenen/m² + 1:4 cement:zand — zie
-onderbouwing op de toolpagina zelf). Enige volgende stap: Johans inspectie + expliciete "GO voor
-productie" voor beide.
+Tool 2, 3 en 4 staan **live op staging**, `npm test` groen (23/23). Mengverhouding-aannames Tool 2
+zijn vooraf met Johan afgestemd (zakken 12,5L/25kg, zelf mengen 1:2:3, mortel 100 stenen/m² + 1:4
+cement:zand — zie onderbouwing op de toolpagina zelf). Tool 4 is bewust Engelstalig (internationale
+Peppol-standaard, EN-zoekvolume) en Fase 1 checkt alleen well-formed XML + herkend UBL-root-element
+(Invoice/CreditNote) — geen BIS Billing 3.0-veldencheck, staat expliciet zo op de pagina. Enige
+volgende stap: Johans inspectie + expliciete "GO voor productie" voor Tool 2, 3 en 4.
 
 ## Mijlpalen & omzetdoel
 
@@ -42,13 +43,11 @@ productie" voor beide.
 
 | Tool | Sessies | Blokkade |
 |---|---|---|
-| 4. UBL Validator (Fase 1, gratis) | 3-4 | geen |
-| 4b. UBL Stripe/freemium | +3-5 | [ACTIE JOHAN] Stripe-account |
+| 4b. UBL Stripe/freemium (BIS Billing 3.0-veldencheck) | 3-5 | [ACTIE JOHAN] Stripe-account |
 | 5. MT940/CAMT.053 Converter | ~3 | geen |
 | Klusmand Optimizer | 4-5 | Fase B (live prijsfeed) vereist |
 
-Bouwvolgorde: **Tool 2/3 (staging, wachten op GO) → Tool 4 (UBL Fase 1) → Tool 5 (MT940) →
-Klusmand Optimizer**.
+Bouwvolgorde: **Tool 2/3/4 (staging, wachten op GO) → Tool 5 (MT940) → Klusmand Optimizer**.
 
 ## Domeinmigratie (optioneel, post-validatie)
 
