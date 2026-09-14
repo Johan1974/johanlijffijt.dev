@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google Analytics (GA4) — same dynamic-by-hostname pattern as the rest of the site, see
+     hub CLAUDE.md § Google Analytics (GA4). This file only ever lives under the staging alias
+     (/tools/), so in practice this always loads the staging stream until a production copy is
+     made under site/tools/ after an explicit "GO voor productie". -->
+<script>
+  (function () {
+    var host = window.location.hostname;
+    var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '';
+    if (isLocal) return;
+    var measurementId = null;
+    var extraConfig = {};
+    if (host.indexOf('staging') !== -1) {
+      measurementId = 'G-4C5KX41VNB';
+      extraConfig.debug_mode = true;
+    } else if (host === 'johanlijffijt.dev') {
+      measurementId = 'G-TLWY630Z6D';
+    }
+    if (!measurementId) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId, extraConfig);
+  })();
+</script>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2310b981'/%3E%3Crect x='7' y='7' width='18' height='5' rx='1.5' fill='white'/%3E%3Crect x='7' y='15' width='5' height='5' rx='1' fill='white'/%3E%3Crect x='14' y='15' width='5' height='5' rx='1' fill='white'/%3E%3Crect x='21' y='15' width='4' height='5' rx='1' fill='white'/%3E%3Crect x='7' y='22' width='5' height='4' rx='1' fill='white'/%3E%3Crect x='14' y='22' width='5' height='4' rx='1' fill='white'/%3E%3Crect x='21' y='22' width='4' height='4' rx='1' fill='white'/%3E%3C/svg%3E">
+<title>Bouw- & Tuinmateriaal Calculator — Kuub (m³) Zand, Grind & Tuinaarde Berekenen</title>
+<meta name="description" content="Bouw- & Tuinmateriaal Calculator: bereken direct hoeveel kuub (m³) zand, grind, tuinaarde of boomschors je nodig hebt — inclusief big bags en geschat gewicht. Gratis, geen download.">
+<meta name="keywords" content="kuub zand berekenen, zand calculator, grind calculator, hoeveel zand nodig, big bag berekenen, tuinaarde calculator, boomschors berekenen, ophoogzand hoeveelheid">
+<link rel="canonical" href="https://johanlijffijt.dev/tools/materiaal-calculator/">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://johanlijffijt.dev/tools/materiaal-calculator/">
+<meta property="og:site_name" content="johanlijffijt.dev — Tools & Calculators">
+<meta property="og:title" content="Bouw- & Tuinmateriaal Calculator — Kuub (m³) Berekenen">
+<meta property="og:description" content="Bereken direct hoeveel kuub (m³) zand, grind, tuinaarde of boomschors je nodig hebt — inclusief aantal big bags en geschat gewicht.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bouw- & Tuinmateriaal Calculator — Kuub Berekenen">
+<meta name="twitter:description" content="Bereken direct hoeveel materiaal en big bags je nodig hebt voor je bouw- of tuinklus.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Bouw- & Tuinmateriaal Calculator",
+  "description": "Gratis calculator om te berekenen hoeveel kuub (m³) zand, grind, tuinaarde of boomschors nodig is, inclusief inklinking, aantal big bags en geschat gewicht.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "inLanguage": "nl",
+  "isAccessibleForFree": true,
+  "url": "https://johanlijffijt.dev/tools/materiaal-calculator/",
+  "author": {
+    "@type": "Person",
+    "name": "Johan Lijffijt"
+  }
+}
+</script>
+
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f8fafc;
+    --ink: #0f172a;
+    --ink-dim: #475569;
+    --accent: #10b981;
+    --accent-dark: #059669;
+    --accent-ink: #ffffff;
+    --accent-soft: #ecfdf5;
+    --accent-soft-line: #a7f3d0;
+    --good: #059669;
+    --line: #e2e8f0;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+    --amber-bg: #fef3c7;
+    --amber-ink: #92400e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent-dark); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .staging-banner {
+    background: var(--amber-bg);
+    color: var(--amber-ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.55rem 1rem;
+  }
+
+  header.top {
+    padding: 1.25rem 0 0.5rem;
+  }
+  header.top a.back {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  header.top a.back:hover { color: var(--accent); }
+
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.25;
+    margin: 0.75rem 0 0.5rem;
+  }
+  .lede {
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    max-width: 65ch;
+    margin: 0 0 2rem;
+  }
+
+  .calc-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .field-group { margin-bottom: 1.25rem; }
+  .field-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    color: var(--ink-dim);
+  }
+
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  @media (min-width: 520px) {
+    .tabs { grid-template-columns: repeat(4, 1fr); }
+  }
+  .tab-btn {
+    appearance: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    border: 1.5px solid var(--line);
+    background: var(--input-bg);
+    color: var(--ink-dim);
+    border-radius: 12px;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    min-height: 44px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .tab-btn .tab-icon { font-size: 1.3rem; line-height: 1; }
+  .tab-btn:hover { border-color: var(--accent-soft-line); }
+  .tab-btn[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-dark);
+  }
+
+  .shape-toggle {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .shape-btn {
+    appearance: none;
+    border: none;
+    background: var(--input-bg);
+    color: var(--ink);
+    padding: 0.65rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .shape-btn + .shape-btn { border-left: 1px solid var(--line); }
+  .shape-btn[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .dims-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .input-wrap { position: relative; }
+  .input-wrap input[type="number"] {
+    width: 100%;
+    /* pr-12: extra ruimte rechts zodat de native stepper-pijltjes nooit over "unit" heen vallen */
+    padding: 0.65rem 3rem 0.65rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--input-bg);
+    color: var(--ink);
+    font-size: 1rem;
+    min-height: 44px;
+  }
+  .input-wrap input[type="number"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .input-wrap .unit {
+    position: absolute;
+    right: 1.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-dim);
+    font-size: 0.85rem;
+    pointer-events: none;
+  }
+
+  .results {
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-soft-line);
+    border-radius: 14px;
+    padding: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 520px) {
+    .results { grid-template-columns: repeat(4, 1fr); }
+  }
+  .result-item .result-label {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.25rem;
+  }
+  .result-item .result-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--accent-dark);
+  }
+  .result-item .result-sub {
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+  }
+
+  .affiliate-row {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .btn-affiliate {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--good);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 10px;
+    min-height: 44px;
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .affiliate-note {
+    font-size: 0.75rem;
+    color: var(--ink-dim);
+    align-self: center;
+  }
+
+  .info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .info-card h2 { font-size: 1.15rem; margin-top: 0; }
+  .info-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+  .info-card th, .info-card td {
+    text-align: left;
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .info-card th { color: var(--ink-dim); font-weight: 600; font-size: 0.8rem; }
+
+  footer.site-footer {
+    padding: 2rem 0 3rem;
+    color: var(--ink-dim);
+    font-size: 0.9rem;
+  }
+  footer.site-footer a { color: var(--ink-dim); }
+  .related-tools { color: var(--ink-dim); font-size: 0.9rem; margin: 1.5rem 0 0; }
+</style>
+</head>
+<body>
+
+  <div class="staging-banner">⚠️ STAGING — testomgeving, niet gepubliceerd voor bezoekers</div>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="back" href="/">← Terug naar Tools & Calculators</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Bouw- &amp; Tuinmateriaal Calculator: kuub (m³) zand, grind, tuinaarde of boomschors berekenen</h1>
+    <p class="lede">
+      Vul de afmetingen van je klus in en zie meteen hoeveel kuub (m³) zand, grind, tuinaarde of
+      boomschors je nodig hebt — inclusief inklinking, aantal big bags en geschat gewicht. Gratis,
+      geen download, geen account nodig.
+    </p>
+
+    <section class="calc-card" aria-label="Materiaalcalculator">
+      <div class="field-group">
+        <span class="field-label">Materiaalsoort</span>
+        <div class="tabs" role="group" aria-label="Kies materiaalsoort">
+          <button type="button" class="tab-btn" data-material="zand" aria-pressed="true"><span class="tab-icon">🏖️</span>Zand / Ophoogzand</button>
+          <button type="button" class="tab-btn" data-material="grind" aria-pressed="false"><span class="tab-icon">🪨</span>Grind / Split</button>
+          <button type="button" class="tab-btn" data-material="schors" aria-pressed="false"><span class="tab-icon">🌳</span>Boomschors</button>
+          <button type="button" class="tab-btn" data-material="tuinaarde" aria-pressed="false"><span class="tab-icon">🌱</span>Tuinaarde / Compost</button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <span class="field-label">Vorm van het oppervlak</span>
+        <div class="shape-toggle" role="group" aria-label="Kies vorm">
+          <button type="button" class="shape-btn" data-shape="rechthoek" aria-pressed="true">Rechthoekig</button>
+          <button type="button" class="shape-btn" data-shape="rond" aria-pressed="false">Rond</button>
+        </div>
+      </div>
+
+      <div class="field-group" id="dims-rechthoek">
+        <span class="field-label">Afmetingen</span>
+        <div class="dims-row">
+          <div class="input-wrap">
+            <input type="number" id="lengte" min="0" step="0.1" value="4" inputmode="decimal" aria-label="Lengte in meter">
+            <span class="unit">m lengte</span>
+          </div>
+          <div class="input-wrap">
+            <input type="number" id="breedte" min="0" step="0.1" value="3" inputmode="decimal" aria-label="Breedte in meter">
+            <span class="unit">m breedte</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group" id="dims-rond" hidden>
+        <span class="field-label">Afmeting</span>
+        <div class="dims-row">
+          <div class="input-wrap">
+            <input type="number" id="diameter" min="0" step="0.1" value="3" inputmode="decimal" aria-label="Diameter in meter">
+            <span class="unit">m diameter</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <span class="field-label">Gewenste laagdikte</span>
+        <div class="dims-row" style="grid-template-columns: 1fr;">
+          <div class="input-wrap">
+            <input type="number" id="laagdikte" min="0" step="1" value="5" inputmode="decimal" aria-label="Laagdikte in centimeter">
+            <span class="unit">cm dik</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="results" aria-live="polite">
+        <div class="result-item">
+          <div class="result-label">Oppervlakte</div>
+          <div class="result-value" id="out-oppervlakte">–</div>
+          <div class="result-sub">m²</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Volume nodig</div>
+          <div class="result-value" id="out-volume">–</div>
+          <div class="result-sub" id="out-volume-sub">m³ incl. inklinking</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Big bags</div>
+          <div class="result-value" id="out-bigbags-1">–</div>
+          <div class="result-sub">van 1 m³</div>
+        </div>
+        <div class="result-item">
+          <div class="result-label">Big bags</div>
+          <div class="result-value" id="out-bigbags-halve">–</div>
+          <div class="result-sub">van 0,5 m³</div>
+        </div>
+      </div>
+      <p style="margin: 0.75rem 0 0; color: var(--ink-dim); font-size: 0.9rem;">
+        Geschat gewicht: <strong id="out-gewicht-kg">–</strong> kg (≈ <span id="out-gewicht-ton">–</span> ton)
+      </p>
+
+      <div class="affiliate-row">
+        <a href="#" class="btn-affiliate" data-track="affiliate-bigbag-placeholder" title="Affiliate-link volgt zodra een partnerprogramma is aangesloten">
+          🛒 Bekijk Big Bags bij bouwmarkt
+        </a>
+        <span class="affiliate-note">(binnenkort — affiliate-link volgt)</span>
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>Hoe wordt dit berekend?</h2>
+      <p>
+        De calculator telt bovenop het pure volume een <strong>inklinkingspercentage</strong> op:
+        los gestort materiaal verdicht namelijk zodra het aangeharkt, belopen of beregend wordt,
+        dus reken je met alleen het kale volume structureel te kort. De percentages en
+        vuistgewichten hieronder zijn praktijkgemiddelden per materiaalsoort — een leverancier kan
+        hier per partij licht van afwijken, gebruik dit dus als een betrouwbare inschatting, niet
+        als een garantie tot op de kilo nauwkeurig.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Materiaal</th><th>Inklinking</th><th>Vuistgewicht</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zand / Ophoogzand</td><td>+10%</td><td>≈ 1600 kg/m³</td></tr>
+          <tr><td>Grind / Split</td><td>+10%</td><td>≈ 1500 kg/m³</td></tr>
+          <tr><td>Boomschors</td><td>+20%</td><td>≈ 250 kg/m³</td></tr>
+          <tr><td>Tuinaarde / Compost</td><td>+15%</td><td>≈ 800 kg/m³</td></tr>
+        </tbody>
+      </table>
+
+      <h2 style="margin-top: 1.5rem;">Veelgestelde vragen</h2>
+      <p><strong>Hoeveel kuub zand heb ik nodig voor 10 m² bij 5 cm dik?</strong><br>
+        10 m² × 0,05 m = 0,5 m³ kaal volume; met 10% inklinking kom je uit op ≈ 0,55 kuub zand.</p>
+      <p><strong>Wat is inklinking en waarom telt de calculator dat erbij op?</strong><br>
+        Los gestort materiaal zakt in zodra het aangeharkt, belopen of beregend wordt — zonder die
+        marge bestel je structureel te weinig. Zie de tabel hierboven voor het percentage per
+        materiaalsoort.</p>
+      <p><strong>Hoeveel weegt een big bag zand of grind?</strong><br>
+        Een big bag van 1 m³ zand weegt ≈ 1600 kg, een big bag van 1 m³ grind ≈ 1500 kg — reken op
+        een aanhanger of oprit die dat gewicht aankan.</p>
+    </section>
+
+    <p class="related-tools">
+      Meer tools: <a href="/" data-track="related-hub">bekijk alle calculators op de hub</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>
+        Onderdeel van <a href="/">johanlijffijt.dev — Tools &amp; Calculators</a>, gebouwd door
+        Johan Lijffijt. Klopt iets niet, of mis je een materiaalsoort?
+        <a href="/feedback/" data-track="feedback">Laat het weten</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    var MATERIALS = {
+      zand:      { label: 'Zand / Ophoogzand',    inklinking: 0.10, dichtheid: 1600 },
+      grind:     { label: 'Grind / Split',         inklinking: 0.10, dichtheid: 1500 },
+      schors:    { label: 'Boomschors',            inklinking: 0.20, dichtheid: 250  },
+      tuinaarde: { label: 'Tuinaarde / Compost',   inklinking: 0.15, dichtheid: 800  }
+    };
+
+    var state = { material: 'zand', shape: 'rechthoek' };
+
+    var els = {
+      lengte: document.getElementById('lengte'),
+      breedte: document.getElementById('breedte'),
+      diameter: document.getElementById('diameter'),
+      laagdikte: document.getElementById('laagdikte'),
+      dimsRechthoek: document.getElementById('dims-rechthoek'),
+      dimsRond: document.getElementById('dims-rond'),
+      outOppervlakte: document.getElementById('out-oppervlakte'),
+      outVolume: document.getElementById('out-volume'),
+      outVolumeSub: document.getElementById('out-volume-sub'),
+      outBigbags1: document.getElementById('out-bigbags-1'),
+      outBigbagsHalve: document.getElementById('out-bigbags-halve'),
+      outGewichtKg: document.getElementById('out-gewicht-kg'),
+      outGewichtTon: document.getElementById('out-gewicht-ton')
+    };
+
+    function fmt(n, decimals) {
+      if (!isFinite(n)) return '–';
+      return n.toLocaleString('nl-NL', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    }
+
+    function gaEvent(name, params) {
+      if (window.gtag) window.gtag('event', name, params || {});
+    }
+
+    // GA4 "tool_calculate": debounced, en pas na de eerste (=default) render — zo telt dit
+    // echt gebruik, niet elke toetsaanslag of de initiële berekening met de voorbeeldwaarden.
+    var calcDebounceTimer = null;
+    var hasRenderedOnce = false;
+
+    function recalc() {
+      var oppervlakte = 0;
+      if (state.shape === 'rechthoek') {
+        var lengte = parseFloat(els.lengte.value) || 0;
+        var breedte = parseFloat(els.breedte.value) || 0;
+        oppervlakte = lengte * breedte;
+      } else {
+        var diameter = parseFloat(els.diameter.value) || 0;
+        var straal = diameter / 2;
+        oppervlakte = Math.PI * straal * straal;
+      }
+
+      var laagdikteCm = parseFloat(els.laagdikte.value) || 0;
+      var laagdikteM = laagdikteCm / 100;
+      var volumeBasis = oppervlakte * laagdikteM;
+
+      var mat = MATERIALS[state.material];
+      var volumeIncl = volumeBasis * (1 + mat.inklinking);
+
+      var bigbags1 = volumeIncl > 0 ? Math.ceil(volumeIncl / 1) : 0;
+      var bigbagsHalve = volumeIncl > 0 ? Math.ceil(volumeIncl / 0.5) : 0;
+
+      var gewichtKg = volumeIncl * mat.dichtheid;
+      var gewichtTon = gewichtKg / 1000;
+
+      els.outOppervlakte.textContent = fmt(oppervlakte, 2);
+      els.outVolume.textContent = fmt(volumeIncl, 2);
+      els.outVolumeSub.textContent = 'm³ incl. ' + Math.round(mat.inklinking * 100) + '% inklinking';
+      els.outBigbags1.textContent = bigbags1;
+      els.outBigbagsHalve.textContent = bigbagsHalve;
+      els.outGewichtKg.textContent = fmt(gewichtKg, 0);
+      els.outGewichtTon.textContent = fmt(gewichtTon, 2);
+
+      if (hasRenderedOnce) {
+        clearTimeout(calcDebounceTimer);
+        calcDebounceTimer = setTimeout(function () {
+          gaEvent('tool_calculate', { material: state.material, shape: state.shape });
+        }, 1200);
+      }
+      hasRenderedOnce = true;
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.tab-btn').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        state.material = btn.dataset.material;
+        recalc();
+      });
+    });
+
+    document.querySelectorAll('.shape-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.shape-btn').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        state.shape = btn.dataset.shape;
+        els.dimsRechthoek.hidden = state.shape !== 'rechthoek';
+        els.dimsRond.hidden = state.shape !== 'rond';
+        recalc();
+      });
+    });
+
+    [els.lengte, els.breedte, els.diameter, els.laagdikte].forEach(function (el) {
+      el.addEventListener('input', recalc);
+    });
+
+    recalc();
+
+    document.querySelectorAll('a[data-track]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (a.classList.contains('btn-affiliate')) {
+          e.preventDefault();
+          gaEvent('click_affiliate', { target: a.dataset.track });
+        }
+        try {
+          fetch('/api/track', {
+            method: 'POST',
+            keepalive: true,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ target: a.dataset.track })
+          });
+        } catch (err) {}
+      });
+    });
+  </script>
+</body>
+</html>

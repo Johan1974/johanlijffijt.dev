@@ -1,30 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Google Analytics (GA4) — two separate streams, chosen dynamically by hostname so staging
-     traffic is never mixed into production data:
-       - staging.johanlijffijt.dev -> G-4C5KX41VNB (debug_mode on, visible in GA4 DebugView)
-       - johanlijffijt.dev (exact) -> G-TLWY630Z6D (production)
-       - localhost/127.0.0.1 (incl. every Playwright headless test, which serves over localhost)
-         -> nothing loads at all, not even the gtag.js library file itself.
-     See hub CLAUDE.md § Google Analytics (GA4). -->
+<!-- Google Analytics (GA4) — staging altijd naar het staging-stream, zie hub CLAUDE.md
+     § Google Analytics (GA4). Dit bestand is fysiek gescheiden van site/index.html (productie),
+     zie CLAUDE.md § Homepage volledig gescheiden van productie — geen hostname-toggle nodig. -->
 <script>
   (function () {
     var host = window.location.hostname;
     var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '';
     if (isLocal) return;
-    var measurementId = null;
-    var extraConfig = {};
-    if (host.indexOf('staging') !== -1) {
-      measurementId = 'G-4C5KX41VNB';
-      extraConfig.debug_mode = true;
-    } else if (host === 'johanlijffijt.dev') {
-      measurementId = 'G-TLWY630Z6D';
-    }
-    if (!measurementId) return;
+    var measurementId = 'G-4C5KX41VNB';
     var script = document.createElement('script');
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
@@ -32,87 +20,44 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
-    window.gtag('config', measurementId, extraConfig);
+    window.gtag('config', measurementId, { debug_mode: true });
   })();
 </script>
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%237c3aed'/%3E%3Cpath d='M13 10l10 6-10 6z' fill='white'/%3E%3C/svg%3E">
-<title>[STAGING] Free Browser Games — Indie Arcade by Johan Lijffijt</title>
-<!-- Staging copy — never indexed, never linked from production. Keep this in sync manually with
-     site/index.html's actual content (hero/footer/etc.) when that changes; the arcade grid below
-     is expected to diverge (staging previews unreleased games production doesn't have yet). -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2310b981'/%3E%3Crect x='7' y='7' width='18' height='5' rx='1.5' fill='white'/%3E%3Crect x='7' y='15' width='5' height='5' rx='1' fill='white'/%3E%3Crect x='14' y='15' width='5' height='5' rx='1' fill='white'/%3E%3Crect x='21' y='15' width='4' height='5' rx='1' fill='white'/%3E%3Crect x='7' y='22' width='5' height='4' rx='1' fill='white'/%3E%3Crect x='14' y='22' width='5' height='4' rx='1' fill='white'/%3E%3Crect x='21' y='22' width='4' height='4' rx='1' fill='white'/%3E%3C/svg%3E">
+<title>Gratis Online Tools & Calculators — johanlijffijt.dev</title>
+<meta name="description" content="Gratis, snelle online calculators en tools — zoals de bouw- en tuinmateriaal-calculator voor zand, grind en tuinaarde. Direct resultaat, geen account nodig.">
+<meta name="keywords" content="gratis calculators, online tools, materiaal calculator, zand berekenen, grind berekenen">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Play free HTML5 browser games instantly — no downloads, no installs, no waiting. A small indie arcade of games built solo by Johan Lijffijt, playable right now on desktop and mobile.">
-<meta name="keywords" content="free browser games, webgames, html5 arcade games, play online, no download games, indie games">
 <link rel="canonical" href="https://johanlijffijt.dev">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://johanlijffijt.dev">
-<meta property="og:site_name" content="Johan's Indie Arcade">
-<meta property="og:title" content="Free Browser Games — Indie Arcade by Johan Lijffijt">
-<meta property="og:description" content="No downloads, no installs, no waiting — pick a game and start playing instantly. A small arcade of HTML5 games built solo, in evenings and weekends.">
-<meta property="og:image" content="https://johanlijffijt.dev/images/meteor-survivor-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Browser Games — Indie Arcade by Johan Lijffijt">
-<meta name="twitter:description" content="No downloads, no installs, no waiting — pick a game and start playing instantly.">
-<meta name="twitter:image" content="https://johanlijffijt.dev/images/meteor-survivor-cover.png">
-
-<!-- Search-engine verification placeholders — replace the content="..." values once the
-     properties are registered in Google Search Console / Bing Webmaster Tools. Until then
-     these are inert (no real code = no effect), see TODO.md for the registration steps. -->
-<meta name="google-site-verification" content="m6UQ8neeabacaTJfd6PzUXj7OfXdKk67OBh84rTjaOM">
-<meta name="msvalidate.01" content="REPLACE_WITH_BING_WEBMASTER_CODE">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  "name": "Meteor Survivor",
-  "description": "Free browser arcade roguelite — dodge and blast meteors with auto-fire lasers, collect Space Dust, and level up mid-run. No download, play instantly in any browser.",
-  "genre": ["Roguelite", "Arcade", "Survival"],
-  "gamePlatform": "WebBrowser",
-  "playMode": "SinglePlayer",
-  "applicationCategory": "Game",
-  "operatingSystem": "Any",
-  "url": "https://johanlijffijt.dev/game/",
-  "isAccessibleForFree": true,
-  "author": {
-    "@type": "Person",
-    "name": "Johan Lijffijt"
-  }
-}
-</script>
+<meta property="og:site_name" content="johanlijffijt.dev — Tools & Calculators">
+<meta property="og:title" content="Gratis Online Tools & Calculators — johanlijffijt.dev">
+<meta property="og:description" content="Gratis, snelle online calculators en tools. Direct resultaat, geen account nodig.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gratis Online Tools & Calculators">
+<meta name="twitter:description" content="Gratis, snelle online calculators en tools. Direct resultaat, geen account nodig.">
 
 <style>
   :root {
-    color-scheme: light dark;
-    --bg: #faf9fd;
-    --ink: #1c1a24;
-    --ink-dim: #6b687a;
-    --accent: #7c3aed;
-    --accent-2: #f59e0b;
-    --accent-soft: #f0e7fd;
-    --line: #e7e3f0;
+    color-scheme: light;
+    --bg: #f8fafc;
+    --ink: #0f172a;
+    --ink-dim: #475569;
+    --accent: #10b981;
+    --accent-dark: #059669;
+    --accent-ink: #ffffff;
+    --accent-soft: #ecfdf5;
+    --line: #e2e8f0;
     --card-bg: #ffffff;
-    --badge-new-bg: #fde7c8;
-    --badge-new-ink: #9a5b00;
-    --badge-soon-bg: #e7e3f0;
-    --badge-soon-ink: #6b687a;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #16141f;
-      --ink: #f3f1f9;
-      --ink-dim: #a8a4b8;
-      --accent: #a78bfa;
-      --accent-2: #fbbf24;
-      --accent-soft: #2c2440;
-      --line: #332c47;
-      --card-bg: #201c2e;
-      --badge-new-bg: #3d2f14;
-      --badge-new-ink: #fbbf24;
-      --badge-soon-bg: #2c2440;
-      --badge-soon-ink: #a8a4b8;
-    }
+    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+    --badge-new-bg: #dcfce7;
+    --badge-new-ink: #166534;
+    --badge-soon-bg: #e2e8f0;
+    --badge-soon-ink: #475569;
+    --amber-bg: #fef3c7;
+    --amber-ink: #92400e;
   }
   * { box-sizing: border-box; }
   body {
@@ -122,19 +67,22 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
   }
-  a { color: var(--accent); }
-  .wrap {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+  a { color: var(--accent-dark); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+  .staging-banner {
+    background: var(--amber-bg);
+    color: var(--amber-ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.6rem 1rem;
   }
 
-  /* Hero */
   .hero {
-    padding: 4.5rem 0 3.5rem;
+    padding: 4rem 0 3rem;
     text-align: center;
-    background:
-      radial-gradient(ellipse 60% 50% at 50% 0%, var(--accent-soft), transparent);
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, var(--accent-soft), transparent);
   }
   .eyebrow {
     display: inline-block;
@@ -143,343 +91,160 @@
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--accent);
-    background: var(--accent-soft);
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    margin: 0 0 1.25rem;
+    margin-bottom: 0.75rem;
   }
   h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    line-height: 1.15;
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    line-height: 1.2;
     margin: 0 0 1rem;
-    letter-spacing: -0.02em;
   }
-  h1 .accent {
-    color: var(--accent);
-  }
-  .intro {
+  .hero p.lede {
     color: var(--ink-dim);
-    margin: 0 auto 2rem;
     font-size: 1.1rem;
-    max-width: 46ch;
-  }
-  .hero-ctas {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 0.85rem 1.5rem;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: transform 0.12s ease, opacity 0.12s ease, border-color 0.12s ease, color 0.12s ease;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--accent) 60%, transparent);
-  }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    opacity: 0.94;
-  }
-  .btn-ghost {
-    background: transparent;
-    border: 1px solid var(--line);
-    color: var(--ink-dim);
-  }
-  .btn-ghost:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    max-width: 60ch;
+    margin: 0 auto 1.75rem;
   }
 
-  /* Arcade grid */
-  .arcade {
-    padding: 1rem 0 4.5rem;
-  }
-  .arcade h2 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-dim);
-    margin: 0 0 1.5rem;
-    text-align: center;
-  }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.25rem;
+    padding: 1rem 0 3rem;
   }
+  @media (min-width: 680px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 960px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
   .card {
     background: var(--card-bg);
     border: 1px solid var(--line);
-    border-radius: 18px;
-    overflow: hidden;
+    border-radius: 16px;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: var(--shadow-sm);
   }
-  .card:not(.soon):hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 32px -16px color-mix(in srgb, var(--ink) 20%, transparent);
-  }
-  .thumb {
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.75rem;
-    background: linear-gradient(135deg, var(--accent-soft), var(--bg));
-    color: var(--accent);
-    overflow: hidden;
-  }
-  .thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .card-links {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    flex-wrap: wrap;
-  }
-  .external-link {
-    font-size: 0.85rem;
-    color: var(--ink-dim);
-    text-decoration: none;
-  }
-  .external-link:hover {
-    color: var(--accent);
-  }
-  .card.soon .thumb {
-    filter: grayscale(0.4);
-    opacity: 0.75;
-  }
-  .card-body {
-    padding: 1.1rem 1.25rem 1.35rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  .badges {
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-    margin: 0 0 0.6rem;
-  }
-  .badge {
+  .card .badge {
+    display: inline-block;
     font-size: 0.7rem;
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.03em;
+    text-transform: uppercase;
     padding: 0.2rem 0.55rem;
     border-radius: 999px;
-    background: var(--badge-new-bg);
-    color: var(--badge-new-ink);
+    margin-bottom: 0.75rem;
+    width: fit-content;
   }
-  .badge.soon {
-    background: var(--badge-soon-bg);
-    color: var(--badge-soon-ink);
-  }
-  .card h3 {
-    margin: 0 0 0.4rem;
-    font-size: 1.2rem;
-  }
-  .card p {
-    color: var(--ink-dim);
+  .card .badge.new { background: var(--badge-new-bg); color: var(--badge-new-ink); }
+  .card .badge.soon { background: var(--badge-soon-bg); color: var(--badge-soon-ink); }
+  .card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; }
+  .card p { color: var(--ink-dim); font-size: 0.95rem; margin: 0 0 1.25rem; flex-grow: 1; }
+  .card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+
+  .btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
     font-size: 0.95rem;
-    margin: 0 0 1.1rem;
-    flex: 1;
+    padding: 0.65rem 1.1rem;
+    border-radius: 10px;
+    min-height: 44px;
+    line-height: 1.5;
   }
-  .card .btn {
-    align-self: flex-start;
-    padding: 0.6rem 1.1rem;
-    font-size: 0.9rem;
-  }
-  .card.soon .btn,
-  .card.soon h3,
-  .card.soon p {
-    opacity: 0.7;
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-disabled {
+    background: var(--badge-soon-bg);
+    color: var(--ink-dim);
+    cursor: not-allowed;
   }
 
-  /* Footer */
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 2.5rem 0 3rem;
-    text-align: center;
-  }
-  footer p {
+  footer.site-footer {
+    padding: 2rem 0 3rem;
     color: var(--ink-dim);
-    font-size: 0.95rem;
-    max-width: 46ch;
-    margin: 0 auto 0.6rem;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--line);
   }
-  footer a {
-    font-weight: 600;
-  }
-  #staging-banner {
-    background: #f5a623;
-    color: #1a1300;
-    font-weight: 700;
-    text-align: center;
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-  }
-  #staging-banner a {
-    color: #1a1300;
-    text-decoration: underline;
-  }
+  footer.site-footer a { color: var(--ink-dim); }
 </style>
 </head>
 <body>
-  <!-- Always visible here — this file only ever serves staging.johanlijffijt.dev (separate from
-       site/index.html since 13 september 2026), so no hostname-detection JS is needed anymore. -->
-  <div id="staging-banner">
-    ⚠️ STAGING OMGEVING — dit is een testversie. Productie draait op
-    <a href="https://johanlijffijt.dev">johanlijffijt.dev</a>
-  </div>
+
+  <div class="staging-banner">⚠️ STAGING — testomgeving, niet gepubliceerd voor bezoekers</div>
+
   <header class="hero">
     <div class="wrap">
-      <p class="eyebrow">🕹️ Free · No installs · Play instantly</p>
-      <h1>Pick a game.<br>Hit play. <span class="accent">That's it.</span></h1>
-      <p class="intro">
-        A small indie arcade of HTML5 browser games, built solo by Johan in evenings and
-        weekends. No app stores, no accounts, no waiting for a download bar — just open a game
-        and play, on your laptop or your phone.
+      <span class="eyebrow">Gratis &amp; direct resultaat</span>
+      <h1>Handige online tools &amp; calculators</h1>
+      <p class="lede">
+        Snelle, betrouwbare rekentools voor klussen en dagelijkse vragen — geen account, geen
+        installatie, direct antwoord.
       </p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="/game/" data-track="hero-play">▶ Play Meteor Survivor now</a>
-        <a class="btn btn-ghost" href="#arcade">Browse the arcade</a>
-      </div>
+      <a class="btn btn-primary" href="/tools/materiaal-calculator/" data-track="hero-materiaal-calculator">
+        Open de Materiaal Calculator →
+      </a>
     </div>
   </header>
 
-  <main class="arcade" id="arcade">
-    <div class="wrap">
-      <h2>The Arcade</h2>
-      <div class="grid">
-        <article class="card">
-          <div class="thumb">
-            <img src="/images/meteor-survivor-cover.png" alt="Meteor Survivor gameplay — ship dodging and blasting meteors among falling stars" loading="lazy">
-          </div>
-          <div class="card-body">
-            <div class="badges">
-              <span class="badge">New</span>
-              <span class="badge">Touch-friendly</span>
-            </div>
-            <h3>Meteor Survivor</h3>
-            <p>Dodge and blast a sky full of meteors with auto-fire lasers, grab Space Dust, and
-              level up mid-run. How long can you survive?</p>
-            <div class="card-links">
-              <a class="btn btn-primary" href="/game/" data-track="game-meteor-survivor">Play now</a>
-              <a class="external-link" href="https://johan1974.itch.io/meteor-survivor-rogue-space" data-track="itch-io" target="_blank" rel="noopener">Also on itch.io ↗</a>
-            </div>
-          </div>
-        </article>
+  <main class="wrap">
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🧱</div>
+        <span class="badge new">Nieuw</span>
+        <h3>Bouw- &amp; Tuinmateriaal Calculator</h3>
+        <p>
+          Bereken direct hoeveel zand, grind, tuinaarde of boomschors je nodig hebt — inclusief
+          inklinking, aantal big bags en geschat gewicht.
+        </p>
+        <a class="btn btn-primary" href="/tools/materiaal-calculator/" data-track="card-materiaal-calculator">Open tool</a>
+      </div>
 
-        <!-- Neon Drift, Day 1 prototype (~/projects/apps/neon-drift/CLAUDE.md) — deliberately
-             staging-only, this card simply doesn't exist in site/index.html (production). -->
-        <article class="card">
-          <div class="thumb" aria-hidden="true">⚡</div>
-          <div class="card-body">
-            <div class="badges">
-              <span class="badge soon">Early prototype</span>
-            </div>
-            <h3>Neon Drift</h3>
-            <p>A fast neon 3-lane dodge/reflex game — early staging build, core mechanic only, no
-              juice or audio yet. Feedback on the feel very welcome.</p>
-            <div class="card-links">
-              <a class="btn btn-primary" href="/games/neon-drift/" data-track="game-neon-drift">Play prototype</a>
-            </div>
-          </div>
-        </article>
+      <div class="card">
+        <div class="icon">📄</div>
+        <span class="badge soon">Binnenkort</span>
+        <h3>Factuur / XML Validator</h3>
+        <p>
+          Controleer een UBL/e-factuur-XML op geldigheid vóór je 'm instuurt of importeert.
+        </p>
+        <a class="btn btn-disabled" aria-disabled="true">Binnenkort beschikbaar</a>
+      </div>
 
-        <!-- Gravity Flip, Day 1 prototype (~/projects/apps/gravity-flip/CLAUDE.md) — staging-only,
-             same reasoning as Neon Drift above. -->
-        <article class="card">
-          <div class="thumb" aria-hidden="true">🔄</div>
-          <div class="card-body">
-            <div class="badges">
-              <span class="badge soon">Early prototype</span>
-            </div>
-            <h3>Gravity Flip</h3>
-            <p>One-button neon runner — tap to flip gravity between floor and ceiling, dodge
-              spikes, grab orbs. Deterministic, no camera motion. Early staging build.</p>
-            <div class="card-links">
-              <a class="btn btn-primary" href="/games/gravity-flip/" data-track="game-gravity-flip">Play prototype</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Marble Jam, Day 1 prototype (~/projects/apps/marble-jam/CLAUDE.md) — staging-only,
-             same reasoning as Neon Drift/Gravity Flip above. -->
-        <article class="card">
-          <div class="thumb" aria-hidden="true">🔮</div>
-          <div class="card-body">
-            <div class="badges">
-              <span class="badge soon">Early prototype</span>
-            </div>
-            <h3>Marble Jam</h3>
-            <p>Addictive physics color-packing puzzle. Match 3 balls, clear the board, and
-              don't jam your tray!</p>
-            <div class="badges">
-              <span class="badge">Puzzle</span>
-              <span class="badge">Touch & Mouse</span>
-            </div>
-            <div class="card-links">
-              <a class="btn btn-primary" href="/games/marble-jam/" data-track="game-marble-jam">Play prototype</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card soon">
-          <div class="thumb" aria-hidden="true">💡</div>
-          <div class="card-body">
-            <div class="badges">
-              <span class="badge soon">Your idea?</span>
-            </div>
-            <h3>Got a game idea?</h3>
-            <p>This arcade is just getting started. If there's a simple browser game you wish
-              existed, that feedback shapes what gets built next.</p>
-            <a class="btn btn-ghost" href="/feedback/" data-track="feedback">Send feedback</a>
-          </div>
-        </article>
+      <div class="card">
+        <div class="icon">🧮</div>
+        <span class="badge soon">Binnenkort</span>
+        <h3>Nog een tool in de maak</h3>
+        <p>
+          Heb je zelf een idee voor een handige calculator of utility? Laat het weten via de
+          feedbacklink hieronder.
+        </p>
+        <a class="btn btn-disabled" aria-disabled="true">Binnenkort beschikbaar</a>
       </div>
     </div>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="wrap">
       <p>
-        Built solo by <strong>Johan Lijffijt</strong> — small games, made for fun, shipped in
-        evenings and weekends. Found a bug or have an idea? <a href="/feedback/" data-track="feedback">Let me know</a>.
+        Gebouwd door <strong>Johan Lijffijt</strong>. Idee voor een handige tool, of iets kapot?
+        <a href="/feedback/" data-track="feedback">Laat het weten</a>.
       </p>
     </div>
   </footer>
 
   <script>
-    document.querySelectorAll('a[data-track]').forEach((a) => {
-      a.addEventListener('click', () => {
+    document.querySelectorAll('a[data-track]').forEach(function (a) {
+      a.addEventListener('click', function () {
         try {
           fetch('/api/track', {
             method: 'POST',
             keepalive: true,
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ target: a.dataset.track }),
+            body: JSON.stringify({ target: a.dataset.track })
           });
         } catch (e) {}
-        // GA4 click_itch event — hostname-filtered gtag() above is a no-op on non-production
-        // hosts, so this is safe to fire unconditionally here too.
-        if (a.dataset.track === 'itch-io' && typeof window.gtag === 'function') {
-          window.gtag('event', 'click_itch', { link_url: a.href });
-        }
       });
     });
   </script>
